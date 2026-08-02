@@ -27,7 +27,7 @@ export default function Plans() {
             }`}
           >
             {(plan as any).featured && (
-              <div className="absolute -top-3 left-5 bg-primary text-white text-[11px] px-3 py-1 rounded-full font-medium">
+              <div className="absolute -top-3 left-5 bg-lime text-primary text-[11px] px-3 py-1 rounded-full font-medium shadow-[0_8px_20px_rgba(206,240,10,0.35)]">
                 {t.plans.badge}
               </div>
             )}
@@ -43,11 +43,7 @@ export default function Plans() {
             </ul>
             <button
               onClick={() => scrollTo('quote')}
-              className={`w-full py-2.5 rounded-lg text-sm font-medium transition-all ${
-                (plan as any).featured
-                  ? 'bg-primary text-white hover:opacity-85'
-                  : 'border border-primary text-primary hover:bg-primary hover:text-white'
-              }`}
+              className={`w-full py-2.5 ${(plan as any).featured ? 'btn btn-primary' : 'btn btn-secondary'}`}
             >
               {t.plans.select}
             </button>

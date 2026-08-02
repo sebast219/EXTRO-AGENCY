@@ -163,7 +163,7 @@ export default function Contact() {
           <button
             type="submit"
             disabled={status === 'sending'}
-            className="w-full py-3.5 bg-primary text-white rounded-lg text-sm font-medium hover:opacity-85 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+            className="btn btn-primary w-full py-3.5"
           >
             {submitLabel()}
           </button>

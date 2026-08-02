@@ -11,10 +11,16 @@ export const en = {
   },
   hero: {
     tag: 'Development Studio · Medellín',
-    title: 'Software delivered at a fixed price, no middlemen.',
+    title: 'Software delivered at a fixed price',
+    titleHighlight: 'no middlemen.',
     subtitle: 'Extron designs and builds websites, automations, and custom software for businesses that need results in days, not months — with scope and price defined before writing the first line of code.',
     cta1: 'Quote my project',
     cta2: 'See services',
+  },
+  marquee: {
+    label: 'Industries & technologies',
+    industries: ['Startups', 'Fintech', 'E-commerce', 'Healthcare', 'Logistics', 'Retail', 'Education', 'Hospitality', 'Professional services'],
+    tech: ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'TypeScript', 'WhatsApp API', 'AWS', 'Supabase', 'AI & chatbots'],
   },
   stats: {
     s1: { num: '-75%', label: 'DB latency optimized' },
@@ -52,6 +58,7 @@ export const en = {
     label: '02 / Services',
     title: 'From your digital presence to an ecosystem that grows on its own',
     desc: 'Each service starts from your web or app and connects with the rest — they are not separate islands.',
+    cta: 'Quote this service',
     items: [
       { num: '01', tag: 'core', title: 'Webs & Apps', desc: 'The starting point: a website, online store, or application where your clients find you and buy from you.' },
       { num: '02', tag: 'derived', title: 'Automations', desc: 'Derived from your web or app: chatbots, WhatsApp flows, and processes that attend and sell without you being there.' },

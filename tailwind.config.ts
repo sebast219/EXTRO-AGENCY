@@ -9,15 +9,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#0a0a0a',
+        primary: '#000000',
         secondary: '#525252',
         tertiary: '#a3a3a3',
         border: '#e5e5e5',
         surface: '#fafafa',
         'surface-raised': '#f5f5f5',
+        lime: '#cef00a',
+        'brand-blue': '#506ffd',
+        'brand-black': '#000000',
+        'brand-white': '#ffffff',
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['var(--font-space)', 'Space Grotesk', 'sans-serif'],
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.6s ease-out forwards',

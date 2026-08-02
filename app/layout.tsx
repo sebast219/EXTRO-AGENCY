@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import { LanguageProvider } from '@/components/LanguageProvider'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space' })
 
 export const metadata: Metadata = {
   title: 'EX·TRON — Desarrollo de software con precio cerrado',
@@ -29,8 +30,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={inter.variable}>
-      <body className="antialiased bg-white text-primary">
+    <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <body className="antialiased bg-white text-primary" suppressHydrationWarning>
         <LanguageProvider>
           {children}
         </LanguageProvider>

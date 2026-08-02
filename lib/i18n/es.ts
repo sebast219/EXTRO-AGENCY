@@ -11,10 +11,16 @@ export const es = {
   },
   hero: {
     tag: 'Estudio de desarrollo · Medellín',
-    title: 'Software que se entrega con precio cerrado y sin intermediarios.',
+    title: 'Software que se entrega con precio cerrado',
+    titleHighlight: 'y sin intermediarios.',
     subtitle: 'Extron diseña y construye sitios, automatizaciones y software a medida para negocios que necesitan resultados en días, no en meses — con alcance y precio definidos antes de escribir la primera línea de código.',
     cta1: 'Cotizar mi proyecto',
     cta2: 'Ver servicios',
+  },
+  marquee: {
+    label: 'Sectores y tecnologías',
+    industries: ['Startups', 'Fintech', 'E-commerce', 'Salud', 'Logística', 'Retail', 'Educación', 'Gastronomía', 'Servicios profesionales'],
+    tech: ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'TypeScript', 'WhatsApp API', 'AWS', 'Supabase', 'IA & chatbots'],
   },
   stats: {
     s1: { num: '-75%', label: 'latencia optimizada en BD' },
@@ -52,6 +58,7 @@ export const es = {
     label: '02 / Servicios',
     title: 'De tu presencia digital a un ecosistema que crece solo',
     desc: 'Cada servicio parte de tu web o app y se conecta con el resto — no son islas separadas.',
+    cta: 'Cotizar este servicio',
     items: [
       { num: '01', tag: 'núcleo', title: 'Webs & Apps', desc: 'El punto de partida: sitio, tienda virtual o aplicación con la que tus clientes te encuentran y te compran.' },
       { num: '02', tag: 'derivado', title: 'Automatizaciones', desc: 'Derivadas de tu web o app: chatbots, flujos de WhatsApp y procesos que atienden y venden sin que tú estés ahí.' },

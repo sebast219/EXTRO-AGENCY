@@ -83,7 +83,7 @@ export default function QuoteCalculator() {
       <div className="mt-10 p-8 border border-border rounded-xl bg-surface-raised">
         <div className="h-1 bg-border rounded-full mb-8 overflow-hidden">
           <div
-            className="h-full bg-primary transition-all duration-500"
+            className="h-full bg-gradient-to-r from-lime to-brand-blue transition-all duration-500"
             style={{ width: showResult ? '100%' : `${((step + 1) / 4) * 100}%` }}
           />
         </div>
@@ -107,13 +107,13 @@ export default function QuoteCalculator() {
                   const el = document.getElementById('contact')
                   if (el) el.scrollIntoView({ behavior: 'smooth' })
                 }}
-                className="px-6 py-3 bg-primary text-white rounded-lg text-sm font-medium hover:opacity-85 transition-opacity"
+                className="btn btn-primary px-6 py-3"
               >
                 {q.cta}
               </button>
               <button
                 onClick={reset}
-                className="px-6 py-3 border border-border rounded-lg text-sm font-medium text-primary hover:border-primary transition-colors"
+                className="btn btn-secondary px-6 py-3"
               >
                 {q.reset}
               </button>
@@ -153,7 +153,7 @@ export default function QuoteCalculator() {
               <button
                 onClick={next}
                 disabled={!isSelected}
-                className="px-5 py-2.5 bg-primary text-white rounded-lg text-sm font-medium hover:opacity-85 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
+                className="btn btn-primary px-5 py-2.5"
               >
                 {step === 3 ? (lang === 'es' ? 'Calcular' : 'Calculate') : q.next}
               </button>
