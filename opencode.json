@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "runtime_orchestrator": {
+      "type": "local",
+      "enabled": true,
+      "command": "node",
+      "args": ["D:\\Skills\\runtime_mcp_server.js"]
+    }
+  }
+}

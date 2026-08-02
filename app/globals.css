@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 10, 10, 10;
+  --background-rgb: 255, 255, 255;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-feature-settings: "tnum" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #0a0a0a;
+  color: white;
+}
+
+/* Scrollbar minimal */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
+
+@layer components {
+  .section-label {
+    @apply text-xs text-tertiary uppercase tracking-[0.15em] mb-4;
+  }
+  .section-title {
+    @apply text-3xl md:text-4xl font-medium text-primary leading-tight mb-4;
+  }
+  .section-desc {
+    @apply text-base text-secondary leading-relaxed max-w-xl;
+  }
+  .card-hover {
+    @apply transition-all duration-200 hover:border-primary hover:bg-surface-raised;
+  }
+}
