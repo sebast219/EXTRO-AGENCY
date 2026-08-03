@@ -23,48 +23,55 @@ export default function ServicesCarousel() {
     if (prefersReduced) return
 
     const mm = gsap.matchMedia()
+    const tweens: gsap.core.Tween[] = []
     mm.add('(min-width: 768px)', () => {
       const getDistance = () => track.scrollWidth - window.innerWidth + 120
-      gsap.to(track, {
-        x: () => -getDistance(),
-        ease: 'none',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top',
-          end: () => `+=${getDistance()}`,
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
-      })
+      tweens.push(
+        gsap.to(track, {
+          x: () => -getDistance(),
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: () => `+=${getDistance()}`,
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        })
+      )
 
-      // Columnas decorativas con parallax (se mueven más lento)
       if (colsRef.current) {
         const cols = Array.from(colsRef.current.children) as HTMLElement[]
         cols.forEach((col) => {
-          gsap.to(col, {
-            x: () => -getDistance() * 0.45,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: section,
-              start: 'top top',
-              end: () => `+=${getDistance()}`,
-              scrub: 1,
-            },
-          })
+          tweens.push(
+            gsap.to(col, {
+              x: () => -getDistance() * 0.35,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: section,
+                start: 'top top',
+                end: () => `+=${getDistance()}`,
+                scrub: 1,
+              },
+            })
+          )
         })
       }
     })
 
     return () => {
+      tweens.forEach((tw) => {
+        tw.scrollTrigger?.kill()
+        tw.kill()
+      })
       mm.revert()
-      ScrollTrigger.getAll().forEach((st) => st.kill())
     }
   }, [])
 
   return (
-    <section id="services" ref={sectionRef} className="services-scroll scroll-mt-20">
+    <section id="capabilities" ref={sectionRef} className="services-scroll scroll-mt-20">
       <div className="services-scroll__columns" ref={colsRef} aria-hidden="true">
         <div className="services-scroll__column" />
         <div className="services-scroll__column" />
@@ -75,7 +82,9 @@ export default function ServicesCarousel() {
       </div>
 
       <div className="services-head">
-        <div className="section-label">{t.services.label}</div>
+        <div className="section-label">
+          {t.services.label}
+        </div>
         <h2 className="section-title max-w-2xl">{t.services.title}</h2>
         <p className="section-desc">{t.services.desc}</p>
       </div>
@@ -84,13 +93,12 @@ export default function ServicesCarousel() {
         <div className="services-carousel__track" ref={trackRef}>
           {t.services.items.map((item, i) => (
             <article key={i} className="service-slide">
-              <span className="service-slide__tag">{item.tag}</span>
-              <span className="service-slide__num">{item.num}</span>
+              <span className="service-slide__tag">{item.num} / 04</span>
               <h3 className="service-slide__title">{item.title}</h3>
               <p className="service-slide__desc">{item.desc}</p>
               <span className="service-slide__arrow">
                 {t.services.cta}
-                <ArrowRight size={16} />
+                <ArrowRight size={15} strokeWidth={2} />
               </span>
             </article>
           ))}

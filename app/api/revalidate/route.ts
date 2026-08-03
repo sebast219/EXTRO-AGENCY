@@ -1,25 +1,25 @@
 import { NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
+import { timingSafeEqual } from 'crypto'
 
 function isAuthorized(req: Request): boolean {
-  const url = new URL(req.url)
-  const token = url.searchParams.get('secret') || req.headers.get('x-sanity-secret')
-  return Boolean(process.env.REVALIDATE_TOKEN && token === process.env.REVALIDATE_TOKEN)
+  const token = req.headers.get('x-sanity-secret')
+  const expected = process.env.REVALIDATE_TOKEN
+  if (!expected || !token) return false
+  const bufA = Buffer.from(token)
+  const bufB = Buffer.from(expected)
+  if (bufA.length !== bufB.length) {
+    timingSafeEqual(bufA, bufA)
+    return false
+  }
+  return timingSafeEqual(bufA, bufB)
 }
 
-function handle(req: Request) {
+export async function POST(req: Request) {
   if (!isAuthorized(req)) {
     return NextResponse.json({ error: 'Token inválido' }, { status: 401 })
   }
   revalidatePath('/blog')
-  revalidatePath('/blog/[slug]', 'page')
+  revalidatePath('/blog/[slug]')
   return NextResponse.json({ revalidated: true })
-}
-
-export async function POST(req: Request) {
-  return handle(req)
-}
-
-export async function GET(req: Request) {
-  return handle(req)
 }

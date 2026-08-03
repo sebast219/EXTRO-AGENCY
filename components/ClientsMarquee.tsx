@@ -5,30 +5,19 @@ import { useLang } from './LanguageProvider'
 export default function ClientsMarquee() {
   const { t } = useLang()
 
-  const Row = ({ items, reverse }: { items: string[]; reverse?: boolean }) => (
-    <div className={`marquee ${reverse ? 'marquee--reverse' : ''}`}>
-      <div className="marquee__track">
-        {[0, 1].map((copy) => (
-          <div key={copy} className="flex items-center gap-2rem" aria-hidden={copy === 1}>
-            {items.map((item, i) => (
-              <span key={i} className="marquee__item">
-                {item}
-              </span>
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  )
+  const outcomes = [...t.marquee.outcomes, ...t.marquee.outcomes]
 
   return (
-    <section id="clients" className="py-16 border-y border-border overflow-hidden">
-      <div className="container mx-auto px-6 mb-8">
-        <div className="section-label">{t.marquee.label}</div>
+    <section className="py-12 border-y border-border">
+      <div className="max-w-5xl mx-auto px-6 mb-8">
+        <div className="text-[11px] font-semibold uppercase tracking-[0.12em] opacity-45 text-center">{t.marquee.label}</div>
       </div>
-      <div className="space-y-6">
-        <Row items={t.marquee.industries} />
-        <Row items={t.marquee.tech} reverse />
+      <div className="marquee">
+        <div className="marquee__track">
+          {outcomes.map((item, i) => (
+            <span key={i} className="marquee__item text-lg font-semibold font-display opacity-45">{item}</span>
+          ))}
+        </div>
       </div>
     </section>
   )

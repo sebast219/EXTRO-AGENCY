@@ -2,62 +2,47 @@
 
 import { useState } from 'react'
 import { useLang } from './LanguageProvider'
-import { Plus } from 'lucide-react'
+import { useReveal } from '@/lib/useReveal'
+import { Minus, Plus } from 'lucide-react'
 
 export default function FAQ() {
   const { t } = useLang()
-  const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const ref = useReveal<HTMLElement>()
+  const [openIdx, setOpenIdx] = useState<number | null>(null)
 
-  const total = t.faq.items.length
+  const toggle = (i: number) => setOpenIdx(openIdx === i ? null : i)
 
   return (
-    <section id="faq" className="py-20 px-6 max-w-3xl mx-auto scroll-mt-20">
-      <div className="section-label">{t.faq.label}</div>
-      <h2 className="section-title">{t.faq.title}</h2>
+    <section id="faq" ref={ref} className="py-32 px-6 max-w-2xl mx-auto scroll-mt-20">
+      <div data-reveal className="section-label">
+        {t.faq.label}
+      </div>
+      <h2 data-reveal style={{ '--reveal-delay': '60ms' } as React.CSSProperties} className="section-title">
+        {t.faq.title}
+      </h2>
 
-      <div className="mt-10">
+      <div className="mt-14 space-y-1">
         {t.faq.items.map((item, i) => {
-          const open = openIndex === i
+          const open = openIdx === i
           return (
-            <div
-              key={i}
-              className={`border-b transition-colors ${open ? 'border-primary' : 'border-border'}`}
-            >
+            <div key={i} data-reveal style={{ '--reveal-delay': `${i * 60 + 120}ms` } as React.CSSProperties}>
               <button
-                onClick={() => setOpenIndex(open ? null : i)}
-                className="w-full flex items-center justify-between gap-4 py-5 text-left group"
-                aria-expanded={open}
+                onClick={() => toggle(i)}
+                className="w-full text-left py-4 flex items-start justify-between gap-4 group"
               >
-                <span className="flex items-center gap-4">
-                  <span
-                    className={`text-xs tabular-nums tracking-wider transition-colors ${
-                      open ? 'text-brand-blue' : 'text-tertiary'
-                    }`}
-                  >
-                    {String(i + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-                  </span>
-                  <span className="text-[15px] font-medium text-primary group-hover:text-brand-blue transition-colors">
-                    {item.q}
-                  </span>
+                <span className="text-sm font-medium text-primary group-hover:opacity-70 transition-opacity">
+                  {item.q}
                 </span>
-                <Plus
-                  size={18}
-                  className={`text-tertiary shrink-0 transition-transform duration-300 ${
-                    open ? 'rotate-45 text-brand-blue' : ''
-                  }`}
-                />
+                <span className="text-primary shrink-0 mt-0.5 opacity-50">
+                  {open ? <Minus size={14} /> : <Plus size={14} />}
+                </span>
               </button>
-              <div
-                className={`grid transition-all duration-300 ease-out ${
-                  open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                }`}
-              >
-                <div className="overflow-hidden">
-                  <p className="pb-5 pl-10 pr-6 text-sm text-secondary leading-relaxed">
-                    {item.a}
-                  </p>
+              {open && (
+                <div className="pb-5 text-sm opacity-55 leading-relaxed">
+                  {item.a}
                 </div>
-              </div>
+              )}
+              <div className="h-px bg-border" />
             </div>
           )
         })}

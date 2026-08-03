@@ -1,5 +1,17 @@
 import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import { compare } from 'bcryptjs'
+import { timingSafeEqual } from 'crypto'
+
+function safeCompare(a: string, b: string): boolean {
+  const bufA = Buffer.from(a)
+  const bufB = Buffer.from(b)
+  if (bufA.length !== bufB.length) {
+    timingSafeEqual(bufA, bufA)
+    return false
+  }
+  return timingSafeEqual(bufA, bufB)
+}
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -11,16 +23,32 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         const adminEmail = process.env.ADMIN_EMAIL
-        const adminPassword = process.env.ADMIN_PASSWORD
-        if (
-          !credentials?.email ||
-          !credentials.password ||
-          credentials.email !== adminEmail ||
-          credentials.password !== adminPassword
-        ) {
+        const passwordHash = process.env.ADMIN_PASSWORD_HASH
+        const legacyPassword = process.env.ADMIN_PASSWORD
+
+        if (!credentials?.email || !credentials.password) {
           return null
         }
-        return { id: '1', name: 'Admin', email: adminEmail }
+
+        if (adminEmail && !safeCompare(credentials.email, adminEmail)) {
+          return null
+        }
+
+        if (passwordHash) {
+          const valid = await compare(credentials.password, passwordHash)
+          if (!valid) return null
+        } else if (legacyPassword) {
+          console.warn(
+            '[auth] ADMIN_PASSWORD (plaintext) detectado. Migra a ADMIN_PASSWORD_HASH con: npx tsx scripts/hash-password.ts'
+          )
+          if (!safeCompare(credentials.password, legacyPassword)) {
+            return null
+          }
+        } else {
+          return null
+        }
+
+        return { id: '1', name: 'Admin', email: adminEmail || credentials.email }
       },
     }),
   ],

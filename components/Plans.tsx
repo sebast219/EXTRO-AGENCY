@@ -1,9 +1,20 @@
 'use client'
 
 import { useLang } from './LanguageProvider'
+import { useReveal } from '@/lib/useReveal'
+import { Check } from 'lucide-react'
+
+type PlanItem = {
+  name: string
+  price: string
+  desc: string
+  features: string[]
+  featured?: boolean
+}
 
 export default function Plans() {
   const { t } = useLang()
+  const ref = useReveal<HTMLElement>()
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id)
@@ -11,45 +22,64 @@ export default function Plans() {
   }
 
   return (
-    <section id="plans" className="py-20 px-6 max-w-5xl mx-auto scroll-mt-20">
-      <div className="section-label">{t.plans.label}</div>
-      <h2 className="section-title">{t.plans.title}</h2>
-      <p className="section-desc">{t.plans.desc}</p>
+    <section id="plans" ref={ref} className="py-32 px-6 max-w-5xl mx-auto scroll-mt-20">
+      <div data-reveal className="section-label">
+        {t.plans.label}
+      </div>
+      <h2 data-reveal style={{ '--reveal-delay': '60ms' } as React.CSSProperties} className="section-title max-w-2xl">
+        {t.plans.title}
+      </h2>
+      <p data-reveal style={{ '--reveal-delay': '120ms' } as React.CSSProperties} className="section-desc mb-14">
+        {t.plans.desc}
+      </p>
 
-      <div className="grid md:grid-cols-3 gap-4 mt-10">
-        {t.plans.items.map((plan, i) => (
+      <div className="grid md:grid-cols-3 gap-6 mb-14">
+        {(t.plans.items as PlanItem[]).map((plan, i) => (
           <div
             key={i}
-            className={`p-7 border rounded-xl relative transition-all duration-200 ${
-              (plan as any).featured
-                ? 'border-primary bg-surface-raised'
-                : 'border-border hover:border-primary hover:bg-surface-raised'
+            data-reveal
+            style={{ '--reveal-delay': `${i * 100 + 180}ms` } as React.CSSProperties}
+            className={`relative p-8 rounded-xl transition-all duration-300 ${
+              plan.featured
+                ? 'card-featured scale-[1.02] md:scale-[1.04] z-10'
+                : 'card'
             }`}
           >
-            {(plan as any).featured && (
-              <div className="absolute -top-3 left-5 bg-lime text-primary text-[11px] px-3 py-1 rounded-full font-medium shadow-[0_8px_20px_rgba(206,240,10,0.35)]">
+            {plan.featured && (
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-white text-[10px] px-4 py-1 rounded-full font-semibold tracking-wider whitespace-nowrap">
                 {t.plans.badge}
               </div>
             )}
-            <h3 className="text-lg font-medium text-primary mb-2">{plan.name}</h3>
-            <p className="text-sm text-secondary mb-6 min-h-[40px]">{plan.desc}</p>
-            <ul className="space-y-2.5 mb-6">
+
+            <h3 className="text-lg font-semibold text-primary mb-1 font-display">{plan.name}</h3>
+            <div className="mb-1">
+              <span className="text-3xl font-bold text-primary tabular-nums tracking-tight font-display">{plan.price}</span>
+            </div>
+            <p className="text-sm mb-6 opacity-50 leading-relaxed">{plan.desc}</p>
+
+            <button onClick={() => scrollTo('contact')} className={`w-full mb-8 ${plan.featured ? 'btn btn-primary' : 'btn btn-secondary'} py-3`}>
+              {t.plans.select}
+            </button>
+
+            <ul className="space-y-3">
               {plan.features.map((f, j) => (
-                <li key={j} className="text-sm text-secondary flex items-center gap-2">
-                  <span className="text-primary text-xs">→</span>
-                  {f}
+                <li key={j} className="text-sm flex items-start gap-2.5 opacity-55">
+                  <Check size={13} strokeWidth={2} className="shrink-0 mt-0.5 opacity-45" />
+                  <span>{f}</span>
                 </li>
               ))}
             </ul>
-            <button
-              onClick={() => scrollTo('quote')}
-              className={`w-full py-2.5 ${(plan as any).featured ? 'btn btn-primary' : 'btn btn-secondary'}`}
-            >
-              {t.plans.select}
-            </button>
           </div>
         ))}
       </div>
+
+      <p
+        data-reveal
+        style={{ '--reveal-delay': '500ms' } as React.CSSProperties}
+        className="text-center text-xs opacity-50 max-w-md mx-auto leading-relaxed"
+      >
+        {t.plans.guarantee}
+      </p>
     </section>
   )
 }
