@@ -6,7 +6,7 @@ import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import { attachHoverSound, unlockAudio } from '@/lib/sound'
 
-const SECTION_IDS = ['capabilities', 'plans', 'delivery', 'deployments', 'faq', 'contact']
+const SECTION_IDS = ['principles', 'delivery', 'deployments', 'capabilities', 'plans', 'faq', 'contact']
 
 export default function Navbar() {
   const { lang, t, setLang } = useLang()

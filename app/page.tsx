@@ -4,18 +4,11 @@ import AmbientGrid from '@/components/AmbientGrid'
 import ClientsMarquee from '@/components/ClientsMarquee'
 import TeamSection from '@/components/TeamSection'
 import ServicesCarousel from '@/components/ServicesCarousel'
-import WeeklyBuild from '@/components/WeeklyBuild'
 import Plans from '@/components/Plans'
-import PricingExplanation from '@/components/PricingExplanation'
-import ScopeSection from '@/components/ScopeSection'
 import DeliverySystem from '@/components/DeliverySystem'
-import WhyExtron from '@/components/WhyExtron'
 import Comparison from '@/components/Comparison'
-import TechAuthority from '@/components/TechAuthority'
 import EngineeringPrinciples from '@/components/EngineeringPrinciples'
-import ToolsStack from '@/components/ToolsStack'
 import Cases from '@/components/Cases'
-import QuoteCalculator from '@/components/QuoteCalculator'
 import FAQ from '@/components/FAQ'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
@@ -26,27 +19,39 @@ import ScrollProgress from '@/components/ScrollProgress'
 export default function Home() {
   return (
     <main className="min-h-screen">
+      {/* ── Layer: global ambient ── */}
       <Preloader />
       <ScrollProgress />
       <AmbientGrid />
       <Navbar />
+
+      {/* ── 0-8%:  What is EXTRO? ── */}
       <Hero />
+
+      {/* ── 8-15%: Why believe? ── */}
       <ClientsMarquee />
-      <TeamSection />
-      <ServicesCarousel />
-      <WeeklyBuild />
-      <Plans />
-      <PricingExplanation />
-      <ScopeSection />
-      <DeliverySystem />
-      <WhyExtron />
-      <Comparison />
-      <TechAuthority />
+
+      {/* ── 15-25%: Why does this exist? ── */}
       <EngineeringPrinciples />
-      <ToolsStack />
+
+      {/* ── 25-40%: How do they build? — Pinned storytelling ── */}
+      <DeliverySystem />
+
+      {/* ── 40-55%: What results? — Scroll gates ── */}
       <Cases />
-      <QuoteCalculator />
+
+      {/* ── 55-70%: What can they build? — Progressive cards ── */}
+      <ServicesCarousel />
+
+      {/* ── 70-80%: How much? — Narrative journey ── */}
+      <Plans />
+
+      {/* ── 80-90%: Why trust? ── */}
+      <TeamSection />
+      <Comparison />
       <FAQ />
+
+      {/* ── 90-100%: What now? — Settle + CTA ── */}
       <Contact />
       <Footer />
       <WhatsAppFloat />

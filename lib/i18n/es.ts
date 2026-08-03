@@ -1,9 +1,10 @@
 export const es = {
   nav: {
+    principles: 'Filosofía',
     capabilities: 'Capacidades',
-    plans: 'Planes',
     delivery: 'Entrega',
     deployments: 'Casos',
+    plans: 'Planes',
     faq: 'FAQ',
     contact: 'Contacto',
     cta: 'Empezar',

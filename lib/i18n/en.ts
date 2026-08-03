@@ -1,9 +1,10 @@
 export const en = {
   nav: {
+    principles: 'Philosophy',
     capabilities: 'Capabilities',
-    plans: 'Plans',
     delivery: 'Delivery',
     deployments: 'Cases',
+    plans: 'Plans',
     faq: 'FAQ',
     contact: 'Contact',
     cta: 'Start',
