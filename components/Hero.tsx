@@ -9,6 +9,7 @@ import { ArrowDown, ArrowRight } from 'lucide-react'
 export default function Hero() {
   const { t } = useLang()
   const sectionRef = useRef<HTMLElement>(null)
+  const colsRef = useRef<HTMLDivElement>(null)
 
   const titleWords = useMemo(() => t.hero.title.split(' '), [t.hero.title])
   const highlightWords = useMemo(
@@ -41,13 +42,40 @@ export default function Hero() {
     }
   }, [titleWords, highlightWords])
 
+  /* Mouse parallax on hero columns */
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const cols = colsRef.current
+    if (!cols) return
+
+    const onMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2
+      const y = (e.clientY / window.innerHeight - 0.5) * 2
+
+      Array.from(cols.children).forEach((col, i) => {
+        const el = col as HTMLElement
+        const depth = 0.5 + (i / 7) * 0.5
+        gsap.to(el, {
+          x: x * 8 * depth,
+          y: y * 4 * depth,
+          duration: 1.2,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        })
+      })
+    }
+
+    window.addEventListener('mousemove', onMouseMove, { passive: true })
+    return () => window.removeEventListener('mousemove', onMouseMove)
+  }, [])
+
   return (
     <section
       id="hero"
       ref={sectionRef}
       className="relative min-h-[90vh] flex items-center pt-28 pb-20 px-6 overflow-hidden"
     >
-      <div className="hero-columns" aria-hidden="true">
+      <div ref={colsRef} className="hero-columns" aria-hidden="true">
         {Array.from({ length: 8 }).map((_, i) => (
           <div key={i} className="hero-columns__col" />
         ))}
@@ -111,7 +139,7 @@ export default function Hero() {
           {t.hero.badges.map((b, i) => (
             <span
               key={i}
-              className="inline-flex items-center gap-1.5 text-[11px] px-3 py-1.5 rounded-full border border-border text-primary opacity-40"
+              className="inline-flex items-center gap-1.5 text-[11px] px-3 py-1.5 rounded-full border border-border text-primary opacity-55"
             >
               <span className="w-1 h-1 rounded-full bg-ink opacity-45" />
               {b}

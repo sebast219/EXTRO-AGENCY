@@ -46,7 +46,11 @@ export default function Comparison() {
                     }`}
                   >
                     {val ? (
-                      <Check size={15} strokeWidth={2.5} className="inline-block opacity-45" />
+                      j === 2 ? (
+                        <Check size={15} strokeWidth={3} className="inline-block text-accent" />
+                      ) : (
+                        <Check size={15} strokeWidth={2.5} className="inline-block opacity-45" />
+                      )
                     ) : (
                       <Minus size={15} strokeWidth={1.5} className="inline-block opacity-10" />
                     )}

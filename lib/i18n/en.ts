@@ -19,7 +19,12 @@ export const en = {
   },
   marquee: {
     label: 'Engineering outcomes · Last 12 months',
-    outcomes: ['+$450K generated', '18 projects', '97% retention', '48h to first demo'],
+    outcomes: [
+      '+$450K generated', '18 projects', '97% retention', '48h to first demo',
+      '+67% sales increase', '+40% SQL performance', '2,300 active users',
+      '10-day launch', '850 orders/month', '6h/week saved',
+      '12 people impacted', 'CI/CD automated', '0 bugs in production',
+    ],
   },
   services: {
     label: 'Engineering capabilities',

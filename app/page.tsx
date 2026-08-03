@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
+import AmbientGrid from '@/components/AmbientGrid'
 import ClientsMarquee from '@/components/ClientsMarquee'
 import TeamSection from '@/components/TeamSection'
 import ServicesCarousel from '@/components/ServicesCarousel'
@@ -27,6 +28,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Preloader />
       <ScrollProgress />
+      <AmbientGrid />
       <Navbar />
       <Hero />
       <ClientsMarquee />

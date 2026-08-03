@@ -31,6 +31,7 @@
 }
 
 html {
+  font-size: 115%;
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
   scrollbar-width: thin;
@@ -43,6 +44,46 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== Living ambient light ===== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0,102,255,0.025) 0%, transparent 60%);
+  animation: ambientLight 10s ease-in-out infinite alternate;
+}
+
+@keyframes ambientLight {
+  0% {
+    background: radial-gradient(ellipse at 40% 0%, rgba(0,102,255,0.02) 0%, transparent 60%);
+  }
+  50% {
+    background: radial-gradient(ellipse at 50% 0%, rgba(0,102,255,0.035) 0%, transparent 55%);
+  }
+  100% {
+    background: radial-gradient(ellipse at 60% 0%, rgba(240,240,245,0.025) 0%, transparent 60%);
+  }
+}
+
+/* ===== Subtle grid drift (matching Hero columns) ===== */
+.ambient-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  opacity: 0.22;
+  will-change: transform;
+}
+.ambient-grid__col {
+  border-left: 1px solid rgba(0,0,0,0.025);
+  border-right: 1px solid rgba(0,0,0,0.015);
 }
 
 ::-webkit-scrollbar { width: 8px; }
@@ -618,6 +659,12 @@ html[data-preloader="true"] body {
   white-space: nowrap;
 }
 
+/* ===== Pipeline dot activation ===== */
+.pipeline-step-active {
+  @apply bg-accent;
+  box-shadow: 0 0 8px rgba(0,102,255,0.30);
+}
+
 /* ===== Reduced motion ===== */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -626,4 +673,5 @@ html[data-preloader="true"] body {
   .scroll-hint, .menu-item { animation: none; }
   [data-reveal] { opacity: 1; transform: none; filter: none; transition: none; }
   .preloader { display: none; }
+  .ambient-grid { display: none; }
 }

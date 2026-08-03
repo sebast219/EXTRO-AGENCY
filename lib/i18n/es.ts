@@ -19,7 +19,12 @@ export const es = {
   },
   marquee: {
     label: 'Resultados de ingeniería · Últimos 12 meses',
-    outcomes: ['+$450K generados', '18 proyectos', '97% retención', '48h al primer avance'],
+    outcomes: [
+      '+$450K generados', '18 proyectos', '97% retención', '48h al primer avance',
+      '+67% incremento en ventas', '+40% rendimiento SQL', '2.300 usuarios activos',
+      '10 días de lanzamiento', '850 pedidos/mes', '6h semanales ahorradas',
+      '12 personas impactadas', 'CI/CD automatizado', '0 bugs en producción',
+    ],
   },
   services: {
     label: 'Capacidades de ingeniería',
