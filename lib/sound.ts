@@ -44,26 +44,6 @@ export function playHoverSound() {
   osc.stop(t0 + 0.1)
 }
 
-// Click de teclado para el scramble del preloader (volumen bajo, 0.22 aprox)
-export function playTypingClick() {
-  if (prefersReducedMotion()) return
-  const c = getAudioContext()
-  if (!c || c.state !== 'running') return
-
-  const t0 = c.currentTime
-  const osc = c.createOscillator()
-  const gain = c.createGain()
-  osc.type = 'square'
-  osc.frequency.setValueAtTime(1800 + Math.random() * 600, t0)
-  gain.gain.setValueAtTime(0.0001, t0)
-  gain.gain.exponentialRampToValueAtTime(0.02, t0 + 0.004)
-  gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.03)
-  osc.connect(gain)
-  gain.connect(c.destination)
-  osc.start(t0)
-  osc.stop(t0 + 0.04)
-}
-
 // Adjunta sonido de hover a un elemento (link de navegación)
 export function attachHoverSound(el: HTMLElement | null) {
   if (!el) return

@@ -33,27 +33,24 @@ export const metadata: Metadata = {
     description: 'Tu departamento de ingeniería por suscripción. Avances funcionales cada viernes. Precio fijo.',
   },
   robots: 'index, follow',
+  icons: {
+    icon: '/icon.png',
+  },
   alternates: {
-    canonical: 'https://extro.dev',
+    canonical: 'https://extro.com.co',
   },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`} data-preloader="true">
-      <body className="antialiased bg-white" style={{ color: '#000000' }} suppressHydrationWarning>
-        <svg xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', width: 0, height: 0 }} aria-hidden="true">
-          <defs>
-            <filter id="preloader-edge" x="-5%" y="-5%" width="110%" height="110%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" result="noise" />
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" />
-            </filter>
-            <filter id="noise">
-              <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-              <feColorMatrix type="saturate" values="0" />
-            </filter>
-          </defs>
-        </svg>
+    <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+        <body className="antialiased bg-white" style={{ color: '#000000' }} suppressHydrationWarning>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-ink focus:text-white focus:rounded-lg focus:text-sm focus:font-medium"
+        >
+          Saltar al contenido
+        </a>
         <LanguageProvider>
           {children}
         </LanguageProvider>

@@ -2,11 +2,6 @@
 
 import { useEffect, useRef } from 'react'
 
-/**
- * Observa todos los [data-reveal] dentro del ref y añade .is-revealed
- * cuando entran al viewport. Una sola pasada (unobserve tras revelar).
- * El escalonado se controla con style={{ '--reveal-delay': '80ms' }}.
- */
 export function useReveal<T extends HTMLElement = HTMLElement>() {
   const ref = useRef<T | null>(null)
 
@@ -27,12 +22,16 @@ export function useReveal<T extends HTMLElement = HTMLElement>() {
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed')
-            io.unobserve(entry.target)
+            const target = entry.target as HTMLElement
+            const delay = target.style.getPropertyValue('--reveal-delay') || '0ms'
+            setTimeout(() => {
+              target.classList.add('is-revealed')
+            }, parseInt(delay))
+            io.unobserve(target)
           }
         }
       },
-      { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
+      { threshold: 0.08, rootMargin: '0px 0px -4% 0px' }
     )
 
     targets.forEach((t) => io.observe(t))

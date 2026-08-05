@@ -7,3 +7,12 @@ next-env.d.ts
 .DS_Store
 .env*.local
 .playwright-mcp/
+
+.vercel
+.env*
+
+# debug artifacts
+dev-server.log
+footer-wave.png
+preloader-check.png
+android-icon-48x48.png

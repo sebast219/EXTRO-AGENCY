@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { rateLimit, getRateLimitHeaders } from '@/lib/rate-limit'
 
 const PROJECT_LABELS: Record<string, string> = {
   web: 'Web o tienda virtual',
@@ -9,6 +10,11 @@ const PROJECT_LABELS: Record<string, string> = {
 }
 
 const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+
+function getClientIp(req: Request): string {
+  const forwarded = req.headers.get('x-forwarded-for')
+  return forwarded?.split(',')[0]?.trim() || 'unknown'
+}
 
 const escapeHtml = (value: string) =>
   value
@@ -59,6 +65,15 @@ function buildEmailHtml(fields: { name: string; email: string; project: string; 
 }
 
 export async function POST(req: Request) {
+  const ip = getClientIp(req)
+  const rl = rateLimit(`contact:${ip}`, { windowMs: 60_000, maxRequests: 3 })
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: 'Demasiadas solicitudes. Espera un minuto.' },
+      { status: 429, headers: getRateLimitHeaders(rl) }
+    )
+  }
+
   let body: { name?: unknown; email?: unknown; project?: unknown; message?: unknown }
   try {
     body = await req.json()

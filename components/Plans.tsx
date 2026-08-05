@@ -29,9 +29,14 @@ export default function Plans() {
       <h2 data-reveal style={{ '--reveal-delay': '60ms' } as React.CSSProperties} className="section-title max-w-2xl">
         {t.plans.title}
       </h2>
-      <p data-reveal style={{ '--reveal-delay': '120ms' } as React.CSSProperties} className="section-desc mb-14">
-        {t.plans.desc}
+      <p data-reveal style={{ '--reveal-delay': '120ms' } as React.CSSProperties} className="section-desc mb-4">
+        {(t.plans as { desc: string }).desc}
       </p>
+      {'note' in t.plans && (
+        <p data-reveal style={{ '--reveal-delay': '150ms' } as React.CSSProperties} className="text-xs opacity-45 text-center max-w-lg mx-auto mb-14 leading-relaxed">
+          {(t.plans as { note?: string }).note}
+        </p>
+      )}
 
       <div className="grid md:grid-cols-3 gap-6 mb-14">
         {(t.plans.items as PlanItem[]).map((plan, i) => (

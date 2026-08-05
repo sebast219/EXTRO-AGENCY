@@ -2,56 +2,59 @@ import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import AmbientGrid from '@/components/AmbientGrid'
 import ClientsMarquee from '@/components/ClientsMarquee'
-import TeamSection from '@/components/TeamSection'
-import ServicesCarousel from '@/components/ServicesCarousel'
-import Plans from '@/components/Plans'
-import DeliverySystem from '@/components/DeliverySystem'
-import Comparison from '@/components/Comparison'
-import EngineeringPrinciples from '@/components/EngineeringPrinciples'
+import PainPoints from '@/components/PainPoints'
 import Cases from '@/components/Cases'
+import Plans from '@/components/Plans'
+import PricingExplanation from '@/components/PricingExplanation'
+import ScopeSection from '@/components/ScopeSection'
 import FAQ from '@/components/FAQ'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import WhatsAppFloat from '@/components/WhatsAppFloat'
-import Preloader from '@/components/Preloader'
 import ScrollProgress from '@/components/ScrollProgress'
+import { DeliverySystemLazy, ServicesCarouselLazy, QuoteCalculatorLazy } from '@/components/DynamicImports'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      {/* ── Layer: global ambient ── */}
-      <Preloader />
+    <main id="main-content" className="min-h-screen" tabIndex={-1}>
       <ScrollProgress />
       <AmbientGrid />
       <Navbar />
 
-      {/* ── 0-8%:  What is EXTRO? ── */}
+      {/* 1. Hero */}
       <Hero />
 
-      {/* ── 8-15%: Why believe? ── */}
+      {/* 2. Social proof */}
       <ClientsMarquee />
 
-      {/* ── 15-25%: Why does this exist? ── */}
-      <EngineeringPrinciples />
+      {/* 3. Problem → Solution */}
+      <PainPoints />
 
-      {/* ── 25-40%: How do they build? — Pinned storytelling ── */}
-      <DeliverySystem />
+      {/* 4. How it works */}
+      <DeliverySystemLazy />
 
-      {/* ── 40-55%: What results? — Scroll gates ── */}
+      {/* 5. Case studies */}
       <Cases />
 
-      {/* ── 55-70%: What can they build? — Progressive cards ── */}
-      <ServicesCarousel />
+      {/* 6. Capabilities */}
+      <ServicesCarouselLazy />
 
-      {/* ── 70-80%: How much? — Narrative journey ── */}
+      {/* 7. Plans (upsell post-project) */}
       <Plans />
 
-      {/* ── 80-90%: Why trust? ── */}
-      <TeamSection />
-      <Comparison />
+      {/* 8. How we keep price low */}
+      <PricingExplanation />
+
+      {/* 9. What we don't do */}
+      <ScopeSection />
+
+      {/* 10. Quote calculator */}
+      <QuoteCalculatorLazy />
+
+      {/* 11. FAQ */}
       <FAQ />
 
-      {/* ── 90-100%: What now? — Settle + CTA ── */}
+      {/* 12. Contact */}
       <Contact />
       <Footer />
       <WhatsAppFloat />

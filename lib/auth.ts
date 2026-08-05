@@ -2,6 +2,7 @@ import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { compare } from 'bcryptjs'
 import { timingSafeEqual } from 'crypto'
+import { rateLimit } from './rate-limit'
 
 function safeCompare(a: string, b: string): boolean {
   const bufA = Buffer.from(a)
@@ -21,7 +22,13 @@ export const authOptions: NextAuthOptions = {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials) {
+      async authorize(credentials, req) {
+        const ip = (req?.headers?.['x-forwarded-for'] as string)?.split(',')[0]?.trim() || 'unknown'
+        const rl = rateLimit(`auth:${ip}`, { windowMs: 60_000, maxRequests: 5 })
+        if (!rl.ok) {
+          throw new Error('rate_limited')
+        }
+
         const adminEmail = process.env.ADMIN_EMAIL
         const passwordHash = process.env.ADMIN_PASSWORD_HASH
         const legacyPassword = process.env.ADMIN_PASSWORD
