@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useRef } from 'react'
+import { Fragment, useEffect, useMemo, useRef } from 'react'
 import { useLang } from './LanguageProvider'
 import { ArrowDown, ArrowRight } from 'lucide-react'
 
@@ -236,16 +236,18 @@ export default function Hero() {
       <div className="relative z-10 max-w-4xl mx-auto w-full text-center">
         <h1 className="font-display font-semibold text-primary leading-[0.96] tracking-[-0.04em] mb-6 text-[clamp(2.6rem,6.5vw,4.75rem)]">
           {titleWords.map((word, i) => (
-            <span key={`w-${i}`} className="hero-word inline-block">
-              {word}{' '}
-            </span>
+            <Fragment key={`w-${i}`}>
+              <span className="hero-word inline-block">{word}</span>
+              {' '}
+            </Fragment>
           ))}
           {highlightWords.length > 0 && (
             <span className="hero-word block mt-2 opacity-45 text-[clamp(1.6rem,3.5vw,2.5rem)]">
               {highlightWords.map((word, i) => (
-                <span key={`h-${i}`} className="inline-block">
-                  {word}{' '}
-                </span>
+                <Fragment key={`h-${i}`}>
+                  <span className="inline-block">{word}</span>
+                  {' '}
+                </Fragment>
               ))}
             </span>
           )}

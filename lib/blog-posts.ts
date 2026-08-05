@@ -13,6 +13,45 @@ export interface FallbackPost extends BlogPostMeta {
 
 export const fallbackPosts: FallbackPost[] = [
   {
+    slug: 'cuanto-cuesta-desarrollar-app-colombia',
+    title: '¿Cuánto cuesta desarrollar una app en Colombia en 2026?',
+    excerpt: 'Rangos reales de presupuesto para apps web, móviles y ecommerce en el mercado colombiano, y por qué el precio cerrado es mejor que las horas.',
+    date: '2026-08-01',
+    readTime: '7 min',
+    tag: 'Negocio',
+    content: [
+      'Es la pregunta que más recibo: "¿cuánto cuesta una app?" La respuesta honesta es que depende del alcance, pero en el mercado colombiano de 2026 los rangos son más predecibles de lo que parece. Una landing con panel simple ronda los 1.500–4.000 USD. Un ecommerce con pagos e inventario, 4.000–9.000 USD. Un SaaS con usuarios, integraciones e IA, 9.000–18.000 USD.',
+      'Lo que más mueve el precio no son las pantallas sino lo invisible: autenticación, pagos, panel de administración, integraciones, infraestructura que no se caiga y pruebas automatizadas. Una "app sencilla" sin eso termina costando más en correcciones que un proyecto bien arquitecturado desde el día uno.',
+      'El modelo que usamos en EXTRO: cada proyecto se cotiza según su alcance con precio fijo, y se construye con avances funcionales cada viernes. Tú sabes desde el primer día cuánto vas a pagar y qué recibes cada semana. Si el presupuesto exacto de tu caso te interesa, en el cotizador de extro.com.co respondes 5 preguntas y tienes un rango estimado en 60 segundos.',
+    ],
+  },
+  {
+    slug: 'elegir-agencia-software-medellin',
+    title: 'Cómo elegir una agencia de software en Medellín',
+    excerpt: 'Las 5 preguntas que debes hacerle a cualquier agencia o desarrollador antes de firmar, y las banderas rojas que te ahorran dinero.',
+    date: '2026-07-25',
+    readTime: '8 min',
+    tag: 'Negocio',
+    content: [
+      'Medellín se convirtió en el polo tecnológico de Colombia, y con eso crecieron las opciones: agencias grandes que cobran por horas con gestores de por medio, freelancers baratos que desaparecen a mitad de proyecto, y estudios pequeños como EXTRO que apuestan por alcance cerrado y entrega semanal. Elegir mal cuesta lo mismo que elegir bien dos veces.',
+      'Haz siempre estas 5 preguntas: ¿quién escribe el código y hablo directo con esa persona? ¿El precio es fijo o por horas? ¿Qué entregable concreto recibo cada semana? ¿Quién es dueño del código y la infraestructura? ¿Qué pasa si quiero agregar alcance a mitad de camino? Si una respuesta es vaga, es una bandera roja.',
+      'Las señales de una agencia sólida: entregables semanales demostrables, contrato claro sobre propiedad del código, stack tecnológico estándar (no tecnologías propietarias que te atan) y disposición a empezar con un alcance pequeño. En EXTRO respondemos esas 5 preguntas en una llamada de 15 minutos, sin compromiso.',
+    ],
+  },
+  {
+    slug: 'software-pymes-por-que',
+    title: '¿Por qué tu PYME necesita software propio?',
+    excerpt: 'De las planillas de Excel al producto que te diferencia: cuándo tiene sentido invertir en desarrollo a medida y cuándo no.',
+    date: '2026-07-20',
+    readTime: '6 min',
+    tag: 'Negocio',
+    content: [
+      'La mayoría de las PYMES colombianas opera con la misma infraestructura digital: Excel, WhatsApp y una que otra herramienta SaaS genérica. Eso funciona hasta que creces: los pedidos se pierden, los datos viven en cabezas y la operación depende de procesos manuales que no escalan.',
+      '¿Cuándo sí conviene desarrollo a medida? Cuando un proceso repetitivo consume horas cada semana, cuando dependes de herramientas que no se integran entre sí, o cuando tu diferenciador competitivo es digital (atención 24/7, delivery, pagos en línea). Si ninguna de esas tres cosas es cierta, un SaaS genérico alcanza.',
+      'La buena noticia es que el software a medida ya no es un lujo de empresas grandes: un proyecto puntual se cotiza según su alcance, y después de la entrega puedes continuar evolucionándolo con un plan mensual. Así una PYME tiene equipo de desarrollo propio sin contratar a nadie — nosotros somos ese equipo.',
+    ],
+  },
+  {
     slug: 'precio-cerrado-vs-horas',
     title: 'Por qué el precio cerrado gana contra el cobro por horas',
     excerpt: 'El modelo de precio cerrado elimina incertidumbre para el cliente y fomenta la eficiencia en el desarrollo. Te explico por qué lo uso.',

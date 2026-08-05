@@ -85,7 +85,7 @@ export async function POST(req: Request) {
     const resend = new Resend(apiKey)
     const { data, error } = await resend.emails.send({
       from: process.env.EMAIL_FROM || 'EXTRO <onboarding@resend.dev>',
-      to: [process.env.CONTACT_TO || 'engineering@extro.dev'],
+      to: [process.env.CONTACT_TO || 'hola@extro.com.co'],
       replyTo: email,
       subject: `Intro call agendada · ${name} · ${date} ${time}`,
       html: buildEmailHtml({ name, email, date, time, notes }),

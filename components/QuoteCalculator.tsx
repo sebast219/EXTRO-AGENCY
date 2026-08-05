@@ -15,6 +15,7 @@ type Answers = {
 type Recommendation = {
   plan: string
   price: string
+  range?: string
   time: string
   tech: string
   match: string
@@ -102,6 +103,20 @@ export default function QuoteCalculator() {
           <div className="text-center py-4">
             <div className="text-xs font-semibold uppercase tracking-[0.12em] mb-6 opacity-50">
               {q.resultLabel}
+            </div>
+
+            <div className="mb-8">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.1em] opacity-45 mb-2">
+                {q.projectBudgetLabel}
+              </div>
+              <div className="text-3xl font-bold text-primary font-display tabular-nums">
+                {rec.range || rec.price}
+              </div>
+              <div className="text-[11px] opacity-45 mt-1.5 max-w-xs mx-auto">{q.budgetHint}</div>
+            </div>
+
+            <div className="text-[10px] font-semibold uppercase tracking-[0.1em] opacity-40 mb-3">
+              {q.planContinuityLabel}
             </div>
 
             <div className="flex items-center justify-center gap-4 mb-8">

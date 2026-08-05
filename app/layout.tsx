@@ -52,18 +52,40 @@ export const metadata: Metadata = {
 
 const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': ['Organization', 'ProfessionalService'],
   name: 'EXTRO',
   url: 'https://extro.com.co',
   logo: 'https://extro.com.co/icon.png',
   description:
     'Agencia de ingeniería de software. Cotiza tu proyecto y, después de la entrega, sigue evolucionándolo con un plan mensual con avances funcionales cada viernes.',
-  email: 'engineering@extro.dev',
+  email: 'hola@extro.com.co',
+  telephone: '+573005865312',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Medellín',
     addressCountry: 'CO',
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 6.2442,
+    longitude: -75.5812,
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Colombia',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+  ],
+  sameAs: [
+    'https://github.com/sebast219',
+    'https://www.linkedin.com/in/sebastian-yepes-dev/',
+  ],
 }
 
 const websiteSchema = {
