@@ -40,12 +40,40 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: `${post.title} · EX·TRON`,
     description: post.excerpt,
+    alternates: {
+      canonical: `https://extro.com.co/blog/${post.slug}`,
+    },
   }
 }
 
 export default async function PostPage({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug)
   if (!post) notFound()
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    inLanguage: 'es',
+    url: `https://extro.com.co/blog/${post.slug}`,
+    author: {
+      '@type': 'Organization',
+      name: 'EXTRO',
+      url: 'https://extro.com.co',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'EXTRO',
+      url: 'https://extro.com.co',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://extro.com.co/icon.png',
+      },
+    },
+    mainEntityOfPage: `https://extro.com.co/blog/${post.slug}`,
+  }
 
   return (
     <main className="min-h-screen bg-white">
@@ -128,6 +156,10 @@ export default async function PostPage({ params }: { params: { slug: string } })
             />
           )}
         </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        />
       </div>
     </main>
   )

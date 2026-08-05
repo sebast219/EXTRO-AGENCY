@@ -48,9 +48,6 @@ export const metadata: Metadata = {
     icon: '/icon.png',
     apple: '/apple-touch-icon.png',
   },
-  alternates: {
-    canonical: 'https://extro.com.co',
-  },
 }
 
 const organizationSchema = {

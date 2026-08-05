@@ -14,6 +14,9 @@ import type { BlogPostMeta } from '@/lib/blog-posts'
 export const metadata = {
   title: 'Blog · EX·TRON',
   description: 'Artículos sobre desarrollo de software, automatización y tecnología.',
+  alternates: {
+    canonical: 'https://extro.com.co/blog',
+  },
 }
 
 export const revalidate = 60

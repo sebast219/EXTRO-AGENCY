@@ -13,6 +13,13 @@ import Footer from '@/components/Footer'
 import WhatsAppFloat from '@/components/WhatsAppFloat'
 import ScrollProgress from '@/components/ScrollProgress'
 import { DeliverySystemLazy, ServicesCarouselLazy, QuoteCalculatorLazy } from '@/components/DynamicImports'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://extro.com.co',
+  },
+}
 
 const faqSchema = {
   '@context': 'https://schema.org',
