@@ -4,4 +4,4 @@ Disallow: /admin/
 Disallow: /studio/
 Disallow: /api/
 
-Sitemap: https://extro.dev/sitemap.xml
+Sitemap: https://extro.com.co/sitemap.xml

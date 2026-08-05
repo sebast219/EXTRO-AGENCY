@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.extro.com.co" }],
+      "destination": "https://extro.com.co/:path",
+      "permanent": true
+    }
+  ]
+}

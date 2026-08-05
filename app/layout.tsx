@@ -26,19 +26,64 @@ export const metadata: Metadata = {
     description: 'Tu departamento de ingeniería por suscripción. Avances funcionales cada viernes. Precio fijo.',
     type: 'website',
     locale: 'es_CO',
+    url: 'https://extro.com.co',
+    siteName: 'EXTRO',
+    images: [
+      {
+        url: 'https://extro.com.co/og.png',
+        width: 1200,
+        height: 630,
+        alt: 'EXTRO — Engineering-as-a-Subscription',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'EXTRO — Engineering-as-a-Subscription',
     description: 'Tu departamento de ingeniería por suscripción. Avances funcionales cada viernes. Precio fijo.',
+    images: ['https://extro.com.co/og.png'],
   },
   robots: 'index, follow',
   icons: {
     icon: '/icon.png',
+    apple: '/apple-touch-icon.png',
   },
   alternates: {
     canonical: 'https://extro.com.co',
   },
+}
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'EXTRO',
+  url: 'https://extro.com.co',
+  logo: 'https://extro.com.co/icon.png',
+  description:
+    'Tu departamento de ingeniería por suscripción. Construimos software, IA y automatizaciones con avances funcionales cada viernes.',
+  email: 'engineering@extro.dev',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Medellín',
+    addressCountry: 'CO',
+  },
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'EXTRO — Engineering-as-a-Subscription',
+  url: 'https://extro.com.co',
+  inLanguage: 'es',
+}
+
+function JsonLd({ data }: { data: object }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  )
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -54,6 +99,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LanguageProvider>
           {children}
         </LanguageProvider>
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={websiteSchema} />
       </body>
     </html>
   )

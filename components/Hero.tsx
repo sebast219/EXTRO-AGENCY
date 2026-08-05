@@ -5,20 +5,20 @@ import { useLang } from './LanguageProvider'
 import { ArrowDown, ArrowRight } from 'lucide-react'
 
 const HERO_IMAGES = [
-  '/images/work/work-01.webp',
-  '/images/work/work-02.webp',
-  '/images/work/work-03.webp',
-  '/images/work/work-04.webp',
-  '/images/work/work-05.webp',
-  '/images/work/work-06.webp',
-  '/images/work/work-07.webp',
-  '/images/work/work-08.webp',
-  '/images/work/work-09.webp',
-  '/images/work/work-10.webp',
-  '/images/work/work-11.webp',
-  '/images/work/work-12.webp',
-  '/images/work/work-13.webp',
-  '/images/work/work-14.webp',
+  { src: '/images/work/work-01.webp', alt: 'Panel de administración de un SaaS construido por EXTRO' },
+  { src: '/images/work/work-02.webp', alt: 'Dashboard de métricas en tiempo real de un cliente EXTRO' },
+  { src: '/images/work/work-03.webp', alt: 'Interfaz de ecommerce con pagos integrados, proyecto EXTRO' },
+  { src: '/images/work/work-04.webp', alt: 'Aplicación web de reservas desarrollada por EXTRO' },
+  { src: '/images/work/work-05.webp', alt: 'Chatbot con IA integrado en WhatsApp, proyecto EXTRO' },
+  { src: '/images/work/work-06.webp', alt: 'Landing page de producto construida por EXTRO' },
+  { src: '/images/work/work-07.webp', alt: 'Panel de analítica con predicciones de IA, trabajo de EXTRO' },
+  { src: '/images/work/work-08.webp', alt: 'Tienda virtual con inventario automático, proyecto EXTRO' },
+  { src: '/images/work/work-09.webp', alt: 'Plataforma de servicios con registro y pagos, de EXTRO' },
+  { src: '/images/work/work-10.webp', alt: 'Dashboard de ventas en tiempo real, proyecto EXTRO' },
+  { src: '/images/work/work-11.webp', alt: 'Aplicación móvil responsive construida por EXTRO' },
+  { src: '/images/work/work-12.webp', alt: 'Sistema de automatización de pedidos, proyecto EXTRO' },
+  { src: '/images/work/work-13.webp', alt: 'Backoffice con panel de métricas, trabajo de EXTRO' },
+  { src: '/images/work/work-14.webp', alt: 'Interfaz de producto SaaS en producción, de EXTRO' },
 ]
 
 interface FloatConfig {
@@ -223,8 +223,8 @@ export default function Hero() {
             } as React.CSSProperties}
           >
             <img
-              src={HERO_IMAGES[i]}
-              alt=""
+              src={HERO_IMAGES[i].src}
+              alt={HERO_IMAGES[i].alt}
               loading={i < 2 ? 'eager' : 'lazy'}
               decoding="async"
               className="hero-float-img"
@@ -236,15 +236,15 @@ export default function Hero() {
       <div className="relative z-10 max-w-4xl mx-auto w-full text-center">
         <h1 className="font-display font-semibold text-primary leading-[0.96] tracking-[-0.04em] mb-6 text-[clamp(2.6rem,6.5vw,4.75rem)]">
           {titleWords.map((word, i) => (
-            <span key={`w-${i}`} className="hero-word inline-block mr-[0.18em]">
-              {word}
+            <span key={`w-${i}`} className="hero-word inline-block">
+              {word}{' '}
             </span>
           ))}
           {highlightWords.length > 0 && (
             <span className="hero-word block mt-2 opacity-45 text-[clamp(1.6rem,3.5vw,2.5rem)]">
               {highlightWords.map((word, i) => (
-                <span key={`h-${i}`} className="inline-block mr-[0.15em] last:mr-0">
-                  {word}
+                <span key={`h-${i}`} className="inline-block">
+                  {word}{' '}
                 </span>
               ))}
             </span>
