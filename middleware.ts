@@ -2,9 +2,25 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { getToken } from 'next-auth/jwt'
 
+const BASE_HOST = 'extro.com.co'
+
 export async function middleware(req: NextRequest) {
-  const token = await getToken({ req, secret: process.env.AUTH_SECRET })
+  const host = req.headers.get('host')?.toLowerCase() ?? ''
+
+  if (host.startsWith('www.') && host.endsWith(`.${BASE_HOST}`)) {
+    const url = req.nextUrl.clone()
+    url.host = BASE_HOST
+    url.protocol = 'https'
+    return NextResponse.redirect(url, 301)
+  }
+
   const { pathname } = req.nextUrl
+
+  if (!pathname.startsWith('/admin') && !pathname.startsWith('/studio')) {
+    return NextResponse.next()
+  }
+
+  const token = await getToken({ req, secret: process.env.AUTH_SECRET })
 
   if (pathname === '/admin/login') {
     if (token) return NextResponse.redirect(new URL('/admin', req.url))
@@ -36,5 +52,16 @@ function addSecurityHeaders(res: NextResponse) {
 }
 
 export const config = {
-  matcher: ['/admin', '/admin/:path*', '/studio', '/studio/:path*'],
+  matcher: [
+    '/',
+    '/blog',
+    '/blog/:path*',
+    '/admin',
+    '/admin/:path*',
+    '/studio',
+    '/studio/:path*',
+    '/api/:path*',
+    '/sitemap.xml',
+    '/robots.txt',
+  ],
 }
