@@ -44,9 +44,9 @@ export const en = {
     ],
   },
   plans: {
-    label: 'Evolution',
+    label: 'Continuity',
     title: 'Each project is quoted by scope.',
-    desc: 'After delivery, you can keep evolving it with our monthly subscription. Turn a one-time project into continuous growth.',
+    desc: 'After delivery, you can keep evolving it with our monthly subscription. Turn a one-time project into continuous growth, and us into your development team.',
     note: 'Functional demos every Friday. No lock-in.',
     badge: 'Most used',
     select: 'Start',
@@ -96,7 +96,7 @@ export const en = {
       { title: 'No endless meetings', desc: 'One 15-minute sync per week. The rest is code.' },
       { title: 'No proposals', desc: 'Fixed price from day one. No adjustments without your approval.' },
       { title: 'Engineering only', desc: 'You pay for engineering time. Zero corporate overhead.' },
-      { title: 'Subscription model', desc: 'Recurring revenue → optimized costs → savings for you.' },
+      { title: 'Hybrid model', desc: 'You get a quote and pay by scope. After delivery, only if you want continuity, you pick a monthly plan.' },
     ],
   },
   principles: {
@@ -254,7 +254,7 @@ export const en = {
       { plan: 'Scale', price: '$2,500/mo', time: '2-4 weeks', tech: 'Next.js, PostgreSQL, OpenAI, Docker, CI/CD pipeline', match: 'Fast track' },
     ],
     resultLabel: 'Engineering team recommendation',
-    resultDetail: 'Includes architecture, build, QA, and continuous deployment',
+    resultDetail: 'Includes architecture, build, QA, and deployment. After delivery you can continue with a monthly plan or wrap up.',
     cta: 'I want to start this week',
     reset: 'Recalculate',
     back: 'Back',
@@ -314,6 +314,8 @@ export const en = {
     label: 'FAQ',
     title: 'Straight answers.',
     items: [
+      { q: 'How does it work?', a: 'You get a fixed-price quote based on scope. We build with functional demos every Friday and, at delivery, you can stop there or keep evolving it with a monthly plan — we become your development team.' },
+      { q: 'Do I have to subscribe?', a: 'No. The monthly plan is optional and comes after delivery. If the project works and you want us to keep building, you pick a plan. If not, we hand it over and that\'s it.' },
       { q: 'How does the subscription work?', a: 'You subscribe to a plan. Every Friday you get a functional demo. You prioritize what gets built. No lock-in.' },
       { q: '$500/month? How many hours?', a: 'We don\'t sell hours. We sell prioritized engineering capacity. The price works because we eliminate everything that isn\'t code: sales, PMs, endless meetings, proposals. You get functional demos every Friday. Scope is defined with your engineer.' },
       { q: 'Who builds?', a: 'Senior engineers. No juniors. No outsourcing. You talk directly to whoever writes the code and designs the architecture.' },
@@ -371,7 +373,7 @@ export const en = {
     mode: 'Remote-first',
   },
   footer: {
-    desc: 'Engineering-as-a-Subscription. We build software, AI, and automations with functional demos every Friday. Fixed price. No lock-in.',
+    desc: 'Get a fixed-price quote for your project and, after delivery, keep evolving it with a monthly plan. Functional demos every Friday. No lock-in.',
     tagline: 'Engineering Studio',
     capabilities: 'Capabilities',
     resources: 'Resources',

@@ -44,9 +44,9 @@ export const es = {
     ],
   },
   plans: {
-    label: 'Evolución',
+    label: 'Continuidad',
     title: 'Cada proyecto se cotiza según su alcance.',
-    desc: 'Después de la entrega, puedes continuar evolucionándolo con nuestra suscripción mensual. Así conviertes un proyecto puntual en crecimiento continuo.',
+    desc: 'Después de la entrega, puedes continuar evolucionándolo con nuestra suscripción mensual. Así conviertes un proyecto puntual en crecimiento continuo, y nosotros en tu equipo de desarrollo.',
     note: 'Avances funcionales cada viernes. Sin permanencia.',
     badge: 'Más usado',
     select: 'Empezar',
@@ -96,7 +96,7 @@ export const es = {
       { title: 'Sin reuniones eternas', desc: 'Una sincronización semanal de 15 minutos. El resto es código.' },
       { title: 'Sin propuestas', desc: 'Precio fijo desde el día uno. Sin ajustes sin tu aprobación.' },
       { title: 'Solo ingeniería', desc: 'Pagas por tiempo de ingeniería. Cero gastos corporativos.' },
-      { title: 'Modelo suscripción', desc: 'Ingresos recurrentes → costos optimizados → ahorro para ti.' },
+      { title: 'Modelo híbrido', desc: 'Cotizas tu proyecto y pagas por alcance. Después, solo si quieres continuidad, eliges un plan mensual.' },
     ],
   },
   principles: {
@@ -254,7 +254,7 @@ export const es = {
       { plan: 'Scale', price: '$2,500/mes', time: '2-4 semanas', tech: 'Next.js, PostgreSQL, OpenAI, Docker, CI/CD pipeline', match: 'Acelerado' },
     ],
     resultLabel: 'Recomendación del equipo de ingeniería',
-    resultDetail: 'Incluye arquitectura, construcción, QA y despliegue continuo',
+    resultDetail: 'Incluye arquitectura, construcción, QA y despliegue. Después de la entrega puedes continuar con el plan mensual o cerrar.',
     cta: 'Quiero empezar esta semana',
     reset: 'Recalcular',
     back: 'Atrás',
@@ -314,6 +314,8 @@ export const es = {
     label: 'FAQ',
     title: 'Respuestas directas.',
     items: [
+      { q: '¿Cómo funciona?', a: 'Cotizas tu proyecto según su alcance y recibes un precio fijo. Lo construimos con avances funcionales cada viernes y, al entregarlo, puedes cerrar ahí o seguir evolucionándolo con un plan mensual — así nos convertimos en tu equipo de desarrollo.' },
+      { q: '¿Tengo que suscribirme?', a: 'No. El plan mensual es opcional y llega después de la entrega. Si el proyecto te funciona y quieres que sigamos construyendo, eliges el plan. Si no, entregamos y listo.' },
       { q: '¿Cómo funciona la suscripción?', a: 'Suscribes al plan. Cada viernes recibes un avance funcional. Tú priorizas qué se construye. Sin permanencia.' },
       { q: '¿$500/mes? ¿Cuántas horas incluye?', a: 'No vendemos horas. Vendemos capacidad priorizada de ingeniería. El precio es posible porque eliminamos todo lo que no es código: ventas, gestores, reuniones eternas, propuestas. Recibes avances funcionales cada viernes. El alcance lo defines tú con tu ingeniero.' },
       { q: '¿Quién construye?', a: 'Ingenieros senior. No contratamos juniors. No tercerizamos. Hablas directo con quien escribe el código y diseña la arquitectura.' },
@@ -371,7 +373,7 @@ export const es = {
     mode: 'Remoto',
   },
   footer: {
-    desc: 'Ingeniería por suscripción. Construimos software, IA y automatizaciones con avances funcionales cada viernes. Precio fijo. Sin permanencia.',
+    desc: 'Cotiza tu proyecto y, después de la entrega, continúa evolucionándolo con un plan mensual. Avances funcionales cada viernes. Precio fijo. Sin permanencia.',
     tagline: 'Estudio de Ingeniería',
     capabilities: 'Capacidades',
     resources: 'Recursos',

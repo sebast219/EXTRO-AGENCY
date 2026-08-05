@@ -17,13 +17,13 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'EXTRO — Engineering-as-a-Subscription',
-  description: 'Tu departamento de ingeniería por suscripción. Construimos software, AI y automatizaciones con avances funcionales cada viernes desde $500/mes.',
-  keywords: ['engineering subscription', 'software development', 'AI', 'automation', 'Next.js', 'suscripción ingeniería', 'precio fijo'],
+  title: 'EXTRO — Agencia de Ingeniería de Software',
+  description: 'Cotiza tu proyecto de software. Lo construimos con avances funcionales cada viernes y, si quieres continuidad, sigues con un plan mensual desde $500/mes.',
+  keywords: ['agencia de software', 'cotización software', 'desarrollo de software', 'engineering subscription', 'software development', 'AI', 'automation', 'Next.js', 'suscripción ingeniería', 'precio fijo'],
   authors: [{ name: 'EXTRO Engineering Studio' }],
   openGraph: {
-    title: 'EXTRO — Engineering-as-a-Subscription',
-    description: 'Tu departamento de ingeniería por suscripción. Avances funcionales cada viernes. Precio fijo.',
+    title: 'EXTRO — Agencia de Ingeniería de Software',
+    description: 'Cotiza tu proyecto y continúa evolucionándolo con un plan mensual. Avances funcionales cada viernes. Precio fijo.',
     type: 'website',
     locale: 'es_CO',
     url: 'https://extro.com.co',
@@ -33,14 +33,14 @@ export const metadata: Metadata = {
         url: 'https://extro.com.co/og.png',
         width: 1200,
         height: 630,
-        alt: 'EXTRO — Engineering-as-a-Subscription',
+        alt: 'EXTRO — Agencia de Ingeniería de Software',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'EXTRO — Engineering-as-a-Subscription',
-    description: 'Tu departamento de ingeniería por suscripción. Avances funcionales cada viernes. Precio fijo.',
+    title: 'EXTRO — Agencia de Ingeniería de Software',
+    description: 'Cotiza tu proyecto y continúa evolucionándolo con un plan mensual. Avances funcionales cada viernes. Precio fijo.',
     images: ['https://extro.com.co/og.png'],
   },
   robots: 'index, follow',
@@ -57,7 +57,7 @@ const organizationSchema = {
   url: 'https://extro.com.co',
   logo: 'https://extro.com.co/icon.png',
   description:
-    'Tu departamento de ingeniería por suscripción. Construimos software, IA y automatizaciones con avances funcionales cada viernes.',
+    'Agencia de ingeniería de software. Cotiza tu proyecto y, después de la entrega, sigue evolucionándolo con un plan mensual con avances funcionales cada viernes.',
   email: 'engineering@extro.dev',
   address: {
     '@type': 'PostalAddress',
@@ -69,7 +69,7 @@ const organizationSchema = {
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'EXTRO — Engineering-as-a-Subscription',
+  name: 'EXTRO — Agencia de Ingeniería de Software',
   url: 'https://extro.com.co',
   inLanguage: 'es',
 }

@@ -27,6 +27,22 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
+      name: '¿Cómo funciona?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Cotizas tu proyecto según su alcance y recibes un precio fijo. Lo construimos con avances funcionales cada viernes y, al entregarlo, puedes cerrar ahí o seguir evolucionándolo con un plan mensual — así nos convertimos en tu equipo de desarrollo.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Tengo que suscribirme?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. El plan mensual es opcional y llega después de la entrega. Si el proyecto te funciona y quieres que sigamos construyendo, eliges el plan. Si no, entregamos y listo.',
+      },
+    },
+    {
+      '@type': 'Question',
       name: '¿Cómo funciona la suscripción?',
       acceptedAnswer: {
         '@type': 'Answer',

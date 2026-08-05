@@ -140,9 +140,13 @@ export default function QuoteCalculator() {
         ) : (
           <>
             <div className="flex items-center gap-2 mb-6">
-              <span className="text-[10px] font-semibold opacity-45 uppercase tracking-[0.1em]">Paso {step + 1}/5</span>
+              <span className="text-[10px] font-semibold opacity-45 uppercase tracking-[0.1em]">
+                {lang === 'es' ? `Paso ${step + 1}/5` : `Step ${step + 1}/5`}
+              </span>
               <span className="text-[10px] opacity-35">—</span>
-              <span className="text-[10px] opacity-35 hidden sm:inline">2 min restantes</span>
+              <span className="text-[10px] opacity-35 hidden sm:inline">
+                {lang === 'es' ? '2 min restantes' : '2 min remaining'}
+              </span>
             </div>
             <h3 className="text-lg font-semibold text-primary mb-2 font-display">{q.questions[step].q}</h3>
             <p className="text-sm opacity-40 mb-8">{q.questions[step].sub}</p>
