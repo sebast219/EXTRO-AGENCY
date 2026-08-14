@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { prefersReducedMotion } from './motion'
 
 export function useReveal<T extends HTMLElement = HTMLElement>() {
   const ref = useRef<T | null>(null)
@@ -13,7 +14,7 @@ export function useReveal<T extends HTMLElement = HTMLElement>() {
     if (root.hasAttribute('data-reveal')) targets.unshift(root)
     if (!targets.length) return
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (prefersReducedMotion()) {
       targets.forEach((t) => t.classList.add('is-revealed'))
       return
     }

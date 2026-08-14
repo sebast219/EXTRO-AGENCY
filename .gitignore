@@ -5,14 +5,25 @@ build/
 *.tsbuildinfo
 next-env.d.ts
 .DS_Store
-.env*.local
-.playwright-mcp/
+
+# Entorno — nunca versionar secretos
+.env
+.env.*
+!.env.example
 
 .vercel
-.env*
+.playwright-mcp/
+playwright-report/
+test-results/
+coverage/
 
-# debug artifacts
+# M-11: el segundo cerebro de Obsidian vive dentro del repo del producto.
+# Son notas de trabajo, no código desplegable.
+.obsidian/
+.obsidian-vault/
+
+# Artefactos de depuración
 dev-server.log
-footer-wave.png
 preloader-check.png
+footer-wave.png
 android-icon-48x48.png

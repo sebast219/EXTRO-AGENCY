@@ -6,8 +6,6 @@ import { useReveal } from '@/lib/useReveal'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
-
 export default function DeliverySystem() {
   const { t } = useLang()
   const ref = useReveal<HTMLElement>()
@@ -15,6 +13,10 @@ export default function DeliverySystem() {
   const dotRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // Registrado en el efecto, no en el módulo: el componente se renderiza en
+    // servidor y ScrollTrigger solo tiene sentido en el cliente.
+    gsap.registerPlugin(ScrollTrigger)
+
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const pipeline = pipelineRef.current
     const dot = dotRef.current

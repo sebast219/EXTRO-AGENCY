@@ -1,44 +1,62 @@
 'use client'
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import { Lang, Translations, getTranslations, detectLanguage } from '@/lib/i18n'
+import { createContext, useContext, useMemo, type ReactNode } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+import { getTranslations, type Translations } from '@/lib/i18n'
+import { DEFAULT_LOCALE, localizedPath, stripLocale, type Locale } from '@/lib/i18n/config'
 
-interface LangContextType {
-  lang: Lang
+/**
+ * M-2: el idioma llega desde el servidor por props y ya no se descubre en un
+ * useEffect.
+ *
+ * Antes el estado arrancaba en 'es', un efecto leía navigator.language y
+ * localStorage, y recién entonces cambiaba: el usuario angloparlante veía un
+ * parpadeo y el HTML servido siempre estaba en español. Cambiar de idioma
+ * ahora navega a la URL del otro idioma, que es lo que hace que el contenido en
+ * inglés exista para el buscador (M-3).
+ */
+
+type LangContextValue = {
+  lang: Locale
   t: Translations
-  setLang: (lang: Lang) => void
+  setLang: (lang: Locale) => void
+  /** Ruta pública equivalente en el otro idioma, para el enlace del selector. */
+  pathIn: (lang: Locale) => string
 }
 
-const LangContext = createContext<LangContextType | undefined>(undefined)
+const LangContext = createContext<LangContextValue | undefined>(undefined)
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>('es')
+export function LanguageProvider({ lang, children }: { lang: Locale; children: ReactNode }) {
+  const router = useRouter()
+  const pathname = usePathname()
 
-  useEffect(() => {
-    const detected = detectLanguage()
-    const saved = localStorage.getItem('extron-lang') as Lang | null
-    const next = saved || detected
-    setLangState(next)
-    document.documentElement.lang = next
-  }, [])
+  const value = useMemo<LangContextValue>(() => {
+    const basePath = stripLocale(pathname || '/')
 
-  const setLang = (l: Lang) => {
-    setLangState(l)
-    localStorage.setItem('extron-lang', l)
-    document.documentElement.lang = l
-  }
+    const pathIn = (target: Locale) => localizedPath(basePath, target)
 
-  const t = getTranslations(lang)
+    return {
+      lang,
+      t: getTranslations(lang),
+      pathIn,
+      setLang: (target: Locale) => {
+        if (target === lang) return
+        // Cookie de preferencia: la middleware la usa para respetar la elección
+        // en visitas posteriores a la raíz.
+        document.cookie = `extro-lang=${target}; path=/; max-age=31536000; samesite=lax`
+        router.push(pathIn(target))
+      },
+    }
+  }, [lang, pathname, router])
 
-  return (
-    <LangContext.Provider value={{ lang, t, setLang }}>
-      {children}
-    </LangContext.Provider>
-  )
+  return <LangContext.Provider value={value}>{children}</LangContext.Provider>
 }
 
 export function useLang() {
   const ctx = useContext(LangContext)
-  if (!ctx) throw new Error('useLang must be used within LanguageProvider')
+  if (!ctx) throw new Error('useLang debe usarse dentro de LanguageProvider')
   return ctx
 }
+
+export { DEFAULT_LOCALE }
+export type { Locale }

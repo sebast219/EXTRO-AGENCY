@@ -1,3 +1,5 @@
+import { prefersReducedMotion } from './motion'
+
 let ctx: AudioContext | null = null
 let unlocked = false
 
@@ -16,10 +18,6 @@ export function unlockAudio() {
   if (!c || unlocked) return
   if (c.state === 'suspended') void c.resume()
   unlocked = true
-}
-
-function prefersReducedMotion(): boolean {
-  return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
 // Sonido de hover: oscilador triangle 780 -> 1180 Hz (pixelee).

@@ -1,0 +1,29 @@
+node_modules
+.next
+out
+build
+.git
+.github
+.vercel
+
+# Secretos: nunca deben entrar en una capa de imagen.
+.env
+.env.*
+!.env.example
+
+# Notas de trabajo, no código desplegable.
+.obsidian
+.obsidian-vault
+docs
+
+tests
+playwright-report
+test-results
+coverage
+*.test.ts
+*.test.tsx
+
+*.log
+*.tsbuildinfo
+.DS_Store
+README.md

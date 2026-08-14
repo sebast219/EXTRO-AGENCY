@@ -6,8 +6,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useLang } from './LanguageProvider'
 import { ArrowRight } from 'lucide-react'
 
-gsap.registerPlugin(ScrollTrigger)
-
 export default function ServicesCarousel() {
   const { t } = useLang()
   const sectionRef = useRef<HTMLElement>(null)
@@ -15,6 +13,10 @@ export default function ServicesCarousel() {
   const colsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // Registrado en el efecto, no en el módulo: el componente se renderiza en
+    // servidor y ScrollTrigger solo tiene sentido en el cliente.
+    gsap.registerPlugin(ScrollTrigger)
+
     const track = trackRef.current
     const section = sectionRef.current
     if (!track || !section) return

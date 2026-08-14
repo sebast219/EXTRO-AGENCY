@@ -22,7 +22,7 @@ export const fallbackPosts: FallbackPost[] = [
     content: [
       'Es la pregunta que más recibo: "¿cuánto cuesta una app?" La respuesta honesta es que depende del alcance, pero en el mercado colombiano de 2026 los rangos son más predecibles de lo que parece. Una landing con panel simple ronda los 1.500–4.000 USD. Un ecommerce con pagos e inventario, 4.000–9.000 USD. Un SaaS con usuarios, integraciones e IA, 9.000–18.000 USD.',
       'Lo que más mueve el precio no son las pantallas sino lo invisible: autenticación, pagos, panel de administración, integraciones, infraestructura que no se caiga y pruebas automatizadas. Una "app sencilla" sin eso termina costando más en correcciones que un proyecto bien arquitecturado desde el día uno.',
-      'El modelo que usamos en EXTRO: cada proyecto se cotiza según su alcance con precio fijo, y se construye con avances funcionales cada viernes. Tú sabes desde el primer día cuánto vas a pagar y qué recibes cada semana. Si el presupuesto exacto de tu caso te interesa, en el cotizador de extro.com.co respondes 5 preguntas y tienes un rango estimado en 60 segundos.',
+      'El modelo que usamos en EXTRO: cada proyecto se cotiza según su alcance con precio fijo, y se construye con avances funcionales cada viernes. Tú sabes desde el primer día cuánto vas a pagar y qué recibes cada semana. Si quieres el número exacto de tu caso, agenda una llamada de 15 minutos en extro.com.co y sales de ella con un rango cerrado.',
     ],
   },
   {
@@ -113,7 +113,7 @@ export const fallbackPosts: FallbackPost[] = [
     content: [
       'Astro brilla cuando el sitio es mayoritariamente contenido: blogs, landing pages, documentación. Su modelo de islas envía cero JavaScript por defecto y la velocidad de carga es difícil de superar.',
       'Next.js brilla cuando hay interacción real: aplicaciones, dashboards, paneles de administración, formularios con estado complejo, autenticación. El App Router de Next 14 permite que cada ruta decida entre estática, dinámica o híbrida (ISR).',
-      'Mi regla práctica: si el proyecto es contenido que se lee, Astro. Si es un producto con el que se interactúa, Next.js. Para este sitio, que combina contenido, cotizador interactivo y panel admin, la elección natural es Next.js.',
+      'Mi regla práctica: si el proyecto es contenido que se lee, Astro. Si es un producto con el que se interactúa, Next.js. Para este sitio, que combina contenido editorial con un sistema de agendamiento que crea eventos y enlaces de reunión en tiempo real, la elección natural es Next.js.',
     ],
   },
   {

@@ -655,18 +655,17 @@ body::before {
   animation: casesScroll 130s linear infinite;
 }
 .cases-carousel__slide {
+  position: relative; /* ancla para next/image con fill */
   flex-shrink: 0;
   width: clamp(370px, 44.9vw, 554px);
+  height: clamp(264px, 31.7vw, 370px);
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid rgba(0,0,0,0.06);
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.04), 0 1px 2px 0 rgba(0,0,0,0.02);
 }
 .cases-carousel__img {
-  width: 100%;
-  height: clamp(264px, 31.7vw, 370px);
   object-fit: cover;
-  display: block;
 }
 
 @keyframes casesScroll {

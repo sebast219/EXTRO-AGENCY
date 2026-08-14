@@ -1,22 +1,20 @@
 'use client'
 
+import Image from 'next/image'
 import { useLang } from './LanguageProvider'
 import { useReveal } from '@/lib/useReveal'
 import { ArrowUpRight, Clock, Users } from 'lucide-react'
 
+/**
+ * Este arreglo contenía además doce imágenes enlazadas en caliente desde
+ * cdn.dribbble.com y pixelee.co, rotuladas "Proyecto N" dentro de la sección
+ * "Casos de éxito". Eran trabajos de terceros presentados como portafolio
+ * propio: infracción de derechos de autor, hotlinking del ancho de banda ajeno
+ * y una afirmación falsa sobre la actividad de la agencia. Se retiraron.
+ *
+ * Quedan las catorce capturas propias de public/images/work/.
+ */
 const IMAGES = [
-  'https://pixelee.co/assets/images/services/villa-del-mar.jpg',
-  'https://cdn.dribbble.com/userupload/20585018/file/still-3a3c949581639300f2b07079424abbf5.png?format=webp&resize=450x338&vertical=center',
-  'https://cdn.dribbble.com/userupload/17364214/file/original-f1ef8cd03a460de6387f5920888d2986.png?format=webp&resize=450x338&vertical=center',
-  'https://cdn.dribbble.com/userupload/14588077/file/original-807cefefe2dcdd123c259dc966e0ba71.png?format=webp&resize=450x338&vertical=center',
-  'https://cdn.dribbble.com/userupload/17878524/file/still-436e5e7ef532714fc03624b9a657dfb9.png?format=webp&resize=450x338&vertical=center',
-  'https://cdn.dribbble.com/userupload/15526772/file/original-0184fa2dc8eb33963b71e52fc7251a14.jpg?format=webp&resize=450x338&vertical=center',
-  'https://cdn.dribbble.com/userupload/11770325/file/still-ecf4b75d88b1556d13668e5a6d103407.png?format=webp&resize=450x338&vertical=center',
-  'https://cdn.dribbble.com/userupload/14801695/file/original-7324d6ea7c6cac4585760efb73a7d75c.png?format=webp&resize=450x338&vertical=center',
-  'https://cdn.dribbble.com/userupload/16011562/file/original-b3962c825f31d8f59a286e836ef96276.png?format=webp&resize=450x338&vertical=center',
-  'https://cdn.dribbble.com/userupload/11780960/file/original-b5723a4f9fc7c5fd7fb8b94ddc065b35.png?format=webp&resize=450x338&vertical=center',
-  'https://cdn.dribbble.com/userupload/14912901/file/original-54f35b2c851a539d2c2bf4ffe7d12379.png?format=webp&resize=400x300&vertical=center',
-  'https://cdn.dribbble.com/userupload/15023899/file/original-f1d09c3fec6bb0b54841951f7dc43d47.png?format=webp&resize=450x338&vertical=center',
   '/images/work/work-01.webp',
   '/images/work/work-02.webp',
   '/images/work/work-03.webp',
@@ -73,12 +71,13 @@ export default function Cases() {
           <div className="cases-carousel__track">
             {duplicated.map((src, i) => (
               <div key={i} className="cases-carousel__slide">
-                <img
+                <Image
                   src={src}
-                  alt={`Proyecto ${(i % IMAGES.length) + 1}`}
-                  loading="lazy"
-                  decoding="async"
+                  alt=""
+                  fill
+                  sizes="(max-width: 768px) 370px, 44.9vw"
                   className="cases-carousel__img"
+                  aria-hidden="true"
                 />
               </div>
             ))}
@@ -89,12 +88,13 @@ export default function Cases() {
           <div className="cases-carousel__track cases-carousel__track--reverse">
             {duplicatedReversed.map((src, i) => (
               <div key={i} className="cases-carousel__slide">
-                <img
+                <Image
                   src={src}
-                  alt={`Proyecto ${(i % IMAGES.length) + 1}`}
-                  loading="lazy"
-                  decoding="async"
+                  alt=""
+                  fill
+                  sizes="(max-width: 768px) 370px, 44.9vw"
                   className="cases-carousel__img"
+                  aria-hidden="true"
                 />
               </div>
             ))}

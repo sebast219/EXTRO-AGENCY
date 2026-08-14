@@ -1,8 +1,10 @@
 'use client'
 
 import { Fragment, useEffect, useMemo, useRef } from 'react'
+import Image from 'next/image'
 import { useLang } from './LanguageProvider'
 import { ArrowDown, ArrowRight } from 'lucide-react'
+import { prefersReducedMotion, scrollToId } from '@/lib/motion'
 
 const HERO_IMAGES = [
   { src: '/images/work/work-01.webp', alt: 'Panel de administración de un SaaS construido por EXTRO' },
@@ -51,10 +53,6 @@ const FLOATS: FloatConfig[] = [
   { top: '80%', left: '58%', width: '160px', height: '115px', rot: 4, depth: 0.55, originX: 0, originY: 1, delay: 360, hideOnMobile: true },
 ]
 
-// Distancia (px) desde el centro de la tarjeta en la que reacciona al mouse
-const REACTION_RADIUS = 180
-const REACTION_HYSTERESIS = 24
-
 export default function Hero() {
   const { t } = useLang()
   const sectionRef = useRef<HTMLElement>(null)
@@ -67,15 +65,10 @@ export default function Hero() {
     [t.hero.titleHighlight]
   )
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
-  }
+  const scrollTo = scrollToId
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduced) return
+    if (prefersReducedMotion()) return
 
     const section = sectionRef.current
     if (!section) return
@@ -159,7 +152,7 @@ export default function Hero() {
   }, [titleWords, highlightWords])
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (prefersReducedMotion()) return
     const cols = colsRef.current
     const floats = floatsRef.current
     if (!cols && !floats) return
@@ -222,11 +215,12 @@ export default function Hero() {
               transform: `rotate(${cfg.rot}deg)`,
             } as React.CSSProperties}
           >
-            <img
+            <Image
               src={HERO_IMAGES[i].src}
               alt={HERO_IMAGES[i].alt}
-              loading={i < 2 ? 'eager' : 'lazy'}
-              decoding="async"
+              fill
+              sizes={cfg.width}
+              priority={i < 2}
               className="hero-float-img"
             />
           </div>

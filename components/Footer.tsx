@@ -2,9 +2,10 @@
 
 import { useLang } from './LanguageProvider'
 import Link from 'next/link'
+import { localizedPath } from '@/lib/i18n/config'
 
 export default function Footer() {
-  const { t } = useLang()
+  const { t, lang } = useLang()
 
   const footerLink =
     'text-[15px] text-primary opacity-60 hover:opacity-100 transition-opacity duration-200'
@@ -42,7 +43,7 @@ export default function Footer() {
                 <Link href="#deployments" className={footerLink}>{t.footer.links.r1}</Link>
                 <Link href="#faq" className={footerLink}>{t.footer.links.r2}</Link>
                 <Link href="#delivery" className={footerLink}>{t.footer.links.r3}</Link>
-                <Link href="/blog" className={footerLink}>{t.footer.links.co1}</Link>
+                <Link href={localizedPath('/blog', lang)} className={footerLink}>{t.footer.links.co1}</Link>
               </div>
             </div>
             <div>
@@ -76,10 +77,19 @@ export default function Footer() {
               <span className="text-sm text-primary opacity-50">{t.footer.rights}</span>
               <span className="text-sm text-primary opacity-40">{t.footer.remote}</span>
             </div>
+            {/*
+              /privacy y /sla apuntaban a páginas que nunca existieron: dos 404
+              en el pie de todas las páginas. El tratamiento de datos del
+              agendamiento está ahora en /terms, así que ese es el único enlace
+              legal que se publica.
+            */}
             <div className="flex items-center gap-6">
-              <Link href="/privacy" className="text-sm text-primary opacity-40 hover:opacity-100 transition-opacity">{t.footer.links.l1}</Link>
-              <Link href="/terms" className="text-sm text-primary opacity-40 hover:opacity-100 transition-opacity">{t.footer.links.l2}</Link>
-              <Link href="/sla" className="text-sm text-primary opacity-40 hover:opacity-100 transition-opacity">{t.footer.links.l3}</Link>
+              <Link
+                href={localizedPath('/terms', lang)}
+                className="text-sm text-secondary hover:text-primary transition-colors"
+              >
+                {t.footer.links.l2}
+              </Link>
             </div>
           </div>
 
