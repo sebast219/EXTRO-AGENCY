@@ -17,6 +17,15 @@ export function generateStaticParams() {
   return LOCALES.map((lang) => ({ lang }))
 }
 
+/**
+ * CSP nonce (proxy.ts) y rendering: el nonce solo se estampa en los <script>
+ * cuando la página se renderiza por request (Next.js no inyecta nonces en
+ * páginas prerenderizadas en build time — no hay headers ahí). Todas las
+ * páginas del sitio deben ser dinámicas; lo contrario bloquea todos los
+ * scripts de Next en producción con la CSP estricta.
+ */
+export const dynamic = 'force-dynamic'
+
 const COPY = {
   es: {
     title: 'EXTRO — Agencia de Ingeniería de Software',
