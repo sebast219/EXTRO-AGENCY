@@ -9,7 +9,11 @@ const nextConfig = {
   reactStrictMode: true,
 
   // M-12: build autocontenido para la imagen de Docker.
-  output: 'standalone',
+  // En Vercel NO se emite standalone: su adaptador rompe el build en Next 16.3
+  // (ENOENT .next/next-server.js.nft.json, ver vercel/next.js#96646) y además
+  // es innecesario — Vercel tiene su propio output tracing. Docker/self-host
+  // siguen obteniendo .next/standalone porque VERCEL no está definido ahí.
+  output: process.env.VERCEL ? undefined : 'standalone',
 
   images: {
     /**
