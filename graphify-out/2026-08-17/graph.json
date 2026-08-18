@@ -57,7 +57,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "serverenv",
       "id": "lib_env_serverenv"
     },
@@ -70,7 +70,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "meetingrequest",
       "id": "lib_google_calendar_meetingrequest"
     },
@@ -83,7 +83,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "meetingresult",
       "id": "lib_google_calendar_meetingresult"
     },
@@ -96,7 +96,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "row",
       "id": "lib_mail_index_row"
     },
@@ -109,7 +109,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "sendresult",
       "id": "lib_mail_index_sendresult"
     },
@@ -122,7 +122,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "fields",
       "id": "lib_observability_logger_fields"
     },
@@ -135,7 +135,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "level",
       "id": "lib_observability_logger_level"
     },
@@ -148,7 +148,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "limitername",
       "id": "lib_rate_limit_limitername"
     },
@@ -161,22 +161,9 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "rateverdict",
       "id": "lib_rate_limit_rateverdict"
-    },
-    {
-      "label": "LangContextValue",
-      "file_type": "code",
-      "source_file": "components/LanguageProvider.tsx",
-      "source_location": "L19",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "langcontextvalue",
-      "id": "components_languageprovider_langcontextvalue"
     },
     {
       "label": "Locale",
@@ -187,35 +174,9 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "locale",
       "id": "lib_i18n_config_locale"
-    },
-    {
-      "label": "Lang",
-      "file_type": "code",
-      "source_file": "lib/i18n/index.ts",
-      "source_location": "L5",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "lang",
-      "id": "lib_i18n_index_lang"
-    },
-    {
-      "label": "Translations",
-      "file_type": "code",
-      "source_file": "lib/i18n/index.ts",
-      "source_location": "L6",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "translations",
-      "id": "lib_i18n_index_translations"
     },
     {
       "label": "BlogPostMeta",
@@ -226,7 +187,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "blogpostmeta",
       "id": "lib_blog_posts_blogpostmeta"
     },
@@ -239,7 +200,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "fallbackpost",
       "id": "lib_blog_posts_fallbackpost"
     },
@@ -252,7 +213,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "post",
       "id": "lib_content_posts_post"
     },
@@ -265,7 +226,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "postmeta",
       "id": "lib_content_posts_postmeta"
     },
@@ -278,7 +239,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "sanityfull",
       "id": "lib_content_posts_sanityfull"
     },
@@ -291,22 +252,9 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "sanitymeta",
       "id": "lib_content_posts_sanitymeta"
-    },
-    {
-      "label": "CaseItem",
-      "file_type": "code",
-      "source_file": "components/Cases.tsx",
-      "source_location": "L38",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "caseitem",
-      "id": "components_cases_caseitem"
     },
     {
       "label": "ReviewItem",
@@ -335,32 +283,6 @@
       "id": "components_clientsmarquee_techitem"
     },
     {
-      "label": "FloatConfig",
-      "file_type": "code",
-      "source_file": "components/Hero.tsx",
-      "source_location": "L26",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "floatconfig",
-      "id": "components_hero_floatconfig"
-    },
-    {
-      "label": "PlanItem",
-      "file_type": "code",
-      "source_file": "components/Plans.tsx",
-      "source_location": "L8",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "planitem",
-      "id": "components_plans_planitem"
-    },
-    {
       "label": "Confirmed",
       "file_type": "code",
       "source_file": "components/booking/BookingWidget.tsx",
@@ -369,7 +291,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "confirmed",
       "id": "components_booking_bookingwidget_confirmed"
     },
@@ -382,7 +304,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "step",
       "id": "components_booking_bookingwidget_step"
     },
@@ -395,7 +317,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "props",
       "id": "components_booking_monthgrid_props"
     },
@@ -408,7 +330,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "props",
       "id": "components_booking_slotpicker_props"
     },
@@ -421,7 +343,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "availabilityinput",
       "id": "features_booking_availability_availabilityinput"
     },
@@ -434,7 +356,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "availabilityresult",
       "id": "features_booking_availability_availabilityresult"
     },
@@ -447,7 +369,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "busyinterval",
       "id": "features_booking_availability_busyinterval"
     },
@@ -460,7 +382,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "fomoconfig",
       "id": "features_booking_availability_fomoconfig"
     },
@@ -473,7 +395,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "dateiso",
       "id": "features_booking_time_dateiso"
     },
@@ -486,9 +408,87 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "time24",
       "id": "features_booking_time_time24"
+    },
+    {
+      "label": "FloatConfig",
+      "file_type": "code",
+      "source_file": "components/Hero.tsx",
+      "source_location": "L26",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "floatconfig",
+      "id": "components_hero_floatconfig"
+    },
+    {
+      "label": "PlanItem",
+      "file_type": "code",
+      "source_file": "components/Plans.tsx",
+      "source_location": "L8",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "planitem",
+      "id": "components_plans_planitem"
+    },
+    {
+      "label": "LangContextValue",
+      "file_type": "code",
+      "source_file": "components/LanguageProvider.tsx",
+      "source_location": "L19",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "langcontextvalue",
+      "id": "components_languageprovider_langcontextvalue"
+    },
+    {
+      "label": "Lang",
+      "file_type": "code",
+      "source_file": "lib/i18n/index.ts",
+      "source_location": "L5",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "lang",
+      "id": "lib_i18n_index_lang"
+    },
+    {
+      "label": "Translations",
+      "file_type": "code",
+      "source_file": "lib/i18n/index.ts",
+      "source_location": "L6",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "translations",
+      "id": "lib_i18n_index_translations"
+    },
+    {
+      "label": "CaseItem",
+      "file_type": "code",
+      "source_file": "components/Cases.tsx",
+      "source_location": "L38",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "Cases.tsx",
+      "norm_label": "caseitem",
+      "id": "components_cases_caseitem"
     },
     {
       "label": "BookingInput",
@@ -499,7 +499,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "bookinginput",
       "id": "lib_contracts_bookinginput"
     },
@@ -512,7 +512,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "contactinput",
       "id": "lib_contracts_contactinput"
     },
@@ -525,7 +525,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "projectkind",
       "id": "lib_contracts_projectkind"
     },
@@ -537,7 +537,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "get()",
       "id": "app_api_booking_availability_route_get"
     },
@@ -549,7 +549,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "post()",
       "id": "app_api_booking_route_post"
     },
@@ -561,7 +561,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "post()",
       "id": "app_api_contact_route_post"
     },
@@ -573,7 +573,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "post()",
       "id": "app_api_log_client_error_route_post"
     },
@@ -585,7 +585,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "authorized()",
       "id": "app_api_revalidate_route_authorized"
     },
@@ -597,9 +597,21 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "post()",
       "id": "app_api_revalidate_route_post"
+    },
+    {
+      "label": "fomoFromEnv()",
+      "file_type": "code",
+      "source_file": "features/booking/availability.ts",
+      "source_location": "L42",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "booking/route.ts",
+      "norm_label": "fomofromenv()",
+      "id": "features_booking_availability_fomofromenv"
     },
     {
       "label": "firstIssue()",
@@ -609,7 +621,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "firstissue()",
       "id": "lib_contracts_firstissue"
     },
@@ -621,7 +633,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "derive()",
       "id": "lib_env_derive"
     },
@@ -633,7 +645,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "getserverenv()",
       "id": "lib_env_getserverenv"
     },
@@ -645,7 +657,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "__resetenvcache()",
       "id": "lib_env_resetenvcache"
     },
@@ -657,7 +669,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "createmeeting()",
       "id": "lib_google_calendar_createmeeting"
     },
@@ -669,7 +681,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "getbusyfordate()",
       "id": "lib_google_calendar_getbusyfordate"
     },
@@ -681,7 +693,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "getclient()",
       "id": "lib_google_calendar_getclient"
     },
@@ -693,7 +705,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "iscalendarenabled()",
       "id": "lib_google_calendar_iscalendarenabled"
     },
@@ -705,7 +717,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "fail()",
       "id": "lib_http_fail"
     },
@@ -717,7 +729,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "ok()",
       "id": "lib_http_ok"
     },
@@ -729,7 +741,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "readjson()",
       "id": "lib_http_readjson"
     },
@@ -741,7 +753,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "bookingconfirmation()",
       "id": "lib_mail_index_bookingconfirmation"
     },
@@ -753,7 +765,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "bookingnotification()",
       "id": "lib_mail_index_bookingnotification"
     },
@@ -765,7 +777,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "contactnotification()",
       "id": "lib_mail_index_contactnotification"
     },
@@ -777,7 +789,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "escapehtml()",
       "id": "lib_mail_index_escapehtml"
     },
@@ -789,7 +801,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "layout()",
       "id": "lib_mail_index_layout"
     },
@@ -801,7 +813,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "rowshtml()",
       "id": "lib_mail_index_rowshtml"
     },
@@ -813,7 +825,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "sendmail()",
       "id": "lib_mail_index_sendmail"
     },
@@ -825,7 +837,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "captureexception()",
       "id": "lib_observability_logger_captureexception"
     },
@@ -837,7 +849,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "emit()",
       "id": "lib_observability_logger_emit"
     },
@@ -849,7 +861,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "minlevel()",
       "id": "lib_observability_logger_minlevel"
     },
@@ -861,7 +873,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "scrub()",
       "id": "lib_observability_logger_scrub"
     },
@@ -873,7 +885,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "clientip()",
       "id": "lib_rate_limit_clientip"
     },
@@ -885,7 +897,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "getlimiter()",
       "id": "lib_rate_limit_getlimiter"
     },
@@ -897,7 +909,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "locallimit()",
       "id": "lib_rate_limit_locallimit"
     },
@@ -909,7 +921,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "ratelimit()",
       "id": "lib_rate_limit_ratelimit"
     },
@@ -921,7 +933,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "ratelimitheaders()",
       "id": "lib_rate_limit_ratelimitheaders"
     },
@@ -933,7 +945,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "__resetratelimitstate()",
       "id": "lib_rate_limit_resetratelimitstate"
     },
@@ -945,7 +957,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "blogpage()",
       "id": "app_site_lang_blog_page_blogpage"
     },
@@ -957,7 +969,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "generatemetadata()",
       "id": "app_site_lang_blog_page_generatemetadata"
     },
@@ -969,7 +981,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "generatemetadata()",
       "id": "app_site_lang_blog_slug_page_generatemetadata"
     },
@@ -981,7 +993,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "postpage()",
       "id": "app_site_lang_blog_slug_page_postpage"
     },
@@ -989,13 +1001,13 @@
       "label": "generateMetadata()",
       "file_type": "code",
       "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L63",
+      "source_location": "L72",
       "_callable": true,
       "_origin": "ast",
+      "id": "app_site_lang_layout_generatemetadata",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "generatemetadata()",
-      "id": "app_site_lang_layout_generatemetadata"
+      "community_name": "[lang]/layout.tsx",
+      "norm_label": "generatemetadata()"
     },
     {
       "label": "generateStaticParams()",
@@ -1004,34 +1016,34 @@
       "source_location": "L16",
       "_callable": true,
       "_origin": "ast",
+      "id": "app_site_lang_layout_generatestaticparams",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "generatestaticparams()",
-      "id": "app_site_lang_layout_generatestaticparams"
+      "community_name": "[lang]/layout.tsx",
+      "norm_label": "generatestaticparams()"
     },
     {
       "label": "JsonLd()",
       "file_type": "code",
       "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L134",
+      "source_location": "L143",
       "_callable": true,
       "_origin": "ast",
+      "id": "app_site_lang_layout_jsonld",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "jsonld()",
-      "id": "app_site_lang_layout_jsonld"
+      "community_name": "[lang]/layout.tsx",
+      "norm_label": "jsonld()"
     },
     {
       "label": "SiteLayout()",
       "file_type": "code",
       "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L140",
+      "source_location": "L149",
       "_callable": true,
       "_origin": "ast",
+      "id": "app_site_lang_layout_sitelayout",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "sitelayout()",
-      "id": "app_site_lang_layout_sitelayout"
+      "community_name": "[lang]/layout.tsx",
+      "norm_label": "sitelayout()"
     },
     {
       "label": "generateMetadata()",
@@ -1041,7 +1053,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "generatemetadata()",
       "id": "app_site_lang_page_generatemetadata"
     },
@@ -1053,45 +1065,9 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "generatemetadata()",
       "id": "app_site_lang_terms_page_generatemetadata"
-    },
-    {
-      "label": "TermsPage()",
-      "file_type": "code",
-      "source_file": "app/(site)/[lang]/terms/page.tsx",
-      "source_location": "L108",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "termspage()",
-      "id": "app_site_lang_terms_page_termspage"
-    },
-    {
-      "label": "Footer()",
-      "file_type": "code",
-      "source_file": "components/Footer.tsx",
-      "source_location": "L9",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "footer()",
-      "id": "components_footer_footer"
-    },
-    {
-      "label": "LanguageProvider()",
-      "file_type": "code",
-      "source_file": "components/LanguageProvider.tsx",
-      "source_location": "L29",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "languageprovider()",
-      "id": "components_languageprovider_languageprovider"
     },
     {
       "label": "formatPostDate()",
@@ -1101,21 +1077,9 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "formatpostdate()",
       "id": "lib_content_posts_formatpostdate"
-    },
-    {
-      "label": "getPost()",
-      "file_type": "code",
-      "source_file": "lib/content/posts.ts",
-      "source_location": "L97",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "getpost()",
-      "id": "lib_content_posts_getpost"
     },
     {
       "label": "absoluteUrl()",
@@ -1125,7 +1089,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "absoluteurl()",
       "id": "lib_i18n_config_absoluteurl"
     },
@@ -1137,7 +1101,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "alternatesfor()",
       "id": "lib_i18n_config_alternatesfor"
     },
@@ -1149,7 +1113,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "islocale()",
       "id": "lib_i18n_config_islocale"
     },
@@ -1161,33 +1125,9 @@
       "_callable": true,
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "localizedpath()",
       "id": "lib_i18n_config_localizedpath"
-    },
-    {
-      "label": "stripLocale()",
-      "file_type": "code",
-      "source_file": "lib/i18n/config.ts",
-      "source_location": "L50",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "striplocale()",
-      "id": "lib_i18n_config_striplocale"
-    },
-    {
-      "label": "getTranslations()",
-      "file_type": "code",
-      "source_file": "lib/i18n/index.ts",
-      "source_location": "L10",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "gettranslations()",
-      "id": "lib_i18n_index_gettranslations"
     },
     {
       "label": "generateStaticParams()",
@@ -1197,7 +1137,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "generatestaticparams()",
       "id": "app_site_lang_blog_slug_page_generatestaticparams"
     },
@@ -1209,7 +1149,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "sitemap()",
       "id": "app_sitemap_sitemap"
     },
@@ -1221,7 +1161,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "studiopage()",
       "id": "app_studio_studio_index_page_studiopage"
     },
@@ -1233,7 +1173,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "studio()",
       "id": "app_studio_studio_index_studio_studio"
     },
@@ -1245,9 +1185,21 @@
       "_callable": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "getclient()",
       "id": "lib_content_posts_getclient"
+    },
+    {
+      "label": "getPost()",
+      "file_type": "code",
+      "source_file": "lib/content/posts.ts",
+      "source_location": "L97",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "posts.ts",
+      "norm_label": "getpost()",
+      "id": "lib_content_posts_getpost"
     },
     {
       "label": "listPosts()",
@@ -1257,7 +1209,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "listposts()",
       "id": "lib_content_posts_listposts"
     },
@@ -1269,7 +1221,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "localmeta()",
       "id": "lib_content_posts_localmeta"
     },
@@ -1281,7 +1233,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "readtimeof()",
       "id": "lib_content_posts_readtimeof"
     },
@@ -1356,18 +1308,6 @@
       "community_name": "Blog Error Handling",
       "norm_label": "reportclienterror()",
       "id": "lib_observability_report_client_error_reportclienterror"
-    },
-    {
-      "label": "Home()",
-      "file_type": "code",
-      "source_file": "app/(site)/[lang]/page.tsx",
-      "source_location": "L30",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "home()",
-      "id": "app_site_lang_page_home"
     },
     {
       "label": "AmbientGrid()",
@@ -1454,16 +1394,16 @@
       "id": "components_faq_faq"
     },
     {
-      "label": "Hero()",
+      "label": "Footer()",
       "file_type": "code",
-      "source_file": "components/Hero.tsx",
-      "source_location": "L56",
+      "source_file": "components/Footer.tsx",
+      "source_location": "L9",
       "_callable": true,
       "_origin": "ast",
       "community": 2,
       "community_name": "[lang]/page.tsx",
-      "norm_label": "hero()",
-      "id": "components_hero_hero"
+      "norm_label": "footer()",
+      "id": "components_footer_footer"
     },
     {
       "label": "useLang()",
@@ -1478,18 +1418,6 @@
       "id": "components_languageprovider_uselang"
     },
     {
-      "label": "Navbar()",
-      "file_type": "code",
-      "source_file": "components/Navbar.tsx",
-      "source_location": "L22",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "navbar()",
-      "id": "components_navbar_navbar"
-    },
-    {
       "label": "PainPoints()",
       "file_type": "code",
       "source_file": "components/PainPoints.tsx",
@@ -1500,18 +1428,6 @@
       "community_name": "[lang]/page.tsx",
       "norm_label": "painpoints()",
       "id": "components_painpoints_painpoints"
-    },
-    {
-      "label": "Plans()",
-      "file_type": "code",
-      "source_file": "components/Plans.tsx",
-      "source_location": "L16",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "plans()",
-      "id": "components_plans_plans"
     },
     {
       "label": "PricingExplanation()",
@@ -1562,90 +1478,6 @@
       "id": "components_whatsappfloat_whatsappfloat"
     },
     {
-      "label": "prefersReducedMotion()",
-      "file_type": "code",
-      "source_file": "lib/motion.ts",
-      "source_location": "L6",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "prefersreducedmotion()",
-      "id": "lib_motion_prefersreducedmotion"
-    },
-    {
-      "label": "scrollBehavior()",
-      "file_type": "code",
-      "source_file": "lib/motion.ts",
-      "source_location": "L12",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "scrollbehavior()",
-      "id": "lib_motion_scrollbehavior"
-    },
-    {
-      "label": "scrollToId()",
-      "file_type": "code",
-      "source_file": "lib/motion.ts",
-      "source_location": "L17",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "scrolltoid()",
-      "id": "lib_motion_scrolltoid"
-    },
-    {
-      "label": "attachHoverSound()",
-      "file_type": "code",
-      "source_file": "lib/sound.ts",
-      "source_location": "L46",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "attachhoversound()",
-      "id": "lib_sound_attachhoversound"
-    },
-    {
-      "label": "getAudioContext()",
-      "file_type": "code",
-      "source_file": "lib/sound.ts",
-      "source_location": "L6",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "getaudiocontext()",
-      "id": "lib_sound_getaudiocontext"
-    },
-    {
-      "label": "playHoverSound()",
-      "file_type": "code",
-      "source_file": "lib/sound.ts",
-      "source_location": "L25",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "playhoversound()",
-      "id": "lib_sound_playhoversound"
-    },
-    {
-      "label": "unlockAudio()",
-      "file_type": "code",
-      "source_file": "lib/sound.ts",
-      "source_location": "L16",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "unlockaudio()",
-      "id": "lib_sound_unlockaudio"
-    },
-    {
       "label": "useReveal()",
       "file_type": "code",
       "source_file": "lib/useReveal.ts",
@@ -1689,7 +1521,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "bookingwidget()",
       "id": "components_booking_bookingwidget_bookingwidget"
     },
@@ -1701,7 +1533,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "monthcells()",
       "id": "components_booking_monthgrid_monthcells"
     },
@@ -1713,7 +1545,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "monthgrid()",
       "id": "components_booking_monthgrid_monthgrid"
     },
@@ -1725,7 +1557,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "group()",
       "id": "components_booking_slotpicker_group"
     },
@@ -1737,7 +1569,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "slotpicker()",
       "id": "components_booking_slotpicker_slotpicker"
     },
@@ -1749,21 +1581,9 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "computeavailability()",
       "id": "features_booking_availability_computeavailability"
-    },
-    {
-      "label": "fomoFromEnv()",
-      "file_type": "code",
-      "source_file": "features/booking/availability.ts",
-      "source_location": "L42",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Booking Widget Calendar",
-      "norm_label": "fomofromenv()",
-      "id": "features_booking_availability_fomofromenv"
     },
     {
       "label": "hash32()",
@@ -1773,7 +1593,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "hash32()",
       "id": "features_booking_availability_hash32"
     },
@@ -1785,7 +1605,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "isbookable()",
       "id": "features_booking_availability_isbookable"
     },
@@ -1797,7 +1617,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "overlapsbusy()",
       "id": "features_booking_availability_overlapsbusy"
     },
@@ -1809,7 +1629,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "isknownslot()",
       "id": "features_booking_slots_isknownslot"
     },
@@ -1821,7 +1641,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "range()",
       "id": "features_booking_slots_range"
     },
@@ -1833,7 +1653,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "adddaysiso()",
       "id": "features_booking_time_adddaysiso"
     },
@@ -1845,7 +1665,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "formatdatelong()",
       "id": "features_booking_time_formatdatelong"
     },
@@ -1857,7 +1677,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "isweekend()",
       "id": "features_booking_time_isweekend"
     },
@@ -1869,7 +1689,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "nowtime24()",
       "id": "features_booking_time_nowtime24"
     },
@@ -1881,7 +1701,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "offsetminutes()",
       "id": "features_booking_time_offsetminutes"
     },
@@ -1893,7 +1713,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "parts()",
       "id": "features_booking_time_parts"
     },
@@ -1905,7 +1725,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "to12h()",
       "id": "features_booking_time_to12h"
     },
@@ -1917,7 +1737,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "todateiso()",
       "id": "features_booking_time_todateiso"
     },
@@ -1929,7 +1749,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "todayiso()",
       "id": "features_booking_time_todayiso"
     },
@@ -1941,9 +1761,189 @@
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "zonedtoutc()",
       "id": "features_booking_time_zonedtoutc"
+    },
+    {
+      "label": "Hero()",
+      "file_type": "code",
+      "source_file": "components/Hero.tsx",
+      "source_location": "L56",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "hero()",
+      "id": "components_hero_hero"
+    },
+    {
+      "label": "Navbar()",
+      "file_type": "code",
+      "source_file": "components/Navbar.tsx",
+      "source_location": "L22",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "navbar()",
+      "id": "components_navbar_navbar"
+    },
+    {
+      "label": "Plans()",
+      "file_type": "code",
+      "source_file": "components/Plans.tsx",
+      "source_location": "L16",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "plans()",
+      "id": "components_plans_plans"
+    },
+    {
+      "label": "prefersReducedMotion()",
+      "file_type": "code",
+      "source_file": "lib/motion.ts",
+      "source_location": "L6",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "prefersreducedmotion()",
+      "id": "lib_motion_prefersreducedmotion"
+    },
+    {
+      "label": "scrollBehavior()",
+      "file_type": "code",
+      "source_file": "lib/motion.ts",
+      "source_location": "L12",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "scrollbehavior()",
+      "id": "lib_motion_scrollbehavior"
+    },
+    {
+      "label": "scrollToId()",
+      "file_type": "code",
+      "source_file": "lib/motion.ts",
+      "source_location": "L17",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "scrolltoid()",
+      "id": "lib_motion_scrolltoid"
+    },
+    {
+      "label": "attachHoverSound()",
+      "file_type": "code",
+      "source_file": "lib/sound.ts",
+      "source_location": "L46",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "attachhoversound()",
+      "id": "lib_sound_attachhoversound"
+    },
+    {
+      "label": "getAudioContext()",
+      "file_type": "code",
+      "source_file": "lib/sound.ts",
+      "source_location": "L6",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "getaudiocontext()",
+      "id": "lib_sound_getaudiocontext"
+    },
+    {
+      "label": "playHoverSound()",
+      "file_type": "code",
+      "source_file": "lib/sound.ts",
+      "source_location": "L25",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "playhoversound()",
+      "id": "lib_sound_playhoversound"
+    },
+    {
+      "label": "unlockAudio()",
+      "file_type": "code",
+      "source_file": "lib/sound.ts",
+      "source_location": "L16",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "unlockaudio()",
+      "id": "lib_sound_unlockaudio"
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "app/(site)/[lang]/page.tsx",
+      "source_location": "L30",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "home()",
+      "id": "app_site_lang_page_home"
+    },
+    {
+      "label": "TermsPage()",
+      "file_type": "code",
+      "source_file": "app/(site)/[lang]/terms/page.tsx",
+      "source_location": "L108",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "termspage()",
+      "id": "app_site_lang_terms_page_termspage"
+    },
+    {
+      "label": "LanguageProvider()",
+      "file_type": "code",
+      "source_file": "components/LanguageProvider.tsx",
+      "source_location": "L29",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "languageprovider()",
+      "id": "components_languageprovider_languageprovider"
+    },
+    {
+      "label": "stripLocale()",
+      "file_type": "code",
+      "source_file": "lib/i18n/config.ts",
+      "source_location": "L50",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "striplocale()",
+      "id": "lib_i18n_config_striplocale"
+    },
+    {
+      "label": "getTranslations()",
+      "file_type": "code",
+      "source_file": "lib/i18n/index.ts",
+      "source_location": "L10",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "gettranslations()",
+      "id": "lib_i18n_index_gettranslations"
     },
     {
       "label": "availability/route.ts",
@@ -1952,7 +1952,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "availability/route.ts",
       "id": "app_api_booking_availability_route"
     },
@@ -1963,7 +1963,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "dynamic",
       "id": "app_api_booking_availability_route_dynamic"
     },
@@ -1974,7 +1974,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "runtime",
       "id": "app_api_booking_availability_route_runtime"
     },
@@ -1985,7 +1985,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "booking/route.ts",
       "id": "app_api_booking_route"
     },
@@ -1996,7 +1996,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "runtime",
       "id": "app_api_booking_route_runtime"
     },
@@ -2007,7 +2007,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "contact/route.ts",
       "id": "app_api_contact_route"
     },
@@ -2018,7 +2018,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "runtime",
       "id": "app_api_contact_route_runtime"
     },
@@ -2029,7 +2029,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "log-client-error/route.ts",
       "id": "app_api_log_client_error_route"
     },
@@ -2040,7 +2040,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "clienterrorschema",
       "id": "app_api_log_client_error_route_clienterrorschema"
     },
@@ -2051,7 +2051,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "runtime",
       "id": "app_api_log_client_error_route_runtime"
     },
@@ -2062,7 +2062,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "revalidate/route.ts",
       "id": "app_api_revalidate_route"
     },
@@ -2073,7 +2073,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "runtime",
       "id": "app_api_revalidate_route_runtime"
     },
@@ -2084,7 +2084,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "env.ts",
       "id": "lib_env"
     },
@@ -2095,7 +2095,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "emailish",
       "id": "lib_env_emailish"
     },
@@ -2106,7 +2106,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "schema",
       "id": "lib_env_schema"
     },
@@ -2117,7 +2117,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "calendar.ts",
       "id": "lib_google_calendar"
     },
@@ -2128,7 +2128,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "scopes",
       "id": "lib_google_calendar_scopes"
     },
@@ -2139,7 +2139,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "http.ts",
       "id": "lib_http"
     },
@@ -2150,7 +2150,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "mail/index.ts",
       "id": "lib_mail_index"
     },
@@ -2161,7 +2161,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "logger.ts",
       "id": "lib_observability_logger"
     },
@@ -2172,7 +2172,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "log",
       "id": "lib_observability_logger_log"
     },
@@ -2183,7 +2183,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "order",
       "id": "lib_observability_logger_order"
     },
@@ -2194,7 +2194,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "redacted",
       "id": "lib_observability_logger_redacted"
     },
@@ -2205,7 +2205,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "rate-limit.ts",
       "id": "lib_rate_limit"
     },
@@ -2216,7 +2216,7 @@
       "source_location": "L78",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "config",
       "id": "lib_rate_limit_config"
     },
@@ -2227,7 +2227,7 @@
       "source_location": "L85",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "limiters",
       "id": "lib_rate_limit_limiters"
     },
@@ -2238,7 +2238,7 @@
       "source_location": "L49",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "localbuckets",
       "id": "lib_rate_limit_localbuckets"
     },
@@ -2249,7 +2249,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "community": 0,
-      "community_name": "Booking & Availability API Routes",
+      "community_name": "booking/route.ts",
       "norm_label": "trusted_ip_headers",
       "id": "lib_rate_limit_trusted_ip_headers"
     },
@@ -2260,7 +2260,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "blog/page.tsx",
       "id": "app_site_lang_blog_page"
     },
@@ -2271,7 +2271,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "copy",
       "id": "app_site_lang_blog_page_copy"
     },
@@ -2282,7 +2282,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "revalidate",
       "id": "app_site_lang_blog_page_revalidate"
     },
@@ -2293,7 +2293,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "[slug]/page.tsx",
       "id": "app_site_lang_blog_slug_page"
     },
@@ -2304,7 +2304,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "revalidate",
       "id": "app_site_lang_blog_slug_page_revalidate"
     },
@@ -2314,21 +2314,32 @@
       "source_file": "app/(site)/[lang]/layout.tsx",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "app_site_lang_layout",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "[lang]/layout.tsx",
-      "id": "app_site_lang_layout"
+      "community_name": "[lang]/layout.tsx",
+      "norm_label": "[lang]/layout.tsx"
     },
     {
       "label": "COPY",
       "file_type": "code",
       "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L20",
+      "source_location": "L29",
       "_origin": "ast",
+      "id": "app_site_lang_layout_copy",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "copy",
-      "id": "app_site_lang_layout_copy"
+      "community_name": "[lang]/layout.tsx",
+      "norm_label": "copy"
+    },
+    {
+      "label": "dynamic",
+      "file_type": "code",
+      "source_file": "app/(site)/[lang]/layout.tsx",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "app_site_lang_layout_dynamic",
+      "community": 1,
+      "community_name": "[lang]/layout.tsx",
+      "norm_label": "dynamic"
     },
     {
       "label": "inter",
@@ -2336,21 +2347,21 @@
       "source_file": "app/(site)/[lang]/layout.tsx",
       "source_location": "L8",
       "_origin": "ast",
+      "id": "app_site_lang_layout_inter",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "inter",
-      "id": "app_site_lang_layout_inter"
+      "community_name": "[lang]/layout.tsx",
+      "norm_label": "inter"
     },
     {
       "label": "organizationSchema",
       "file_type": "code",
       "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L99",
+      "source_location": "L108",
       "_origin": "ast",
+      "id": "app_site_lang_layout_organizationschema",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "organizationschema",
-      "id": "app_site_lang_layout_organizationschema"
+      "community_name": "[lang]/layout.tsx",
+      "norm_label": "organizationschema"
     },
     {
       "label": "spaceGrotesk",
@@ -2358,21 +2369,21 @@
       "source_file": "app/(site)/[lang]/layout.tsx",
       "source_location": "L9",
       "_origin": "ast",
+      "id": "app_site_lang_layout_spacegrotesk",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "spacegrotesk",
-      "id": "app_site_lang_layout_spacegrotesk"
+      "community_name": "[lang]/layout.tsx",
+      "norm_label": "spacegrotesk"
     },
     {
       "label": "websiteSchema",
       "file_type": "code",
       "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L123",
+      "source_location": "L132",
       "_origin": "ast",
+      "id": "app_site_lang_layout_websiteschema",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "websiteschema",
-      "id": "app_site_lang_layout_websiteschema"
+      "community_name": "[lang]/layout.tsx",
+      "norm_label": "websiteschema"
     },
     {
       "label": "terms/page.tsx",
@@ -2381,7 +2392,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "terms/page.tsx",
       "id": "app_site_lang_terms_page"
     },
@@ -2392,7 +2403,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "copy",
       "id": "app_site_lang_terms_page_copy"
     },
@@ -2403,42 +2414,9 @@
       "source_location": "L89",
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "scope_intro",
       "id": "app_site_lang_terms_page_scope_intro"
-    },
-    {
-      "label": "Footer.tsx",
-      "file_type": "code",
-      "source_file": "components/Footer.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "footer.tsx",
-      "id": "components_footer"
-    },
-    {
-      "label": "LanguageProvider.tsx",
-      "file_type": "code",
-      "source_file": "components/LanguageProvider.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "languageprovider.tsx",
-      "id": "components_languageprovider"
-    },
-    {
-      "label": "LangContext",
-      "file_type": "code",
-      "source_file": "components/LanguageProvider.tsx",
-      "source_location": "L27",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "langcontext",
-      "id": "components_languageprovider_langcontext"
     },
     {
       "label": "config.ts",
@@ -2447,20 +2425,9 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "config.ts",
       "id": "lib_i18n_config"
-    },
-    {
-      "label": "DEFAULT_LOCALE",
-      "file_type": "code",
-      "source_file": "lib/i18n/config.ts",
-      "source_location": "L15",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "default_locale",
-      "id": "lib_i18n_config_default_locale"
     },
     {
       "label": "LOCALES",
@@ -2469,7 +2436,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "locales",
       "id": "lib_i18n_config_locales"
     },
@@ -2480,64 +2447,9 @@
       "source_location": "L17",
       "_origin": "ast",
       "community": 1,
-      "community_name": "LanguageProvider.tsx",
+      "community_name": "[lang]/layout.tsx",
       "norm_label": "site_url",
       "id": "lib_i18n_config_site_url"
-    },
-    {
-      "label": "en.ts",
-      "file_type": "code",
-      "source_file": "lib/i18n/en.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "en.ts",
-      "id": "lib_i18n_en"
-    },
-    {
-      "label": "en",
-      "file_type": "code",
-      "source_file": "lib/i18n/en.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "en",
-      "id": "lib_i18n_en_en"
-    },
-    {
-      "label": "es.ts",
-      "file_type": "code",
-      "source_file": "lib/i18n/es.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "es.ts",
-      "id": "lib_i18n_es"
-    },
-    {
-      "label": "es",
-      "file_type": "code",
-      "source_file": "lib/i18n/es.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "es",
-      "id": "lib_i18n_es_es"
-    },
-    {
-      "label": "i18n/index.ts",
-      "file_type": "code",
-      "source_file": "lib/i18n/index.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "LanguageProvider.tsx",
-      "norm_label": "i18n/index.ts",
-      "id": "lib_i18n_index"
     },
     {
       "label": "sitemap.ts",
@@ -2546,7 +2458,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "sitemap.ts",
       "id": "app_sitemap"
     },
@@ -2557,7 +2469,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "revalidate",
       "id": "app_sitemap_revalidate"
     },
@@ -2568,7 +2480,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "[[...index]]/page.tsx",
       "id": "app_studio_studio_index_page"
     },
@@ -2579,7 +2491,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "dynamic",
       "id": "app_studio_studio_index_page_dynamic"
     },
@@ -2590,7 +2502,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "studio.tsx",
       "id": "app_studio_studio_index_studio"
     },
@@ -2601,7 +2513,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "blog-posts.ts",
       "id": "lib_blog_posts"
     },
@@ -2612,7 +2524,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "fallbackposts",
       "id": "lib_blog_posts_fallbackposts"
     },
@@ -2623,7 +2535,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "posts.ts",
       "id": "lib_content_posts"
     },
@@ -2634,7 +2546,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "issanityconfigured",
       "id": "lib_content_posts_issanityconfigured"
     },
@@ -2645,7 +2557,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "sanity.config.ts",
       "id": "sanity_config"
     },
@@ -2656,7 +2568,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "schematypes/index.ts",
       "id": "sanity_schematypes_index"
     },
@@ -2667,7 +2579,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "schematypes",
       "id": "sanity_schematypes_index_schematypes"
     },
@@ -2678,7 +2590,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "post.ts",
       "id": "sanity_schematypes_post"
     },
@@ -2689,7 +2601,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Sanity Studio Routes",
+      "community_name": "posts.ts",
       "norm_label": "posttype",
       "id": "sanity_schematypes_post_posttype"
     },
@@ -2870,61 +2782,6 @@
       "id": "components_ambientgrid"
     },
     {
-      "label": "Cases.tsx",
-      "file_type": "code",
-      "source_file": "components/Cases.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "cases.tsx",
-      "id": "components_cases"
-    },
-    {
-      "label": "duplicated",
-      "file_type": "code",
-      "source_file": "components/Cases.tsx",
-      "source_location": "L34",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "duplicated",
-      "id": "components_cases_duplicated"
-    },
-    {
-      "label": "duplicatedReversed",
-      "file_type": "code",
-      "source_file": "components/Cases.tsx",
-      "source_location": "L36",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "duplicatedreversed",
-      "id": "components_cases_duplicatedreversed"
-    },
-    {
-      "label": "IMAGES",
-      "file_type": "code",
-      "source_file": "components/Cases.tsx",
-      "source_location": "L17",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "images",
-      "id": "components_cases_images"
-    },
-    {
-      "label": "reversed",
-      "file_type": "code",
-      "source_file": "components/Cases.tsx",
-      "source_location": "L35",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "reversed",
-      "id": "components_cases_reversed"
-    },
-    {
       "label": "ClientsMarquee.tsx",
       "file_type": "code",
       "source_file": "components/ClientsMarquee.tsx",
@@ -3013,59 +2870,15 @@
       "id": "components_faq"
     },
     {
-      "label": "Hero.tsx",
+      "label": "Footer.tsx",
       "file_type": "code",
-      "source_file": "components/Hero.tsx",
+      "source_file": "components/Footer.tsx",
       "source_location": "L1",
       "_origin": "ast",
       "community": 2,
       "community_name": "[lang]/page.tsx",
-      "norm_label": "hero.tsx",
-      "id": "components_hero"
-    },
-    {
-      "label": "FLOATS",
-      "file_type": "code",
-      "source_file": "components/Hero.tsx",
-      "source_location": "L39",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "floats",
-      "id": "components_hero_floats"
-    },
-    {
-      "label": "HERO_IMAGES",
-      "file_type": "code",
-      "source_file": "components/Hero.tsx",
-      "source_location": "L9",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "hero_images",
-      "id": "components_hero_hero_images"
-    },
-    {
-      "label": "Navbar.tsx",
-      "file_type": "code",
-      "source_file": "components/Navbar.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "navbar.tsx",
-      "id": "components_navbar"
-    },
-    {
-      "label": "SECTION_IDS",
-      "file_type": "code",
-      "source_file": "components/Navbar.tsx",
-      "source_location": "L11",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "section_ids",
-      "id": "components_navbar_section_ids"
+      "norm_label": "footer.tsx",
+      "id": "components_footer"
     },
     {
       "label": "PainPoints.tsx",
@@ -3077,17 +2890,6 @@
       "community_name": "[lang]/page.tsx",
       "norm_label": "painpoints.tsx",
       "id": "components_painpoints"
-    },
-    {
-      "label": "Plans.tsx",
-      "file_type": "code",
-      "source_file": "components/Plans.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "plans.tsx",
-      "id": "components_plans"
     },
     {
       "label": "PricingExplanation.tsx",
@@ -3134,28 +2936,6 @@
       "id": "components_whatsappfloat"
     },
     {
-      "label": "motion.ts",
-      "file_type": "code",
-      "source_file": "lib/motion.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "motion.ts",
-      "id": "lib_motion"
-    },
-    {
-      "label": "sound.ts",
-      "file_type": "code",
-      "source_file": "lib/sound.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "[lang]/page.tsx",
-      "norm_label": "sound.ts",
-      "id": "lib_sound"
-    },
-    {
       "label": "useReveal.ts",
       "file_type": "code",
       "source_file": "lib/useReveal.ts",
@@ -3189,26 +2969,15 @@
       "id": "app_studio_studio_layout_metadata"
     },
     {
-      "label": "next",
-      "file_type": "code",
-      "source_file": "next",
-      "confidence": "EXTRACTED",
-      "_origin": "ast",
-      "id": "next",
-      "community": 25,
-      "community_name": "next.config.js",
-      "norm_label": "next"
-    },
-    {
       "label": "next.config.js",
       "file_type": "code",
       "source_file": "next.config.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "next_config",
       "community": 25,
       "community_name": "next.config.js",
-      "norm_label": "next.config.js"
+      "norm_label": "next.config.js",
+      "id": "next_config"
     },
     {
       "label": "nextConfig",
@@ -3216,10 +2985,10 @@
       "source_file": "next.config.js",
       "source_location": "L8",
       "_origin": "ast",
-      "id": "next_config_nextconfig",
       "community": 25,
       "community_name": "next.config.js",
-      "norm_label": "nextconfig"
+      "norm_label": "nextconfig",
+      "id": "next_config_nextconfig"
     },
     {
       "label": "withBundleAnalyzer",
@@ -3227,10 +2996,10 @@
       "source_file": "next.config.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "next_config_withbundleanalyzer",
       "community": 25,
       "community_name": "next.config.js",
-      "norm_label": "withbundleanalyzer"
+      "norm_label": "withbundleanalyzer",
+      "id": "next_config_withbundleanalyzer"
     },
     {
       "label": "loading.tsx",
@@ -3250,7 +3019,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "bookingwidget.tsx",
       "id": "components_booking_bookingwidget"
     },
@@ -3261,7 +3030,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "monthgrid.tsx",
       "id": "components_booking_monthgrid"
     },
@@ -3272,7 +3041,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "slotpicker.tsx",
       "id": "components_booking_slotpicker"
     },
@@ -3283,7 +3052,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "availability.ts",
       "id": "features_booking_availability"
     },
@@ -3294,7 +3063,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "default_fomo",
       "id": "features_booking_availability_default_fomo"
     },
@@ -3305,7 +3074,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "availability.test.ts",
       "id": "features_booking_availability_test"
     },
@@ -3316,7 +3085,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "nofomo",
       "id": "features_booking_availability_test_nofomo"
     },
@@ -3327,7 +3096,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "now",
       "id": "features_booking_availability_test_now"
     },
@@ -3338,7 +3107,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "slots.ts",
       "id": "features_booking_slots"
     },
@@ -3349,7 +3118,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "afternoon_slots",
       "id": "features_booking_slots_afternoon_slots"
     },
@@ -3360,7 +3129,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "all_slots",
       "id": "features_booking_slots_all_slots"
     },
@@ -3371,7 +3140,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "booking_horizon_days",
       "id": "features_booking_slots_booking_horizon_days"
     },
@@ -3382,7 +3151,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "min_lead_minutes",
       "id": "features_booking_slots_min_lead_minutes"
     },
@@ -3393,7 +3162,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "morning_slots",
       "id": "features_booking_slots_morning_slots"
     },
@@ -3404,7 +3173,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "slot_minutes",
       "id": "features_booking_slots_slot_minutes"
     },
@@ -3415,9 +3184,20 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "Booking Widget Calendar",
+      "community_name": "time.ts",
       "norm_label": "time.ts",
       "id": "features_booking_time"
+    },
+    {
+      "label": "DATE_RE",
+      "file_type": "code",
+      "source_file": "features/booking/time.ts",
+      "source_location": "L15",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "time.ts",
+      "norm_label": "date_re",
+      "id": "features_booking_time_date_re"
     },
     {
       "label": "eslint.config.mjs",
@@ -3825,6 +3605,182 @@
       "community_name": "Booking Config & Graceful Degradation",
       "norm_label": "vitest",
       "id": "vitest"
+    },
+    {
+      "label": "Hero.tsx",
+      "file_type": "code",
+      "source_file": "components/Hero.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "hero.tsx",
+      "id": "components_hero"
+    },
+    {
+      "label": "FLOATS",
+      "file_type": "code",
+      "source_file": "components/Hero.tsx",
+      "source_location": "L39",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "floats",
+      "id": "components_hero_floats"
+    },
+    {
+      "label": "HERO_IMAGES",
+      "file_type": "code",
+      "source_file": "components/Hero.tsx",
+      "source_location": "L9",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "hero_images",
+      "id": "components_hero_hero_images"
+    },
+    {
+      "label": "Navbar.tsx",
+      "file_type": "code",
+      "source_file": "components/Navbar.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "navbar.tsx",
+      "id": "components_navbar"
+    },
+    {
+      "label": "SECTION_IDS",
+      "file_type": "code",
+      "source_file": "components/Navbar.tsx",
+      "source_location": "L11",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "section_ids",
+      "id": "components_navbar_section_ids"
+    },
+    {
+      "label": "Plans.tsx",
+      "file_type": "code",
+      "source_file": "components/Plans.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "plans.tsx",
+      "id": "components_plans"
+    },
+    {
+      "label": "motion.ts",
+      "file_type": "code",
+      "source_file": "lib/motion.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "motion.ts",
+      "id": "lib_motion"
+    },
+    {
+      "label": "sound.ts",
+      "file_type": "code",
+      "source_file": "lib/sound.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Navbar.tsx",
+      "norm_label": "sound.ts",
+      "id": "lib_sound"
+    },
+    {
+      "label": "LanguageProvider.tsx",
+      "file_type": "code",
+      "source_file": "components/LanguageProvider.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "languageprovider.tsx",
+      "id": "components_languageprovider"
+    },
+    {
+      "label": "LangContext",
+      "file_type": "code",
+      "source_file": "components/LanguageProvider.tsx",
+      "source_location": "L27",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "langcontext",
+      "id": "components_languageprovider_langcontext"
+    },
+    {
+      "label": "DEFAULT_LOCALE",
+      "file_type": "code",
+      "source_file": "lib/i18n/config.ts",
+      "source_location": "L15",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "default_locale",
+      "id": "lib_i18n_config_default_locale"
+    },
+    {
+      "label": "en.ts",
+      "file_type": "code",
+      "source_file": "lib/i18n/en.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "en.ts",
+      "id": "lib_i18n_en"
+    },
+    {
+      "label": "en",
+      "file_type": "code",
+      "source_file": "lib/i18n/en.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "en",
+      "id": "lib_i18n_en_en"
+    },
+    {
+      "label": "es.ts",
+      "file_type": "code",
+      "source_file": "lib/i18n/es.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "es.ts",
+      "id": "lib_i18n_es"
+    },
+    {
+      "label": "es",
+      "file_type": "code",
+      "source_file": "lib/i18n/es.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "es",
+      "id": "lib_i18n_es_es"
+    },
+    {
+      "label": "i18n/index.ts",
+      "file_type": "code",
+      "source_file": "lib/i18n/index.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "LanguageProvider.tsx",
+      "norm_label": "i18n/index.ts",
+      "id": "lib_i18n_index"
     },
     {
       "label": "dependencies",
@@ -4575,15 +4531,59 @@
       "id": "vitest_config"
     },
     {
-      "label": "DATE_RE",
+      "label": "Cases.tsx",
       "file_type": "code",
-      "source_file": "features/booking/time.ts",
-      "source_location": "L15",
+      "source_file": "components/Cases.tsx",
+      "source_location": "L1",
       "_origin": "ast",
-      "community": 8,
-      "community_name": "Booking Schema Validation",
-      "norm_label": "date_re",
-      "id": "features_booking_time_date_re"
+      "community": 71,
+      "community_name": "Cases.tsx",
+      "norm_label": "cases.tsx",
+      "id": "components_cases"
+    },
+    {
+      "label": "duplicated",
+      "file_type": "code",
+      "source_file": "components/Cases.tsx",
+      "source_location": "L34",
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "Cases.tsx",
+      "norm_label": "duplicated",
+      "id": "components_cases_duplicated"
+    },
+    {
+      "label": "duplicatedReversed",
+      "file_type": "code",
+      "source_file": "components/Cases.tsx",
+      "source_location": "L36",
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "Cases.tsx",
+      "norm_label": "duplicatedreversed",
+      "id": "components_cases_duplicatedreversed"
+    },
+    {
+      "label": "IMAGES",
+      "file_type": "code",
+      "source_file": "components/Cases.tsx",
+      "source_location": "L17",
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "Cases.tsx",
+      "norm_label": "images",
+      "id": "components_cases_images"
+    },
+    {
+      "label": "reversed",
+      "file_type": "code",
+      "source_file": "components/Cases.tsx",
+      "source_location": "L35",
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "Cases.tsx",
+      "norm_label": "reversed",
+      "id": "components_cases_reversed"
     },
     {
       "label": "TIME_RE",
@@ -4592,7 +4592,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "time_re",
       "id": "features_booking_time_time_re"
     },
@@ -4603,7 +4603,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "contracts.ts",
       "id": "lib_contracts"
     },
@@ -4614,7 +4614,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "availabilityqueryschema",
       "id": "lib_contracts_availabilityqueryschema"
     },
@@ -4625,7 +4625,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "bookingschema",
       "id": "lib_contracts_bookingschema"
     },
@@ -4636,7 +4636,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "contactschema",
       "id": "lib_contracts_contactschema"
     },
@@ -4647,7 +4647,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "email",
       "id": "lib_contracts_email"
     },
@@ -4658,7 +4658,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "localeschema",
       "id": "lib_contracts_localeschema"
     },
@@ -4669,7 +4669,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "max_body_bytes",
       "id": "lib_contracts_max_body_bytes"
     },
@@ -4680,7 +4680,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "name",
       "id": "lib_contracts_name"
     },
@@ -4691,7 +4691,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "project_kinds",
       "id": "lib_contracts_project_kinds"
     },
@@ -4702,7 +4702,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "project_labels",
       "id": "lib_contracts_project_labels"
     },
@@ -4713,7 +4713,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "contracts.test.ts",
       "id": "lib_contracts_test"
     },
@@ -4724,7 +4724,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "validbooking",
       "id": "lib_contracts_test_validbooking"
     },
@@ -4735,7 +4735,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "community": 8,
-      "community_name": "Booking Schema Validation",
+      "community_name": "contracts.ts",
       "norm_label": "validcontact",
       "id": "lib_contracts_test_validcontact"
     },
@@ -7542,7 +7542,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L69",
+      "source_location": "L78",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_site_lang_layout_generatemetadata",
@@ -7554,7 +7554,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L78",
+      "source_location": "L87",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_site_lang_layout_generatemetadata",
@@ -7566,7 +7566,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L152",
+      "source_location": "L161",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_site_lang_layout_sitelayout",
@@ -9922,9 +9922,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "components_languageprovider_languageprovider"
+      "target": "components_languageprovider_languageprovider",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -9934,9 +9934,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "lib_i18n_config_alternatesfor"
+      "target": "lib_i18n_config_alternatesfor",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -9946,9 +9946,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "lib_i18n_config_islocale"
+      "target": "lib_i18n_config_islocale",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -9958,9 +9958,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "lib_i18n_config_locale"
+      "target": "lib_i18n_config_locale",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -9970,9 +9970,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "lib_i18n_config_locales"
+      "target": "lib_i18n_config_locales",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -9982,9 +9982,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "lib_i18n_config_site_url"
+      "target": "lib_i18n_config_site_url",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -12346,9 +12346,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "components_languageprovider"
+      "target": "components_languageprovider",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -12358,9 +12358,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "lib_i18n_config"
+      "target": "lib_i18n_config",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -13759,34 +13759,45 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L123",
+      "source_location": "L108",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "app_site_lang_layout_websiteschema"
+      "target": "app_site_lang_layout_organizationschema",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L134",
+      "source_location": "L132",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "app_site_lang_layout_jsonld"
+      "target": "app_site_lang_layout_websiteschema",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L140",
+      "source_location": "L143",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "app_site_lang_layout_sitelayout"
+      "target": "app_site_lang_layout_jsonld",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(site)/[lang]/layout.tsx",
+      "source_location": "L149",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_site_lang_layout",
+      "target": "app_site_lang_layout_sitelayout",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13795,31 +13806,42 @@
       "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "app_site_lang_layout_generatestaticparams"
+      "target": "app_site_lang_layout_generatestaticparams",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L20",
+      "source_location": "L27",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "app_site_lang_layout_copy"
+      "target": "app_site_lang_layout_dynamic",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L63",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "app_site_lang_layout_generatemetadata"
+      "target": "app_site_lang_layout_copy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(site)/[lang]/layout.tsx",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_site_lang_layout",
+      "target": "app_site_lang_layout_generatemetadata",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13828,9 +13850,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "app_site_lang_layout_inter"
+      "target": "app_site_lang_layout_inter",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13839,20 +13861,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "app_site_lang_layout",
-      "target": "app_site_lang_layout_spacegrotesk"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(site)/[lang]/layout.tsx",
-      "source_location": "L99",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "app_site_lang_layout",
-      "target": "app_site_lang_layout_organizationschema"
+      "target": "app_site_lang_layout_spacegrotesk",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15951,9 +15962,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "next_config",
-      "target": "next_config_withbundleanalyzer",
-      "confidence_score": 1.0
+      "target": "next_config_withbundleanalyzer"
     },
     {
       "relation": "contains",
@@ -15962,9 +15973,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "next_config",
-      "target": "next_config_nextconfig",
-      "confidence_score": 1.0
+      "target": "next_config_nextconfig"
     },
     {
       "relation": "contains",
@@ -16920,15 +16931,6 @@
       "target": "components_servicescarousel"
     },
     {
-      "relation": "dynamic_import",
-      "confidence": "EXTRACTED",
-      "source_file": "next.config.js",
-      "_origin": "ast",
-      "source": "next_config",
-      "target": "next",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "indirect_call",
       "context": "argument",
       "confidence": "INFERRED",
@@ -17814,5 +17816,5 @@
       "source_file": "docs/06-performance-manifesto.md"
     }
   ],
-  "built_at_commit": "1b6cd83a20f2a5145b8f0ea0e582dd1f1e0f7ca6"
+  "built_at_commit": "78545a5ba8205a2c354274ab6696fb4ccba9e9e2"
 }

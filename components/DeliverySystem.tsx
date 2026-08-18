@@ -45,9 +45,9 @@ export default function DeliverySystem() {
       mm.add('(max-width: 767.98px)', () => {
         gsap.fromTo(
           dot,
-          { top: '0%' },
+          { left: '0%' },
           {
-            top: '100%',
+            left: '100%',
             ease: 'none',
             scrollTrigger: {
               trigger: pipeline,
@@ -92,14 +92,14 @@ export default function DeliverySystem() {
         ref={pipelineRef}
         data-reveal
         style={{ '--reveal-delay': '180ms' } as React.CSSProperties}
-        className="relative mb-20 flex flex-row md:flex-col gap-5 md:gap-0 md:items-center max-w-md mx-auto md:max-w-none"
+        className="relative mb-20 flex flex-col items-center gap-8 md:gap-0"
       >
         {/* Pipeline track */}
-        <div className="relative w-[5px] md:w-[85%] md:h-[5px] bg-surface rounded-full md:mb-10 shrink-0">
+        <div className="relative w-[85%] h-[5px] bg-surface rounded-full md:mb-10 shrink-0">
           {/* Animated traversing dot */}
           <div
             ref={dotRef}
-            className="absolute left-1/2 -translate-x-1/2 z-10 md:top-1/2 md:-translate-y-1/2"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
           >
             <div className="w-[13px] h-[13px] rounded-full bg-accent shadow-[0_0_12px_rgba(0,102,255,0.40)]" />
             <div className="absolute inset-0 rounded-full bg-accent animate-ping opacity-30" />
@@ -107,14 +107,14 @@ export default function DeliverySystem() {
         </div>
 
         {/* Weekly steps */}
-        <div className="flex flex-col md:grid md:grid-cols-5 gap-4 md:gap-3 flex-1 md:flex-none md:w-[85%] min-w-0">
+        <div className="w-[85%] min-w-0 flex flex-col items-center md:grid md:grid-cols-5 gap-4 md:gap-3">
           {t.deliverySystem.steps.map((step: { num: string; week: string; title: string; desc: string }, i: number) => (
             <div
               key={i}
-              className="flex items-center gap-4 md:flex-col md:items-center md:text-center group"
+              className="flex flex-col items-center text-center group"
             >
               <div
-                className="pipeline-step-dot w-[11px] h-[11px] rounded-full bg-border md:mb-3 transition-all duration-300 shrink-0"
+                className="pipeline-step-dot w-[11px] h-[11px] rounded-full bg-border mb-2 md:mb-3 transition-all duration-300 shrink-0"
               />
               <div>
                 <div className="text-[11px] font-bold uppercase tracking-[0.15em] opacity-35 mb-2">{step.week}</div>

@@ -1,15 +1,15 @@
 {
-  "0": "Booking & Availability API Routes",
-  "1": "LanguageProvider.tsx",
+  "0": "booking/route.ts",
+  "1": "[lang]/layout.tsx",
   "2": "[lang]/page.tsx",
-  "3": "Booking Widget Calendar",
+  "3": "time.ts",
   "4": "Booking Config & Graceful Degradation",
   "5": "Frontend Dependencies",
   "6": "TypeScript Build Config",
   "7": "Motion System Pillars",
-  "8": "Booking Schema Validation",
+  "8": "contracts.ts",
   "9": "Package Manifest",
-  "10": "Sanity Studio Routes",
+  "10": "posts.ts",
   "11": "OpenCode MCP Config",
   "12": "Motion Tokens & Budget",
   "13": "Security Proxy & CSP",
@@ -47,6 +47,8 @@
   "45": "Principle: Attention Is Sacred",
   "46": "Principle: Code Is Documentation",
   "47": "Principle: Ship On Fridays",
+  "48": "Navbar.tsx",
+  "49": "LanguageProvider.tsx",
   "50": "Playwright Config",
   "51": "PostCSS Config",
   "52": "Apple Touch Icon",
@@ -67,5 +69,6 @@
   "67": "OG Share Image",
   "68": "Booking E2E Spec",
   "69": "Site E2E Spec",
-  "70": "Vitest Config"
+  "70": "Vitest Config",
+  "71": "Cases.tsx"
 }

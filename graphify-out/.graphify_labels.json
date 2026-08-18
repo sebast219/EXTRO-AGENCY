@@ -1,6 +1,6 @@
 {
   "0": "booking/route.ts",
-  "1": "[lang]/layout.tsx",
+  "1": "i18n/index.ts",
   "2": "[lang]/page.tsx",
   "3": "time.ts",
   "4": "Booking Config & Graceful Degradation",
@@ -47,8 +47,6 @@
   "45": "Principle: Attention Is Sacred",
   "46": "Principle: Code Is Documentation",
   "47": "Principle: Ship On Fridays",
-  "48": "Navbar.tsx",
-  "49": "LanguageProvider.tsx",
   "50": "Playwright Config",
   "51": "PostCSS Config",
   "52": "Apple Touch Icon",
@@ -69,6 +67,5 @@
   "67": "OG Share Image",
   "68": "Booking E2E Spec",
   "69": "Site E2E Spec",
-  "70": "Vitest Config",
-  "71": "Cases.tsx"
+  "70": "Vitest Config"
 }

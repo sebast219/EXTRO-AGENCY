@@ -1,22 +1,22 @@
 # Graph Report - EXTRON-AGENCY  (2026-08-17)
 
 ## Corpus Check
-- 86 files · ~119,002 words
+- 86 files · ~119,098 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 545 nodes · 953 edges · 72 communities (33 shown, 39 thin omitted)
+- 546 nodes · 952 edges · 69 communities (30 shown, 39 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 21 edges (avg confidence: 0.91)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `78545a5b`
+- Built from commit: `73f8bea2`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - booking/route.ts
-- [lang]/layout.tsx
+- i18n/index.ts
 - [lang]/page.tsx
 - time.ts
 - Booking Config & Graceful Degradation
@@ -62,8 +62,6 @@
 - Principle: Attention Is Sacred
 - Principle: Code Is Documentation
 - Principle: Ship On Fridays
-- Navbar.tsx
-- LanguageProvider.tsx
 - Apple Touch Icon
 - Dash Burger Portfolio Image
 - Kinn Collective Portfolio Image
@@ -80,7 +78,6 @@
 - Human Social Club Portfolio Image
 - Samara Backyard Portfolio Image
 - OG Share Image
-- Cases.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `useLang()` - 27 edges
@@ -99,12 +96,12 @@
   README.md → package.json
 - `EX·TRON Project` --references--> `tailwindcss`  [EXTRACTED]
   README.md → package.json
+- `Group()` --calls--> `to12h()`  [EXTRACTED]
+  components/booking/SlotPicker.tsx → features/booking/time.ts
 - `robots.txt Configuration` --shares_data_with--> `EX·TRON Project`  [INFERRED]
   public/robots.txt → README.md
 - `SiteLayout()` --calls--> `isLocale()`  [EXTRACTED]
   app/(site)/[lang]/layout.tsx → lib/i18n/config.ts
-- `GET()` --calls--> `computeAvailability()`  [EXTRACTED]
-  app/api/booking/availability/route.ts → features/booking/availability.ts
 
 ## Import Cycles
 - None detected.
@@ -114,23 +111,23 @@
 - **EXTRO Motion System Pillars (living system, spatial law, tokens, camera)** — docs_01_creative_direction_living_system, docs_02_spatial_design_language_camera_tells_story, docs_03_motion_system_duration_scale, docs_04_camera_language_movement_verbs [INFERRED 0.85]
 - **Performance Budget Consistency (manifesto, architecture, camera fallback)** — docs_06_performance_manifesto_resource_budget, docs_05_technical_architecture_css_design_tokens, docs_06_performance_manifesto_fallback_tiers, docs_04_camera_language_responsive_behavior [INFERRED 0.85]
 
-## Communities (72 total, 39 thin omitted)
+## Communities (69 total, 39 thin omitted)
 
 ### Community 0 - "booking/route.ts"
 Cohesion: 0.08
-Nodes (59): dynamic, GET(), runtime, POST(), runtime, POST(), runtime, clientErrorSchema (+51 more)
+Nodes (62): dynamic, GET(), runtime, POST(), runtime, POST(), runtime, clientErrorSchema (+54 more)
 
-### Community 1 - "[lang]/layout.tsx"
-Cohesion: 0.13
-Nodes (27): BlogPage(), COPY, generateMetadata(), revalidate, generateMetadata(), PostPage(), revalidate, COPY (+19 more)
+### Community 1 - "i18n/index.ts"
+Cohesion: 0.09
+Nodes (38): BlogPage(), COPY, generateMetadata(), revalidate, generateMetadata(), PostPage(), revalidate, COPY (+30 more)
 
 ### Community 2 - "[lang]/page.tsx"
-Cohesion: 0.14
-Nodes (19): AmbientGrid(), Cases(), ClientsMarquee(), ReviewItem, TECH, TechItem, Contact(), DeliverySystem() (+11 more)
+Cohesion: 0.08
+Nodes (41): AmbientGrid(), CaseItem, Cases(), duplicated, duplicatedReversed, IMAGES, reversed, ClientsMarquee() (+33 more)
 
 ### Community 3 - "time.ts"
 Cohesion: 0.09
-Nodes (38): BookingWidget(), Confirmed, Step, monthCells(), MonthGrid(), Props, Group(), Props (+30 more)
+Nodes (33): Confirmed, Step, monthCells(), MonthGrid(), Props, Group(), Props, AvailabilityInput (+25 more)
 
 ### Community 4 - "Booking Config & Graceful Degradation"
 Cohesion: 0.05
@@ -149,8 +146,8 @@ Cohesion: 0.09
 Nodes (24): The EXTRO Signature, Living System (Core Concept), Movement Language, Narrative Arc (Entrance→Credibility→Capability→Trust→Conversion), 12-Beat Scroll Rhythm, Principle 06 — The Camera Tells the Story, Ambient Grid — Elastic Deformation, Living Typography (+16 more)
 
 ### Community 8 - "contracts.ts"
-Cohesion: 0.15
-Nodes (15): TIME_RE, availabilityQuerySchema, BookingInput, bookingSchema, ContactInput, contactSchema, email, localeSchema (+7 more)
+Cohesion: 0.14
+Nodes (16): DATE_RE, TIME_RE, availabilityQuerySchema, BookingInput, bookingSchema, ContactInput, contactSchema, email (+8 more)
 
 ### Community 9 - "Package Manifest"
 Cohesion: 0.12
@@ -212,37 +209,25 @@ Nodes (3): The 20% Rule, The 20% Repetition Strategy, Three User Types (Scanner/
 Cohesion: 0.67
 Nodes (3): CRM Dashboard Screenshot, Dribbble Shot Page, Velo (CRM Product)
 
-### Community 48 - "Navbar.tsx"
-Cohesion: 0.20
-Nodes (15): FloatConfig, FLOATS, Hero(), HERO_IMAGES, Navbar(), SECTION_IDS, PlanItem, Plans() (+7 more)
-
-### Community 49 - "LanguageProvider.tsx"
-Cohesion: 0.19
-Nodes (12): Home(), TermsPage(), LangContext, LangContextValue, LanguageProvider(), DEFAULT_LOCALE, stripLocale(), en (+4 more)
-
-### Community 71 - "Cases.tsx"
-Cohesion: 0.33
-Nodes (5): CaseItem, duplicated, duplicatedReversed, IMAGES, reversed
-
 ## Knowledge Gaps
-- **218 isolated node(s):** `inter`, `spaceGrotesk`, `dynamic`, `COPY`, `organizationSchema` (+213 more)
+- **219 isolated node(s):** `inter`, `spaceGrotesk`, `dynamic`, `viewport`, `COPY` (+214 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `useLang()` connect `[lang]/page.tsx` to `Navbar.tsx`, `LanguageProvider.tsx`, `time.ts`, `Cases.tsx`?**
+- **Why does `useLang()` connect `[lang]/page.tsx` to `booking/route.ts`, `time.ts`?**
   _High betweenness centrality (0.031) - this node is a cross-community bridge._
 - **Why does `captureException()` connect `booking/route.ts` to `posts.ts`?**
   _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `Frontend Dependencies` to `Package Manifest`, `Booking Config & Graceful Degradation`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **What connects `inter`, `spaceGrotesk`, `dynamic` to the rest of the system?**
-  _218 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _219 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `booking/route.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.08411580594679187 - nodes in this community are weakly interconnected._
-- **Should `[lang]/layout.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.13012477718360071 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07963963963963964 - nodes in this community are weakly interconnected._
+- **Should `i18n/index.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.09485815602836879 - nodes in this community are weakly interconnected._
 - **Should `[lang]/page.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.14260249554367202 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08243727598566308 - nodes in this community are weakly interconnected._

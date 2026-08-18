@@ -1,31 +1,31 @@
 # Graph Report - EXTRON-AGENCY  (2026-08-17)
 
 ## Corpus Check
-- 86 files · ~118,933 words
+- 86 files · ~119,002 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 545 nodes · 953 edges · 69 communities (30 shown, 39 thin omitted)
+- 545 nodes · 953 edges · 72 communities (33 shown, 39 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 21 edges (avg confidence: 0.91)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1b6cd83a`
+- Built from commit: `78545a5b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- Booking & Availability API Routes
-- LanguageProvider.tsx
+- booking/route.ts
+- [lang]/layout.tsx
 - [lang]/page.tsx
-- Booking Widget Calendar
+- time.ts
 - Booking Config & Graceful Degradation
 - Frontend Dependencies
 - TypeScript Build Config
 - Motion System Pillars
-- Booking Schema Validation
+- contracts.ts
 - Package Manifest
-- Sanity Studio Routes
+- posts.ts
 - OpenCode MCP Config
 - Motion Tokens & Budget
 - Security Proxy & CSP
@@ -62,6 +62,8 @@
 - Principle: Attention Is Sacred
 - Principle: Code Is Documentation
 - Principle: Ship On Fridays
+- Navbar.tsx
+- LanguageProvider.tsx
 - Apple Touch Icon
 - Dash Burger Portfolio Image
 - Kinn Collective Portfolio Image
@@ -78,6 +80,7 @@
 - Human Social Club Portfolio Image
 - Samara Backyard Portfolio Image
 - OG Share Image
+- Cases.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `useLang()` - 27 edges
@@ -98,9 +101,9 @@
   README.md → package.json
 - `robots.txt Configuration` --shares_data_with--> `EX·TRON Project`  [INFERRED]
   public/robots.txt → README.md
+- `SiteLayout()` --calls--> `isLocale()`  [EXTRACTED]
+  app/(site)/[lang]/layout.tsx → lib/i18n/config.ts
 - `GET()` --calls--> `computeAvailability()`  [EXTRACTED]
-  app/api/booking/availability/route.ts → features/booking/availability.ts
-- `GET()` --calls--> `fomoFromEnv()`  [EXTRACTED]
   app/api/booking/availability/route.ts → features/booking/availability.ts
 
 ## Import Cycles
@@ -111,21 +114,21 @@
 - **EXTRO Motion System Pillars (living system, spatial law, tokens, camera)** — docs_01_creative_direction_living_system, docs_02_spatial_design_language_camera_tells_story, docs_03_motion_system_duration_scale, docs_04_camera_language_movement_verbs [INFERRED 0.85]
 - **Performance Budget Consistency (manifesto, architecture, camera fallback)** — docs_06_performance_manifesto_resource_budget, docs_05_technical_architecture_css_design_tokens, docs_06_performance_manifesto_fallback_tiers, docs_04_camera_language_responsive_behavior [INFERRED 0.85]
 
-## Communities (69 total, 39 thin omitted)
+## Communities (72 total, 39 thin omitted)
 
-### Community 0 - "Booking & Availability API Routes"
-Cohesion: 0.09
-Nodes (58): dynamic, GET(), runtime, POST(), runtime, POST(), runtime, clientErrorSchema (+50 more)
+### Community 0 - "booking/route.ts"
+Cohesion: 0.08
+Nodes (59): dynamic, GET(), runtime, POST(), runtime, POST(), runtime, clientErrorSchema (+51 more)
 
-### Community 1 - "LanguageProvider.tsx"
-Cohesion: 0.10
-Nodes (39): BlogPage(), COPY, generateMetadata(), revalidate, generateMetadata(), PostPage(), revalidate, COPY (+31 more)
+### Community 1 - "[lang]/layout.tsx"
+Cohesion: 0.13
+Nodes (27): BlogPage(), COPY, generateMetadata(), revalidate, generateMetadata(), PostPage(), revalidate, COPY (+19 more)
 
 ### Community 2 - "[lang]/page.tsx"
-Cohesion: 0.08
-Nodes (39): Home(), AmbientGrid(), CaseItem, Cases(), duplicated, duplicatedReversed, IMAGES, reversed (+31 more)
+Cohesion: 0.14
+Nodes (19): AmbientGrid(), Cases(), ClientsMarquee(), ReviewItem, TECH, TechItem, Contact(), DeliverySystem() (+11 more)
 
-### Community 3 - "Booking Widget Calendar"
+### Community 3 - "time.ts"
 Cohesion: 0.09
 Nodes (38): BookingWidget(), Confirmed, Step, monthCells(), MonthGrid(), Props, Group(), Props (+30 more)
 
@@ -145,17 +148,17 @@ Nodes (27): dom, dom.iterable, esnext, .next/dev/types/**/*.ts, next-env.d.ts, .
 Cohesion: 0.09
 Nodes (24): The EXTRO Signature, Living System (Core Concept), Movement Language, Narrative Arc (Entrance→Credibility→Capability→Trust→Conversion), 12-Beat Scroll Rhythm, Principle 06 — The Camera Tells the Story, Ambient Grid — Elastic Deformation, Living Typography (+16 more)
 
-### Community 8 - "Booking Schema Validation"
-Cohesion: 0.14
-Nodes (16): DATE_RE, TIME_RE, availabilityQuerySchema, BookingInput, bookingSchema, ContactInput, contactSchema, email (+8 more)
+### Community 8 - "contracts.ts"
+Cohesion: 0.15
+Nodes (15): TIME_RE, availabilityQuerySchema, BookingInput, bookingSchema, ContactInput, contactSchema, email, localeSchema (+7 more)
 
 ### Community 9 - "Package Manifest"
 Cohesion: 0.12
 Nodes (16): engines, node, name, private, scripts, analyze, build, dev (+8 more)
 
-### Community 10 - "Sanity Studio Routes"
+### Community 10 - "posts.ts"
 Cohesion: 0.10
-Nodes (19): generateStaticParams(), revalidate, sitemap(), dynamic, Studio(), BlogPostMeta, FallbackPost, fallbackPosts (+11 more)
+Nodes (20): generateStaticParams(), revalidate, sitemap(), dynamic, Studio(), BlogPostMeta, FallbackPost, fallbackPosts (+12 more)
 
 ### Community 11 - "OpenCode MCP Config"
 Cohesion: 0.22
@@ -209,25 +212,37 @@ Nodes (3): The 20% Rule, The 20% Repetition Strategy, Three User Types (Scanner/
 Cohesion: 0.67
 Nodes (3): CRM Dashboard Screenshot, Dribbble Shot Page, Velo (CRM Product)
 
+### Community 48 - "Navbar.tsx"
+Cohesion: 0.20
+Nodes (15): FloatConfig, FLOATS, Hero(), HERO_IMAGES, Navbar(), SECTION_IDS, PlanItem, Plans() (+7 more)
+
+### Community 49 - "LanguageProvider.tsx"
+Cohesion: 0.19
+Nodes (12): Home(), TermsPage(), LangContext, LangContextValue, LanguageProvider(), DEFAULT_LOCALE, stripLocale(), en (+4 more)
+
+### Community 71 - "Cases.tsx"
+Cohesion: 0.33
+Nodes (5): CaseItem, duplicated, duplicatedReversed, IMAGES, reversed
+
 ## Knowledge Gaps
-- **217 isolated node(s):** `withBundleAnalyzer`, `nextConfig`, `ServerEnv`, `MeetingRequest`, `MeetingResult` (+212 more)
+- **218 isolated node(s):** `inter`, `spaceGrotesk`, `dynamic`, `COPY`, `organizationSchema` (+213 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `useLang()` connect `[lang]/page.tsx` to `LanguageProvider.tsx`, `Booking Widget Calendar`?**
+- **Why does `useLang()` connect `[lang]/page.tsx` to `Navbar.tsx`, `LanguageProvider.tsx`, `time.ts`, `Cases.tsx`?**
   _High betweenness centrality (0.031) - this node is a cross-community bridge._
-- **Why does `captureException()` connect `Booking & Availability API Routes` to `LanguageProvider.tsx`, `Sanity Studio Routes`?**
+- **Why does `captureException()` connect `booking/route.ts` to `posts.ts`?**
   _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `Frontend Dependencies` to `Package Manifest`, `Booking Config & Graceful Degradation`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **What connects `withBundleAnalyzer`, `nextConfig`, `ServerEnv` to the rest of the system?**
-  _217 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Booking & Availability API Routes` be split into smaller, more focused modules?**
-  _Cohesion score 0.08571428571428572 - nodes in this community are weakly interconnected._
-- **Should `LanguageProvider.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.09647058823529411 - nodes in this community are weakly interconnected._
+- **What connects `inter`, `spaceGrotesk`, `dynamic` to the rest of the system?**
+  _218 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `booking/route.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.08411580594679187 - nodes in this community are weakly interconnected._
+- **Should `[lang]/layout.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.13012477718360071 - nodes in this community are weakly interconnected._
 - **Should `[lang]/page.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.08123904149620105 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.14260249554367202 - nodes in this community are weakly interconnected._
