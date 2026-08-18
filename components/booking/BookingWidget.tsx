@@ -127,7 +127,7 @@ export default function BookingWidget() {
   return (
     <div className="card overflow-hidden rounded-xl border border-border">
       <div className="px-6 py-5 border-b border-border bg-surface/30">
-        <div className="flex items-center justify-between">
+        <div className="flex items-start justify-between gap-x-6 gap-y-2 flex-wrap">
           <div>
             <div className="flex items-center gap-2 mb-1">
               <Video size={14} strokeWidth={1.5} className="text-secondary" aria-hidden="true" />
@@ -135,7 +135,7 @@ export default function BookingWidget() {
             </div>
             <p className="text-xs text-secondary leading-relaxed">{cal.desc}</p>
           </div>
-          <div className="flex items-center gap-3 shrink-0 ml-6">
+          <div className="flex items-center gap-3 shrink-0">
             <span className="text-[10px] font-semibold text-tertiary flex items-center gap-1">
               <Clock size={11} strokeWidth={1.5} aria-hidden="true" />
               {cal.duration}

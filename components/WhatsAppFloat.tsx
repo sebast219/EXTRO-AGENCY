@@ -10,7 +10,7 @@ export default function WhatsAppFloat() {
       href={`https://wa.me/${WHATSAPP_NUMBER}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full shadow-card-lg flex items-center justify-center hover:-translate-y-1 hover:shadow-card-hover transition-all duration-300"
+      className="fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] right-[max(1.5rem,env(safe-area-inset-right))] z-50 w-14 h-14 bg-[#25D366] text-white rounded-full shadow-card-lg flex items-center justify-center hover:-translate-y-1 hover:shadow-card-hover transition-all duration-300"
       aria-label="WhatsApp"
     >
       <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">

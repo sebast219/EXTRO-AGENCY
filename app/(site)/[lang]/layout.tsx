@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import '../../globals.css'
@@ -25,6 +25,17 @@ export function generateStaticParams() {
  * scripts de Next en producción con la CSP estricta.
  */
 export const dynamic = 'force-dynamic'
+
+/**
+ * viewport-fit=cover: permite que el contenido llegue bajo el notch y el home
+ * indicator del iPhone; luego `env(safe-area-inset-*)` en elementos fijos
+ * (WhatsAppFloat, footer) evita que queden tapados.
+ */
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+}
 
 const COPY = {
   es: {

@@ -33,6 +33,7 @@ export const es = {
     title: 'Lo que podemos construir para tu negocio',
     desc: 'Software que genera ingresos desde la primera semana.',
     cta: 'Cotizar',
+    scrollHint: 'Desliza para ver más →',
     items: [
       { num: '01', title: 'Apps & SaaS', desc: 'Aplicaciones web y móviles. Desde marketplaces hasta dashboards en tiempo real con miles de usuarios.' },
       { num: '02', title: 'IA & Automatización', desc: 'Chatbots con IA, flujos de WhatsApp, pipelines de datos. Procesos que trabajan 24/7.' },

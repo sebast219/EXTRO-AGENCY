@@ -89,9 +89,14 @@ export default function ServicesCarousel() {
         </div>
         <h2 className="section-title max-w-2xl">{t.services.title}</h2>
         <p className="section-desc">{t.services.desc}</p>
+        {(t.services as { scrollHint?: string }).scrollHint && (
+          <p className="sm:hidden text-xs text-[var(--text-tertiary)] mt-2" aria-hidden="true">
+            {(t.services as { scrollHint: string }).scrollHint}
+          </p>
+        )}
       </div>
 
-      <div className="services-carousel">
+      <div className="services-carousel scroll-fade-x">
         <div className="services-carousel__track" ref={trackRef}>
           {t.services.items.map((item, i) => (
             <article key={i} className="service-slide">

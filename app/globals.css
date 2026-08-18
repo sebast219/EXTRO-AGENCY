@@ -579,6 +579,7 @@ body::before {
   border: 1px solid rgba(0,0,0,0.06);
   box-shadow: 0 4px 12px 0 rgba(0,0,0,0.04);
   opacity: 0.75;
+  --float-opacity: 0.75;
   transition: opacity 0.4s ease;
   will-change: transform;
   background: #fff;
@@ -604,7 +605,10 @@ body::before {
 }
 
 @media (max-width: 767px) {
-  .hero-float-card { opacity: 0.35; }
+  /* Móvil: menos tarjetas (5 visibles, el resto `hidden md:block` en Hero.tsx)
+     y más presencia que los 0.35 anteriores: sin tantas, el fondo respira.
+     --float-opacity la consume el keyframe de entrada en Hero.tsx (fill: forwards). */
+  .hero-float-card { --float-opacity: 0.5; }
 }
 
 /* ===== Mobile menu ===== */

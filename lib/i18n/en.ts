@@ -33,6 +33,7 @@ export const en = {
     title: 'What we can build for your business',
     desc: 'Software that generates revenue from week one.',
     cta: 'Get quote',
+    scrollHint: 'Swipe to see more →',
     items: [
       { num: '01', title: 'Apps & SaaS', desc: 'Web and mobile apps. From marketplaces to real-time dashboards with thousands of users.' },
       { num: '02', title: 'AI & Automation', desc: 'AI chatbots, WhatsApp flows, data pipelines. Processes that work 24/7.' },

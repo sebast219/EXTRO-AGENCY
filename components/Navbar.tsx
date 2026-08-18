@@ -218,7 +218,7 @@ export default function Navbar() {
           <button
             ref={openerRef}
             type="button"
-            className="md:hidden p-1.5 -mr-1 text-white/80 hover:text-white transition-colors"
+            className="md:hidden p-3.5 -mr-1 text-white/80 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded-full"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? (lang === 'es' ? 'Cerrar menú' : 'Close menu') : lang === 'es' ? 'Abrir menú' : 'Open menu'}
             aria-expanded={mobileOpen}
@@ -268,7 +268,7 @@ export default function Navbar() {
                     type="button"
                     onClick={() => setLang(code)}
                     aria-pressed={lang === code}
-                    className={`text-xs px-3 py-1.5 rounded-full font-semibold transition-colors ${
+                    className={`text-xs px-3 py-2 rounded-full font-semibold transition-colors ${
                       lang === code ? 'bg-white text-black' : 'text-white/70'
                     }`}
                   >

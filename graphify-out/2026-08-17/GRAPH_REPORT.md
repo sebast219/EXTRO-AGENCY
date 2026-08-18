@@ -1,18 +1,23 @@
-# Graph Report - EXTRON-AGENCY  (2026-08-16)
+# Graph Report - EXTRON-AGENCY  (2026-08-17)
 
 ## Corpus Check
-- 36 files · ~118,848 words
+- 86 files · ~118,933 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 546 nodes · 947 edges · 71 communities (32 shown, 39 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.78)
-- Token cost: 1,129,367 input · 0 output
+- 545 nodes · 953 edges · 69 communities (30 shown, 39 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 21 edges (avg confidence: 0.91)
+- Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `1b6cd83a`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - Booking & Availability API Routes
-- Blog Page & Metadata
-- Landing Page & Ambient Grid
+- LanguageProvider.tsx
+- [lang]/page.tsx
 - Booking Widget Calendar
 - Booking Config & Graceful Degradation
 - Frontend Dependencies
@@ -35,7 +40,7 @@
 - Design Principles: Depth & Systems
 - Performance Core Promise
 - Narrative Scroll Rules
-- Next.js Config
+- next.config.js
 - CRM Dashboard Case Study
 - Design Principles: Hierarchy & Precision
 - Motion & Accessibility Rules
@@ -78,8 +83,8 @@
 1. `useLang()` - 27 edges
 2. `getServerEnv()` - 19 edges
 3. `POST()` - 18 edges
-4. `isLocale()` - 17 edges
-5. `useReveal()` - 16 edges
+4. `useReveal()` - 18 edges
+5. `isLocale()` - 17 edges
 6. `compilerOptions` - 16 edges
 7. `localizedPath()` - 15 edges
 8. `captureException()` - 14 edges
@@ -102,23 +107,23 @@
 - None detected.
 
 ## Hyperedges (group relationships)
+- **Narrative Pricing Journey (arc, scroll architecture, camera zoom, pricing section)** — docs_01_creative_direction_narrative_arc, docs_08_narrative_scroll_narrative_architecture, docs_04_camera_language_pricing_zoom_out, docs_08_narrative_scroll_pricing_section [INFERRED 0.80]
 - **EXTRO Motion System Pillars (living system, spatial law, tokens, camera)** — docs_01_creative_direction_living_system, docs_02_spatial_design_language_camera_tells_story, docs_03_motion_system_duration_scale, docs_04_camera_language_movement_verbs [INFERRED 0.85]
 - **Performance Budget Consistency (manifesto, architecture, camera fallback)** — docs_06_performance_manifesto_resource_budget, docs_05_technical_architecture_css_design_tokens, docs_06_performance_manifesto_fallback_tiers, docs_04_camera_language_responsive_behavior [INFERRED 0.85]
-- **Narrative Pricing Journey (arc, scroll architecture, camera zoom, pricing section)** — docs_01_creative_direction_narrative_arc, docs_08_narrative_scroll_narrative_architecture, docs_04_camera_language_pricing_zoom_out, docs_08_narrative_scroll_pricing_section [INFERRED 0.80]
 
-## Communities (71 total, 39 thin omitted)
+## Communities (69 total, 39 thin omitted)
 
 ### Community 0 - "Booking & Availability API Routes"
 Cohesion: 0.09
 Nodes (58): dynamic, GET(), runtime, POST(), runtime, POST(), runtime, clientErrorSchema (+50 more)
 
-### Community 1 - "Blog Page & Metadata"
-Cohesion: 0.07
-Nodes (51): BlogPage(), COPY, generateMetadata(), revalidate, generateMetadata(), generateStaticParams(), PostPage(), revalidate (+43 more)
+### Community 1 - "LanguageProvider.tsx"
+Cohesion: 0.10
+Nodes (39): BlogPage(), COPY, generateMetadata(), revalidate, generateMetadata(), PostPage(), revalidate, COPY (+31 more)
 
-### Community 2 - "Landing Page & Ambient Grid"
+### Community 2 - "[lang]/page.tsx"
 Cohesion: 0.08
-Nodes (41): AmbientGrid(), CaseItem, Cases(), duplicated, duplicatedReversed, IMAGES, reversed, ClientsMarquee() (+33 more)
+Nodes (39): Home(), AmbientGrid(), CaseItem, Cases(), duplicated, duplicatedReversed, IMAGES, reversed (+31 more)
 
 ### Community 3 - "Booking Widget Calendar"
 Cohesion: 0.09
@@ -149,8 +154,8 @@ Cohesion: 0.12
 Nodes (16): engines, node, name, private, scripts, analyze, build, dev (+8 more)
 
 ### Community 10 - "Sanity Studio Routes"
-Cohesion: 0.24
-Nodes (5): dynamic, Studio(), isSanityConfigured, schemaTypes, postType
+Cohesion: 0.10
+Nodes (19): generateStaticParams(), revalidate, sitemap(), dynamic, Studio(), BlogPostMeta, FallbackPost, fallbackPosts (+11 more)
 
 ### Community 11 - "OpenCode MCP Config"
 Cohesion: 0.22
@@ -205,24 +210,24 @@ Cohesion: 0.67
 Nodes (3): CRM Dashboard Screenshot, Dribbble Shot Page, Velo (CRM Product)
 
 ## Knowledge Gaps
-- **217 isolated node(s):** `ServerEnv`, `MeetingRequest`, `MeetingResult`, `Row`, `SendResult` (+212 more)
+- **217 isolated node(s):** `withBundleAnalyzer`, `nextConfig`, `ServerEnv`, `MeetingRequest`, `MeetingResult` (+212 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `useLang()` connect `Landing Page & Ambient Grid` to `Booking Widget Calendar`?**
+- **Why does `useLang()` connect `[lang]/page.tsx` to `LanguageProvider.tsx`, `Booking Widget Calendar`?**
   _High betweenness centrality (0.031) - this node is a cross-community bridge._
-- **Why does `captureException()` connect `Booking & Availability API Routes` to `Blog Page & Metadata`?**
+- **Why does `captureException()` connect `Booking & Availability API Routes` to `LanguageProvider.tsx`, `Sanity Studio Routes`?**
   _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `Frontend Dependencies` to `Package Manifest`, `Booking Config & Graceful Degradation`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **What connects `ServerEnv`, `MeetingRequest`, `MeetingResult` to the rest of the system?**
+- **What connects `withBundleAnalyzer`, `nextConfig`, `ServerEnv` to the rest of the system?**
   _217 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Booking & Availability API Routes` be split into smaller, more focused modules?**
   _Cohesion score 0.08571428571428572 - nodes in this community are weakly interconnected._
-- **Should `Blog Page & Metadata` be split into smaller, more focused modules?**
-  _Cohesion score 0.07043650793650794 - nodes in this community are weakly interconnected._
-- **Should `Landing Page & Ambient Grid` be split into smaller, more focused modules?**
-  _Cohesion score 0.07936507936507936 - nodes in this community are weakly interconnected._
+- **Should `LanguageProvider.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.09647058823529411 - nodes in this community are weakly interconnected._
+- **Should `[lang]/page.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.08123904149620105 - nodes in this community are weakly interconnected._

@@ -42,13 +42,13 @@ const FLOATS: FloatConfig[] = [
   { top: '3%', left: '55%', width: '120px', height: '100px', rot: -3, depth: 0.3, originX: 0, originY: -1, delay: 200, hideOnMobile: true },
   { top: '60%', left: '2%', width: '170px', height: '110px', rot: 5, depth: 0.5, originX: -1, originY: 1, delay: 150 },
   { top: '65%', left: '82%', width: '140px', height: '120px', rot: -6, depth: 0.45, originX: 1, originY: 1, delay: 250 },
-  { top: '72%', left: '12%', width: '130px', height: '100px', rot: 4, depth: 0.35, originX: -1, originY: 1, delay: 50 },
+  { top: '72%', left: '12%', width: '130px', height: '100px', rot: 4, depth: 0.35, originX: -1, originY: 1, delay: 50, hideOnMobile: true },
   { top: '50%', left: '88%', width: '110px', height: '90px', rot: -4, depth: 0.3, originX: 1, originY: 0, delay: 300 },
-  { top: '30%', left: '5%', width: '100px', height: '80px', rot: -5, depth: 0.25, originX: -1, originY: 0, delay: 180 },
+  { top: '30%', left: '5%', width: '100px', height: '80px', rot: -5, depth: 0.25, originX: -1, originY: 0, delay: 180, hideOnMobile: true },
   { top: '4%', left: '30%', width: '150px', height: '110px', rot: 5, depth: 0.5, originX: 0, originY: -1, delay: 320, hideOnMobile: true },
   { top: '15%', left: '68%', width: '110px', height: '85px', rot: -7, depth: 0.4, originX: 1, originY: -1, delay: 340, hideOnMobile: true },
-  { top: '32%', left: '88%', width: '120px', height: '95px', rot: 7, depth: 0.35, originX: 1, originY: 0, delay: 380 },
-  { top: '42%', left: '2%', width: '130px', height: '90px', rot: -4, depth: 0.3, originX: -1, originY: 0, delay: 300 },
+  { top: '32%', left: '88%', width: '120px', height: '95px', rot: 7, depth: 0.35, originX: 1, originY: 0, delay: 380, hideOnMobile: true },
+  { top: '42%', left: '2%', width: '130px', height: '90px', rot: -4, depth: 0.3, originX: -1, originY: 0, delay: 300, hideOnMobile: true },
   { top: '78%', left: '32%', width: '140px', height: '105px', rot: -6, depth: 0.45, originX: 0, originY: 1, delay: 420, hideOnMobile: true },
   { top: '80%', left: '58%', width: '160px', height: '115px', rot: 4, depth: 0.55, originX: 0, originY: 1, delay: 360, hideOnMobile: true },
 ]
@@ -90,7 +90,7 @@ export default function Hero() {
       el.animate(
         [
           { opacity: 0, transform: `rotate(${cfg.rot}deg) translate(${cfg.originX * 40}px, ${cfg.originY * 40}px) scale(0.85)`, filter: 'blur(6px)' },
-          { opacity: 0.75, transform: `rotate(${cfg.rot}deg) translate(0, 0) scale(1)`, filter: 'blur(0px)' },
+          { opacity: 'var(--float-opacity, 0.75)', transform: `rotate(${cfg.rot}deg) translate(0, 0) scale(1)`, filter: 'blur(0px)' },
         ],
         { duration: 900, delay: cfg.delay, easing: ease, fill: 'forwards' }
       )

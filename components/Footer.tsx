@@ -31,7 +31,7 @@ export default function Footer() {
 
   return (
     <footer ref={ref} className="relative bg-black text-white overflow-hidden">
-      <div className="pt-12 md:pt-16 px-6 pb-6">
+      <div className="pt-12 md:pt-16 px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
         <div className="max-w-5xl mx-auto">
           <div data-reveal className="mb-8 text-center">
             <span className="inline-flex items-center gap-1.5 text-[11px] px-3 py-1.5 rounded-full border border-white/15 text-white/60 mb-4">
