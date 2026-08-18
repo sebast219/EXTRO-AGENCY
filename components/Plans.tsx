@@ -2,6 +2,7 @@
 
 import { useLang } from './LanguageProvider'
 import { useReveal } from '@/lib/useReveal'
+import { scrollToId } from '@/lib/motion'
 import { Check } from 'lucide-react'
 
 type PlanItem = {
@@ -15,11 +16,6 @@ type PlanItem = {
 export default function Plans() {
   const { t } = useLang()
   const ref = useReveal<HTMLElement>()
-
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
-  }
 
   return (
     <section id="plans" ref={ref} className="py-32 px-6 max-w-5xl mx-auto scroll-mt-20">
@@ -60,15 +56,15 @@ export default function Plans() {
             <div className="mb-1">
               <span className="text-3xl font-bold text-primary tabular-nums tracking-tight font-display">{plan.price}</span>
             </div>
-            <p className="text-sm mb-6 opacity-50 leading-relaxed">{plan.desc}</p>
+            <p className="text-sm mb-6 leading-relaxed text-[var(--text-secondary)]">{plan.desc}</p>
 
-            <button onClick={() => scrollTo('contact')} className={`w-full mb-8 ${plan.featured ? 'btn btn-primary' : 'btn btn-secondary'} py-3`}>
+            <button onClick={() => scrollToId('contact')} className={`w-full mb-8 ${plan.featured ? 'btn btn-primary' : 'btn btn-secondary'} py-3`}>
               {t.plans.select}
             </button>
 
             <ul className="space-y-3">
               {plan.features.map((f, j) => (
-                <li key={j} className="text-sm flex items-start gap-2.5 opacity-55">
+                <li key={j} className="text-sm flex items-start gap-2.5 text-[var(--text-secondary)]">
                   <Check size={13} strokeWidth={2} className="shrink-0 mt-0.5 opacity-45" />
                   <span>{f}</span>
                 </li>

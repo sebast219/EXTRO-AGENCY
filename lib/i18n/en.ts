@@ -107,12 +107,6 @@ export const en = {
       { num: '04', week: 'THU', title: 'Interface', desc: 'Fast, accessible, responsive frontend. Automated tests.' },
       { num: '05', week: 'FRI', title: 'Deploy', desc: 'Functional progress in production. In your hands. Every week.' },
     ],
-    phases: [
-      { num: 'Phase 1', title: 'Discovery', desc: '30 minutes to understand your business. No 40-slide decks.' },
-      { num: 'Phase 2', title: 'Initial architecture', desc: 'Within 48 hours: structure and working prototype.' },
-      { num: 'Phase 3', title: 'Weekly cycles', desc: 'Every Friday: functional demo. We prioritize what drives value.' },
-      { num: 'Phase 4', title: 'Scale', desc: 'Once live, we iterate on real user data.' },
-    ],
   },
   cases: {
     label: 'Case studies',
@@ -194,6 +188,7 @@ export const en = {
       { label: 'Cancel anytime', values: ['No', 'Yes', 'No', 'Yes'] },
     ],
     footer: 'Each project is quoted by scope. After delivery, you can continue evolving it with a monthly plan.',
+    scrollHint: 'Swipe to see more →',
   },
   contact: {
     label: 'Start',
@@ -239,15 +234,15 @@ export const en = {
   footer: {
     desc: 'Get a fixed-price quote for your project and, after delivery, keep evolving it with a monthly plan. Functional demos every Friday. No lock-in.',
     tagline: 'Engineering Studio',
-    capabilities: 'Capabilities',
-    resources: 'Resources',
-    company: 'Company',
+    nav: 'Navigate',
+    connect: 'Connect',
     links: {
       c1: 'Apps & SaaS', c2: 'AI & Automation', c3: 'Ecommerce', c4: 'Infrastructure',
       r1: 'Case studies', r2: 'FAQ', r3: 'Delivery System',
       co1: 'Blog', co2: 'GitHub', co3: 'LinkedIn', co4: 'Contact',
       l1: 'Privacy Policy', l2: 'Terms of Service', l3: 'SLA',
     },
+    builtBy: 'Built by Sebastián Yepes',
     status: 'Accepting new projects',
     remote: 'Built in Medellín. Working worldwide.',
     rights: '© 2026 EXTRO.',

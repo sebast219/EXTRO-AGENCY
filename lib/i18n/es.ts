@@ -107,12 +107,6 @@ export const es = {
       { num: '04', week: 'JUE', title: 'Interfaz', desc: 'Frontend rápido, accesible y responsive. Pruebas automatizadas.' },
       { num: '05', week: 'VIE', title: 'Despliegue', desc: 'Avance funcional en producción. En tus manos. Cada semana.' },
     ],
-    phases: [
-      { num: 'Fase 1', title: 'Descubrimiento', desc: '30 minutos para entender tu negocio. Sin presentaciones de 40 diapositivas.' },
-      { num: 'Fase 2', title: 'Arquitectura inicial', desc: 'En 48 horas tienes la estructura técnica y un prototipo funcional.' },
-      { num: 'Fase 3', title: 'Ciclos semanales', desc: 'Cada viernes entregamos un avance funcional. Priorizamos juntos lo que genera más valor.' },
-      { num: 'Fase 4', title: 'Escalamos', desc: 'Una vez en producción, iteramos sobre datos reales de tus usuarios.' },
-    ],
   },
   cases: {
     label: 'Casos de éxito',
@@ -194,6 +188,7 @@ export const es = {
       { label: 'Cancelas cuando quieras', values: ['No', 'Sí', 'No', 'Sí'] },
     ],
     footer: 'Cada proyecto se cotiza según su alcance. Después de la entrega, puedes continuar evolucionándolo con un plan mensual.',
+    scrollHint: 'Desliza para ver más →',
   },
   contact: {
     label: 'Empezar',
@@ -239,15 +234,15 @@ export const es = {
   footer: {
     desc: 'Cotiza tu proyecto y, después de la entrega, continúa evolucionándolo con un plan mensual. Avances funcionales cada viernes. Precio fijo. Sin permanencia.',
     tagline: 'Estudio de Ingeniería',
-    capabilities: 'Capacidades',
-    resources: 'Recursos',
-    company: 'Empresa',
+    nav: 'Navegar',
+    connect: 'Conectar',
     links: {
       c1: 'Apps & SaaS', c2: 'IA & Automatización', c3: 'Ecommerce', c4: 'Infraestructura',
       r1: 'Casos de éxito', r2: 'FAQ', r3: 'Sistema de entrega',
       co1: 'Blog', co2: 'GitHub', co3: 'LinkedIn', co4: 'Contacto',
       l1: 'Privacidad', l2: 'Términos', l3: 'SLA',
     },
+    builtBy: 'Hecho por Sebastián Yepes',
     status: 'Aceptando nuevos proyectos',
     remote: 'Hecho en Medellín. Trabajando en todo el mundo.',
     rights: '© 2026 EXTRO.',

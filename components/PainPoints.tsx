@@ -21,7 +21,14 @@ export default function PainPoints() {
         {p.desc}
       </p>
 
-      <div data-reveal style={{ '--reveal-delay': '180ms' } as React.CSSProperties} className="overflow-x-auto">
+      <p className="sm:hidden text-xs text-[var(--text-tertiary)] mb-2" aria-hidden="true">
+        {p.scrollHint}
+      </p>
+      <div
+        data-reveal
+        style={{ '--reveal-delay': '180ms' } as React.CSSProperties}
+        className="overflow-x-auto scroll-fade-x"
+      >
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-border">
@@ -41,14 +48,14 @@ export default function PainPoints() {
           <tbody>
             {p.rows.map((row: { label: string; values: string[] }, i: number) => (
               <tr key={i} className="border-b border-border">
-                <td className="py-3.5 pr-6 opacity-60 text-[13px]">{row.label}</td>
+                <td className="py-3.5 pr-6 text-[13px] text-[var(--text-secondary)]">{row.label}</td>
                 {row.values.map((val: string, j: number) => (
                   <td
                     key={j}
                     className={`py-3.5 px-4 text-center text-[13px] whitespace-nowrap ${
                       j === 3
                         ? 'font-semibold text-accent'
-                        : 'opacity-50'
+                        : 'text-[var(--text-secondary)]'
                     }`}
                   >
                     {j === 3 && row.values[j] !== row.values[0] ? (

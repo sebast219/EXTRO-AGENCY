@@ -221,6 +221,7 @@ export default function Hero() {
               fill
               sizes={cfg.width}
               priority={i < 2}
+              loading={i < 2 ? undefined : 'lazy'}
               className="hero-float-img"
             />
           </div>
@@ -270,7 +271,7 @@ export default function Hero() {
           {t.hero.badges.map((b, i) => (
             <span
               key={i}
-              className="inline-flex items-center gap-1.5 text-[11px] px-3 py-1.5 rounded-full border border-border text-primary opacity-55"
+              className="inline-flex items-center gap-1.5 text-[11px] px-3 py-1.5 rounded-full border border-border text-[var(--text-secondary)]"
             >
               <span className="w-1 h-1 rounded-full bg-ink opacity-45" />
               {b}

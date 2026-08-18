@@ -39,7 +39,7 @@ function Group({
 
   return (
     <div>
-      <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-tertiary mb-2.5">{label}</p>
+      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-tertiary mb-2.5">{label}</p>
       <div className="grid grid-cols-4 gap-1.5">
         {slots.map((slot) => {
           const isTaken = taken.has(slot)

@@ -24,10 +24,15 @@ export default function FAQ() {
       <div className="mt-14 space-y-1">
         {t.faq.items.map((item, i) => {
           const open = openIdx === i
+          const buttonId = `faq-button-${i}`
+          const panelId = `faq-panel-${i}`
           return (
             <div key={i} data-reveal style={{ '--reveal-delay': `${i * 60 + 120}ms` } as React.CSSProperties}>
               <button
+                id={buttonId}
                 onClick={() => toggle(i)}
+                aria-expanded={open}
+                aria-controls={panelId}
                 className="w-full text-left py-4 flex items-start justify-between gap-4 group"
               >
                 <span className="text-sm font-medium text-primary group-hover:opacity-70 transition-opacity">
@@ -38,7 +43,12 @@ export default function FAQ() {
                 </span>
               </button>
               {open && (
-                <div className="pb-5 text-sm opacity-55 leading-relaxed">
+                <div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={buttonId}
+                  className="pb-5 text-sm leading-relaxed text-[var(--text-secondary)]"
+                >
                   {item.a}
                 </div>
               )}

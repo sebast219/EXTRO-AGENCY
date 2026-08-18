@@ -2,80 +2,90 @@
 
 import { useLang } from './LanguageProvider'
 import Link from 'next/link'
+import { Github, Linkedin } from 'lucide-react'
 import { localizedPath } from '@/lib/i18n/config'
+import { useReveal } from '@/lib/useReveal'
 
 export default function Footer() {
   const { t, lang } = useLang()
+  const ref = useReveal<HTMLElement>()
 
   const footerLink =
-    'text-[15px] text-primary opacity-60 hover:opacity-100 transition-opacity duration-200'
+    'text-[15px] text-white opacity-60 hover:opacity-100 transition-opacity duration-200'
+
+  // Adapted from .nav-pill-item (app/globals.css) for the dark footer surface:
+  // same shape/size, swapped for the dark-background text/hover tokens.
+  const navPill =
+    'text-xs font-medium px-2.5 py-1.5 rounded-[14px] text-white/60 hover:text-white hover:bg-white/10 transition-colors duration-200'
+
+  // In-page anchors, collapsed from the old Capabilities + part of Resources columns.
+  const navLinks = [
+    { href: '#capabilities', label: t.footer.links.c1 },
+    { href: '#capabilities', label: t.footer.links.c2 },
+    { href: '#capabilities', label: t.footer.links.c3 },
+    { href: '#capabilities', label: t.footer.links.c4 },
+    { href: '#deployments', label: t.footer.links.r1 },
+    { href: '#faq', label: t.footer.links.r2 },
+    { href: '#delivery', label: t.footer.links.r3 },
+  ]
 
   return (
-    <footer className="relative bg-surface text-primary overflow-hidden">
+    <footer ref={ref} className="relative bg-black text-white overflow-hidden">
       <div className="pt-12 md:pt-16 px-6 pb-6">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-8 text-center">
-            <div className="text-xl md:text-2xl font-semibold tracking-tight text-primary font-display">
+          <div data-reveal className="mb-8 text-center">
+            <span className="inline-flex items-center gap-1.5 text-[11px] px-3 py-1.5 rounded-full border border-white/15 text-white/60 mb-4">
+              <span className="w-1 h-1 rounded-full bg-white opacity-45" />
+              {t.footer.status}
+            </span>
+            <div className="text-xl md:text-2xl font-semibold tracking-tight text-white font-display">
               {t.footer.ctaTitle}
             </div>
-            <p className="text-primary opacity-50 mt-1.5 text-sm">{t.footer.ctaSub}</p>
+            <p className="mt-1.5 text-sm text-white/60">{t.footer.ctaSub}</p>
           </div>
 
-          <div className="h-px bg-border mb-10" />
+          <div
+            data-reveal
+            style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
+            className="h-px bg-white/15 mb-10"
+          />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-primary opacity-40 mb-5">
-                {t.footer.capabilities}
+          <div className="grid sm:grid-cols-[1.6fr_1fr] gap-10 mb-12">
+            <div data-reveal style={{ '--reveal-delay': '120ms' } as React.CSSProperties}>
+              <div className="text-xs font-semibold uppercase tracking-[0.12em] mb-5 text-white/40">
+                {t.footer.nav}
               </div>
-              <div className="flex flex-col gap-3">
-                <Link href="#capabilities" className={footerLink}>{t.footer.links.c1}</Link>
-                <Link href="#capabilities" className={footerLink}>{t.footer.links.c2}</Link>
-                <Link href="#capabilities" className={footerLink}>{t.footer.links.c3}</Link>
-                <Link href="#capabilities" className={footerLink}>{t.footer.links.c4}</Link>
-              </div>
-            </div>
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-primary opacity-40 mb-5">
-                {t.footer.resources}
-              </div>
-              <div className="flex flex-col gap-3">
-                <Link href="#deployments" className={footerLink}>{t.footer.links.r1}</Link>
-                <Link href="#faq" className={footerLink}>{t.footer.links.r2}</Link>
-                <Link href="#delivery" className={footerLink}>{t.footer.links.r3}</Link>
-                <Link href={localizedPath('/blog', lang)} className={footerLink}>{t.footer.links.co1}</Link>
+              <div className="flex flex-wrap gap-1 -ml-2.5">
+                {navLinks.map((link, i) => (
+                  <Link key={`${link.href}-${i}`} href={link.href} className={navPill}>
+                    {link.label}
+                  </Link>
+                ))}
               </div>
             </div>
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-primary opacity-40 mb-5">
-                {t.footer.company}
+            <div data-reveal style={{ '--reveal-delay': '220ms' } as React.CSSProperties}>
+              <div className="text-xs font-semibold uppercase tracking-[0.12em] mb-5 text-white/40">
+                {t.footer.connect}
               </div>
               <div className="flex flex-col gap-3">
-                <a
-                  href="https://github.com/sebast219"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={footerLink}
-                >
-                  {t.footer.links.co2}
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/sebastian-yepes-dev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={footerLink}
-                >
-                  {t.footer.links.co3}
-                </a>
-                <Link href="#contact" className={footerLink}>{t.footer.links.co4}</Link>
+                <Link href={localizedPath('/blog', lang)} className={footerLink}>
+                  {t.footer.links.co1}
+                </Link>
+                <Link href="#contact" className={footerLink}>
+                  {t.footer.links.co4}
+                </Link>
               </div>
             </div>
           </div>
 
-          <div className="pt-5 border-t border-border flex flex-wrap items-center justify-between gap-4">
+          <div
+            data-reveal
+            style={{ '--reveal-delay': '380ms' } as React.CSSProperties}
+            className="pt-5 border-t border-white/15 flex flex-wrap items-center justify-between gap-4"
+          >
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-              <span className="text-sm text-primary opacity-50">{t.footer.rights}</span>
-              <span className="text-sm text-primary opacity-40">{t.footer.remote}</span>
+              <span className="text-sm text-white/60">{t.footer.rights}</span>
+              <span className="text-sm text-white/40">{t.footer.remote}</span>
             </div>
             {/*
               /privacy y /sla apuntaban a páginas que nunca existieron: dos 404
@@ -83,18 +93,44 @@ export default function Footer() {
               agendamiento está ahora en /terms, así que ese es el único enlace
               legal que se publica.
             */}
-            <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center gap-5">
+              <span className="inline-flex items-center gap-2 text-sm text-white/60 opacity-60 hover:opacity-100 transition-opacity duration-200">
+                {t.footer.builtBy}
+                <a
+                  href="https://github.com/sebast219"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t.footer.links.co2}
+                  className="inline-flex hover:text-white"
+                >
+                  <Github size={14} strokeWidth={1.75} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/sebastian-yepes-dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t.footer.links.co3}
+                  className="inline-flex hover:text-white"
+                >
+                  <Linkedin size={14} strokeWidth={1.75} />
+                </a>
+              </span>
               <Link
                 href={localizedPath('/terms', lang)}
-                className="text-sm text-secondary hover:text-primary transition-colors"
+                className="text-sm text-white/60 hover:text-white transition-colors"
               >
                 {t.footer.links.l2}
               </Link>
             </div>
           </div>
 
-          <div className="pt-4 select-none pointer-events-none" aria-hidden="true">
-            <div className="text-center text-[clamp(2.5rem,8vw,6rem)] font-display font-bold leading-none tracking-[-0.05em] text-outline opacity-60">
+          <div
+            data-reveal
+            style={{ '--reveal-delay': '480ms' } as React.CSSProperties}
+            className="pt-4 select-none pointer-events-none"
+            aria-hidden="true"
+          >
+            <div className="text-center text-[clamp(2.5rem,8vw,6rem)] font-display font-bold leading-none tracking-[-0.05em] text-outline-dark">
               EXTRO
             </div>
           </div>

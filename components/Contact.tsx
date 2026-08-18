@@ -24,7 +24,7 @@ function InfoCard({
     <div className="card flex items-center gap-3 p-4">
       <div className="w-10 h-10 rounded-xl bg-surface flex items-center justify-center shrink-0">{icon}</div>
       <div>
-        <div className="text-[10px] font-semibold uppercase tracking-[0.1em] text-tertiary mb-0.5">{label}</div>
+        <div className="text-xs font-semibold uppercase tracking-[0.1em] text-tertiary mb-0.5">{label}</div>
         <div className="text-sm font-semibold text-primary">{value}</div>
       </div>
     </div>
@@ -66,7 +66,7 @@ export default function Contact() {
               </svg>
             </div>
             <div>
-              <div className="text-[10px] font-semibold uppercase tracking-[0.1em] text-tertiary mb-0.5">WhatsApp</div>
+              <div className="text-xs font-semibold uppercase tracking-[0.1em] text-tertiary mb-0.5">WhatsApp</div>
               <div className="text-sm font-semibold text-primary">{t.contact.whatsapp}</div>
             </div>
           </a>
@@ -76,7 +76,7 @@ export default function Contact() {
               <Mail size={18} strokeWidth={1.5} className="text-secondary" aria-hidden="true" />
             </div>
             <div>
-              <div className="text-[10px] font-semibold uppercase tracking-[0.1em] text-tertiary mb-0.5">Email</div>
+              <div className="text-xs font-semibold uppercase tracking-[0.1em] text-tertiary mb-0.5">Email</div>
               <div className="text-sm font-semibold text-primary">{t.contact.email}</div>
             </div>
           </a>
