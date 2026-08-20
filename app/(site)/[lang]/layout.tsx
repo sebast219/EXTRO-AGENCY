@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import '../../globals.css'
+import { Analytics } from '@vercel/analytics/next'
 import { LanguageProvider } from '@/components/LanguageProvider'
 import { LOCALES, isLocale, alternatesFor, SITE_URL, type Locale } from '@/lib/i18n/config'
 import { safeJsonLd } from '@/lib/seo/json-ld'
@@ -185,6 +186,7 @@ export default async function SiteLayout({
         <LanguageProvider lang={lang}>{children}</LanguageProvider>
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
+        <Analytics />
       </body>
     </html>
   )
