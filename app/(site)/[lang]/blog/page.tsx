@@ -5,7 +5,15 @@ import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 import { listPosts, formatPostDate } from '@/lib/content/posts'
 import { alternatesFor, isLocale, localizedPath, type Locale } from '@/lib/i18n/config'
 
-export const revalidate = 60
+/**
+ * CSP nonce (proxy.ts): el nonce solo se estampa en <script> cuando la página
+ * se renderiza por request. Ver el comentario equivalente en layout.tsx.
+ * `revalidate = 60` (ISR) se quitó de aquí porque no aplica con `dynamic =
+ * 'force-dynamic'` — la caché de datos ahora vive en `lib/content/posts.ts`
+ * vía `unstable_cache` con el mismo TTL de 60s, que es donde realmente se
+ * necesitaba (el fetch a Sanity, no el HTML).
+ */
+export const dynamic = 'force-dynamic'
 
 const COPY: Record<Locale, { title: string; description: string; intro: string; back: string }> = {
   es: {

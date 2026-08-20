@@ -1,8 +1,9 @@
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 import { timingSafeEqual } from 'crypto'
 import { getServerEnv } from '@/lib/env'
 import { fail, ok } from '@/lib/http'
 import { log } from '@/lib/observability/logger'
+import { extractSlugFromWebhookPayload } from '@/lib/content/posts'
 
 export const runtime = 'nodejs'
 
@@ -32,6 +33,31 @@ export async function POST(req: Request) {
   revalidatePath('/blog/[slug]', 'page')
   revalidatePath('/sitemap.xml')
 
-  log.info('revalidate.done', { paths: ['/blog', '/blog/[slug]', '/sitemap.xml'] })
+  /**
+   * `lib/content/posts.ts` cachea los datos de Sanity con `unstable_cache`
+   * (tag 'posts' para el listado, 'post'/'post:<slug>' por artículo, TTL
+   * 60s). `revalidatePath` solo invalida el HTML de las rutas de arriba —
+   * sin `revalidateTag` esa caché de datos seguía viva hasta que expiraba
+   * sola, así que una página revalidada podía volver a pedir datos y recibir
+   * el mismo contenido cacheado.
+   *
+   * El slug granular depende de que el webhook de Sanity esté configurado
+   * (en sanity.io, fuera de este repo) para mandar el documento o su slug en
+   * el payload — si no lo manda, el post individual se sigue refrescando
+   * solo al expirar el TTL de 60s.
+   */
+  /**
+   * Next 16.3 exige un segundo argumento (`profile`) desde que separó
+   * `revalidateTag` (fuera de Server Actions) de `updateTag`. 'max' fuerza
+   * la expiración inmediata de todo lo cacheado bajo el tag, que es el
+   * comportamiento que ya teníamos antes de este cambio de API.
+   */
+  revalidateTag('posts', 'max')
+  const body = await req.json().catch(() => null)
+  const slug = extractSlugFromWebhookPayload(body)
+  if (slug) revalidateTag(`post:${slug}`, 'max')
+
+  const tags = slug ? ['posts', `post:${slug}`] : ['posts']
+  log.info('revalidate.done', { paths: ['/blog', '/blog/[slug]', '/sitemap.xml'], tags })
   return ok({ revalidated: true })
 }

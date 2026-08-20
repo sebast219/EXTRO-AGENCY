@@ -6,6 +6,12 @@ import { getTranslations } from '@/lib/i18n'
 import { alternatesFor, isLocale, localizedPath, type Locale } from '@/lib/i18n/config'
 
 /**
+ * CSP nonce (proxy.ts): el nonce solo se estampa en <script> cuando la página
+ * se renderiza por request. Ver el comentario equivalente en layout.tsx.
+ */
+export const dynamic = 'force-dynamic'
+
+/**
  * B-8: esta página decidía el idioma comparando una cadena traducida
  * (`t.scope.label === 'Alcance'`) diecisiete veces. Bastaba retocar esa etiqueta
  * en las traducciones para que la página entera se sirviera en el idioma

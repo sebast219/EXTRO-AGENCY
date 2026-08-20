@@ -5,8 +5,17 @@ import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 import { PortableText } from 'next-sanity'
 import { getPost, listPosts, formatPostDate } from '@/lib/content/posts'
 import { alternatesFor, isLocale, localizedPath, absoluteUrl, SITE_URL, LOCALES } from '@/lib/i18n/config'
+import { safeJsonLd } from '@/lib/seo/json-ld'
 
-export const revalidate = 60
+/**
+ * CSP nonce (proxy.ts): el nonce solo se estampa en <script> cuando la página
+ * se renderiza por request. Ver el comentario equivalente en layout.tsx.
+ * `revalidate = 60` (ISR) se quitó de aquí porque no aplica con `dynamic =
+ * 'force-dynamic'` — la caché de datos ahora vive en `lib/content/posts.ts`
+ * vía `unstable_cache` con el mismo TTL de 60s, que es donde realmente se
+ * necesitaba (el fetch a Sanity, no el HTML).
+ */
+export const dynamic = 'force-dynamic'
 
 export async function generateStaticParams() {
   const posts = await listPosts()
@@ -150,7 +159,7 @@ export default async function PostPage({
 
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(articleSchema) }}
         />
       </article>
     </main>

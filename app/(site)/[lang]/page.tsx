@@ -16,6 +16,13 @@ import ScrollProgress from '@/components/ScrollProgress'
 import { DeliverySystemLazy, ServicesCarouselLazy } from '@/components/DynamicImports'
 import { getTranslations } from '@/lib/i18n'
 import { alternatesFor, isLocale } from '@/lib/i18n/config'
+import { safeJsonLd } from '@/lib/seo/json-ld'
+
+/**
+ * CSP nonce (proxy.ts): el nonce solo se estampa en <script> cuando la página
+ * se renderiza por request. Ver el comentario equivalente en layout.tsx.
+ */
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({
   params,
@@ -80,7 +87,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(faqSchema) }}
       />
     </main>
   )

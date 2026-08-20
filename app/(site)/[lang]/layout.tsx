@@ -4,6 +4,7 @@ import { Inter, Space_Grotesk } from 'next/font/google'
 import '../../globals.css'
 import { LanguageProvider } from '@/components/LanguageProvider'
 import { LOCALES, isLocale, alternatesFor, SITE_URL, type Locale } from '@/lib/i18n/config'
+import { safeJsonLd } from '@/lib/seo/json-ld'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
 const spaceGrotesk = Space_Grotesk({
@@ -20,11 +21,14 @@ export function generateStaticParams() {
 /**
  * CSP nonce (proxy.ts) y rendering: el nonce solo se estampa en los <script>
  * cuando la página se renderiza por request (Next.js no inyecta nonces en
- * páginas prerenderizadas en build time — no hay headers ahí). Todas las
- * páginas del sitio deben ser dinámicas; lo contrario bloquea todos los
- * scripts de Next en producción con la CSP estricta.
+ * páginas prerenderizadas en build time — no hay headers ahí). Por eso cada
+ * page.tsx bajo este layout declara `export const dynamic = 'force-dynamic'`
+ * explícitamente por ruta, en vez de heredarlo aquí: así queda claro por
+ * página qué se puede migrar a estático en el futuro sin tener que releer
+ * este comentario para saber qué rutas dependen del nonce por petición.
+ * El cuello de botella real (fetch a Sanity sin caché de datos) se resuelve
+ * en `lib/content/posts.ts` con `unstable_cache`, no aquí.
  */
-export const dynamic = 'force-dynamic'
 
 /**
  * viewport-fit=cover: permite que el contenido llegue bajo el notch y el home
@@ -152,9 +156,7 @@ const websiteSchema = {
  * Se marca el tipo explícitamente para que ningún navegador lo interprete.
  */
 function JsonLd({ data }: { data: object }) {
-  return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
-  )
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(data) }} />
 }
 
 export default async function SiteLayout({
