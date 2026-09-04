@@ -99,3 +99,11 @@ export function formatDateLong(date: DateISO, locale: 'es' | 'en', tz: string): 
     year: 'numeric',
   }).format(new Date(`${date}T12:00:00Z`))
 }
+
+/** Día de la semana ('lunes'/'Monday') para la fecha civil dada. */
+export function formatWeekday(date: DateISO, locale: 'es' | 'en', tz: string): string {
+  return new Intl.DateTimeFormat(locale === 'es' ? 'es-CO' : 'en-US', {
+    timeZone: tz,
+    weekday: 'long',
+  }).format(new Date(`${date}T12:00:00Z`))
+}

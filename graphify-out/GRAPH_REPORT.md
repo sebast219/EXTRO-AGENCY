@@ -1,26 +1,26 @@
-# Graph Report - EXTRON-AGENCY  (2026-08-17)
+# Graph Report - EXTRON-AGENCY  (2026-08-20)
 
 ## Corpus Check
-- 86 files · ~119,098 words
+- 89 files · ~120,798 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 546 nodes · 952 edges · 69 communities (30 shown, 39 thin omitted)
+- 554 nodes · 959 edges · 69 communities (30 shown, 39 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 21 edges (avg confidence: 0.91)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `73f8bea2`
+- Built from commit: `0e41bccb`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - booking/route.ts
-- i18n/index.ts
 - [lang]/page.tsx
+- useLang
 - time.ts
-- Booking Config & Graceful Degradation
-- Frontend Dependencies
+- devDependencies
+- dependencies
 - TypeScript Build Config
 - Motion System Pillars
 - contracts.ts
@@ -96,10 +96,10 @@
   README.md → package.json
 - `EX·TRON Project` --references--> `tailwindcss`  [EXTRACTED]
   README.md → package.json
-- `Group()` --calls--> `to12h()`  [EXTRACTED]
-  components/booking/SlotPicker.tsx → features/booking/time.ts
 - `robots.txt Configuration` --shares_data_with--> `EX·TRON Project`  [INFERRED]
   public/robots.txt → README.md
+- `JsonLd()` --calls--> `safeJsonLd()`  [EXTRACTED]
+  app/(site)/[lang]/layout.tsx → lib/seo/json-ld.ts
 - `SiteLayout()` --calls--> `isLocale()`  [EXTRACTED]
   app/(site)/[lang]/layout.tsx → lib/i18n/config.ts
 
@@ -115,27 +115,27 @@
 
 ### Community 0 - "booking/route.ts"
 Cohesion: 0.08
-Nodes (62): dynamic, GET(), runtime, POST(), runtime, POST(), runtime, clientErrorSchema (+54 more)
+Nodes (59): dynamic, GET(), runtime, POST(), runtime, POST(), runtime, clientErrorSchema (+51 more)
 
-### Community 1 - "i18n/index.ts"
-Cohesion: 0.09
-Nodes (38): BlogPage(), COPY, generateMetadata(), revalidate, generateMetadata(), PostPage(), revalidate, COPY (+30 more)
-
-### Community 2 - "[lang]/page.tsx"
+### Community 1 - "[lang]/page.tsx"
 Cohesion: 0.08
-Nodes (41): AmbientGrid(), CaseItem, Cases(), duplicated, duplicatedReversed, IMAGES, reversed, ClientsMarquee() (+33 more)
+Nodes (41): BlogPage(), COPY, dynamic, generateMetadata(), dynamic, generateMetadata(), PostPage(), COPY (+33 more)
+
+### Community 2 - "useLang"
+Cohesion: 0.08
+Nodes (39): CaseItem, Cases(), duplicated, duplicatedReversed, IMAGES, reversed, ClientsMarquee(), ReviewItem (+31 more)
 
 ### Community 3 - "time.ts"
 Cohesion: 0.09
-Nodes (33): Confirmed, Step, monthCells(), MonthGrid(), Props, Group(), Props, AvailabilityInput (+25 more)
+Nodes (36): BookingWidget(), Confirmed, Step, monthCells(), MonthGrid(), Props, Group(), Props (+28 more)
 
-### Community 4 - "Booking Config & Graceful Degradation"
+### Community 4 - "devDependencies"
 Cohesion: 0.05
-Nodes (42): autoprefixer, cross-env, app/api/booking/route.ts, Qué pasa cuando algo falla (graceful degradation), freebusy Availability Check, eslint-config-next, @eslint/eslintrc, eslint-plugin-unused-imports (+34 more)
+Nodes (42): autoprefixer, cross-env, app/api/booking/route.ts, Qué pasa cuando algo falla (graceful degradation), freebusy Availability Check, eslint, eslint-config-next, @eslint/eslintrc (+34 more)
 
-### Community 5 - "Frontend Dependencies"
-Cohesion: 0.06
-Nodes (35): geist, google-auth-library, @googleapis/calendar, gsap, next-sanity, dependencies, geist, google-auth-library (+27 more)
+### Community 5 - "dependencies"
+Cohesion: 0.05
+Nodes (37): geist, google-auth-library, @googleapis/calendar, gsap, next, next-sanity, dependencies, geist (+29 more)
 
 ### Community 6 - "TypeScript Build Config"
 Cohesion: 0.07
@@ -154,8 +154,8 @@ Cohesion: 0.12
 Nodes (16): engines, node, name, private, scripts, analyze, build, dev (+8 more)
 
 ### Community 10 - "posts.ts"
-Cohesion: 0.10
-Nodes (20): generateStaticParams(), revalidate, sitemap(), dynamic, Studio(), BlogPostMeta, FallbackPost, fallbackPosts (+12 more)
+Cohesion: 0.09
+Nodes (20): generateStaticParams(), revalidate, sitemap(), dynamic, BlogPostMeta, FallbackPost, fallbackPosts, cachedListPosts (+12 more)
 
 ### Community 11 - "OpenCode MCP Config"
 Cohesion: 0.22
@@ -210,24 +210,24 @@ Cohesion: 0.67
 Nodes (3): CRM Dashboard Screenshot, Dribbble Shot Page, Velo (CRM Product)
 
 ## Knowledge Gaps
-- **219 isolated node(s):** `inter`, `spaceGrotesk`, `dynamic`, `viewport`, `COPY` (+214 more)
+- **221 isolated node(s):** `inter`, `spaceGrotesk`, `viewport`, `COPY`, `organizationSchema` (+216 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `useLang()` connect `[lang]/page.tsx` to `booking/route.ts`, `time.ts`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
-- **Why does `captureException()` connect `booking/route.ts` to `posts.ts`?**
-  _High betweenness centrality (0.020) - this node is a cross-community bridge._
-- **Why does `dependencies` connect `Frontend Dependencies` to `Package Manifest`, `Booking Config & Graceful Degradation`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **What connects `inter`, `spaceGrotesk`, `dynamic` to the rest of the system?**
-  _219 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `useLang()` connect `useLang` to `time.ts`?**
+  _High betweenness centrality (0.033) - this node is a cross-community bridge._
+- **Why does `dependencies` connect `dependencies` to `Package Manifest`, `devDependencies`?**
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+- **Why does `captureException()` connect `booking/route.ts` to `[lang]/page.tsx`, `posts.ts`?**
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **What connects `inter`, `spaceGrotesk`, `viewport` to the rest of the system?**
+  _221 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `booking/route.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.07963963963963964 - nodes in this community are weakly interconnected._
-- **Should `i18n/index.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.09485815602836879 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08411580594679187 - nodes in this community are weakly interconnected._
 - **Should `[lang]/page.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.08243727598566308 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08045977011494253 - nodes in this community are weakly interconnected._
+- **Should `useLang` be split into smaller, more focused modules?**
+  _Cohesion score 0.08145363408521303 - nodes in this community are weakly interconnected._

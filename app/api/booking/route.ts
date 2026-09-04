@@ -5,7 +5,7 @@ import { clientIp, rateLimit, rateLimitHeaders } from '@/lib/rate-limit'
 import { sendMail, bookingConfirmation, bookingNotification } from '@/lib/mail'
 import { createMeeting, getBusyForDate, isCalendarEnabled } from '@/lib/google/calendar'
 import { isBookable } from '@/features/booking/availability'
-import { formatDateLong, to12h } from '@/features/booking/time'
+import { formatDateLong, formatWeekday, to12h } from '@/features/booking/time'
 import { log, captureException } from '@/lib/observability/logger'
 
 export const runtime = 'nodejs'
@@ -60,6 +60,7 @@ export async function POST(req: Request) {
 
   const dateLabel = formatDateLong(date, locale, tz)
   const timeLabel = to12h(time)
+  const weekday = formatWeekday(date, locale, tz)
 
   // 1 · Evento con sala de Meet.
   const meeting = await createMeeting({
@@ -86,7 +87,10 @@ export async function POST(req: Request) {
       : `Meeting confirmed · ${dateLabel} at ${timeLabel}`,
     html: bookingConfirmation({
       name,
+      email,
+      notes,
       dateLabel,
+      weekday,
       timeLabel,
       timeZoneLabel: tz.replace('_', ' '),
       meetUrl: meeting?.meetUrl ?? null,

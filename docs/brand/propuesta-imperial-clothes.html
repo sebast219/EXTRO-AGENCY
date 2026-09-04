@@ -1,0 +1,2759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>EXTRO — Propuesta para Imperial Clothes</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+/* ============================================================
+   EXTRO — Propuesta comercial · Imperial Clothes V2
+
+   Formato A4
+   Chrome > Ctrl+P > Guardar como PDF
+   Márgenes: Ninguno
+   Gráficos de fondo: Sí
+   ============================================================ */
+
+:root{
+  --accent:#0066ff;
+  --accent-dark:#0044cc;
+  --accent-light:#3388ff;
+
+  --ink:#0a0a0a;
+  --surface:#f5f5f7;
+  --elevated:#fafafa;
+
+  --line:#e5e5e5;
+  --line-soft:#f0f0f0;
+
+  --muted:#8a8a8a;
+  --muted-2:#6b6b6b;
+  --text:#404040;
+
+  --success:#16a34a;
+  --warning:#d97706;
+  --danger:#dc2626;
+
+  --display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --sans:Inter,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  background:#2e2e30;
+}
+
+body{
+  font-family:var(--sans);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  counter-reset:folio;
+  padding:32px 0;
+}
+
+/* ============================================================
+   PAGE
+   ============================================================ */
+
+.page{
+  position:relative;
+  width:210mm;
+  height:296.6mm;
+
+  margin:0 auto 26px;
+  padding:12mm;
+
+  background:var(--surface);
+
+  display:flex;
+  flex-direction:column;
+
+  overflow:hidden;
+
+  counter-increment:folio;
+
+  box-shadow:0 18px 50px rgba(0,0,0,.35);
+}
+
+.page__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 4px 18px;
+}
+
+.page__foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:14px 6px 0;
+
+  font-size:11px;
+  font-weight:500;
+
+  letter-spacing:1px;
+  text-transform:uppercase;
+
+  color:var(--muted);
+}
+
+.folio::after{
+  content:counter(folio,decimal-leading-zero);
+}
+
+/* ============================================================
+   BRAND
+   ============================================================ */
+
+.brand{
+  font-family:var(--display);
+  font-size:22px;
+  font-weight:700;
+
+  letter-spacing:2px;
+
+  color:var(--ink);
+}
+
+.brand i{
+  font-style:normal;
+  color:var(--accent);
+}
+
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  font-size:11px;
+  font-weight:600;
+
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+
+  color:var(--muted-2);
+}
+
+.dot{
+  width:6px;
+  height:6px;
+
+  border-radius:50%;
+
+  background:var(--accent);
+
+  display:inline-block;
+
+  flex:0 0 auto;
+}
+
+.dot--green{
+  background:#22c55e;
+}
+
+.dot--amber{
+  background:#f59e0b;
+}
+
+/* ============================================================
+   CARD
+   ============================================================ */
+
+.card{
+  flex:1 1 auto;
+  min-height:0;
+
+  background:#fff;
+
+  border:1px solid var(--line);
+  border-radius:14px;
+
+  overflow:hidden;
+
+  display:flex;
+  flex-direction:column;
+}
+
+.card__pad{
+  padding:32px;
+
+  flex:1 1 auto;
+  min-height:0;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+
+h1{
+  font-family:var(--display);
+
+  font-size:34px;
+  font-weight:700;
+
+  line-height:1.14;
+  letter-spacing:-.02em;
+
+  color:var(--ink);
+}
+
+h2{
+  font-family:var(--display);
+
+  font-size:24px;
+  font-weight:600;
+
+  line-height:1.2;
+  letter-spacing:-.015em;
+
+  color:var(--ink);
+
+  margin-bottom:8px;
+}
+
+h3{
+  font-size:15px;
+  font-weight:600;
+
+  color:var(--ink);
+
+  margin-bottom:4px;
+
+  letter-spacing:-.01em;
+}
+
+h4{
+  font-size:13px;
+  font-weight:600;
+
+  color:var(--ink);
+
+  margin-bottom:3px;
+}
+
+p{
+  font-size:14px;
+  line-height:1.7;
+}
+
+.lead{
+  font-size:15px;
+  line-height:1.75;
+
+  color:var(--text);
+}
+
+.sub{
+  font-size:14px;
+  color:var(--muted-2);
+}
+
+.small{
+  font-size:12px;
+  line-height:1.6;
+
+  color:var(--muted-2);
+}
+
+.tiny{
+  font-size:11px;
+  line-height:1.55;
+
+  color:var(--muted);
+}
+
+.section-label{
+  font-size:11px;
+  font-weight:600;
+
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+
+  color:var(--muted);
+
+  margin-bottom:8px;
+}
+
+.accent{
+  color:var(--accent);
+}
+
+.head-block{
+  margin-bottom:22px;
+}
+
+.gline{
+  height:1px;
+
+  margin:22px 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      #e5e5e5 20%,
+      #e5e5e5 80%,
+      transparent 100%
+    );
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3388ff 0%,
+      #0066ff 45%,
+      #0044cc 100%
+    );
+
+  padding:56px 40px 48px;
+
+  color:#fff;
+}
+
+.hero::before,
+.hero::after{
+  content:'';
+
+  position:absolute;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.06);
+}
+
+.hero::before{
+  top:-90px;
+  right:-70px;
+
+  width:280px;
+  height:280px;
+}
+
+.hero::after{
+  bottom:-70px;
+  left:-60px;
+
+  width:200px;
+  height:200px;
+}
+
+.hero > *{
+  position:relative;
+  z-index:1;
+}
+
+.pill{
+  display:inline-block;
+
+  font-size:11px;
+  font-weight:700;
+
+  letter-spacing:2px;
+
+  color:#fff;
+
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:999px;
+
+  padding:8px 18px;
+
+  background:rgba(255,255,255,.10);
+}
+
+/* ============================================================
+   STORES
+   ============================================================ */
+
+.stores{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:10px;
+
+  margin-top:6px;
+}
+
+.store{
+  border:1px solid var(--line-soft);
+
+  border-radius:10px;
+
+  padding:12px;
+
+  background:var(--elevated);
+
+  font-size:11.5px;
+
+  color:var(--text);
+
+  line-height:1.5;
+}
+
+.store b{
+  display:block;
+
+  font-size:12.5px;
+
+  color:var(--ink);
+
+  margin-bottom:2px;
+}
+
+/* ============================================================
+   PAINS
+   ============================================================ */
+
+.pains{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:14px;
+
+  margin-top:16px;
+}
+
+.pain{
+  border:1px solid var(--line-soft);
+
+  border-radius:12px;
+
+  padding:16px 18px;
+
+  background:var(--elevated);
+}
+
+.pain .n{
+  font-family:var(--display);
+
+  font-size:11px;
+  font-weight:700;
+
+  letter-spacing:1.5px;
+
+  color:var(--accent);
+
+  margin-bottom:6px;
+
+  display:block;
+}
+
+.pain p{
+  font-size:12.5px;
+
+  line-height:1.55;
+
+  color:var(--text);
+}
+
+/* ============================================================
+   AUDIT
+   ============================================================ */
+
+.audit-stats{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:10px;
+
+  margin-top:10px;
+}
+
+.audit-stat{
+  border:1px solid var(--line-soft);
+
+  border-radius:12px;
+
+  padding:15px;
+
+  background:var(--elevated);
+}
+
+.audit-stat b{
+  display:block;
+
+  font-family:var(--display);
+
+  font-size:20px;
+
+  font-weight:700;
+
+  color:var(--ink);
+
+  margin-bottom:3px;
+}
+
+.audit-stat span{
+  font-size:10px;
+
+  letter-spacing:.6px;
+
+  text-transform:uppercase;
+
+  color:var(--muted);
+}
+
+.findings{
+  margin-top:18px;
+}
+
+.finding{
+  display:flex;
+
+  gap:10px;
+
+  align-items:flex-start;
+
+  padding:10px 0;
+
+  border-bottom:1px solid var(--line-soft);
+}
+
+.finding:last-child{
+  border-bottom:none;
+}
+
+.finding .tag{
+  flex:0 0 auto;
+
+  font-size:9px;
+  font-weight:700;
+
+  letter-spacing:.8px;
+
+  text-transform:uppercase;
+
+  padding:3px 8px;
+
+  border-radius:6px;
+
+  margin-top:1px;
+}
+
+.tag--risk{
+  background:#fef2f2;
+  color:#991b1b;
+}
+
+.tag--warn{
+  background:#fef3c7;
+  color:#92400e;
+}
+
+.tag--info{
+  background:#eff6ff;
+  color:#1d4ed8;
+}
+
+.finding p{
+  font-size:12.5px;
+
+  line-height:1.5;
+
+  color:var(--text);
+}
+
+.finding b{
+  color:var(--ink);
+}
+
+/* ============================================================
+   TODAY VS EXTRO
+   ============================================================ */
+
+.compare{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:14px;
+
+  margin-top:8px;
+}
+
+.compare-card{
+  border:1px solid var(--line);
+
+  border-radius:14px;
+
+  overflow:hidden;
+
+  background:#fff;
+}
+
+.compare-card__head{
+  padding:14px 18px;
+
+  border-bottom:1px solid var(--line-soft);
+
+  font-size:10px;
+
+  font-weight:700;
+
+  letter-spacing:1.3px;
+
+  text-transform:uppercase;
+
+  color:var(--muted-2);
+}
+
+.compare-card--after{
+  border-color:#cfe0ff;
+
+  background:#f8fbff;
+}
+
+.compare-card--after .compare-card__head{
+  color:var(--accent);
+}
+
+.compare-list{
+  list-style:none;
+
+  padding:8px 18px 12px;
+}
+
+.compare-list li{
+  position:relative;
+
+  padding:9px 0 9px 18px;
+
+  border-bottom:1px solid var(--line-soft);
+
+  font-size:12.5px;
+
+  line-height:1.45;
+
+  color:var(--text);
+}
+
+.compare-list li:last-child{
+  border-bottom:none;
+}
+
+.compare-list li::before{
+  position:absolute;
+
+  left:0;
+
+  top:9px;
+
+  font-weight:700;
+}
+
+.compare-card--before .compare-list li::before{
+  content:'—';
+
+  color:var(--muted);
+}
+
+.compare-card--after .compare-list li::before{
+  content:'✓';
+
+  color:var(--accent);
+}
+
+.impact-grid{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:10px;
+
+  margin-top:16px;
+}
+
+.impact{
+  border-radius:12px;
+
+  padding:15px;
+
+  background:var(--ink);
+
+  color:#fff;
+}
+
+.impact b{
+  display:block;
+
+  font-family:var(--display);
+
+  font-size:14px;
+
+  margin-bottom:4px;
+}
+
+.impact span{
+  font-size:10.5px;
+
+  line-height:1.45;
+
+  color:#a3a3a3;
+}
+
+/* ============================================================
+   FLOW
+   ============================================================ */
+
+.flow{
+  margin-top:8px;
+}
+
+.flow .step{
+  display:grid;
+
+  grid-template-columns:34px 1fr;
+
+  gap:12px;
+
+  padding:10px 0;
+
+  border-bottom:1px solid var(--line-soft);
+}
+
+.flow .step:last-child{
+  border-bottom:none;
+}
+
+.flow .num{
+  width:26px;
+  height:26px;
+
+  border-radius:50%;
+
+  background:var(--ink);
+
+  color:#fff;
+
+  font-family:var(--display);
+
+  font-size:10px;
+
+  font-weight:700;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+}
+
+.flow .step p{
+  font-size:13px;
+
+  color:var(--ink);
+
+  line-height:1.5;
+}
+
+.flow .step span{
+  display:block;
+
+  font-size:11px;
+
+  color:var(--muted-2);
+
+  margin-top:2px;
+}
+
+/* ============================================================
+   ARCHITECTURE
+   ============================================================ */
+
+.architecture{
+  margin-top:4px;
+}
+
+.arch-top{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:10px;
+}
+
+.arch-node{
+  border:1px solid var(--line);
+
+  border-radius:10px;
+
+  padding:13px 10px;
+
+  text-align:center;
+
+  background:var(--elevated);
+}
+
+.arch-node b{
+  display:block;
+
+  font-size:12px;
+
+  color:var(--ink);
+
+  margin-bottom:3px;
+}
+
+.arch-node span{
+  font-size:10px;
+
+  color:var(--muted-2);
+}
+
+.arch-arrow{
+  text-align:center;
+
+  font-family:var(--display);
+
+  font-size:18px;
+
+  color:var(--accent);
+
+  padding:8px 0;
+}
+
+.arch-core{
+  border-radius:14px;
+
+  padding:20px;
+
+  background:var(--ink);
+
+  color:#fff;
+
+  text-align:center;
+}
+
+.arch-core b{
+  display:block;
+
+  font-family:var(--display);
+
+  font-size:18px;
+
+  margin-bottom:4px;
+}
+
+.arch-core span{
+  font-size:11px;
+
+  color:#9a9a9a;
+}
+
+.arch-modules{
+  display:grid;
+
+  grid-template-columns:repeat(5,1fr);
+
+  gap:6px;
+
+  margin-top:12px;
+}
+
+.arch-module{
+  border:1px solid var(--line-soft);
+
+  border-radius:9px;
+
+  padding:9px 5px;
+
+  text-align:center;
+
+  background:#fff;
+}
+
+.arch-module span{
+  font-size:9.5px;
+
+  font-weight:600;
+
+  color:var(--text);
+}
+
+/* ============================================================
+   CAPABILITIES
+   ============================================================ */
+
+.caps{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:12px;
+
+  margin-top:6px;
+}
+
+.cap{
+  border-top:2px solid var(--line-soft);
+
+  padding-top:10px;
+}
+
+.cap h4{
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+}
+
+.cap p{
+  font-size:12.5px;
+
+  color:var(--text);
+
+  line-height:1.55;
+}
+
+.cap--wide{
+  grid-column:1/-1;
+}
+
+/* ============================================================
+   METHOD
+   ============================================================ */
+
+.rows > div{
+  padding:12px 0;
+
+  border-bottom:1px solid var(--line-soft);
+}
+
+.rows > div:last-child{
+  border-bottom:none;
+}
+
+.rows .label{
+  font-size:11px;
+
+  font-weight:600;
+
+  text-transform:uppercase;
+
+  letter-spacing:1.5px;
+
+  color:var(--muted);
+
+  margin-bottom:5px;
+}
+
+.rows .value{
+  font-size:14px;
+
+  color:var(--ink);
+
+  font-weight:500;
+
+  line-height:1.55;
+}
+
+/* ============================================================
+   PILLARS
+   ============================================================ */
+
+.pillars{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:0;
+
+  border-radius:12px;
+
+  overflow:hidden;
+
+  margin-top:18px;
+}
+
+.pillar{
+  background:var(--ink);
+
+  color:#fff;
+
+  text-align:center;
+
+  padding:18px 10px;
+}
+
+.pillar+.pillar{
+  border-left:1px solid #2a2a2a;
+}
+
+.pillar b{
+  display:block;
+
+  font-family:var(--display);
+
+  font-size:15px;
+
+  font-weight:700;
+
+  margin-bottom:2px;
+}
+
+.pillar span{
+  font-size:10px;
+
+  letter-spacing:.8px;
+
+  text-transform:uppercase;
+
+  color:#8a8a8a;
+}
+
+/* ============================================================
+   INVESTMENT
+   ============================================================ */
+
+.investment{
+  display:grid;
+
+  grid-template-columns:1.15fr .85fr;
+
+  gap:14px;
+
+  margin-top:8px;
+}
+
+.investment-main{
+  border:1px solid var(--line);
+
+  border-radius:14px;
+
+  padding:22px;
+
+  background:#fff;
+}
+
+.investment-side{
+  border:1px solid #cfe0ff;
+
+  border-radius:14px;
+
+  padding:22px;
+
+  background:#f7faff;
+}
+
+.investment-label{
+  font-size:10px;
+
+  font-weight:700;
+
+  letter-spacing:1.2px;
+
+  text-transform:uppercase;
+
+  color:var(--muted);
+
+  margin-bottom:7px;
+}
+
+.price{
+  font-family:var(--display);
+
+  font-size:30px;
+
+  font-weight:700;
+
+  color:var(--ink);
+
+  margin-bottom:3px;
+}
+
+.price-placeholder{
+  background:#fff8e1;
+
+  box-shadow:0 0 0 2px #fff8e1;
+
+  border-radius:3px;
+
+  padding:0 3px;
+}
+
+.timeline{
+  font-family:var(--display);
+
+  font-size:25px;
+
+  font-weight:700;
+
+  color:var(--ink);
+}
+
+.included{
+  list-style:none;
+
+  margin-top:14px;
+}
+
+.included li{
+  position:relative;
+
+  padding:6px 0 6px 18px;
+
+  font-size:12px;
+
+  line-height:1.5;
+
+  color:var(--text);
+}
+
+.included li::before{
+  content:'✓';
+
+  position:absolute;
+
+  left:0;
+
+  color:var(--accent);
+
+  font-weight:700;
+}
+
+.scope-note{
+  margin-top:14px;
+
+  padding:12px 14px;
+
+  border-radius:9px;
+
+  background:#f5f5f7;
+
+  font-size:11px;
+
+  line-height:1.5;
+
+  color:var(--muted-2);
+}
+
+/* ============================================================
+   CTA
+   ============================================================ */
+
+.notice{
+  border-radius:10px;
+
+  padding:14px 18px;
+
+  font-size:13px;
+
+  font-weight:500;
+}
+
+.notice--blue{
+  background:#f0f7ff;
+
+  border:1px solid #dbeafe;
+
+  color:var(--accent-dark);
+}
+
+.cta{
+  display:inline-block;
+
+  padding:15px 34px;
+
+  color:#fff;
+
+  text-decoration:none;
+
+  font-size:14px;
+
+  font-weight:600;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0066ff,
+      #0044cc
+    );
+
+  box-shadow:
+    0 4px 14px rgba(0,102,255,.25);
+}
+
+.close-body{
+  display:flex;
+
+  flex-direction:column;
+
+  height:100%;
+}
+
+.close-cta{
+  margin-top:28px;
+
+  text-align:center;
+
+  padding-top:18px;
+}
+
+.footer-dark{
+  background:var(--ink);
+
+  border-radius:12px;
+
+  padding:28px 24px;
+
+  text-align:center;
+
+  margin-top:18px;
+}
+
+.footer-dark .fw{
+  font-family:var(--display);
+
+  font-size:18px;
+
+  font-weight:700;
+
+  letter-spacing:2px;
+
+  color:#fff;
+}
+
+.footer-dark .fw i{
+  font-style:normal;
+
+  color:var(--accent-light);
+}
+
+.footer-dark .role{
+  font-size:13px;
+
+  color:#8a8a8a;
+
+  margin-top:8px;
+}
+
+.footer-dark .contact{
+  font-size:12px;
+
+  color:#6b6b6b;
+
+  margin-top:14px;
+
+  line-height:1.8;
+}
+
+.footer-dark .legal{
+  font-size:11px;
+
+  color:#4a4a4a;
+
+  margin-top:14px;
+
+  padding-top:14px;
+
+  border-top:1px solid #2a2a2a;
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+
+@page{
+  size:A4;
+  margin:0;
+}
+
+@media print{
+
+  html{
+    background:none;
+  }
+
+  body{
+    padding:0;
+  }
+
+  .page{
+    margin:0;
+
+    box-shadow:none;
+
+    break-after:page;
+    page-break-after:always;
+  }
+
+  .page:last-child{
+    break-after:auto;
+    page-break-after:auto;
+  }
+
+  .pain,
+  .finding,
+  .step,
+  .store,
+  .compare-card,
+  .impact,
+  .cap,
+  .investment-main,
+  .investment-side{
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
+
+  *{
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     01 — PORTADA
+     ============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+    <span class="brand">EXTRO<i>.</i></span>
+
+    <div class="eyebrow">
+      <span class="dot"></span>
+      Propuesta comercial
+    </div>
+  </div>
+
+  <div class="card">
+
+    <div
+      class="hero"
+      style="
+        flex:1;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+      "
+    >
+
+      <span class="pill">
+        PARA IMPERIAL CLOTHES
+      </span>
+
+      <h1
+        style="
+          color:#fff;
+          font-size:38px;
+          margin-top:20px;
+        "
+      >
+        Seis tiendas.<br/>
+        Un solo sistema.
+      </h1>
+
+      <p
+        style="
+          color:rgba(255,255,255,.9);
+          font-size:15px;
+          margin-top:16px;
+          max-width:500px;
+          line-height:1.7;
+        "
+      >
+        Un software a medida para conectar inventario,
+        pedidos, pagos y clientes de sus seis sedes
+        y su canal digital en una sola operación.
+      </p>
+
+    </div>
+
+    <div
+      class="card__pad"
+      style="
+        flex:0 0 auto;
+        display:flex;
+        justify-content:space-between;
+        align-items:flex-end;
+        border-top:1px solid var(--line-soft);
+      "
+    >
+
+      <div class="chips"></div>
+
+      <div
+        class="tiny"
+        style="text-align:right"
+      >
+        imperialclothes.co<br/>
+        Preparado — Agosto de 2026
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     02 — DIAGNÓSTICO
+     ============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot dot--amber"></span>
+      Diagnóstico
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          Lo que vemos en su operación
+        </div>
+
+        <h2>
+          Seis tiendas, seis marcas,<br/>
+          una operación fragmentada.
+        </h2>
+
+        <p class="lead">
+          Imperial Clothes ya tiene lo difícil:
+          seis sedes, seis marcas reconocidas,
+          presencia en Medellín y una comunidad digital
+          de más de 192 mil seguidores.
+          La oportunidad está en conectar toda esa operación.
+        </p>
+
+      </div>
+
+      <div class="gline"></div>
+
+      <div class="stores">
+
+        <div class="store">
+          <b>C.C Florida</b>
+          Local 1293
+        </div>
+
+        <div class="store">
+          <b>C.C San Nicolás</b>
+          Local 107
+        </div>
+
+        <div class="store">
+          <b>C.C Puerta del Norte</b>
+          Local 2142
+        </div>
+
+        <div class="store">
+          <b>C.C Arkadia</b>
+          Local 0386
+        </div>
+
+        <div class="store">
+          <b>C.C La Central</b>
+          Local 0143
+        </div>
+
+        <div class="store">
+          <b>Palms Avenue</b>
+          Local 209
+        </div>
+
+      </div>
+
+      <div class="pains">
+
+        <div class="pain">
+          <span class="n">01</span>
+
+          <p>
+            <b style="color:var(--ink)">
+              Stock por sede, sin visibilidad cruzada.
+            </b>
+            Si una tienda no tiene una talla,
+            el equipo necesita consultar manualmente
+            si existe en otra sede.
+          </p>
+        </div>
+
+        <div class="pain">
+          <span class="n">02</span>
+
+          <p>
+            <b style="color:var(--ink)">
+              Pedidos repartidos entre canales.
+            </b>
+            Instagram, WhatsApp, web y mostrador
+            pueden terminar gestionándose por separado.
+          </p>
+        </div>
+
+        <div class="pain">
+          <span class="n">03</span>
+
+          <p>
+            <b style="color:var(--ink)">
+              Información de ventas fragmentada.
+            </b>
+            Consolidar lo que vendió cada sede
+            requiere depender de cierres y reportes separados.
+          </p>
+        </div>
+
+        <div class="pain">
+          <span class="n">04</span>
+
+          <p>
+            <b style="color:var(--ink)">
+              Poca trazabilidad por referencia.
+            </b>
+            La operación debería permitir saber
+            qué marca, referencia, talla y sede tienen
+            mayor rotación.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="gline"></div>
+
+      <p class="lead">
+        <b style="color:var(--ink)">
+          El problema no es tener seis tiendas.
+        </b>
+        Es que la información de esas seis tiendas
+        no funciona todavía como una sola fuente de verdad.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     03 — AUDITORÍA DIGITAL
+     ============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot dot--amber"></span>
+      Auditoría técnica
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          Evidencia — imperialclothes.co
+        </div>
+
+        <h2>
+          Hay oportunidades concretas<br/>
+          en su canal digital.
+        </h2>
+
+        <p class="lead">
+          Analizamos técnicamente el sitio actual
+          y encontramos varios puntos que pueden mejorar
+          la capacidad de descubrimiento, estructura
+          y experiencia del canal digital.
+        </p>
+
+      </div>
+
+      <div class="audit-stats">
+
+        <div class="audit-stat">
+          <b>7</b>
+          <span>Imágenes sin ALT</span>
+        </div>
+
+        <div class="audit-stat">
+          <b>1</b>
+          <span>Dominio externo detectado</span>
+        </div>
+
+        <div class="audit-stat">
+          <b>0,53 s</b>
+          <span>Respuesta inicial observada</span>
+        </div>
+
+      </div>
+
+      <div class="findings">
+
+        <div class="finding">
+
+          <span class="tag tag--warn">
+            SEO
+          </span>
+
+          <p>
+            <b>
+              7 imágenes de producto sin texto alternativo.
+            </b>
+            Esto representa oportunidades perdidas
+            para mejorar accesibilidad y descubrimiento
+            mediante búsqueda de imágenes.
+          </p>
+
+        </div>
+
+        <div class="finding">
+
+          <span class="tag tag--warn">
+            Autoridad
+          </span>
+
+          <p>
+            <b>
+              Detectamos una cantidad muy limitada de dominios
+              externos enlazando al sitio.
+            </b>
+            Existe una oportunidad de aprovechar mejor
+            la presencia digital de la marca y sus canales.
+          </p>
+
+        </div>
+
+        <div class="finding">
+
+          <span class="tag tag--info">
+            Estructura
+          </span>
+
+          <p>
+            <b>
+              Existen inconsistencias entre título, encabezados
+              y contenido.
+            </b>
+            Una estructura más coherente facilita que
+            buscadores y usuarios entiendan cada página.
+          </p>
+
+        </div>
+
+        <div class="finding">
+
+          <span class="tag tag--info">
+            Técnica
+          </span>
+
+          <p>
+            <b>
+              Encontramos referencias internas que conviene
+              revisar para mantener una experiencia HTTPS consistente.
+            </b>
+            Recomendamos corregirlas dentro de la próxima
+            iteración del canal digital.
+          </p>
+
+        </div>
+
+        <div class="finding">
+
+          <span class="tag tag--info">
+            Performance
+          </span>
+
+          <p>
+            <b>
+              La velocidad y experiencia de usuario deben
+              evaluarse por plantilla y dispositivo.
+            </b>
+            La optimización debe enfocarse en las páginas
+            que realmente reciben tráfico y generan conversión.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="gline"></div>
+
+      <div class="notice notice--blue">
+        La oportunidad no es simplemente “tener una web más rápida”.
+        Es convertir el canal digital en una extensión real
+        de las seis tiendas y del inventario disponible.
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     04 — CASO DE USO
+     ============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot dot--green"></span>
+      Un ejemplo concreto
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          Un ejemplo concreto
+        </div>
+
+        <h2>
+          Así funcionaría una venta<br/>
+          entre las seis sedes.
+        </h2>
+
+      </div>
+
+      <div class="flow">
+
+        <div class="step">
+          <div class="num">01</div>
+
+          <div>
+            <p>
+              Una clienta pregunta por una talla
+              de New Balance desde Instagram.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">02</div>
+
+          <div>
+            <p>
+              El equipo consulta el sistema y ve
+              en qué sede está disponible:
+              Florida, San Nicolás, Puerta del Norte,
+              Arkadia, La Central o Palms Avenue.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">03</div>
+
+          <div>
+            <p>
+              Se crea el pedido y el inventario
+              queda reservado o descontado según
+              el flujo definido por Imperial.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">04</div>
+
+          <div>
+            <p>
+              La sede correspondiente recibe
+              la orden para preparar el envío
+              o la recogida.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">05</div>
+
+          <div>
+            <p>
+              El pago —efectivo, tarjeta o transferencia—
+              queda asociado a esa venta.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">06</div>
+
+          <div>
+            <p>
+              Gerencia puede consultar la venta
+              consolidada junto a las operaciones
+              de las otras cinco sedes.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="gline"></div>
+
+      <p
+        class="lead"
+        style="
+          font-style:italic;
+          color:var(--ink);
+        "
+      >
+        El objetivo no es agregar más canales.
+        Es hacer que los canales que ya tienen
+        trabajen sobre la misma información.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     05 — HOY VS EXTRO
+     ============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot"></span>
+      La transformación
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          Qué cambia
+        </div>
+
+        <h2>
+          De información fragmentada<br/>
+          a una sola fuente de verdad.
+        </h2>
+
+        <p class="lead">
+          El sistema no busca complicar la operación.
+          Busca eliminar pasos manuales y darle a cada persona
+          la información que necesita para tomar decisiones.
+        </p>
+
+      </div>
+
+      <div class="compare">
+
+        <div class="compare-card compare-card--before">
+
+          <div class="compare-card__head">
+            Hoy
+          </div>
+
+          <ul class="compare-list">
+
+            <li>
+              Consultar stock sede por sede.
+            </li>
+
+            <li>
+              Pedidos repartidos entre diferentes canales.
+            </li>
+
+            <li>
+              Cierres y reportes separados.
+            </li>
+
+            <li>
+              Traslados de inventario con seguimiento manual.
+            </li>
+
+            <li>
+              Información comercial fragmentada.
+            </li>
+
+            <li>
+              Campañas generales para toda la comunidad.
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="compare-card compare-card--after">
+
+          <div class="compare-card__head">
+            Con EXTRO
+          </div>
+
+          <ul class="compare-list">
+
+            <li>
+              Stock consolidado por sede, talla, color y marca.
+            </li>
+
+            <li>
+              Pedidos centralizados en un mismo flujo.
+            </li>
+
+            <li>
+              Ventas consolidadas y visibles en tiempo real.
+            </li>
+
+            <li>
+              Transferencias entre sedes trazables.
+            </li>
+
+            <li>
+              Dashboard por sede y consolidado.
+            </li>
+
+            <li>
+              Clientes segmentados según su comportamiento de compra.
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+      <div class="impact-grid">
+
+        <div class="impact">
+          <b>Ventas</b>
+          <span>
+            Menos oportunidades perdidas por no conocer
+            dónde está disponible una referencia.
+          </span>
+        </div>
+
+        <div class="impact">
+          <b>Operación</b>
+          <span>
+            Menos tiempo dedicado a consolidar información
+            que ya existe en diferentes lugares.
+          </span>
+        </div>
+
+        <div class="impact">
+          <b>Decisiones</b>
+          <span>
+            Una visión más clara de rotación, stock
+            y comportamiento por sede y marca.
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     06 — ARQUITECTURA
+     ============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot"></span>
+      Arquitectura
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          Cómo se conecta
+        </div>
+
+        <h2>
+          Una sola fuente de verdad<br/>
+          para toda la operación.
+        </h2>
+
+        <p class="lead">
+          La propuesta no parte de reemplazar herramientas
+          que ya funcionan. Partimos de conectarlas y construir
+          la capa de operación que hoy hace falta.
+        </p>
+
+      </div>
+
+      <div class="architecture">
+
+        <div class="arch-top">
+
+          <div class="arch-node">
+            <b>Instagram</b>
+            <span>Consultas y demanda</span>
+          </div>
+
+          <div class="arch-node">
+            <b>WhatsApp</b>
+            <span>Pedidos y atención</span>
+          </div>
+
+          <div class="arch-node">
+            <b>Tienda online</b>
+            <span>Venta digital</span>
+          </div>
+
+        </div>
+
+        <div class="arch-arrow">
+          ↓
+        </div>
+
+        <div class="arch-core">
+
+          <b>SISTEMA CENTRAL IMPERIAL</b>
+
+          <span>
+            Inventario · pedidos · clientes · pagos · analítica
+          </span>
+
+        </div>
+
+        <div class="arch-arrow">
+          ↓
+        </div>
+
+        <div class="arch-modules">
+
+          <div class="arch-module">
+            <span>Florida</span>
+          </div>
+
+          <div class="arch-module">
+            <span>San Nicolás</span>
+          </div>
+
+          <div class="arch-module">
+            <span>Puerta del Norte</span>
+          </div>
+
+          <div class="arch-module">
+            <span>Arkadia</span>
+          </div>
+
+          <div class="arch-module">
+            <span>La Central</span>
+          </div>
+
+        </div>
+
+        <div
+          class="arch-modules"
+          style="grid-template-columns:1fr;margin-top:6px"
+        >
+
+          <div class="arch-module">
+            <span>Palms Avenue</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="gline"></div>
+
+      <div class="notice notice--blue">
+
+        <b>
+          Shopify y las herramientas existentes pueden seguir
+          formando parte del ecosistema.
+        </b>
+
+        El objetivo es que el inventario y la operación
+        no dependan de consultar múltiples fuentes manualmente.
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     07 — QUÉ CONSTRUIMOS
+     ============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot"></span>
+      El sistema
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          Qué construimos
+        </div>
+
+        <h2>
+          Software a medida para<br/>
+          las seis sedes.
+        </h2>
+
+      </div>
+
+      <div class="caps">
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Inventario multi-sede
+          </h4>
+
+          <p>
+            Stock por tienda, talla, color y marca.
+            Transferencias entre sedes con trazabilidad
+            y actualización centralizada.
+          </p>
+
+        </div>
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Pedidos centralizados
+          </h4>
+
+          <p>
+            Web, WhatsApp, Instagram y mostrador
+            pueden trabajar sobre el mismo flujo de pedidos.
+          </p>
+
+        </div>
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Pagos y cierres
+          </h4>
+
+          <p>
+            Registro de efectivo, tarjeta y transferencia
+            asociado a cada venta y sede.
+          </p>
+
+        </div>
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Alertas de inventario
+          </h4>
+
+          <p>
+            Alertas cuando una referencia alcanza
+            los niveles mínimos definidos por Imperial.
+          </p>
+
+        </div>
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Canal digital
+          </h4>
+
+          <p>
+            Optimización de estructura, SEO, experiencia
+            y conexión con el inventario central.
+          </p>
+
+        </div>
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Dashboard ejecutivo
+          </h4>
+
+          <p>
+            Ventas, rotación, stock e inventario inmovilizado
+            por sede, marca y referencia.
+          </p>
+
+        </div>
+
+        <div class="cap cap--wide">
+
+          <h4>
+            <span class="dot"></span>
+            Clientes y segmentación
+          </h4>
+
+          <p>
+            Historial de compra para entender quién compra
+            cada marca y permitir campañas segmentadas
+            en lugar de comunicar la misma promoción a toda
+            la comunidad.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     08 — MÉTODO
+     ============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot"></span>
+      Método
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          Cómo trabajamos
+        </div>
+
+        <h2>
+          Cinco etapas para construir<br/>
+          sobre la operación real.
+        </h2>
+
+      </div>
+
+      <div class="rows">
+
+        <div>
+
+          <div class="label">
+            01 · Diagnóstico
+          </div>
+
+          <div class="value">
+            Revisamos cómo operan actualmente las seis sedes:
+            inventario, pedidos, cierres, herramientas,
+            responsables y puntos donde se pierde tiempo
+            o información.
+          </div>
+
+        </div>
+
+        <div>
+
+          <div class="label">
+            02 · Diseño de solución
+          </div>
+
+          <div class="value">
+            Definimos procesos, roles, integraciones,
+            pantallas y reglas de negocio antes
+            de comenzar el desarrollo.
+          </div>
+
+        </div>
+
+        <div>
+
+          <div class="label">
+            03 · Desarrollo
+          </div>
+
+          <div class="value">
+            Construimos en ciclos semanales.
+            El equipo puede revisar avances funcionales
+            y validar decisiones antes de continuar.
+          </div>
+
+        </div>
+
+        <div>
+
+          <div class="label">
+            04 · Implementación
+          </div>
+
+          <div class="value">
+            Migramos la información necesaria,
+            capacitamos al equipo y acompañamos
+            la puesta en marcha.
+          </div>
+
+        </div>
+
+        <div>
+
+          <div class="label">
+            05 · Evolución
+          </div>
+
+          <div class="value">
+            Una vez operativo, continuamos con soporte,
+            mantenimiento y mejoras según las necesidades
+            reales de las seis sedes.
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="pillars">
+
+        <div class="pillar">
+          <b>Precio definido</b>
+          <span>Alcance acordado</span>
+        </div>
+
+        <div class="pillar">
+          <b>Visibilidad</b>
+          <span>Avances semanales</span>
+        </div>
+
+        <div class="pillar">
+          <b>Propiedad</b>
+          <span>Software de Imperial</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     09 — INVERSIÓN
+     ============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot"></span>
+      Inversión
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          Alcance e inversión
+        </div>
+
+        <h2>
+          Una inversión definida<br/>
+          antes de comenzar.
+        </h2>
+
+        <p class="lead">
+          El valor definitivo se establece después de validar
+          la operación y cerrar el alcance funcional.
+          La siguiente estructura está preparada para presentar
+          la inversión final.
+        </p>
+
+      </div>
+
+      <div class="investment">
+
+        <div class="investment-main">
+
+          <div class="investment-label">
+            Proyecto
+          </div>
+
+          <div class="price">
+            <span class="price-placeholder">
+              COP $XX.XXX.XXX
+            </span>
+          </div>
+
+          <p class="small">
+            Desarrollo e implementación del sistema
+            definido en el alcance acordado.
+          </p>
+
+          <ul class="included">
+
+            <li>
+              Sistema central de inventario multi-sede.
+            </li>
+
+            <li>
+              Gestión y trazabilidad de pedidos.
+            </li>
+
+            <li>
+              Dashboard ejecutivo.
+            </li>
+
+            <li>
+              Integraciones definidas durante discovery.
+            </li>
+
+            <li>
+              Implementación y capacitación.
+            </li>
+
+            <li>
+              Migración de la información acordada.
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="investment-side">
+
+          <div class="investment-label">
+            Tiempo estimado
+          </div>
+
+          <div class="timeline">
+            10–14 semanas
+          </div>
+
+          <p class="small">
+            El cronograma definitivo dependerá
+            de integraciones, migración y alcance
+            confirmado durante la etapa de diagnóstico.
+          </p>
+
+          <div class="scope-note">
+            <b>Importante:</b>
+            el precio y cronograma finales se congelan
+            una vez aprobado el alcance detallado.
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="gline"></div>
+
+      <div class="notice notice--blue">
+
+        <b>
+          No recomendamos comenzar desarrollo
+          sin validar primero la operación.
+        </b>
+
+        El siguiente paso es una sesión de discovery
+        para convertir esta propuesta inicial
+        en un alcance técnico y comercial definitivo.
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     10 — CIERRE
+     ============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot"></span>
+      Siguiente paso
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="card__pad close-body">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          Validemos la operación antes de construirla
+        </div>
+
+        <h2 style="font-size:28px">
+          El siguiente paso es entender<br/>
+          dónde está la mayor oportunidad.
+        </h2>
+
+        <p
+          class="lead"
+          style="
+            margin-top:14px;
+          "
+        >
+          En una sesión de 30 minutos revisamos cómo
+          Imperial Clothes maneja actualmente inventario,
+          pedidos, pagos y cierres entre sus seis sedes.
+        </p>
+
+        <p
+          class="lead"
+          style="
+            margin-top:14px;
+          "
+        >
+          Con esa información podemos definir qué debe
+          construirse, qué debe integrarse y qué impacto
+          debería tener el proyecto antes de comenzar.
+        </p>
+
+      </div>
+
+      <div
+        class="notice notice--blue"
+        style="margin-top:8px"
+      >
+
+        <b>La conversación no es una demostración de software.</b>
+
+        Es una sesión para identificar dónde se está perdiendo
+        tiempo, información o ventas y determinar si un sistema
+        centralizado puede resolverlo.
+
+      </div>
+
+      <div class="close-cta">
+
+        <div
+          class="cta-wrap"
+          style="margin-bottom:14px"
+        >
+
+          <a
+            href="https://wa.me/573005865312"
+            class="cta"
+          >
+            Agendar 30 minutos con EXTRO
+          </a>
+
+        </div>
+
+        <p class="tiny">
+          o escriba a hola@extro.com.co
+        </p>
+
+        <div class="footer-dark">
+
+          <div class="fw">
+            EXTRO<i>.</i>
+          </div>
+
+          <div class="role">
+            Agencia de Ingeniería de Software
+          </div>
+
+          <div class="contact">
+            hola@extro.com.co<br/>
+            Medellín, Colombia
+          </div>
+
+          <div class="legal">
+            © 2026 EXTRO. Propuesta preparada para Imperial Clothes.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+</body>
+</html>

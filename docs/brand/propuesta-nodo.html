@@ -1,0 +1,2556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>EXTRO — Propuesta para NODO</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --accent:#0066ff;
+  --accent-dark:#0044cc;
+  --accent-light:#3388ff;
+
+  --ink:#0a0a0a;
+  --surface:#f5f5f7;
+  --elevated:#fafafa;
+  --line:#e5e5e5;
+  --line-soft:#f0f0f0;
+
+  --muted:#8a8a8a;
+  --muted-2:#6b6b6b;
+  --text:#404040;
+
+  --display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --sans:Inter,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  background:#2e2e30;
+}
+
+body{
+  font-family:var(--sans);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  counter-reset:folio;
+  padding:32px 0;
+}
+
+/* ============================================================
+   PAGE
+============================================================ */
+
+.page{
+  position:relative;
+  width:210mm;
+  height:296.6mm;
+  margin:0 auto 26px;
+  padding:12mm;
+
+  background:var(--surface);
+
+  display:flex;
+  flex-direction:column;
+
+  overflow:hidden;
+
+  counter-increment:folio;
+
+  box-shadow:0 18px 50px rgba(0,0,0,.35);
+}
+
+.page__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 4px 18px;
+}
+
+.brand{
+  font-family:var(--display);
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:2px;
+  color:var(--ink);
+}
+
+.brand i{
+  font-style:normal;
+  color:var(--accent);
+}
+
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+
+  color:var(--muted-2);
+}
+
+.dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--accent);
+  display:inline-block;
+}
+
+.dot--green{
+  background:#22c55e;
+}
+
+.dot--amber{
+  background:#f59e0b;
+}
+
+.card{
+  flex:1 1 auto;
+  min-height:0;
+
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+
+  overflow:hidden;
+
+  display:flex;
+  flex-direction:column;
+}
+
+.card__pad{
+  padding:32px;
+  flex:1 1 auto;
+  min-height:0;
+}
+
+.page__foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:14px 6px 0;
+
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:1px;
+  text-transform:uppercase;
+
+  color:var(--muted);
+}
+
+.folio::after{
+  content:counter(folio,decimal-leading-zero);
+}
+
+/* ============================================================
+   TYPOGRAPHY
+============================================================ */
+
+h1{
+  font-family:var(--display);
+  font-size:34px;
+  font-weight:700;
+  line-height:1.14;
+  letter-spacing:-.02em;
+  color:var(--ink);
+}
+
+h2{
+  font-family:var(--display);
+  font-size:24px;
+  font-weight:600;
+  line-height:1.2;
+  letter-spacing:-.015em;
+  color:var(--ink);
+
+  margin-bottom:8px;
+}
+
+h3{
+  font-size:15px;
+  font-weight:600;
+  color:var(--ink);
+
+  margin-bottom:4px;
+}
+
+h4{
+  font-size:13px;
+  font-weight:600;
+  color:var(--ink);
+
+  margin-bottom:3px;
+}
+
+p{
+  font-size:14px;
+  line-height:1.7;
+}
+
+.lead{
+  font-size:15px;
+  line-height:1.75;
+  color:var(--text);
+}
+
+.tiny{
+  font-size:11px;
+  line-height:1.55;
+  color:var(--muted);
+}
+
+.section-label{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+
+  color:var(--muted);
+
+  margin-bottom:8px;
+}
+
+.gline{
+  height:1px;
+  margin:22px 0;
+
+  background:linear-gradient(
+    90deg,
+    transparent 0%,
+    #e5e5e5 20%,
+    #e5e5e5 80%,
+    transparent 100%
+  );
+}
+
+.head-block{
+  margin-bottom:22px;
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+
+  background:
+    radial-gradient(circle at 90% 10%,rgba(255,255,255,.16),transparent 25%),
+    radial-gradient(circle at 10% 90%,rgba(255,255,255,.08),transparent 30%),
+    linear-gradient(
+      135deg,
+      #3388ff 0%,
+      #0066ff 45%,
+      #0044cc 100%
+    );
+
+  padding:56px 40px 48px;
+
+  color:#fff;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+
+  top:-100px;
+  right:-80px;
+
+  width:300px;
+  height:300px;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.06);
+}
+
+.hero::after{
+  content:'';
+  position:absolute;
+
+  bottom:-100px;
+  left:-80px;
+
+  width:230px;
+  height:230px;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.05);
+}
+
+.hero > *{
+  position:relative;
+  z-index:1;
+}
+
+.pill{
+  display:inline-block;
+
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:2px;
+
+  color:#fff;
+
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:999px;
+
+  padding:8px 18px;
+
+  background:rgba(255,255,255,.10);
+}
+
+/* ============================================================
+   GENERIC BOXES
+============================================================ */
+
+.box-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.box{
+  border:1px solid var(--line-soft);
+  border-radius:12px;
+
+  padding:16px 18px;
+
+  background:var(--elevated);
+}
+
+.box .n{
+  font-family:var(--display);
+
+  font-size:11px;
+  font-weight:700;
+
+  letter-spacing:1.5px;
+
+  color:var(--accent);
+
+  margin-bottom:6px;
+
+  display:block;
+}
+
+.box p{
+  font-size:12.5px;
+  line-height:1.55;
+}
+
+.box--wide{
+  grid-column:1/-1;
+}
+
+/* ============================================================
+   CURRENT OPERATION
+============================================================ */
+
+.current{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+
+  margin-top:10px;
+}
+
+.current-item{
+  padding:16px;
+
+  border-radius:12px;
+
+  background:#fff;
+
+  border:1px solid var(--line-soft);
+}
+
+.current-item b{
+  display:block;
+
+  font-family:var(--display);
+
+  font-size:15px;
+
+  color:var(--ink);
+
+  margin-bottom:5px;
+}
+
+.current-item span{
+  font-size:12px;
+  line-height:1.5;
+  color:var(--muted-2);
+}
+
+/* ============================================================
+   METRICS
+============================================================ */
+
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+
+  gap:10px;
+
+  margin-top:6px;
+}
+
+.metric{
+  border:1px solid var(--line-soft);
+  border-radius:12px;
+
+  padding:14px;
+
+  text-align:center;
+
+  background:var(--elevated);
+}
+
+.metric b{
+  display:block;
+
+  font-family:var(--display);
+
+  font-size:22px;
+  font-weight:700;
+
+  color:var(--ink);
+}
+
+.metric span{
+  font-size:10px;
+
+  letter-spacing:.6px;
+  text-transform:uppercase;
+
+  color:var(--muted);
+}
+
+/* ============================================================
+   FINDINGS
+============================================================ */
+
+.findings{
+  margin-top:16px;
+}
+
+.finding{
+  display:flex;
+  gap:10px;
+
+  align-items:flex-start;
+
+  padding:10px 0;
+
+  border-bottom:1px solid var(--line-soft);
+}
+
+.finding:last-child{
+  border-bottom:none;
+}
+
+.finding .tag{
+  flex:0 0 auto;
+
+  font-size:9px;
+  font-weight:700;
+
+  letter-spacing:.8px;
+  text-transform:uppercase;
+
+  padding:3px 8px;
+
+  border-radius:6px;
+
+  margin-top:1px;
+}
+
+.tag--ux{
+  background:#eff6ff;
+  color:#1d4ed8;
+}
+
+.tag--seo{
+  background:#fef3c7;
+  color:#92400e;
+}
+
+.tag--tech{
+  background:#f3f4f6;
+  color:#374151;
+}
+
+.tag--conv{
+  background:#ecfdf5;
+  color:#047857;
+}
+
+.finding p{
+  font-size:12.5px;
+  line-height:1.5;
+}
+
+.finding b{
+  color:var(--ink);
+}
+
+/* ============================================================
+   FLOW
+============================================================ */
+
+.flow{
+  margin-top:8px;
+}
+
+.flow .step{
+  display:grid;
+  grid-template-columns:34px 1fr;
+
+  gap:12px;
+
+  padding:11px 0;
+
+  border-bottom:1px solid var(--line-soft);
+}
+
+.flow .step:last-child{
+  border-bottom:none;
+}
+
+.flow .num{
+  width:26px;
+  height:26px;
+
+  border-radius:50%;
+
+  background:var(--ink);
+  color:#fff;
+
+  font-family:var(--display);
+
+  font-size:10px;
+  font-weight:700;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.flow .step p{
+  font-size:13px;
+  color:var(--ink);
+  line-height:1.5;
+}
+
+/* ============================================================
+   CAPABILITIES
+============================================================ */
+
+.caps{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:12px;
+
+  margin-top:6px;
+}
+
+.cap{
+  border-top:2px solid var(--line-soft);
+
+  padding-top:10px;
+}
+
+.cap h4{
+  display:flex;
+  align-items:center;
+
+  gap:8px;
+}
+
+.cap p{
+  font-size:12.5px;
+
+  color:var(--text);
+
+  line-height:1.55;
+}
+
+.cap--wide{
+  grid-column:1/-1;
+}
+
+/* ============================================================
+   INTEGRATION DIAGRAM
+============================================================ */
+
+.integration{
+  display:grid;
+
+  grid-template-columns:1fr 70px 1fr;
+
+  align-items:center;
+
+  gap:10px;
+
+  margin-top:20px;
+}
+
+.integration-card{
+  padding:20px;
+
+  border-radius:14px;
+
+  border:1px solid var(--line);
+
+  background:#fff;
+
+  text-align:center;
+}
+
+.integration-card strong{
+  display:block;
+
+  font-family:var(--display);
+
+  font-size:15px;
+
+  color:var(--ink);
+
+  margin-bottom:5px;
+}
+
+.integration-card span{
+  font-size:11px;
+
+  color:var(--muted-2);
+
+  line-height:1.5;
+}
+
+.integration-arrow{
+  text-align:center;
+
+  font-family:var(--display);
+
+  font-size:22px;
+
+  color:var(--accent);
+}
+
+.integration-center{
+  border-color:var(--accent);
+
+  box-shadow:
+    0 8px 30px rgba(0,102,255,.10);
+
+  background:
+    linear-gradient(
+      180deg,
+      #f7faff 0%,
+      #fff 100%
+    );
+}
+
+/* ============================================================
+   POS
+============================================================ */
+
+.pos-grid{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:12px;
+
+  margin-top:10px;
+}
+
+.pos{
+  border-radius:12px;
+
+  padding:16px;
+
+  background:var(--ink);
+
+  color:#fff;
+}
+
+.pos b{
+  display:block;
+
+  font-family:var(--display);
+
+  font-size:15px;
+
+  margin-bottom:6px;
+}
+
+.pos span{
+  font-size:11px;
+
+  line-height:1.5;
+
+  color:#a3a3a3;
+}
+
+/* ============================================================
+   PILLARS
+============================================================ */
+
+.pillars{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:0;
+
+  border-radius:12px;
+
+  overflow:hidden;
+
+  margin-top:20px;
+}
+
+.pillar{
+  background:var(--ink);
+
+  color:#fff;
+
+  text-align:center;
+
+  padding:18px 10px;
+}
+
+.pillar+.pillar{
+  border-left:1px solid #2a2a2a;
+}
+
+.pillar b{
+  display:block;
+
+  font-family:var(--display);
+
+  font-size:15px;
+
+  margin-bottom:2px;
+}
+
+.pillar span{
+  font-size:10px;
+
+  letter-spacing:.8px;
+
+  text-transform:uppercase;
+
+  color:#8a8a8a;
+}
+
+/* ============================================================
+   CTA
+============================================================ */
+
+.cta{
+  display:inline-block;
+
+  padding:15px 34px;
+
+  color:#fff;
+
+  text-decoration:none;
+
+  font-size:14px;
+
+  font-weight:600;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0066ff,
+      #0044cc
+    );
+
+  box-shadow:
+    0 4px 14px rgba(0,102,255,.25);
+}
+
+.notice{
+  border-radius:10px;
+
+  padding:14px 18px;
+
+  font-size:13px;
+
+  font-weight:500;
+}
+
+.notice--blue{
+  background:#f0f7ff;
+
+  border:1px solid #dbeafe;
+
+  color:var(--accent-dark);
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+.footer-dark{
+  background:var(--ink);
+
+  border-radius:12px;
+
+  padding:28px 24px;
+
+  text-align:center;
+
+  margin-top:22px;
+}
+
+.footer-dark .fw{
+  font-family:var(--display);
+
+  font-size:18px;
+
+  font-weight:700;
+
+  letter-spacing:2px;
+
+  color:#fff;
+}
+
+.footer-dark .fw i{
+  font-style:normal;
+
+  color:var(--accent-light);
+}
+
+.footer-dark .role{
+  font-size:13px;
+
+  color:#8a8a8a;
+
+  margin-top:8px;
+}
+
+.footer-dark .contact{
+  font-size:12px;
+
+  color:#6b6b6b;
+
+  margin-top:14px;
+
+  line-height:1.8;
+}
+
+.footer-dark .legal{
+  font-size:11px;
+
+  color:#4a4a4a;
+
+  margin-top:14px;
+
+  padding-top:14px;
+
+  border-top:1px solid #2a2a2a;
+}
+
+/* ============================================================
+   PRINT
+============================================================ */
+
+@page{
+  size:A4;
+  margin:0;
+}
+
+@media print{
+
+  html{
+    background:none;
+  }
+
+  body{
+    padding:0;
+  }
+
+  .page{
+    margin:0;
+
+    box-shadow:none;
+
+    break-after:page;
+
+    page-break-after:always;
+  }
+
+  .page:last-child{
+    break-after:auto;
+    page-break-after:auto;
+  }
+
+  *{
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+  }
+
+  .box,
+  .finding,
+  .flow .step,
+  .metric,
+  .cap,
+  .integration-card,
+  .pos{
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
+}
+
+</style><body>
+
+
+<!-- ============================================================
+     01 — PORTADA
+============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot"></span>
+      Propuesta comercial
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div
+      class="hero"
+      style="
+        flex:1;
+        display:flex;
+        flex-direction:column;
+        justify-content:center
+      "
+    >
+
+      <span class="pill">
+        PARA NODO
+      </span>
+
+      <h1
+        style="
+          color:#fff;
+          font-size:38px;
+          margin-top:20px;
+        "
+      >
+        Un sitio que convierta<br>
+        su portafolio en clientes.
+      </h1>
+
+      <p
+        style="
+          color:rgba(255,255,255,.9);
+          font-size:15px;
+          margin-top:16px;
+          max-width:500px;
+          line-height:1.7;
+        "
+      >
+        Diseño y desarrollo de un sitio web para NODO
+        Estudio Creativo, pensado para convertir identidad,
+        diseño, contenido y redes en un canal propio
+        de captación de clientes potenciales.
+      </p>
+
+    </div>
+
+
+    <div
+      class="card__pad"
+      style="
+        flex:0 0 auto;
+        display:flex;
+        justify-content:space-between;
+        align-items:flex-end;
+        border-top:1px solid var(--line-soft)
+      "
+    >
+
+      <div></div>
+
+      <div
+        class="tiny fill"
+        style="text-align:right"
+      >
+        [instagram / dominio de NODO]<br>
+        Preparado — [mes] de 2026
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+
+<!-- ============================================================
+     02 — DIAGNÓSTICO
+============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot dot--amber"></span>
+      Diagnóstico
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          Lo que vemos en NODO
+        </div>
+
+        <h2>
+          Un estudio que diseña identidad<br>
+          para otros, sin una propia en la web.
+        </h2>
+
+        <p class="lead">
+          NODO ya tiene lo más difícil: una propuesta clara
+          —identidad, diseño, contenido y redes— y una forma
+          de trabajar que "conecta ideas, marcas y personas".
+          Hoy esa propuesta vive casi por completo dentro
+          de Instagram: un canal donde NODO no controla
+          quién ve su trabajo ni cuándo.
+        </p>
+
+      </div>
+
+
+      <div class="gline"></div>
+
+
+      <div class="current">
+
+        <div class="current-item">
+
+          <b>El portafolio vive disperso</b>
+
+          <span>
+            Cada proyecto es un post o un carrete.
+            No existe un lugar único donde ver
+            el trabajo completo de NODO, ordenado
+            por tipo de servicio o marca.
+          </span>
+
+        </div>
+
+
+        <div class="current-item">
+
+          <b>Descubrimiento sin conversión</b>
+
+          <span>
+            Instagram es excelente para mostrar
+            trabajo, pero no está diseñado
+            para convertir a quien mira
+            en alguien que escribe.
+          </span>
+
+        </div>
+
+
+        <div class="current-item">
+
+          <b>El contacto depende de un DM</b>
+
+          <span>
+            No hay un camino claro para saber
+            qué servicios ofrece NODO, cómo
+            empezar un proyecto o qué esperar
+            del proceso.
+          </span>
+
+        </div>
+
+
+        <div class="current-item">
+
+          <b>Cero presencia en buscadores</b>
+
+          <span>
+            Quien busca "diseño de identidad
+            visual" o "estudio creativo" en Google
+            no encuentra a NODO si no lo sigue ya
+            en redes.
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="gline"></div>
+
+
+      <div class="box-grid">
+
+        <div class="box">
+
+          <span class="n">01</span>
+
+          <p>
+            <b style="color:var(--ink)">
+              El trabajo de NODO merece un lugar propio.
+            </b>
+            No una vitrina prestada donde el algoritmo
+            decide quién lo ve.
+          </p>
+
+        </div>
+
+
+        <div class="box">
+
+          <span class="n">02</span>
+
+          <p>
+            <b style="color:var(--ink)">
+              Mostrar identidad no es lo mismo
+              que generar clientes.
+            </b>
+            Hace falta un camino de la admiración
+            al contacto.
+          </p>
+
+        </div>
+
+
+        <div class="box">
+
+          <span class="n">03</span>
+
+          <p>
+            <b style="color:var(--ink)">
+              Cada marca que NODO diseña
+              es también su propia prueba.
+            </b>
+            El sitio debe demostrar el nivel
+            de NODO antes de decir una palabra.
+          </p>
+
+        </div>
+
+
+        <div class="box">
+
+          <span class="n">04</span>
+
+          <p>
+            <b style="color:var(--ink)">
+              El objetivo no es una web bonita.
+            </b>
+            Es una web que capte más clientes
+            potenciales en su nicho.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     03 — UX / UI
+============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot"></span>
+      Experiencia
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          UX / UI
+        </div>
+
+        <h2>
+          Que ver el trabajo de NODO<br>
+          dé ganas de escribirle.
+        </h2>
+
+        <p class="lead">
+          No proponemos un portafolio genérico de plantilla.
+          Proponemos un sitio diseñado con el mismo criterio
+          que NODO usa para sus clientes: identidad, jerarquía
+          visual y una experiencia que se sienta cuidada
+          de principio a fin.
+        </p>
+
+      </div>
+
+
+      <div class="caps">
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Casos de estudio, no galería
+          </h4>
+
+          <p>
+            Cada proyecto como una historia completa:
+            el reto, el proceso, las piezas finales
+            y el resultado para la marca.
+          </p>
+
+        </div>
+
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Portafolio filtrable
+          </h4>
+
+          <p>
+            Filtrar por servicio, identidad, diseño,
+            contenido o redes, o por tipo de marca,
+            para que cada visitante encuentre
+            el proyecto más parecido al suyo.
+          </p>
+
+        </div>
+
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Servicios claros
+          </h4>
+
+          <p>
+            Qué incluye cada línea de trabajo de NODO
+            y qué problema resuelve, sin obligar
+            a preguntar por mensaje directo.
+          </p>
+
+        </div>
+
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Proceso creativo visible
+          </h4>
+
+          <p>
+            Mostrar cómo trabaja NODO, descubrimiento,
+            concepto, diseño, entrega, genera confianza
+            antes de la primera llamada.
+          </p>
+
+        </div>
+
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Prueba social
+          </h4>
+
+          <p>
+            Testimonios y marcas con las que NODO
+            ya trabajó, visibles junto al trabajo
+            que los respalda.
+          </p>
+
+        </div>
+
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Mobile-first
+          </h4>
+
+          <p>
+            La mayoría de quien descubre a NODO
+            en Instagram entra desde el teléfono.
+            El sitio debe sentirse igual de bien ahí.
+          </p>
+
+        </div>
+
+
+        <div class="cap cap--wide">
+
+          <h4>
+            <span class="dot"></span>
+            Una sola marca, coherente en todos lados
+          </h4>
+
+          <p>
+            El sitio debe verse como una extensión
+            natural de la identidad de NODO, tipografía,
+            color, tono, no como una plantilla ajena
+            a lo que el estudio ya construyó en redes.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="gline"></div>
+
+
+      <div class="box-grid">
+
+        <div class="box">
+          <span class="n">DESCUBRIMIENTO</span>
+          <p>
+            Un portafolio que se explora solo,
+            sin necesitar explicación.
+          </p>
+        </div>
+
+        <div class="box">
+          <span class="n">CONFIANZA</span>
+          <p>
+            Proceso, testimonios y casos de estudio
+            antes de pedir el contacto.
+          </p>
+        </div>
+
+        <div class="box">
+          <span class="n">CONVERSIÓN</span>
+          <p>
+            Un solo paso claro para iniciar
+            una conversación con NODO.
+          </p>
+        </div>
+
+        <div class="box">
+          <span class="n">COHERENCIA</span>
+          <p>
+            El sitio como la mejor pieza de diseño
+            que NODO puede mostrar.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+
+<!-- ============================================================
+     04 — DIFERENCIACIÓN
+============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot dot--green"></span>
+      Diferenciación
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          Una experiencia propia de NODO
+        </div>
+
+        <h2>
+          De estudio que se ve<br>
+          a estudio al que se contrata.
+        </h2>
+
+        <p class="lead">
+          NODO ya conecta ideas, marcas y personas
+          en cada proyecto que entrega. El sitio puede
+          hacer ese mismo trabajo antes de la primera
+          reunión: conectar a quien lo necesita
+          con la razón para escribirle.
+        </p>
+
+      </div>
+
+
+      <div class="flow">
+
+        <div class="step">
+
+          <div class="num">01</div>
+
+          <div>
+            <p>
+              <b>
+                Encuentra un caso de estudio
+              </b>
+              — desde Instagram, Google o una recomendación,
+              llega a un proyecto que se parece a lo que necesita.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="num">02</div>
+
+          <div>
+            <p>
+              <b>
+                Entiende el proceso de NODO
+              </b>
+              — ve cómo se construyó esa identidad,
+              no solo el resultado final.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="num">03</div>
+
+          <div>
+            <p>
+              <b>
+                Identifica el servicio correcto
+              </b>
+              — identidad, diseño, contenido o redes,
+              sin tener que preguntarlo primero.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="num">04</div>
+
+          <div>
+            <p>
+              <b>
+                Confía antes de escribir
+              </b>
+              — testimonios y marcas reales
+              respaldan lo que está viendo.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="num">05</div>
+
+          <div>
+            <p>
+              <b>
+                Da el primer paso
+              </b>
+              — un formulario breve o un espacio
+              para agendar, no un mensaje que se pierde.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="num">06</div>
+
+          <div>
+            <p>
+              <b>
+                Se convierte en un lead calificado
+              </b>
+              — NODO recibe el contacto con contexto
+              real del proyecto, listo para responder.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="notice notice--blue" style="margin-top:20px">
+
+        <b>
+          El objetivo:
+        </b>
+
+        que NODO no dependa de que alguien lo recuerde
+        de Instagram, sino que tenga un lugar propio
+        que trabaje por captar clientes todos los días.
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+
+<!-- ============================================================
+     05 — CAPTACIÓN DE CLIENTES
+============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot"></span>
+      Captación
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          De seguidores a clientes
+        </div>
+
+        <h2>
+          Un embudo real, no solo<br>
+          más alcance en redes.
+        </h2>
+
+        <p class="lead">
+          El sitio no reemplaza a Instagram: lo convierte
+          en el punto de entrada de un camino completo,
+          donde cada canal cumple un rol distinto
+          hasta llegar a una conversación real.
+        </p>
+
+      </div>
+
+
+      <div class="integration">
+
+        <div class="integration-card">
+
+          <strong>
+            Redes de NODO
+          </strong>
+
+          <span>
+            Instagram<br>
+            Contenido<br>
+            Identidad visual<br>
+            Descubrimiento
+          </span>
+
+        </div>
+
+
+        <div class="integration-arrow">
+          ⇄
+        </div>
+
+
+        <div class="integration-card integration-center">
+
+          <strong>
+            Sitio web
+          </strong>
+
+          <span>
+            Portafolio<br>
+            Casos de estudio<br>
+            Servicios<br>
+            Formulario / agenda
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="integration">
+
+        <div class="integration-card">
+
+          <strong>
+            Buscadores
+          </strong>
+
+          <span>
+            Google<br>
+            SEO local<br>
+            Contenido<br>
+            Reputación
+          </span>
+
+        </div>
+
+
+        <div class="integration-arrow">
+          ⇄
+        </div>
+
+
+        <div class="integration-card">
+
+          <strong>
+            NODO
+          </strong>
+
+          <span>
+            Contacto calificado<br>
+            Propuesta<br>
+            Proyecto<br>
+            Nueva marca en el portafolio
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="gline"></div>
+
+
+      <div class="caps">
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            De Instagram al sitio
+          </h4>
+
+          <p>
+            Bio, destacados y publicaciones dirigen
+            siempre a un lugar que profundiza
+            el trabajo mostrado.
+          </p>
+
+        </div>
+
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Del sitio al contacto
+          </h4>
+
+          <p>
+            Formulario breve con brief inicial,
+            para que NODO reciba el contexto
+            del proyecto antes de la primera llamada.
+          </p>
+
+        </div>
+
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Del contacto al proyecto
+          </h4>
+
+          <p>
+            Cada lead llega calificado: qué servicio busca,
+            para qué tipo de marca y con qué urgencia.
+          </p>
+
+        </div>
+
+
+        <div class="cap">
+
+          <h4>
+            <span class="dot"></span>
+            Del proyecto al nuevo caso de estudio
+          </h4>
+
+          <p>
+            Cada trabajo entregado se puede sumar
+            al portafolio, alimentando el ciclo
+            de captación siguiente.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+
+<!-- ============================================================
+     06 — EVOLUCIÓN FUTURA
+============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot"></span>
+      Evolución
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          Evolución futura
+        </div>
+
+        <h2>
+          La posibilidad de llevar<br>
+          el seguimiento de clientes a un solo lugar.
+        </h2>
+
+        <p class="lead">
+          Con el sitio en marcha, la misma arquitectura
+          puede sostener un panel simple para que NODO
+          nunca pierda de vista un cliente potencial
+          entre Instagram, el formulario y WhatsApp.
+        </p>
+
+      </div>
+
+
+      <div class="pos-grid">
+
+        <div class="pos">
+
+          <b>
+            Captura de leads
+          </b>
+
+          <span>
+            Cada formulario del sitio
+            queda registrado en un solo lugar.
+          </span>
+
+        </div>
+
+
+        <div class="pos">
+
+          <b>
+            Seguimiento de propuestas
+          </b>
+
+          <span>
+            Saber en qué estado quedó
+            cada conversación comercial.
+          </span>
+
+        </div>
+
+
+        <div class="pos">
+
+          <b>
+            Origen del cliente
+          </b>
+
+          <span>
+            Ver si llegó por Instagram,
+            Google o una recomendación.
+          </span>
+
+        </div>
+
+
+        <div class="pos">
+
+          <b>
+            Recordatorios
+          </b>
+
+          <span>
+            Ningún lead se enfría
+            por falta de seguimiento.
+          </span>
+
+        </div>
+
+
+        <div class="pos">
+
+          <b>
+            Historial por marca
+          </b>
+
+          <span>
+            Todo lo trabajado con un cliente,
+            disponible para el siguiente proyecto.
+          </span>
+
+        </div>
+
+
+        <div class="pos">
+
+          <b>
+            Escalable
+          </b>
+
+          <span>
+            Crece con NODO, sin obligar
+            a cambiar de sistema.
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="gline"></div>
+
+
+      <div class="notice notice--blue">
+
+        <b>
+          Importante:
+        </b>
+
+        este panel puede plantearse como una segunda etapa.
+        La primera fase se concentra en el sitio, el portafolio
+        y el embudo de captación de clientes.
+
+      </div>
+
+
+      <div class="pillars">
+
+        <div class="pillar">
+          <b>Sitio</b>
+          <span>Portafolio y captación</span>
+        </div>
+
+        <div class="pillar">
+          <b>Embudo</b>
+          <span>Redes → sitio → contacto</span>
+        </div>
+
+        <div class="pillar">
+          <b>Panel</b>
+          <span>Evolución futura</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+
+<!-- ============================================================
+     07 — SEO / PERFORMANCE / SEGURIDAD
+============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot dot--amber"></span>
+      Ingeniería
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          SEO · Performance · Seguridad
+        </div>
+
+        <h2>
+          Un sitio rápido también<br>
+          es un sitio que capta más.
+        </h2>
+
+        <p class="lead">
+          Un estudio creativo vive de imágenes en alta
+          calidad. El sitio debe mostrarlas sin sacrificar
+          velocidad, y estar construido para que Google
+          encuentre a NODO tan bien como lo encuentra
+          quien ya lo sigue.
+        </p>
+
+      </div>
+
+
+      <div class="findings">
+
+        <div class="finding">
+
+          <span class="tag tag--seo">
+            SEO
+          </span>
+
+          <p>
+            <b>
+              Posicionar por lo que NODO realmente ofrece.
+            </b>
+            "Diseño de identidad visual", "estudio creativo"
+            y variantes locales, en vez de depender
+            solo del nombre de la marca.
+          </p>
+
+        </div>
+
+
+        <div class="finding">
+
+          <span class="tag tag--seo">
+            SEO
+          </span>
+
+          <p>
+            <b>
+              Cada caso de estudio, una página propia.
+            </b>
+            Título, descripción y estructura pensados
+            para que cada proyecto también pueda
+            posicionar por su cuenta.
+          </p>
+
+        </div>
+
+
+        <div class="finding">
+
+          <span class="tag tag--tech">
+            Performance
+          </span>
+
+          <p>
+            <b>
+              Imágenes de portafolio sin peso muerto.
+            </b>
+            Optimización, carga progresiva y formatos
+            modernos para que un catálogo visual
+            no vuelva lento el sitio.
+          </p>
+
+        </div>
+
+
+        <div class="finding">
+
+          <span class="tag tag--tech">
+            Seguridad
+          </span>
+
+          <p>
+            <b>
+              Seguridad desde arquitectura.
+            </b>
+            HTTPS, formularios protegidos contra spam
+            y buenas prácticas para cualquier integración
+            futura con redes o un CRM.
+          </p>
+
+        </div>
+
+
+        <div class="finding">
+
+          <span class="tag tag--conv">
+            Conversión
+          </span>
+
+          <p>
+            <b>
+              Medir todo el camino hacia el contacto.
+            </b>
+            Qué proyectos se ven más, dónde abandona
+            la gente y qué servicio genera más formularios.
+          </p>
+
+        </div>
+
+
+        <div class="finding">
+
+          <span class="tag tag--ux">
+            Analítica
+          </span>
+
+          <p>
+            <b>
+              Decisiones basadas en datos, no en intuición.
+            </b>
+            Saber si un cliente potencial llegó
+            por Instagram, Google o una recomendación.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="gline"></div>
+
+
+      <div class="box-grid">
+
+        <div class="box">
+
+          <span class="n">OBJETIVO 01</span>
+
+          <p>
+            Un portafolio que carga rápido.
+          </p>
+
+        </div>
+
+
+        <div class="box">
+
+          <span class="n">OBJETIVO 02</span>
+
+          <p>
+            Más visibilidad orgánica en Google.
+          </p>
+
+        </div>
+
+
+        <div class="box">
+
+          <span class="n">OBJETIVO 03</span>
+
+          <p>
+            Más formularios, no solo más vistas.
+          </p>
+
+        </div>
+
+
+        <div class="box">
+
+          <span class="n">OBJETIVO 04</span>
+
+          <p>
+            Saber de dónde viene cada cliente.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+
+<!-- ============================================================
+     08 — MÉTODO
+============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot"></span>
+      Método
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card__pad">
+
+      <div class="head-block">
+
+        <div class="section-label">
+          Cómo trabajamos
+        </div>
+
+        <h2>
+          Cinco etapas para llevar<br>
+          a NODO de Instagram a un sitio propio.
+        </h2>
+
+      </div>
+
+
+      <div class="flow">
+
+        <div class="step">
+
+          <div class="num">01</div>
+
+          <div>
+
+            <p>
+              <b>
+                Auditoría
+              </b>
+              — revisamos el portafolio actual, las redes,
+              los servicios y cómo llegan hoy los clientes
+              a NODO.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="num">02</div>
+
+          <div>
+
+            <p>
+              <b>
+                Arquitectura
+              </b>
+              — definimos la estructura del sitio,
+              los casos de estudio y el embudo
+              de captación de principio a fin.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="num">03</div>
+
+          <div>
+
+            <p>
+              <b>
+                UX / UI
+              </b>
+              — diseñamos portafolio, servicios,
+              proceso, contacto y sistema visual,
+              coherente con la identidad de NODO.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="num">04</div>
+
+          <div>
+
+            <p>
+              <b>
+                Desarrollo
+              </b>
+              — construimos el sitio, el formulario
+              de contacto y la analítica para medir
+              cada paso del embudo.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="num">05</div>
+
+          <div>
+
+            <p>
+              <b>
+                Lanzamiento y evolución
+              </b>
+              — monitoreamos tráfico, formularios
+              y origen de cada cliente para seguir
+              mejorando el embudo.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="pillars">
+
+        <div class="pillar">
+          <b>Portafolio</b>
+          <span>Que vende sin explicar</span>
+        </div>
+
+        <div class="pillar">
+          <b>Embudo</b>
+          <span>De seguidor a cliente</span>
+        </div>
+
+        <div class="pillar">
+          <b>Evolución</b>
+          <span>Preparado para un panel</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+
+<!-- ============================================================
+     09 — CIERRE
+============================================================ -->
+
+<section class="page">
+
+  <div class="page__head">
+
+    <span class="brand">
+      EXTRO<i>.</i>
+    </span>
+
+    <div class="eyebrow">
+      <span class="dot"></span>
+      Cierre
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card__pad"
+         style="
+           display:flex;
+           flex-direction:column;
+           justify-content:center;
+         "
+    >
+
+      <div class="head-block">
+
+        <div class="section-label">
+          El siguiente paso
+        </div>
+
+        <h2 style="font-size:30px">
+          Conectemos el trabajo de NODO<br>
+          con las personas que lo necesitan.
+        </h2>
+
+        <p
+          class="lead"
+          style="
+            font-style:italic;
+            color:var(--ink);
+            margin-top:12px;
+          "
+        >
+          La oportunidad no está solamente en tener
+          un sitio web. Está en convertir identidad,
+          diseño, contenido y redes en un sistema
+          que capte clientes todos los días.
+        </p>
+
+        <p
+          class="lead"
+          style="margin-top:14px"
+        >
+          Primero entendemos el portafolio, las redes
+          y cómo llegan hoy los clientes a NODO. Después
+          definimos el alcance exacto del sitio
+          y el embudo de captación antes de comenzar.
+        </p>
+
+      </div>
+
+
+      <div
+        class="notice notice--blue"
+        style="margin-top:20px"
+      >
+
+        <b>
+          Propuesta inicial:
+        </b>
+
+        diseño UX/UI + sitio web + portafolio
+        por casos de estudio + SEO + performance +
+        formulario de contacto calificado + analítica
+        de origen de clientes.
+
+      </div>
+
+
+      <div
+        style="
+          text-align:center;
+          margin-top:34px;
+        "
+      >
+
+        <a
+          href="https://wa.me/573005865312"
+          class="cta"
+        >
+          Agendar 15 minutos con EXTRO
+        </a>
+
+        <p
+          class="tiny"
+          style="margin-top:12px"
+        >
+          o escriba a hola@extro.com.co
+        </p>
+
+      </div>
+
+
+      <div class="footer-dark">
+
+        <div class="fw">
+          EXTRO<i>.</i>
+        </div>
+
+        <div class="role">
+          Agencia de Ingeniería de Software
+        </div>
+
+        <div class="contact">
+          hola@extro.com.co<br>
+          Medellín, Colombia
+        </div>
+
+        <div class="legal">
+          © 2026 EXTRO.
+          Propuesta preparada para NODO.
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="page__foot">
+    <span>extro.com.co</span>
+    <span class="folio"></span>
+  </div>
+
+</section>
+
+
+</body>
+</html>
