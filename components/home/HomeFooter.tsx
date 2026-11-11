@@ -48,7 +48,7 @@ export default function HomeFooter({ lang, base = '' }: { lang: Locale; base?: s
             </svg>
           </a>
         </div>
-        <h2 style={{ margin: "0", fontFamily: "var(--font-space),sans-serif", fontWeight: "700", fontSize: "clamp(40px, min(6.6vw, 10.5vh), 112px)", lineHeight: "0.88", letterSpacing: "-0.045em", textTransform: "uppercase", textAlign: "center", width: "1340px", backgroundImage: "linear-gradient(180deg, #ffffff 100%, #daa47f 100%)", backgroundClip: "text", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+        <h2 style={{ margin: "0 auto", fontFamily: "var(--font-space),sans-serif", fontWeight: "700", fontSize: "clamp(40px, min(6.6vw, 10.5vh), 112px)", lineHeight: "0.88", letterSpacing: "-0.045em", textTransform: "uppercase", textAlign: "center", width: "100%", maxWidth: "1340px", backgroundImage: "linear-gradient(180deg, #ffffff 100%, #daa47f 100%)", backgroundClip: "text", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
           {"Construyamos"}
           <br />
           {"tu proximo"}

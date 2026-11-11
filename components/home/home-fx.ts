@@ -585,5 +585,15 @@ export function startHomeFx() {
   window.Lenis = Lenis
   const fx = new HomeFx()
   fx.mount()
-  return () => fx.unmount()
+  // Las posiciones de ScrollTrigger se calculan al montar; al cargar fuentes e imágenes el
+  // alto de la página cambia. Sin recalcular, las barras de progreso no avanzan bien en producción.
+  const refresh = () => ScrollTrigger.refresh()
+  window.addEventListener('load', refresh)
+  document.fonts?.ready.then(refresh)
+  const timers = [setTimeout(refresh, 1200), setTimeout(refresh, 3500)]
+  return () => {
+    window.removeEventListener('load', refresh)
+    timers.forEach(clearTimeout)
+    fx.unmount()
+  }
 }

@@ -3,7 +3,7 @@
 export default function HomeTech() {
   return (
     <section aria-label="Tecnologías" style={{ position: "relative", zIndex: "1", padding: "44px 24px" }}>
-      <div style={{ maxWidth: "1152px", margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "14px 40px", fontFamily: "var(--font-space),sans-serif", fontSize: "32px", fontWeight: "500", color: "rgba(255,255,255,0.45)", width: "1193px", height: "64px", perspective: "900px" }}>
+      <div style={{ maxWidth: "1152px", margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "14px 40px", fontFamily: "var(--font-space),sans-serif", fontSize: "32px", fontWeight: "500", color: "rgba(255,255,255,0.45)", width: "100%", height: "64px", perspective: "900px" }}>
         <div className="mq" style={{ flex: "1 1 520px", minWidth: "0", transform: "rotateX(28deg)", transformStyle: "preserve-3d", transformOrigin: "50% 50%" }}>
           <div className="mq-track">
             <span style={{ display: "inline-flex", alignItems: "center", gap: "8px", textShadow: "0 1px 0 #3a3a3a, 0 2px 0 #303030, 0 3px 0 #262626, 0 4px 0 #1c1c1c, 0 5px 0 #141414, 0 10px 14px rgba(0,0,0,0.7)" }}>
