@@ -3,6 +3,7 @@
 import { useCallback, useMemo, useState } from 'react'
 import { useLang } from '@/components/LanguageProvider'
 import { localizedPath } from '@/lib/i18n/config'
+import { trackEvent } from '@/lib/analytics'
 import { HOME_COPY } from '@/lib/i18n/home-copy'
 import { AFTERNOON_SLOTS, BOOKING_HORIZON_DAYS, MORNING_SLOTS } from '@/features/booking/slots'
 import {
@@ -173,6 +174,7 @@ export default function HomeBooking() {
         throw new Error(data.error ?? c.error)
       }
       setMeetUrl(data.meetUrl ?? null)
+      trackEvent('generate_lead', { method: 'booking', language: lang })
       setStep(4)
     } catch (err) {
       setError(err instanceof Error ? err.message : c.error)

@@ -4,6 +4,7 @@ import { Inter, JetBrains_Mono, Space_Grotesk } from 'next/font/google'
 import '../../globals.css'
 import { Analytics } from '@vercel/analytics/next'
 import { LanguageProvider } from '@/components/LanguageProvider'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 import { LOCALES, isLocale, alternatesFor, SITE_URL, type Locale } from '@/lib/i18n/config'
 import { safeJsonLd } from '@/lib/seo/json-ld'
 
@@ -123,6 +124,10 @@ export async function generateMetadata({
       images: ['/og.png'],
     },
     robots: { index: true, follow: true },
+    // Search Console: etiqueta HTML. Si se verifica por DNS, la variable queda vacía.
+    verification: process.env.NEXT_PUBLIC_GSC_TOKEN
+      ? { google: process.env.NEXT_PUBLIC_GSC_TOKEN }
+      : undefined,
     icons: { icon: '/icon.png', apple: '/apple-touch-icon.png' },
   }
 }
@@ -197,6 +202,7 @@ export default async function SiteLayout({
         <JsonLd data={organizationSchema(lang)} />
         <JsonLd data={websiteSchema(lang)} />
         <Analytics />
+        <GoogleAnalytics />
       </body>
     </html>
   )
