@@ -14,7 +14,7 @@ export default function HomeFooter({ lang, base = '' }: { lang: Locale; base?: s
         <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,#050505 0%,rgba(5,5,5,0) 16%,rgba(5,5,5,0) 60%,rgba(5,5,5,0.88) 86%,#050505 100%)" }}></div>
       </div>
       <div className="ft-in" style={{ position: "relative", zIndex: "1", minHeight: "min(100vh, 900px)", display: "flex", flexDirection: "column", padding: "clamp(84px, 11vh, 100px) clamp(20px, 3vw, 48px) clamp(14px, 2vh, 22px)", boxSizing: "border-box" }}>
-        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", justifyContent: "space-between", gap: "20px 32px", height: "112px" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", justifyContent: "space-between", gap: "20px 32px", minHeight: "112px", marginBottom: "24px" }}>
           <a href={`${base}#inicio`} aria-label="EXTRO, ir al inicio" style={{ display: "inline-flex", alignItems: "center", gap: "10px", color: "#fff", textDecoration: "none", fontFamily: "var(--font-space),sans-serif", fontWeight: "700", fontSize: "26px", letterSpacing: "-0.04em" }}>
             <img src="/icon.png" alt="" style={{ width: "30px", height: "30px", borderRadius: "999px", objectFit: "cover" }} />
             {"EXTRO "}

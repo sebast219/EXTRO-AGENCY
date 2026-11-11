@@ -90,8 +90,8 @@ export default function HomeHero() {
           {"Ver casos"}
         </a>
       </div>
-      <p className="h-in" style={{ margin: "0 0 72px", fontFamily: "var(--font-mono),monospace", fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>
-        {"+ Precio fijo   + Código 100 % tuyo   + Empezamos en 48 h"}
+      <p className="h-in" style={{ margin: "0 0 72px", display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "6px 28px", fontFamily: "var(--font-mono),monospace", fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>
+        <span>{"+ Precio fijo"}</span><span>{"+ Código 100 % tuyo"}</span><span>{"+ Empezamos en 48 h"}</span>
       </p>
       <div className="h-win" style={{ position: "relative", maxWidth: "900px", margin: "0 auto", textAlign: "left" }}>
         <div aria-hidden="true" style={{ position: "absolute", left: "10%", right: "10%", top: "-10px", height: "1px", background: "linear-gradient(90deg,transparent,rgba(0,102,255,0.9),transparent)" }}></div>
