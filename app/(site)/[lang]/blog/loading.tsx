@@ -1,22 +1,22 @@
 export default function BlogLoading() {
+  const bar = (w: number | string, h: number) => (
+    <div style={{ width: w, height: h, borderRadius: 6, background: '#18181b' }} className="animate-pulse" />
+  )
   return (
-    <div className="min-h-screen pt-32 px-6 max-w-3xl mx-auto">
-      <div className="section-label mb-2">
-        <div className="h-3 w-16 bg-surface rounded animate-pulse" />
-      </div>
-      <div className="h-10 w-64 bg-surface rounded animate-pulse mb-4" />
-      <div className="h-5 w-96 bg-surface rounded animate-pulse mb-12" />
-      <div className="space-y-6">
-        {Array.from({ length: 3 }).map((_, i) => (
-          <div key={i} className="card p-6 animate-pulse">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="h-4 w-16 bg-surface rounded-full" />
-              <div className="h-4 w-24 bg-surface rounded" />
+    <div style={{ minHeight: '100vh', background: '#050505', padding: '150px 24px 0' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        <div style={{ marginBottom: 18 }}>{bar(90, 14)}</div>
+        <div style={{ marginBottom: 16 }}>{bar(220, 56)}</div>
+        <div style={{ marginBottom: 56 }}>{bar(480, 18)}</div>
+        <div className="bl-grid">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} style={{ padding: 24, borderRadius: 12, background: '#0c0c0d' }} className="animate-pulse">
+              <div style={{ marginBottom: 14 }}>{bar(140, 14)}</div>
+              <div style={{ marginBottom: 24 }}>{bar('80%', 28)}</div>
+              <div style={{ aspectRatio: '16 / 10', borderRadius: 10, background: '#111113' }} />
             </div>
-            <div className="h-6 w-3/4 bg-surface rounded mb-2" />
-            <div className="h-4 w-full bg-surface rounded" />
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   )

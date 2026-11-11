@@ -1,20 +1,19 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Navbar from '@/components/Navbar'
-import Hero from '@/components/Hero'
-import AmbientGrid from '@/components/AmbientGrid'
-import ClientsMarquee from '@/components/ClientsMarquee'
-import PainPoints from '@/components/PainPoints'
-import Cases from '@/components/Cases'
-import Plans from '@/components/Plans'
-import PricingExplanation from '@/components/PricingExplanation'
-import FAQ from '@/components/FAQ'
-import Contact from '@/components/Contact'
-import Footer from '@/components/Footer'
-import WhatsAppFloat from '@/components/WhatsAppFloat'
-import ScrollProgress from '@/components/ScrollProgress'
-import { DeliverySystemLazy, ServicesCarouselLazy } from '@/components/DynamicImports'
-import { getTranslations } from '@/lib/i18n'
+import HomeNav from '@/components/home/HomeNav'
+import HomeHero from '@/components/home/HomeHero'
+import HomeStats from '@/components/home/HomeStats'
+import HomeTech from '@/components/home/HomeTech'
+import HomeSolutions from '@/components/home/HomeSolutions'
+import HomeCases from '@/components/home/HomeCases'
+import HomeProcess from '@/components/home/HomeProcess'
+import HomeCtaReserva from '@/components/home/HomeCtaReserva'
+import HomeBooking from '@/components/home/HomeBooking'
+import HomeFaq from '@/components/home/HomeFaq'
+import HomeClients from '@/components/home/HomeClients'
+import HomeFooter from '@/components/home/HomeFooter'
+import HomeFx from '@/components/home/HomeFx'
+import { FAQ_ITEMS } from '@/components/home/faq-items'
 import { alternatesFor, isLocale } from '@/lib/i18n/config'
 import { safeJsonLd } from '@/lib/seo/json-ld'
 
@@ -37,18 +36,13 @@ export async function generateMetadata({
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
   if (!isLocale(lang)) notFound()
-  const t = getTranslations(lang)
 
-  /**
-   * B-2: el esquema FAQ estaba duplicado a mano con el mismo texto que ya vivía
-   * en las traducciones, y solo existía en español. Al derivarlo de la misma
-   * fuente no puede desincronizarse y se localiza solo.
-   */
+  // El esquema FAQ sale de la misma fuente que la UI (FAQ_ITEMS): no puede desincronizarse.
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    inLanguage: lang,
-    mainEntity: t.faq.items.map((item) => ({
+    inLanguage: 'es',
+    mainEntity: FAQ_ITEMS.map((item) => ({
       '@type': 'Question',
       name: item.q,
       acceptedAnswer: { '@type': 'Answer', text: item.a },
@@ -56,39 +50,40 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   }
 
   return (
-    <main id="main-content" className="min-h-screen" tabIndex={-1}>
-      <ScrollProgress />
-      <AmbientGrid />
-      <Navbar />
-
-      {/* 1 · Hero */}
-      <Hero />
-      {/* 2 · Prueba social */}
-      <ClientsMarquee />
-      {/* 3 · Problema → solución */}
-      <PainPoints />
-      {/* 4 · Cómo trabajamos */}
-      <DeliverySystemLazy />
-      {/* 5 · Casos */}
-      <Cases />
-      {/* 6 · Capacidades */}
-      <ServicesCarouselLazy />
-      {/* 7 · Planes de continuidad */}
-      <Plans />
-      {/* 8 · Por qué el precio es el que es */}
-      <PricingExplanation />
-      {/* 9 · Agendar */}
-      <Contact />
-      {/* 10 · FAQ */}
-      <FAQ />
-
-      <Footer />
-      <WhatsAppFloat />
+    <>
+      <main
+        id="main-content"
+        tabIndex={-1}
+        style={{
+          position: 'relative',
+          width: '100%',
+          background: '#050505',
+          color: '#fff',
+          overflow: 'hidden',
+          fontFamily: 'var(--font-inter),system-ui,sans-serif',
+        }}
+      >
+        <div className="xp" aria-hidden="true" />
+        <HomeNav />
+        <HomeHero />
+        <HomeStats />
+        <HomeTech />
+        <HomeSolutions />
+        <HomeCases />
+        <HomeProcess />
+        <HomeCtaReserva>
+          <HomeBooking />
+        </HomeCtaReserva>
+        <HomeFaq />
+        <HomeClients />
+      </main>
+      <HomeFooter lang={lang} />
+      <HomeFx />
 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(faqSchema) }}
       />
-    </main>
+    </>
   )
 }

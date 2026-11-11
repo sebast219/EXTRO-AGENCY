@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
-import { Inter, Space_Grotesk } from 'next/font/google'
+import { Inter, JetBrains_Mono, Space_Grotesk } from 'next/font/google'
 import '../../globals.css'
 import { Analytics } from '@vercel/analytics/next'
 import { LanguageProvider } from '@/components/LanguageProvider'
@@ -11,7 +11,13 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'sw
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-space',
-  weight: ['500', '600', '700'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+})
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  weight: ['400', '500'],
   display: 'swap',
 })
 
@@ -175,8 +181,8 @@ export default async function SiteLayout({
   if (!isLocale(lang)) notFound()
 
   return (
-    <html lang={lang} className={`${inter.variable} ${spaceGrotesk.variable}`} data-scroll-behavior="smooth">
-      <body className="antialiased bg-white text-ink" suppressHydrationWarning>
+    <html lang={lang} className={`${inter.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`} data-scroll-behavior="smooth">
+      <body className="antialiased" suppressHydrationWarning>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-ink focus:text-white focus:rounded-lg focus:text-sm focus:font-medium"

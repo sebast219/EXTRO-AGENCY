@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 import { PortableText } from 'next-sanity'
+import SiteChrome from '@/components/home/SiteChrome'
 import { getPost, listPosts, formatPostDate } from '@/lib/content/posts'
 import { alternatesFor, isLocale, localizedPath, absoluteUrl, SITE_URL, LOCALES } from '@/lib/i18n/config'
 import { safeJsonLd } from '@/lib/seo/json-ld'
@@ -76,39 +77,40 @@ export default async function PostPage({
   }
 
   return (
-    <main id="main-content" className="min-h-screen bg-white" tabIndex={-1}>
-      <article className="max-w-2xl mx-auto px-6 py-16">
+    <SiteChrome lang={lang}>
+      <article style={{ maxWidth: 760, margin: '0 auto', padding: '150px 24px 120px' }}>
         <Link
           href={localizedPath('/blog', lang)}
-          className="inline-flex items-center gap-2 text-sm text-secondary hover:text-primary transition-colors mb-8"
+          style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 32, fontSize: 14, color: '#a1a1aa', textDecoration: 'none' }}
         >
           <ArrowLeft size={16} aria-hidden="true" />
           {lang === 'es' ? 'Volver al blog' : 'Back to blog'}
         </Link>
 
-        <div className="flex items-center gap-3 mb-4 flex-wrap">
-          <span className="text-[11px] px-2.5 py-1 border border-border rounded-full text-secondary">
-            {post.tag}
-          </span>
-          <span className="flex items-center gap-1 text-xs text-secondary">
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16, flexWrap: 'wrap', fontSize: 13, color: '#a1a1aa' }}>
+          <span style={{ fontFamily: 'var(--font-mono),monospace', fontSize: 12, color: '#7fb2ff' }}>{post.tag}</span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             <Calendar size={12} aria-hidden="true" />
             <time dateTime={post.date}>{formatPostDate(post.date, lang)}</time>
           </span>
-          <span className="flex items-center gap-1 text-xs text-secondary">
+          <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             <Clock size={12} aria-hidden="true" />
             {post.readTime}
           </span>
         </div>
 
-        <h1 className="text-3xl md:text-4xl font-medium text-primary leading-tight mb-4 text-balance">
+        <h1
+          className="grad"
+          style={{ margin: '0 0 16px', fontFamily: 'var(--font-space),sans-serif', fontWeight: 500, fontSize: 'clamp(34px, 4.6vw, 56px)', lineHeight: 1.05, letterSpacing: '-0.04em', textWrap: 'balance' }}
+        >
           {post.title}
         </h1>
-        <p className="text-lg text-secondary leading-relaxed mb-10">{post.excerpt}</p>
+        <p style={{ margin: '0 0 40px', fontSize: 18, lineHeight: 1.6, color: 'rgba(255,255,255,0.6)' }}>{post.excerpt}</p>
 
-        <div className="border-t border-border pt-10">
+        <div className="lg-doc" style={{ borderTop: '1px solid #27272a', paddingTop: 40, maxWidth: 'none' }}>
           {post.source === 'local' ? (
             post.body.map((paragraph, i) => (
-              <p key={i} className="text-base text-secondary leading-relaxed mb-5">
+              <p key={i} className="lg-p" style={{ fontSize: 17 }}>
                 {paragraph}
               </p>
             ))
@@ -118,36 +120,29 @@ export default async function PostPage({
               components={{
                 block: {
                   h2: ({ children }) => (
-                    <h2 className="text-2xl font-medium text-primary mt-10 mb-4">{children}</h2>
+                    <h2 className="lg-h3" style={{ fontSize: 26 }}>
+                      {children}
+                    </h2>
                   ),
-                  h3: ({ children }) => (
-                    <h3 className="text-xl font-medium text-primary mt-8 mb-3">{children}</h3>
-                  ),
+                  h3: ({ children }) => <h3 className="lg-h3">{children}</h3>,
                   normal: ({ children }) => (
-                    <p className="text-base text-secondary leading-relaxed mb-5">{children}</p>
+                    <p className="lg-p" style={{ fontSize: 17 }}>
+                      {children}
+                    </p>
                   ),
                   blockquote: ({ children }) => (
-                    <blockquote className="border-l-2 border-primary pl-4 my-6 text-primary italic">
+                    <blockquote style={{ borderLeft: '2px solid #0066ff', paddingLeft: 16, margin: '24px 0', color: '#e4e4e7', fontStyle: 'italic' }}>
                       {children}
                     </blockquote>
                   ),
                 },
                 list: {
-                  bullet: ({ children }) => (
-                    <ul className="list-disc pl-6 my-5 space-y-2 text-base text-secondary">{children}</ul>
-                  ),
-                  number: ({ children }) => (
-                    <ol className="list-decimal pl-6 my-5 space-y-2 text-base text-secondary">{children}</ol>
-                  ),
+                  bullet: ({ children }) => <ul className="lg-ul">{children}</ul>,
+                  number: ({ children }) => <ol className="lg-ul">{children}</ol>,
                 },
                 marks: {
                   link: ({ children, value }) => (
-                    <a
-                      href={value?.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary underline underline-offset-4 hover:opacity-70 transition-opacity"
-                    >
+                    <a href={value?.href} target="_blank" rel="noopener noreferrer">
                       {children}
                     </a>
                   ),
@@ -162,6 +157,6 @@ export default async function PostPage({
           dangerouslySetInnerHTML={{ __html: safeJsonLd(articleSchema) }}
         />
       </article>
-    </main>
+    </SiteChrome>
   )
 }
