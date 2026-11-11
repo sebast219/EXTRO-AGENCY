@@ -6,25 +6,34 @@ import { test, expect } from '@playwright/test'
  * Es el único camino de conversión del sitio. Antes de esta suite nada impedía
  * que una edición lo desconectara sin que nadie se enterara — que es
  * exactamente lo que le pasó al cotizador.
+ *
+ * La suite corre sobre un dispositivo en español para que `/` no redirija a
+ * `/en` por la detección de idioma del navegador.
  */
+test.use({ locale: 'es-CO' })
 
 test.describe('Agendamiento', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/')
-    await page.locator('#contact').scrollIntoViewIfNeeded()
+    // Lenis controla el scroll suave del sitio. Si se fuerza un
+    // scrollIntoViewIfNeeded y se hace clic de inmediato, la animación sigue
+    // viva y el clic cae en otra posición. El clic de Playwright ya desplaza
+    // el día hasta la vista y espera a que esté estable.
+    await page.waitForLoadState('networkidle')
   })
 
   test('el calendario se renderiza con los días navegables', async ({ page }) => {
-    const grid = page.getByRole('grid')
-    await expect(grid).toBeVisible()
-    await expect(grid.getByRole('gridcell').first()).toBeVisible()
+    const days = page.locator('#reserva button[data-date]')
+    await expect(days.first()).toBeVisible()
+    expect(await days.count()).toBeGreaterThan(0)
+    await expect(page.locator('#reserva button[data-date]:not([disabled])').first()).toBeVisible()
   })
 
   test('seleccionar un día carga los horarios reales del servidor', async ({ page }) => {
     const availability = page.waitForResponse((r) => r.url().includes('/api/booking/availability'))
 
     // Primer día seleccionable del mes visible.
-    await page.getByRole('grid').getByRole('button', { disabled: false }).first().click()
+    await page.locator('#reserva button[data-date]:not([disabled])').first().click()
 
     const res = await availability
     expect(res.status()).toBe(200)
@@ -38,19 +47,21 @@ test.describe('Agendamiento', () => {
   })
 
   test('el recorrido completo llega a la confirmación', async ({ page }) => {
-    await page.getByRole('grid').getByRole('button', { disabled: false }).first().click()
-    await page.waitForResponse((r) => r.url().includes('/api/booking/availability'))
+    const availability = page.waitForResponse((r) => r.url().includes('/api/booking/availability'))
+    await page.locator('#reserva button[data-date]:not([disabled])').first().click()
+    await availability
 
-    await page.getByRole('button', { name: /^\d{1,2}:\d{2} (AM|PM)$/ }).first().click()
+    await page.locator('#reserva button[data-slot]:not([disabled])').first().click()
 
     await page.getByLabel(/nombre|name/i).fill('Cliente de Prueba')
     await page.getByLabel(/email/i).fill('prueba@example.com')
+    await page.getByRole('checkbox').check()
 
     const booking = page.waitForResponse((r) => r.url().endsWith('/api/booking'))
-    await page.getByRole('button', { name: /confirmar|confirm/i }).click()
+    await page.getByRole('button', { name: /confirmar llamada|confirm call/i }).click()
 
     expect((await booking).status()).toBe(200)
-    await expect(page.getByText(/agendado|booked/i)).toBeVisible({ timeout: 15_000 })
+    await expect(page.getByText(/llamada agendada|call scheduled/i)).toBeVisible({ timeout: 15_000 })
   })
 
   test('el servidor rechaza una hora que no es un hueco válido', async ({ request }) => {

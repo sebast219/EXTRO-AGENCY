@@ -1,8 +1,7 @@
 'use client'
 
-import { createContext, useContext, useMemo, type ReactNode } from 'react'
+import { createContext, useContext, useMemo, useState, useTransition, type ReactNode } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { getTranslations, type Translations } from '@/lib/i18n'
 import { DEFAULT_LOCALE, localizedPath, stripLocale, type Locale } from '@/lib/i18n/config'
 
 /**
@@ -14,11 +13,17 @@ import { DEFAULT_LOCALE, localizedPath, stripLocale, type Locale } from '@/lib/i
  * parpadeo y el HTML servido siempre estaba en español. Cambiar de idioma
  * ahora navega a la URL del otro idioma, que es lo que hace que el contenido en
  * inglés exista para el buscador (M-3).
+ *
+ * El diccionario de traducciones salió del contexto: ningún componente lo
+ * consumía y metía 26,6 KB de strings en el bundle de cliente de todas las
+ * páginas. Cada componente recibe su copy desde el servidor o lo importa de
+ * `lib/i18n/*`.
  */
 
 type LangContextValue = {
   lang: Locale
-  t: Translations
+  /** Idioma al que se está cambiando mientras llega el contenido nuevo (null si no hay cambio en curso). */
+  pendingLang: Locale | null
   setLang: (lang: Locale) => void
   /** Ruta pública equivalente en el otro idioma, para el enlace del selector. */
   pathIn: (lang: Locale) => string
@@ -29,6 +34,8 @@ const LangContext = createContext<LangContextValue | undefined>(undefined)
 export function LanguageProvider({ lang, children }: { lang: Locale; children: ReactNode }) {
   const router = useRouter()
   const pathname = usePathname()
+  const [pendingLang, setPendingLang] = useState<Locale | null>(null)
+  const [, startTransition] = useTransition()
 
   const value = useMemo<LangContextValue>(() => {
     const basePath = stripLocale(pathname || '/')
@@ -37,17 +44,22 @@ export function LanguageProvider({ lang, children }: { lang: Locale; children: R
 
     return {
       lang,
-      t: getTranslations(lang),
+      pendingLang: pendingLang !== lang ? pendingLang : null,
       pathIn,
       setLang: (target: Locale) => {
         if (target === lang) return
         // Cookie de preferencia: la middleware la usa para respetar la elección
-        // en visitas posteriores a la raíz.
+        // en visitas posteriores. Solo se escribe aquí, nunca al autodetectar.
         document.cookie = `extro-lang=${target}; path=/; max-age=31536000; samesite=lax`
-        router.push(pathIn(target))
+        // Cambio reactivo: navegación suave sin salto al inicio. replace evita llenar el
+        // historial con un paso por cada cambio de idioma.
+        setPendingLang(target)
+        startTransition(() => {
+          router.replace(pathIn(target), { scroll: false })
+        })
       },
     }
-  }, [lang, pathname, router])
+  }, [lang, pathname, pendingLang, router])
 
   return <LangContext.Provider value={value}>{children}</LangContext.Provider>
 }

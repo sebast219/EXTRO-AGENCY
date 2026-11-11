@@ -21,7 +21,7 @@ export default function SiteChrome({ lang, children }: { lang: Locale; children:
         {children}
       </main>
       <HomeFooter lang={lang} base={base} />
-      <HomeFx />
+      <HomeFx key={lang} />
     </>
   )
 }

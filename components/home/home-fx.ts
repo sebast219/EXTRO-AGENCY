@@ -12,15 +12,31 @@ import Lenis from 'lenis'
 
 class HomeFx {
   mount() {
-    // Reloj del footer: hora real de Medellín (America/Bogota)
-    const fmtClock = new Intl.DateTimeFormat('es-CO', { timeZone: 'America/Bogota', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
+    // Reloj del footer: hora real de Medellín (America/Bogota), en el idioma activo.
+    const isEn = document.documentElement.lang === 'en'
+    const fmtClock = new Intl.DateTimeFormat(isEn ? 'en-US' : 'es-CO', { timeZone: 'America/Bogota', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' })
     const tickClock = () => { const t = fmtClock.format(new Date()); document.querySelectorAll('.ft-clock').forEach((el) => { if (el.textContent !== t) el.textContent = t }) }
     tickClock()
     this._clock = setInterval(tickClock, 1000)
+    this.initLazy()
     this._boot = setTimeout(() => { this.initFx(); this.initAdmin(); this.initBento(); this.initPlayground(); this.initArc() }, 80)
   }
 
+  // Carga diferida real de las capturas (casos y footer): ~1,2 MB que no hacen falta hasta que el
+  // visitante se acerca. loading="lazy" no basta aquí porque viven dentro de capas transformadas.
+  initLazy() {
+    const imgs = Array.prototype.slice.call(document.querySelectorAll("img[data-lazy-src]"));
+    if (!imgs.length) return;
+    const load = (img) => { img.src = img.getAttribute("data-lazy-src"); img.removeAttribute("data-lazy-src"); };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { io.unobserve(e.target); load(e.target); } });
+    }, { rootMargin: "1600px 0px" });
+    imgs.forEach((img) => io.observe(img));
+    this._lazyIo = io;
+  }
+
   unmount() {
+    if (this._lazyIo) this._lazyIo.disconnect()
     clearInterval(this._clock)
     clearTimeout(this._boot)
     this._bxDead = true
@@ -41,14 +57,21 @@ class HomeFx {
     if (!track) return;
     this._arcOn = true;
     const items = Array.prototype.slice.call(track.children);
+    // Medidas fijas: se leen una vez (y al cambiar el tamaño) en vez de forzar layout en cada frame.
+    let centers = [], half = 1;
+    const measure = () => {
+      half = mq.clientWidth / 2 || 1;
+      centers = items.map((el) => el.offsetLeft + el.offsetWidth / 2);
+    };
+    measure();
+    window.addEventListener('resize', measure);
     const tick = () => {
-      const half = mq.clientWidth / 2 || 1;
       const m = getComputedStyle(track).transform;
       let tx = 0;
       if (m && m !== 'none') { const v = m.match(/-?[\d.e]+/g); if (v) tx = parseFloat(v[v.length === 6 ? 4 : 12]) || 0; }
       for (let i = 0; i < items.length; i++) {
         const el = items[i];
-        const x = tx + el.offsetLeft + el.offsetWidth / 2;
+        const x = tx + centers[i];
         let d = (x - half) / half;
         if (d > 1.4) d = 1.4; else if (d < -1.4) d = -1.4;
         const a = Math.abs(d);
@@ -57,7 +80,13 @@ class HomeFx {
       }
       this._arcRaf = requestAnimationFrame(tick);
     };
-    tick();
+    // Solo anima mientras la franja está en pantalla.
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) { if (!this._arcRaf) tick(); }
+      else { cancelAnimationFrame(this._arcRaf); this._arcRaf = 0; }
+    });
+    io.observe(mq);
+    this._cleanup = (this._cleanup || []).concat([() => { io.disconnect(); window.removeEventListener('resize', measure); }]);
   }
 
   // Casos · playground a pantalla completa: sube de golpe, se fija y las fotos suben en profundidad
@@ -70,47 +99,46 @@ class HomeFx {
     const stage = sec.querySelector('.pg-stage');
     const phs = Array.prototype.slice.call(sec.querySelectorAll('.pg-ph'));
     const ins = Array.prototype.slice.call(sec.querySelectorAll('.pg-in'));
-    const live = document.documentElement.scrollHeight > window.innerHeight * 1.4;
     const floats = [];
+    // Automático: sin pin ni scrub. Al entrar a la vista, el escenario se abre y las fotos
+    // suben solas en bucle, cada una a su ritmo; todo se pausa cuando la sección sale.
     this._pg = gsap.context(() => {
-      // 1 · Entrada: el escenario sube y se expande hasta ocupar toda la vista
-      gsap.fromTo(stage, { scale: 0.88, borderRadius: 40, y: 80 }, {
-        scale: 1, borderRadius: 0, y: 0, ease: 'none',
-        scrollTrigger: { trigger: sec, start: 'top bottom', end: 'top top', scrub: 0.4 }
-      });
-      if (!live) return;
-      // "De golpe": al asomarse bajando, el scroll se engancha arriba de la sección
-      let snapping = false;
-      ST.create({
-        trigger: sec, start: 'top 72%',
-        onEnter: () => {
-          if (!this._lenis || snapping) return;
-          snapping = true;
-          this._lenis.scrollTo(sec, { duration: 0.85, easing: (t) => 1 - Math.pow(1 - t, 4), lock: true, onComplete: () => { snapping = false; } });
-          setTimeout(() => { snapping = false; }, 1200);
-        }
-      });
-      // 2 · Fijada: las fotos suben a distintas velocidades (sensación de caída)
-      const H = stage.offsetHeight;
-      const tl = gsap.timeline({ scrollTrigger: { trigger: sec, start: 'top top', end: '+=' + Math.round(H * 2.2), pin: true, scrub: 0.6, anticipatePin: 1 } });
-      phs.forEach((ph) => {
-        const d = parseFloat(ph.getAttribute('data-d')) || 0.5;
-        tl.fromTo(ph, { y: H * (0.25 + d * 0.35), rotationX: 18 * d, transformPerspective: 1200, scale: 0.92 + d * 0.06 },
-          { y: -H * (0.7 + d * 1.25), rotationX: -6 * d, scale: 1 + d * 0.08, ease: 'none', duration: 1 }, 0);
-      });
-      tl.fromTo(sec.querySelector('.pg-glow'), { scale: 0.8, opacity: 0.6 }, { scale: 1.25, opacity: 1, ease: 'none', duration: 1 }, 0);
-      tl.to(sec.querySelector('.pg-center'), { y: -30, ease: 'none', duration: 1 }, 0);
+      const H = stage.offsetHeight || window.innerHeight;
       gsap.set(sec.querySelector('.pg-field'), { perspective: 1200 });
-      // 3 · Caída del contenido central con rebote al fijarse
-      if (sec.getBoundingClientRect().top > 2) gsap.set(ins, { opacity: 0, y: -140 });
+      gsap.set(stage, { scale: 0.88, borderRadius: 40, y: 80 });
+      gsap.set(ins, { opacity: 0, y: -140 });
+
+      const loops = phs.map((ph, i) => {
+        const d = parseFloat(ph.getAttribute('data-d')) || 0.5;
+        const tw = gsap.fromTo(ph,
+          { y: H * (0.25 + d * 0.35), rotationX: 18 * d, transformPerspective: 1200, scale: 0.92 + d * 0.06 },
+          { y: -H * (0.7 + d * 1.25), rotationX: -6 * d, scale: 1 + d * 0.08, ease: 'none', duration: 16 - d * 6, repeat: -1 });
+        tw.progress((i * 0.37) % 1);
+        tw.pause();
+        return tw;
+      });
+      const glow = gsap.fromTo(sec.querySelector('.pg-glow'), { scale: 0.8, opacity: 0.6 }, { scale: 1.25, opacity: 1, ease: 'sine.inOut', duration: 4, yoyo: true, repeat: -1 });
+      glow.pause();
+
+      let opened = false;
       ST.create({
-        trigger: sec, start: 'top 1%', once: true,
-        onEnter: () => {
-          if (M) {
-            ins.forEach((el, i) => M.animate(el, { opacity: [0, 1], y: [-140 - i * 30, 0] }, { type: 'spring', stiffness: 240, damping: 13, mass: 0.9, delay: 0.08 * i }));
-            M.animate(stage, { y: [0, 12, -4, 0] }, { duration: 0.55, delay: 0.32, ease: 'easeOut' });
+        trigger: sec, start: 'top 85%', end: 'bottom top',
+        onToggle: (self) => {
+          if (self.isActive) {
+            loops.forEach((tw) => tw.play());
+            glow.play();
+            if (!opened) {
+              opened = true;
+              gsap.to(stage, { scale: 1, borderRadius: 0, y: 0, duration: 1.2, ease: 'power3.out' });
+              if (M) {
+                ins.forEach((el, i) => M.animate(el, { opacity: [0, 1], y: [-140 - i * 30, 0] }, { type: 'spring', stiffness: 240, damping: 13, mass: 0.9, delay: 0.25 + 0.08 * i }));
+              } else {
+                gsap.to(ins, { opacity: 1, y: 0, duration: 1, stagger: 0.08, delay: 0.25, ease: 'bounce.out' });
+              }
+            }
           } else {
-            gsap.to(ins, { opacity: 1, y: 0, duration: 1, stagger: 0.08, ease: 'bounce.out' });
+            loops.forEach((tw) => tw.pause());
+            glow.pause();
           }
         }
       });
@@ -131,7 +159,7 @@ class HomeFx {
     if (!c || this._adm) return;
     const M = window.Motion;
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const SEC = {
+    const ES_SEC = {
       construccion: { t: 'obra · demo', l: 'Avance de obra', pre: '', suf: ' %', s: 68, d: 1, lo: 0.1, hi: 0.4, max: 79, dl: '+3,2 %',
         init: [['Compra de cemento', '$ 8,4 M'], ['Corte contratista #3', '$ 12,6 M'], ['Presupuesto ejecutado', '61 %']],
         feed: [['Avance torre A', '+2 pisos'], ['Compra de ladrillo', '$ 5,1 M'], ['Corte contratista #4', '$ 9,8 M'], ['Material a bodega', '120 bultos'], ['Informe de residente', 'Nuevo'], ['Presupuesto ejecutado', '62 %']] },
@@ -145,10 +173,27 @@ class HomeFx {
         init: [['Orden #0731', 'Asignada'], ['Visita técnica', '14:30'], ['Cotización #212', 'Enviada']],
         feed: [['Orden #0732', 'Asignada'], ['Cotización #213', 'Aprobada'], ['Visita técnica', '16:00'], ['Orden #0731', 'Cerrada'], ['Cliente nuevo', 'Sede Centro'], ['Factura #0518', 'Pagada']] }
     };
+    // Mismos datos de demo en inglés para que el panel no vuelva al español al
+    // cambiar de sector en /en. Las cifras usan el separador decimal del idioma.
+    const EN_SEC = {
+      construccion: { t: 'site · demo', l: 'Construction progress', pre: '', suf: ' %', s: 68, d: 1, lo: 0.1, hi: 0.4, max: 79, dl: '+3.2 %',
+        init: [['Cement purchase', '$8.4M'], ['Contractor payment #3', '$12.6M'], ['Budget spent', '61 %']],
+        feed: [['Tower A progress', '+2 floors'], ['Brick purchase', '$5.1M'], ['Contractor payment #4', '$9.8M'], ['Material to warehouse', '120 bags'], ['Site report', 'New'], ['Budget spent', '62 %']] },
+      comercio: { t: 'dashboard · today', l: 'Sales today', pre: '$ ', suf: ' M', s: 4.82, d: 2, lo: 0.04, hi: 0.16, max: 9.5, dl: '+12.4 %',
+        init: [['Invoice #2041', '$320,000'], ['Order #1187', '$96,500'], ['New customer', 'North site']],
+        feed: [['Invoice #2042', '$1,240,000'], ['Order #1188', '$58,000'], ['New customer', 'Downtown'], ['Invoice #2043', '$410,000'], ['Order #1189', '$212,300'], ['Inventory', '+40 u']] },
+      logistica: { t: 'fleet · today', l: 'Deliveries completed', pre: '', suf: ' / 42', s: 31, d: 0, lo: 1, hi: 0.9, max: 41, dl: '+8 %',
+        init: [['Route 3 · Downtown', 'On the way'], ['Order #1187', 'Delivered'], ['Route 5 · North', 'Departed']],
+        feed: [['Route 3 · Downtown', 'Delivered'], ['Route 6 · South', 'Departed'], ['Order #1190', 'Assigned'], ['Route 5 · North', 'Delivered'], ['Vehicle 12', 'Maintenance'], ['Order #1191', 'On the way']] },
+      servicios: { t: 'schedule · today', l: 'Service orders', pre: '', suf: ' today', s: 24, d: 0, lo: 1, hi: 0.9, max: 38, dl: '+5 %',
+        init: [['Order #0731', 'Assigned'], ['Site visit', '2:30 PM'], ['Quote #212', 'Sent']],
+        feed: [['Order #0732', 'Assigned'], ['Quote #213', 'Approved'], ['Site visit', '4:00 PM'], ['Order #0731', 'Closed'], ['New customer', 'Downtown'], ['Invoice #0518', 'Paid']] }
+    };
+    const SEC = document.documentElement.lang === 'en' ? EN_SEC : ES_SEC;
     const q = (x) => c.querySelector(x);
     const rows = Array.prototype.slice.call(c.querySelectorAll('.bx-row'));
     const chips = Array.prototype.slice.call(c.querySelectorAll('.bx-chip'));
-    const fmt = (v, d) => v.toFixed(d).replace('.', ',');
+    const fmt = (v, d) => new Intl.NumberFormat(document.documentElement.lang === 'en' ? 'en-US' : 'es-CO', { minimumFractionDigits: d, maximumFractionDigits: d }).format(v);
     const st = this._adm = { key: 'construccion', total: SEC.construccion.s, fi: 0, sec: SEC };
     const mark = () => chips.forEach((b) => {
       const on = b.getAttribute('data-sec') === st.key;
@@ -457,7 +502,6 @@ class HomeFx {
       // ---- HERO: entrada coreografiada ----
       const tl = gsap.timeline({ defaults: { ease: EASE } });
       tl.from('.nav', { y: -30, opacity: 0, duration: 1 }, 0)
-        .from('.h-pill', { y: 16, opacity: 0, filter: 'blur(6px)', duration: 0.9 }, 0.1)
         .from('.wi', { yPercent: 115, rotate: 4, duration: 1.2, stagger: 0.055 }, 0.2)
         .from('.h-in', { y: 22, opacity: 0, filter: 'blur(8px)', duration: 1, stagger: 0.1 }, 0.55)
         .from('.h-win', { y: 90, opacity: 0, duration: 1.6 }, 0.7)
@@ -539,13 +583,26 @@ class HomeFx {
       const steps = $('.p-step'), dots = $('.p-dot');
       if (steps.length) {
         gsap.set(steps, { opacity: 0.35 });
-        const pt = gsap.timeline({ scrollTrigger: { trigger: '.p-track', start: 'top 78%', end: 'top 30%', scrub: 0.6 } });
-        pt.fromTo('.p-fill', { scaleX: 0 }, { scaleX: 1, ease: 'none', duration: 1 }, 0);
-        steps.forEach((st, i) => {
-          const at = (i / Math.max(1, steps.length - 1)) * 0.96;
-          pt.to(st, { opacity: 1, duration: 0.08 }, at)
-            .to(dots[i], { backgroundColor: '#0066ff', borderColor: '#0066ff', boxShadow: '0 0 16px rgba(0,102,255,0.9)', scale: 1.25, duration: 0.08 }, at);
-        });
+        const lit = { backgroundColor: '#0066ff', borderColor: '#0066ff', boxShadow: '0 0 16px rgba(0,102,255,0.9)', scale: 1.25, duration: 0.08 };
+        if (window.matchMedia('(max-width: 700px)').matches) {
+          // Móvil: línea vertical; cada tramo se llena entre un punto y el siguiente
+          const segs = $('.p-seg');
+          gsap.set(segs, { scaleY: 0 });
+          const pt = gsap.timeline({ scrollTrigger: { trigger: '.p-list', start: 'top 75%', end: 'bottom 55%', scrub: 0.6 } });
+          const n = steps.length;
+          steps.forEach((st, i) => {
+            const at = i / n;
+            pt.to(st, { opacity: 1, duration: 0.08 }, at).to(dots[i], lit, at);
+            if (segs[i] && i < n - 1) pt.fromTo(segs[i], { scaleY: 0 }, { scaleY: 1, ease: 'none', duration: 1 / n - 0.02 }, at + 0.04);
+          });
+        } else {
+          const pt = gsap.timeline({ scrollTrigger: { trigger: '.p-track', start: 'top 78%', end: 'top 30%', scrub: 0.6 } });
+          pt.fromTo('.p-fill', { scaleX: 0 }, { scaleX: 1, ease: 'none', duration: 1 }, 0);
+          steps.forEach((st, i) => {
+            const at = (i / Math.max(1, steps.length - 1)) * 0.96;
+            pt.to(st, { opacity: 1, duration: 0.08 }, at).to(dots[i], lit, at);
+          });
+        }
       }
 
       // FAQ y reserva

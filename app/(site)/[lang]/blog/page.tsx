@@ -49,6 +49,7 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: str
   return (
     <SiteChrome lang={lang}>
       <BlogIndex
+        lang={lang}
         posts={posts.map((p) => ({
           slug: p.slug,
           href: localizedPath(`/blog/${p.slug}`, lang),

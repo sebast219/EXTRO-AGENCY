@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
+import type { Locale } from '@/lib/i18n/config'
 
 export type BlogCardPost = {
   slug: string
@@ -13,7 +14,45 @@ export type BlogCardPost = {
   readTime: string
 }
 
-const ALL = 'Todos'
+/** Valor interno del filtro "todas": las etiquetas visibles se traducen aparte. */
+const ALL = '__all__'
+
+const COPY: Record<Locale, {
+  eyebrow: string
+  subtitle: string
+  categories: string
+  searchAria: string
+  searchPlaceholder: string
+  articles: string
+  empty: string
+  viewAll: string
+  all: string
+}> = {
+  es: {
+    eyebrow: 'Recursos',
+    subtitle:
+      'Ingeniería, producto y negocio: lo que aprendemos construyendo software a la medida para emprendimientos y empresas.',
+    categories: 'Categorías',
+    searchAria: 'Buscar artículos',
+    searchPlaceholder: 'Buscar…',
+    articles: 'Artículos',
+    empty: 'No encontramos artículos con esa búsqueda.',
+    viewAll: 'Ver todos',
+    all: 'Todos',
+  },
+  en: {
+    eyebrow: 'Resources',
+    subtitle:
+      'Engineering, product and business: what we learn building custom software for startups and companies.',
+    categories: 'Categories',
+    searchAria: 'Search articles',
+    searchPlaceholder: 'Search…',
+    articles: 'Articles',
+    empty: 'We could not find articles matching that search.',
+    viewAll: 'View all',
+    all: 'All',
+  },
+}
 
 // Portadas: degradados de la identidad (azul/zinc) + un icono Lucide por categoría.
 const COVERS = [
@@ -37,7 +76,8 @@ function hash(s: string) {
   return h
 }
 
-export default function BlogIndex({ posts }: { posts: BlogCardPost[] }) {
+export default function BlogIndex({ posts, lang }: { posts: BlogCardPost[]; lang: Locale }) {
+  const c = COPY[lang]
   const [cat, setCat] = useState(ALL)
   const [query, setQuery] = useState('')
 
@@ -70,30 +110,30 @@ export default function BlogIndex({ posts }: { posts: BlogCardPost[] }) {
         <div style={{ position: 'relative', maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18, fontFamily: 'var(--font-mono),monospace', fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>
             <span aria-hidden="true" style={{ width: 8, height: 8, borderRadius: 999, background: '#0066ff', boxShadow: '0 0 12px rgba(0,102,255,0.8)' }} />
-            Recursos
+            {c.eyebrow}
           </div>
           <h1 className="grad" style={{ margin: '0 0 14px', fontFamily: 'var(--font-space),sans-serif', fontWeight: 500, fontSize: 'clamp(48px, 6vw, 80px)', lineHeight: 1, letterSpacing: '-0.05em' }}>
             Blog
           </h1>
           <p style={{ margin: 0, maxWidth: 560, fontSize: 17, lineHeight: 1.6, color: 'rgba(255,255,255,0.6)' }}>
-            Ingeniería, producto y negocio: lo que aprendemos construyendo software a la medida para emprendimientos y empresas.
+            {c.subtitle}
           </p>
 
           <div className="bl-bar" style={{ marginTop: 44, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px 24px' }}>
-            <div role="tablist" aria-label="Categorías" style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-              {cats.map((c) => {
-                const on = c === cat
+            <div role="tablist" aria-label={c.categories} style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+              {cats.map((catName) => {
+                const on = catName === cat
                 return (
                   <button
-                    key={c}
+                    key={catName}
                     type="button"
                     role="tab"
                     className="bl-pill"
                     aria-selected={on}
-                    onClick={() => setCat(c)}
+                    onClick={() => setCat(catName)}
                     style={{ minHeight: 38, padding: '0 15px', borderRadius: 999, border: 0, background: on ? '#27272a' : 'transparent', color: on ? '#fff' : '#a1a1aa', fontSize: 14, fontWeight: 500 }}
                   >
-                    {c}
+                    {catName === ALL ? c.all : catName}
                   </button>
                 )
               })}
@@ -105,8 +145,8 @@ export default function BlogIndex({ posts }: { posts: BlogCardPost[] }) {
               </svg>
               <input
                 type="search"
-                aria-label="Buscar artículos"
-                placeholder="Buscar…"
+                aria-label={c.searchAria}
+                placeholder={c.searchPlaceholder}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 style={{ flex: 1, minWidth: 0, height: '100%', border: 0, outline: 'none', background: 'transparent', color: '#fafafa', font: 'inherit', fontSize: 14 }}
@@ -116,7 +156,7 @@ export default function BlogIndex({ posts }: { posts: BlogCardPost[] }) {
         </div>
       </section>
 
-      <section aria-label="Artículos" style={{ position: 'relative', padding: '44px 24px 120px', boxSizing: 'border-box' }}>
+      <section aria-label={c.articles} style={{ position: 'relative', padding: '44px 24px 120px', boxSizing: 'border-box' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="bl-grid">
             {shown.map((p) => {
@@ -158,7 +198,7 @@ export default function BlogIndex({ posts }: { posts: BlogCardPost[] }) {
           </div>
           {shown.length === 0 && (
             <div style={{ padding: '80px 0', textAlign: 'center', color: '#a1a1aa', fontSize: 15 }}>
-              No encontramos artículos con esa búsqueda.{' '}
+              {c.empty}{' '}
               <button
                 type="button"
                 onClick={() => {
@@ -167,7 +207,7 @@ export default function BlogIndex({ posts }: { posts: BlogCardPost[] }) {
                 }}
                 style={{ background: 'none', border: 0, padding: 0, color: '#7fb2ff', font: 'inherit', textDecoration: 'underline', textUnderlineOffset: 3 }}
               >
-                Ver todos
+                {c.viewAll}
               </button>
             </div>
           )}

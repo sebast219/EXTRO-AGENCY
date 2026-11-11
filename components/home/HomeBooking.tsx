@@ -3,6 +3,7 @@
 import { useCallback, useMemo, useState } from 'react'
 import { useLang } from '@/components/LanguageProvider'
 import { localizedPath } from '@/lib/i18n/config'
+import { HOME_COPY } from '@/lib/i18n/home-copy'
 import { AFTERNOON_SLOTS, BOOKING_HORIZON_DAYS, MORNING_SLOTS } from '@/features/booking/slots'
 import {
   addDaysISO,
@@ -18,8 +19,6 @@ import {
 type Step = 1 | 2 | 3 | 4
 
 const TIMEZONE = 'America/Bogota'
-const MONTHS = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-const DAY_NAMES = ['DOM', 'LUN', 'MAR', 'MIÉ', 'JUE', 'VIE', 'SÁB']
 
 const mono = 'var(--font-mono),monospace'
 const space = 'var(--font-space),sans-serif'
@@ -89,6 +88,7 @@ function Back({ onClick, children }: { onClick: () => void; children?: React.Rea
 
 export default function HomeBooking() {
   const { lang } = useLang()
+  const c = HOME_COPY[lang].booking
   const [today] = useState<DateISO>(() => todayISO(TIMEZONE))
   const [step, setStep] = useState<Step>(1)
   const [date, setDate] = useState<DateISO | null>(null)
@@ -142,7 +142,7 @@ export default function HomeBooking() {
     void loadAvailability(value)
   }
 
-  const whenLabel = date ? `${formatDateLong(date, 'es', TIMEZONE)}${slot ? ` · ${to12h(slot)}` : ''}` : ''
+  const whenLabel = date ? `${formatDateLong(date, lang, TIMEZONE)}${slot ? ` · ${to12h(slot)}` : ''}` : ''
 
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -170,12 +170,12 @@ export default function HomeBooking() {
           await loadAvailability(date)
           setStep(2)
         }
-        throw new Error(data.error ?? 'No se pudo agendar. Intenta de nuevo.')
+        throw new Error(data.error ?? c.error)
       }
       setMeetUrl(data.meetUrl ?? null)
       setStep(4)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'No se pudo agendar. Intenta de nuevo.')
+      setError(err instanceof Error ? err.message : c.error)
     } finally {
       setSubmitting(false)
     }
@@ -200,7 +200,9 @@ export default function HomeBooking() {
         <button
           key={t}
           type="button"
+          data-slot={t}
           disabled={isTaken}
+          aria-pressed={selected}
           onClick={() => {
             setSlot(t)
             setStep(3)
@@ -243,10 +245,10 @@ export default function HomeBooking() {
             className="grad rv"
             style={{ margin: '0 0 16px', fontFamily: space, fontWeight: 600, fontSize: 'clamp(34px, 4.2vw, 52px)', lineHeight: 1, letterSpacing: '-0.04em', textWrap: 'balance' }}
           >
-            Elige fecha y hora
+            {c.title}
           </h2>
           <p style={{ margin: '0 0 22px', maxWidth: '46ch', fontSize: 16, lineHeight: 1.6, color: 'rgba(255,255,255,0.6)' }}>
-            Una videollamada de 15 minutos para entender tu proyecto, el alcance y una posible fecha de entrega.
+            {c.subtitle}
           </p>
           <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px 10px', fontSize: 13.5, color: 'rgba(255,255,255,0.75)' }}>
             <li style={pill}>
@@ -254,14 +256,14 @@ export default function HomeBooking() {
                 <circle cx="12" cy="12" r="10" />
                 <polyline points="12 6 12 12 16 14" />
               </Icon>
-              15 minutos
+              {c.pills[0]}
             </li>
             <li style={pill}>
               <Icon>
                 <path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5" />
                 <rect x="2" y="6" width="14" height="12" rx="2" />
               </Icon>
-              Videollamada · el enlace llega a tu correo
+              {c.pills[1]}
             </li>
             <li style={pill}>
               <Icon>
@@ -269,7 +271,7 @@ export default function HomeBooking() {
                 <path d="M2 12h20" />
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
               </Icon>
-              Hora de Bogotá (GMT-5)
+              {c.pills[2]}
             </li>
           </ul>
         </div>
@@ -279,13 +281,13 @@ export default function HomeBooking() {
           style={{ width: '100%', minWidth: 0, borderRadius: 20, border: '1px solid rgba(255,255,255,0.1)', background: '#0a0a0b', overflow: 'hidden', boxShadow: '0 40px 100px rgba(0,0,0,0.5)' }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '16px 22px', borderBottom: '1px solid rgba(255,255,255,0.08)', fontFamily: mono, fontSize: 12, flexWrap: 'wrap' }}>
-            <span style={{ color: stepColor(1) }}>01 Fecha</span>
+            <span style={{ color: stepColor(1) }}>{c.steps[0]}</span>
             <span style={{ color: 'rgba(255,255,255,0.2)' }}>—</span>
-            <span style={{ color: stepColor(2) }}>02 Hora</span>
+            <span style={{ color: stepColor(2) }}>{c.steps[1]}</span>
             <span style={{ color: 'rgba(255,255,255,0.2)' }}>—</span>
-            <span style={{ color: stepColor(3) }}>03 Datos</span>
+            <span style={{ color: stepColor(3) }}>{c.steps[2]}</span>
             <span style={{ color: 'rgba(255,255,255,0.2)' }}>—</span>
-            <span style={{ color: stepColor(4) }}>04 Listo</span>
+            <span style={{ color: stepColor(4) }}>{c.steps[3]}</span>
           </div>
 
           <div className="step-in" key={step} style={{ padding: '24px 22px 26px' }}>
@@ -296,7 +298,7 @@ export default function HomeBooking() {
                     type="button"
                     onClick={() => shiftMonth(-1)}
                     disabled={!canGoPrev}
-                    aria-label="Mes anterior"
+                    aria-label={c.prevMonth}
                     style={{ ...backBtn, minWidth: 44, justifyContent: 'center', opacity: canGoPrev ? 1 : 0.25 }}
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -304,13 +306,13 @@ export default function HomeBooking() {
                     </svg>
                   </button>
                   <span style={{ fontFamily: space, fontSize: 18, fontWeight: 600 }} aria-live="polite">
-                    {MONTHS[month0]} {year}
+                    {c.months[month0]} {year}
                   </span>
                   <button
                     type="button"
                     onClick={() => shiftMonth(1)}
                     disabled={!canGoNext}
-                    aria-label="Mes siguiente"
+                    aria-label={c.nextMonth}
                     style={{ ...backBtn, minWidth: 44, justifyContent: 'center', opacity: canGoNext ? 1 : 0.25 }}
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -319,7 +321,7 @@ export default function HomeBooking() {
                   </button>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, minmax(0, 1fr))', marginBottom: 6 }} aria-hidden="true">
-                  {DAY_NAMES.map((d) => (
+                  {c.days.map((d) => (
                     <div key={d} style={{ fontFamily: mono, fontSize: 11, textAlign: 'center', color: 'rgba(255,255,255,0.4)', padding: '6px 0' }}>
                       {d}
                     </div>
@@ -335,9 +337,11 @@ export default function HomeBooking() {
                       <div key={iso} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 48 }}>
                         <button
                           type="button"
+                          data-date={iso}
                           disabled={off}
+                          aria-pressed={selected}
                           onClick={() => pickDate(iso)}
-                          aria-label={`${day} de ${MONTHS[month0].toLowerCase()}${off ? ', no disponible' : ''}`}
+                          aria-label={c.dayAria(day, c.months[month0].toLowerCase(), off)}
                           style={{
                             width: 44,
                             height: 44,
@@ -358,25 +362,25 @@ export default function HomeBooking() {
                   })}
                 </div>
                 <p role="status" style={{ margin: '16px 0 0', textAlign: 'center', fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>
-                  Selecciona un día disponible · lun a vie
+                  {c.dayHint}
                 </p>
               </div>
             )}
 
             {step === 2 && date && (
               <div>
-                <Back onClick={() => setStep(1)}>{formatDateLong(date, 'es', TIMEZONE)}</Back>
+                <Back onClick={() => setStep(1)}>{formatDateLong(date, lang, TIMEZONE)}</Back>
                 {loadingSlots ? (
                   <p role="status" style={{ margin: '10px 0', fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>
-                    Consultando disponibilidad…
+                    {c.loading}
                   </p>
                 ) : (
                   <>
-                    <p style={{ margin: '10px 0', fontFamily: mono, fontSize: 12, color: 'rgba(255,255,255,0.45)' }}>Mañana</p>
+                    <p style={{ margin: '10px 0', fontFamily: mono, fontSize: 12, color: 'rgba(255,255,255,0.45)' }}>{c.morning}</p>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(96px, 1fr))', gap: 8, marginBottom: 20 }}>
                       {renderSlots(MORNING_SLOTS)}
                     </div>
-                    <p style={{ margin: '0 0 10px', fontFamily: mono, fontSize: 12, color: 'rgba(255,255,255,0.45)' }}>Tarde</p>
+                    <p style={{ margin: '0 0 10px', fontFamily: mono, fontSize: 12, color: 'rgba(255,255,255,0.45)' }}>{c.afternoon}</p>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(96px, 1fr))', gap: 8 }}>
                       {renderSlots(AFTERNOON_SLOTS)}
                     </div>
@@ -388,28 +392,28 @@ export default function HomeBooking() {
             {step === 3 && (
               <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
-                  <Back onClick={() => setStep(2)}>Atrás</Back>
+                  <Back onClick={() => setStep(2)}>{c.back}</Back>
                   <span style={{ padding: '6px 12px', borderRadius: 999, background: 'rgba(0,102,255,0.14)', border: '1px solid rgba(0,102,255,0.4)', fontFamily: mono, fontSize: 12, color: '#cfe0ff' }}>
                     {whenLabel}
                   </span>
                 </div>
                 <div>
-                  <label htmlFor="r-name" style={label}>Nombre *</label>
-                  <input className="inp" id="r-name" name="name" type="text" required minLength={2} maxLength={80} autoComplete="name" placeholder="Tu nombre" style={field} />
+                  <label htmlFor="r-name" style={label}>{c.name}</label>
+                  <input className="inp" id="r-name" name="name" type="text" required minLength={2} maxLength={80} autoComplete="name" placeholder={c.namePlaceholder} style={field} />
                 </div>
                 <div>
-                  <label htmlFor="r-mail" style={label}>Correo *</label>
-                  <input className="inp" id="r-mail" name="email" type="email" required maxLength={160} autoComplete="email" placeholder="tu@empresa.com" style={field} />
+                  <label htmlFor="r-mail" style={label}>{c.email}</label>
+                  <input className="inp" id="r-mail" name="email" type="email" required maxLength={160} autoComplete="email" placeholder={c.emailPlaceholder} style={field} />
                 </div>
                 <div>
-                  <label htmlFor="r-notes" style={label}>¿Qué quieres construir?</label>
+                  <label htmlFor="r-notes" style={label}>{c.notes}</label>
                   <textarea
                     className="inp"
                     id="r-notes"
                     name="notes"
                     rows={3}
                     maxLength={1000}
-                    placeholder="Cuéntanos en pocas líneas tu proyecto o el problema que quieres resolver."
+                    placeholder={c.notesPlaceholder}
                     style={{ ...field, height: 'auto', minHeight: 72, padding: '8px 12px', lineHeight: 1.5, resize: 'vertical' }}
                   />
                 </div>
@@ -418,8 +422,9 @@ export default function HomeBooking() {
                 <label style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13, lineHeight: 1.5, color: 'rgba(255,255,255,0.65)', cursor: 'pointer', textAlign: 'left' }}>
                   <input type="checkbox" checked={consent} onChange={() => setConsent(!consent)} style={{ flex: 'none', width: 16, height: 16, margin: '2px 0 0', accentColor: '#0066ff' }} />
                   <span>
-                    Autorizo a EXTRO a tratar mis datos para agendar y atender esta llamada, según la{' '}
-                    <a href={`${localizedPath('/terms', lang)}#datos`} style={{ color: '#fff' }}>política de datos</a>.
+                    {c.consentBefore}
+                    <a href={`${localizedPath('/terms', lang)}#datos`} style={{ color: '#fff' }}>{c.consentLink}</a>
+                    {c.consentAfter}
                   </span>
                 </label>
                 <p role="alert" aria-live="assertive" style={{ margin: 0, minHeight: 16, fontSize: 13, color: '#f87171' }}>{error}</p>
@@ -429,7 +434,7 @@ export default function HomeBooking() {
                   className="btn-w mag"
                   style={{ minHeight: 50, borderRadius: 8, border: 0, background: '#fafafa', color: '#18181b', fontSize: 15, fontWeight: 600, opacity: consent ? 1 : 0.45, cursor: consent ? 'pointer' : 'not-allowed' }}
                 >
-                  {submitting ? 'Agendando…' : 'Confirmar llamada'}
+                  {submitting ? c.submitting : c.submit}
                 </button>
               </form>
             )}
@@ -441,9 +446,9 @@ export default function HomeBooking() {
                     <path d="M20 6 9 17l-5-5" />
                   </svg>
                 </div>
-                <h3 style={{ margin: '0 0 8px', fontFamily: space, fontSize: 24, fontWeight: 600 }}>Llamada agendada</h3>
+                <h3 style={{ margin: '0 0 8px', fontFamily: space, fontSize: 24, fontWeight: 600 }}>{c.successTitle}</h3>
                 <p style={{ margin: '0 0 18px', maxWidth: 340, fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.6)' }}>
-                  Te enviamos la invitación con el enlace a tu correo. Hablamos pronto.
+                  {c.successBody}
                 </p>
                 <span style={{ padding: '6px 12px', borderRadius: 999, background: 'rgba(255,255,255,0.06)', fontFamily: mono, fontSize: 12, color: 'rgba(255,255,255,0.75)', marginBottom: 22 }}>
                   {whenLabel}
@@ -451,11 +456,11 @@ export default function HomeBooking() {
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10 }}>
                   {meetUrl && (
                     <a href={meetUrl} target="_blank" rel="noopener noreferrer" className="btn-w mag" style={{ display: 'inline-flex', alignItems: 'center', minHeight: 44, padding: '0 18px', borderRadius: 8, background: '#fafafa', color: '#18181b', fontSize: 14, fontWeight: 600, textDecoration: 'none' }}>
-                      Entrar a la reunión
+                      {c.join}
                     </a>
                   )}
                   <button type="button" onClick={reset} className="btn-g mag" style={{ minHeight: 44, padding: '0 18px', borderRadius: 8, background: 'rgba(9,9,11,0.6)', border: '1px solid #27272a', color: '#fff', fontSize: 14, fontWeight: 500 }}>
-                    Agendar otra llamada
+                    {c.again}
                   </button>
                 </div>
               </div>

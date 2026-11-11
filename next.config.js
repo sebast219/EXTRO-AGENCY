@@ -8,6 +8,11 @@ const withBundleAnalyzer = (() => {
 const nextConfig = {
   reactStrictMode: true,
 
+  // Playwright corre contra 127.0.0.1 mientras `next dev` sirve en localhost.
+  // Sin esto, Next bloquea los chunks de desarrollo como cross-origin y la
+  // página nunca hidrata. Solo tiene efecto en desarrollo.
+  allowedDevOrigins: ['127.0.0.1'],
+
   // M-12: build autocontenido para la imagen de Docker.
   // En Vercel NO se emite standalone: su adaptador rompe el build en Next 16.3
   // (ENOENT .next/next-server.js.nft.json, ver vercel/next.js#96646) y además

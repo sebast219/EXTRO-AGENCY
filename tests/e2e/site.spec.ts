@@ -3,7 +3,14 @@ import { test, expect } from '@playwright/test'
 /**
  * Regresiones estructurales: idioma, SEO, seguridad y contenido indexable.
  * Cada caso corresponde a un hallazgo concreto de la auditoría.
+ *
+ * El navegador de Playwright envía `Accept-Language: en-US` por defecto. Desde
+ * que el sitio detecta el idioma del dispositivo, eso redirige `/` a `/en` y
+ * rompe cualquier aserción escrita para la versión en español. La persona que
+ * prueba es un dispositivo en español; la detección de inglés se cubre aparte
+ * con la cabecera explícita.
  */
+test.use({ locale: 'es-CO' })
 
 test.describe('Idioma y rutas (M-2, M-3)', () => {
   test('la raíz se sirve en español sin prefijo', async ({ page }) => {
@@ -18,8 +25,27 @@ test.describe('Idioma y rutas (M-2, M-3)', () => {
     await expect(page.locator('html')).toHaveAttribute('lang', 'en')
 
     // M-2: el inglés debe estar en el HTML inicial, no aparecer tras hidratar.
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Top-tier software')
     const html = await page.content()
     expect(html).toContain('lang="en"')
+  })
+
+  test('detecta el idioma del dispositivo y redirige a /en', async ({ request }) => {
+    const res = await request.get('/', {
+      headers: { 'accept-language': 'en-US,en;q=0.9,es;q=0.4' },
+      maxRedirects: 0,
+    })
+    expect(res.status()).toBe(307)
+    expect(res.headers()['location']).toMatch(/\/en$/)
+  })
+
+  test('la elección manual del selector se respeta en la siguiente visita', async ({ request }) => {
+    const res = await request.get('/blog', {
+      headers: { cookie: 'extro-lang=en' },
+      maxRedirects: 0,
+    })
+    expect(res.status()).toBe(307)
+    expect(res.headers()['location']).toMatch(/\/en\/blog$/)
   })
 
   test('cada página declara hreflang para ambos idiomas', async ({ page }) => {
@@ -52,8 +78,10 @@ test.describe('SEO (M-4, A-7)', () => {
   test('las secciones de marketing llegan en el HTML del servidor', async ({ request }) => {
     // A-7: con ssr:false estos bloques no existían para el crawler.
     const html = await (await request.get('/')).text()
-    expect(html).toContain('id="delivery"')
-    expect(html).toContain('id="capabilities"')
+    expect(html).toContain('id="soluciones"')
+    expect(html).toContain('id="casos"')
+    expect(html).toContain('id="proceso"')
+    expect(html).toContain('id="reserva"')
   })
 
   test('el JSON-LD de FAQ se emite y es válido', async ({ page }) => {
@@ -61,7 +89,17 @@ test.describe('SEO (M-4, A-7)', () => {
     const blocks = await page.locator('script[type="application/ld+json"]').allTextContents()
     const faq = blocks.map((b) => JSON.parse(b)).find((d) => d['@type'] === 'FAQPage')
     expect(faq).toBeDefined()
+    expect(faq.inLanguage).toBe('es')
     expect(faq.mainEntity.length).toBeGreaterThan(5)
+  })
+
+  test('el JSON-LD de FAQ cambia de idioma en /en', async ({ page }) => {
+    await page.goto('/en')
+    const blocks = await page.locator('script[type="application/ld+json"]').allTextContents()
+    const faq = blocks.map((b) => JSON.parse(b)).find((d) => d['@type'] === 'FAQPage')
+    expect(faq).toBeDefined()
+    expect(faq.inLanguage).toBe('en')
+    expect(faq.mainEntity[0].name).toMatch(/startups|companies/i)
   })
 })
 
@@ -93,18 +131,17 @@ test.describe('Seguridad (A-4)', () => {
 })
 
 test.describe('Accesibilidad (M-10)', () => {
-  test('el calendario se puede recorrer con el teclado', async ({ page }) => {
+  test('el calendario se puede operar con el teclado', async ({ page }) => {
     await page.goto('/')
-    await page.locator('#contact').scrollIntoViewIfNeeded()
+    const day = page.locator('#reserva button[data-date]:not([disabled])').first()
+    await day.focus()
+    await expect(day).toBeFocused()
 
-    const focused = page.locator('[data-focused="true"]')
-    await focused.focus()
-    const before = await focused.getAttribute('aria-label')
+    const availability = page.waitForResponse((r) => r.url().includes('/api/booking/availability'))
+    await page.keyboard.press('Enter')
+    await availability
 
-    await page.keyboard.press('ArrowRight')
-    const after = await page.locator('[data-focused="true"]').getAttribute('aria-label')
-
-    expect(after).not.toBe(before)
+    await expect(page.locator('#reserva button[data-slot]').first()).toBeVisible()
   })
 
   test('el enlace de salto al contenido existe y funciona', async ({ page }) => {

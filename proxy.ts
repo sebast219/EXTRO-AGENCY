@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { DEFAULT_LOCALE, detectLocale, isCrawler, isLocale, type Locale } from '@/lib/i18n/config'
 
 const BASE_HOST = 'extro.com.co'
 
@@ -48,6 +49,8 @@ function applySecurityHeaders(res: NextResponse, csp: string) {
   res.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
   res.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
   res.headers.set('Cross-Origin-Opener-Policy', 'same-origin')
+  // La respuesta depende del idioma del dispositivo y de la preferencia manual.
+  res.headers.append('Vary', 'Accept-Language, Cookie')
 }
 
 /**
@@ -56,22 +59,26 @@ function applySecurityHeaders(res: NextResponse, csp: string) {
  * El español no lleva prefijo para no invalidar las URLs ya indexadas, así que
  * `/blog` se reescribe internamente a `/es/blog` sin que cambie la barra de
  * direcciones. `/en/blog` ya coincide con el segmento [lang] y pasa tal cual.
+ *
+ * Orden de prioridad:
+ *  1. Prefijo explícito en la URL: manda siempre (`/en/...`).
+ *  2. Cookie `extro-lang`: es una elección manual del selector y sobrevive
+ *     entre visitas. Solo el selector la escribe; la autodetección NO la
+ *     persiste, para que el dispositivo pueda cambiar de idioma.
+ *  3. `Accept-Language` del dispositivo.
+ *  4. Español como idioma por defecto.
+ *
+ * Los rastreadores se tratan como español y nunca se redirigen: su
+ * `Accept-Language` no representa a una persona y la redirección rompería la
+ * relación entre las URLs y sus alternativas hreflang.
  */
-function resolveLocale(req: NextRequest): 'es' | 'en' | null {
-  const { pathname } = req.nextUrl
-  if (pathname === '/en' || pathname.startsWith('/en/')) return null // ya prefijada
-
-  // Solo se autodetecta en la raíz: en cualquier otra ruta, la ausencia de
-  // prefijo es una elección explícita de URL y redirigir rompería enlaces.
-  if (pathname !== '/') return 'es'
-
+function preferredLocale(req: NextRequest): Locale {
   const cookie = req.cookies.get('extro-lang')?.value
-  if (cookie === 'en') return 'en'
-  if (cookie === 'es') return 'es'
-
-  const accept = req.headers.get('accept-language')?.toLowerCase() ?? ''
-  return accept.split(',')[0]?.startsWith('en') ? 'en' : 'es'
+  if (isLocale(cookie)) return cookie
+  if (isCrawler(req.headers.get('user-agent'))) return DEFAULT_LOCALE
+  return detectLocale(req.headers.get('accept-language'))
 }
+
 
 export function proxy(req: NextRequest) {
   const host = req.headers.get('host')?.toLowerCase() ?? ''
@@ -102,25 +109,26 @@ export function proxy(req: NextRequest) {
   let res: NextResponse
   if (isPassthrough) {
     res = NextResponse.next({ request: { headers: requestHeaders } })
+  } else if (pathname === '/en' || pathname.startsWith('/en/')) {
+    // Idioma explícito en la URL: no se toca.
+    res = NextResponse.next({ request: { headers: requestHeaders } })
   } else {
-    const locale = resolveLocale(req)
-    if (locale === 'en' && pathname === '/') {
-      // Preferencia de inglés en la raíz: redirección visible, para que la URL
-      // canónica y la que ve el usuario coincidan.
+    const locale = preferredLocale(req)
+
+    if (locale === 'en') {
+      // Redirección visible (307, temporal) para que la URL canónica y la que
+      // ve el usuario coincidan. No se guarda cookie: es una preferencia del
+      // dispositivo, no una elección manual.
       const url = req.nextUrl.clone()
-      url.pathname = '/en'
+      url.pathname = `/en${pathname === '/' ? '' : pathname}`
       res = NextResponse.redirect(url, 307)
       applySecurityHeaders(res, csp)
       return res
     }
 
-    if (locale) {
-      const url = req.nextUrl.clone()
-      url.pathname = `/es${pathname === '/' ? '' : pathname}`
-      res = NextResponse.rewrite(url, { request: { headers: requestHeaders } })
-    } else {
-      res = NextResponse.next({ request: { headers: requestHeaders } })
-    }
+    const url = req.nextUrl.clone()
+    url.pathname = `/es${pathname === '/' ? '' : pathname}`
+    res = NextResponse.rewrite(url, { request: { headers: requestHeaders } })
   }
 
   applySecurityHeaders(res, csp)

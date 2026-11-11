@@ -22,7 +22,7 @@ export const fallbackPosts: FallbackPost[] = [
     content: [
       'Es la pregunta que más recibo: "¿cuánto cuesta una app?" La respuesta honesta es que depende del alcance, pero en el mercado colombiano de 2026 los rangos son más predecibles de lo que parece. Una landing con panel simple ronda los 1.500–4.000 USD. Un ecommerce con pagos e inventario, 4.000–9.000 USD. Un SaaS con usuarios, integraciones e IA, 9.000–18.000 USD.',
       'Lo que más mueve el precio no son las pantallas sino lo invisible: autenticación, pagos, panel de administración, integraciones, infraestructura que no se caiga y pruebas automatizadas. Una "app sencilla" sin eso termina costando más en correcciones que un proyecto bien arquitecturado desde el día uno.',
-      'El modelo que usamos en EXTRO: cada proyecto se cotiza según su alcance con precio fijo, y se construye con avances funcionales cada viernes. Tú sabes desde el primer día cuánto vas a pagar y qué recibes cada semana. Si quieres el número exacto de tu caso, agenda una llamada de 15 minutos en extro.com.co y sales de ella con un rango cerrado.',
+      'El modelo que usamos en EXTRO: cada proyecto se cotiza según su alcance con precio fijo, y se construye con avances funcionales cada semana. Tú sabes desde el primer día cuánto vas a pagar y qué recibes cada semana. Si quieres el número exacto de tu caso, agenda una llamada de 15 minutos en extro.com.co y sales de ella con un rango cerrado.',
     ],
   },
   {

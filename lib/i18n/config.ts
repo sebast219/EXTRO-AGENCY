@@ -52,3 +52,45 @@ export function stripLocale(pathname: string): string {
   if (pathname.startsWith('/en/')) return pathname.slice(3)
   return pathname
 }
+
+/**
+ * Idiomas soportados a partir del header `Accept-Language` del dispositivo.
+ *
+ * Se respeta el orden de preferencia (`q=`), no solo el primer valor: un
+ * navegador puede enviar `fr-FR,en;q=0.9` y el usuario espera inglés, no el
+ * idioma por defecto. Si ninguno de los idiomas del dispositivo está soportado
+ * se cae al idioma por defecto del sitio.
+ */
+export function detectLocale(acceptLanguage: string | null | undefined): Locale {
+  if (!acceptLanguage) return DEFAULT_LOCALE
+
+  const entries = acceptLanguage
+    .split(',')
+    .map((part) => {
+      const [rawTag, ...params] = part.trim().split(';')
+      const qParam = params.find((p) => p.trim().startsWith('q='))
+      const q = qParam ? Number.parseFloat(qParam.split('=')[1]) : 1
+      return { tag: rawTag.trim().toLowerCase(), q: Number.isFinite(q) ? q : 0 }
+    })
+    .filter((entry) => entry.tag.length > 0)
+    .sort((a, b) => b.q - a.q)
+
+  for (const { tag } of entries) {
+    if (tag === 'en' || tag.startsWith('en-')) return 'en'
+    if (tag === 'es' || tag.startsWith('es-')) return 'es'
+  }
+
+  return DEFAULT_LOCALE
+}
+
+/**
+ * Los rastreadores no deben recibir una redirección por idioma: su
+ * `Accept-Language` no representa a una persona y redirigir rompería la
+ * equivalencia de las URLs con hreflang.
+ */
+const CRAWLER_RE =
+  /bot|crawler|spider|slurp|bingpreview|facebookexternalhit|linkedinbot|embedly|pinterest|whatsapp|telegrambot|google-inspectiontool|adsbot|mediapartners|headlesschrome|python-requests|curl\/|wget\//i
+
+export function isCrawler(userAgent: string | null | undefined): boolean {
+  return Boolean(userAgent && CRAWLER_RE.test(userAgent))
+}

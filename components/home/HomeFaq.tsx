@@ -1,10 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { FAQ_ITEMS } from './faq-items'
+import { getFaqItems } from './faq-items'
+import { HOME_COPY } from '@/lib/i18n/home-copy'
+import type { Locale } from '@/lib/i18n/config'
 
-export default function HomeFaq() {
+export default function HomeFaq({ lang }: { lang: Locale }) {
   const [openIdx, setOpenIdx] = useState<number | null>(0)
+  const c = HOME_COPY[lang].faq
+  const items = getFaqItems(lang)
 
   return (
     <section
@@ -29,7 +33,7 @@ export default function HomeFaq() {
               aria-hidden="true"
               style={{ width: 8, height: 8, borderRadius: 999, background: '#0066ff', boxShadow: '0 0 12px rgba(0,102,255,0.8)' }}
             />
-            FAQ
+            {c.eyebrow}
           </div>
           <h2
             className="grad rv"
@@ -42,17 +46,17 @@ export default function HomeFaq() {
               letterSpacing: '-0.04em',
             }}
           >
-            Respuestas directas
+            {c.title}
           </h2>
           <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'rgba(255,255,255,0.6)' }}>
-            ¿Otra duda? Escríbenos a{' '}
+            {c.contact}{' '}
             <a href="mailto:consultas@extro.com.co" style={{ color: '#fff' }}>
               consultas@extro.com.co
             </a>
           </p>
         </div>
         <div style={{ flex: '999 1 560px', minWidth: 0, borderTop: '1px solid rgba(255,255,255,0.12)' }}>
-          {FAQ_ITEMS.map((item, i) => {
+          {items.map((item, i) => {
             const open = openIdx === i
             return (
               <div key={item.q} style={{ borderBottom: '1px solid #27272a' }}>

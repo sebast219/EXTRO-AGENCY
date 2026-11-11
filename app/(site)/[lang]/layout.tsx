@@ -52,9 +52,9 @@ const COPY = {
   es: {
     title: 'EXTRO — Agencia de Ingeniería de Software',
     description:
-      'Agenda una llamada de 15 minutos. Cotizamos tu proyecto con precio fijo y lo construimos con avances funcionales cada viernes.',
+      'Agenda una llamada de 15 minutos. Cotizamos tu proyecto con precio fijo, primera entrega en 7 días y avances semanales. Garantía de 1 a 3 meses según el nivel del proyecto.',
     ogDescription:
-      'Cotiza tu proyecto y continúa evolucionándolo con un plan mensual. Avances funcionales cada viernes. Precio fijo.',
+      'Cotiza tu proyecto y continúa evolucionándolo con un plan mensual. Avances semanales, precio fijo y garantía de 1 a 3 meses.',
     locale: 'es_CO',
     skip: 'Saltar al contenido',
     keywords: [
@@ -69,9 +69,9 @@ const COPY = {
   en: {
     title: 'EXTRO — Software Engineering Studio',
     description:
-      'Book a 15-minute call. We scope your project at a fixed price and ship working progress every Friday.',
+      'Book a 15-minute call. We scope your project at a fixed price, with a first delivery in 7 days and weekly progress. A 1 to 3 month guarantee depending on the project level.',
     ogDescription:
-      'Get your project scoped and keep evolving it with a monthly plan. Working progress every Friday. Fixed price.',
+      'Get your project scoped and keep evolving it with a monthly plan. Weekly progress, fixed price and a 1 to 3 month guarantee.',
     locale: 'en_US',
     skip: 'Skip to content',
     keywords: [
@@ -127,14 +127,17 @@ export async function generateMetadata({
   }
 }
 
-const organizationSchema = {
+const organizationSchema = (lang: Locale) => ({
   '@context': 'https://schema.org',
   '@type': ['Organization', 'ProfessionalService'],
   name: 'EXTRO',
   url: SITE_URL,
   logo: `${SITE_URL}/icon.png`,
+  inLanguage: lang,
   description:
-    'Agencia de ingeniería de software. Cotiza tu proyecto y, después de la entrega, sigue evolucionándolo con un plan mensual con avances funcionales cada viernes.',
+    lang === 'en'
+      ? 'Software engineering studio. Get your project scoped at a fixed price; after delivery, keep evolving it with a monthly plan and weekly shipped progress. A 1 to 3 month guarantee depending on the project level.'
+      : 'Agencia de ingeniería de software. Cotiza tu proyecto con precio fijo; después de la entrega, sigue evolucionándolo con un plan mensual y avances semanales en producción. Garantía de 1 a 3 meses según el nivel del proyecto.',
   email: 'hola@extro.com.co',
   telephone: '+573005865312',
   address: { '@type': 'PostalAddress', addressLocality: 'Medellín', addressCountry: 'CO' },
@@ -149,14 +152,15 @@ const organizationSchema = {
     },
   ],
   sameAs: ['https://github.com/sebast219', 'https://www.linkedin.com/in/sebastian-yepes-dev/'],
-}
+})
 
-const websiteSchema = {
+const websiteSchema = (lang: Locale) => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'EXTRO',
   url: SITE_URL,
-}
+  inLanguage: lang,
+})
 
 /**
  * JSON-LD no es un script ejecutable, así que la CSP con nonce no lo bloquea.
@@ -190,8 +194,8 @@ export default async function SiteLayout({
           {COPY[lang].skip}
         </a>
         <LanguageProvider lang={lang}>{children}</LanguageProvider>
-        <JsonLd data={organizationSchema} />
-        <JsonLd data={websiteSchema} />
+        <JsonLd data={organizationSchema(lang)} />
+        <JsonLd data={websiteSchema(lang)} />
         <Analytics />
       </body>
     </html>

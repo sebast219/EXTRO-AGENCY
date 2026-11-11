@@ -107,6 +107,12 @@ export default async function PostPage({
         </h1>
         <p style={{ margin: '0 0 40px', fontSize: 18, lineHeight: 1.6, color: 'rgba(255,255,255,0.6)' }}>{post.excerpt}</p>
 
+        {lang === 'en' && (
+          <p style={{ margin: '0 0 32px', padding: '12px 16px', borderRadius: 10, border: '1px solid rgba(0,102,255,0.35)', background: 'rgba(0,102,255,0.1)', fontSize: 14, lineHeight: 1.55, color: '#cfe0ff' }}>
+            This article is published in Spanish. The rest of the site is available in English.
+          </p>
+        )}
+
         <div className="lg-doc" style={{ borderTop: '1px solid #27272a', paddingTop: 40, maxWidth: 'none' }}>
           {post.source === 'local' ? (
             post.body.map((paragraph, i) => (

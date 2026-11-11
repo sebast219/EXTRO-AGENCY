@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import HomeNav from '@/components/home/HomeNav'
 import HomeHero from '@/components/home/HomeHero'
-import HomeStats from '@/components/home/HomeStats'
 import HomeTech from '@/components/home/HomeTech'
 import HomeSolutions from '@/components/home/HomeSolutions'
 import HomeCases from '@/components/home/HomeCases'
@@ -10,9 +9,10 @@ import HomeProcess from '@/components/home/HomeProcess'
 import HomeCtaReserva from '@/components/home/HomeCtaReserva'
 import HomeBooking from '@/components/home/HomeBooking'
 import HomeFaq from '@/components/home/HomeFaq'
+import HomeClients from '@/components/home/HomeClients'
 import HomeFooter from '@/components/home/HomeFooter'
 import HomeFx from '@/components/home/HomeFx'
-import { FAQ_ITEMS } from '@/components/home/faq-items'
+import { getFaqItems } from '@/components/home/faq-items'
 import { alternatesFor, isLocale } from '@/lib/i18n/config'
 import { safeJsonLd } from '@/lib/seo/json-ld'
 
@@ -36,12 +36,13 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   const { lang } = await params
   if (!isLocale(lang)) notFound()
 
-  // El esquema FAQ sale de la misma fuente que la UI (FAQ_ITEMS): no puede desincronizarse.
+  // El esquema FAQ sale de la misma fuente que la UI (getFaqItems): no puede
+  // desincronizarse ni mezclar idiomas con el contenido visible.
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    inLanguage: 'es',
-    mainEntity: FAQ_ITEMS.map((item) => ({
+    inLanguage: lang,
+    mainEntity: getFaqItems(lang).map((item) => ({
       '@type': 'Question',
       name: item.q,
       acceptedAnswer: { '@type': 'Answer', text: item.a },
@@ -64,19 +65,19 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       >
         <div className="xp" aria-hidden="true" />
         <HomeNav />
-        <HomeHero />
-        <HomeStats />
-        <HomeTech />
-        <HomeSolutions />
-        <HomeCases />
-        <HomeProcess />
-        <HomeCtaReserva>
+        <HomeHero lang={lang} />
+        <HomeTech lang={lang} />
+        <HomeSolutions lang={lang} />
+        <HomeCases lang={lang} />
+        <HomeProcess lang={lang} />
+        <HomeCtaReserva lang={lang}>
           <HomeBooking />
         </HomeCtaReserva>
-        <HomeFaq />
+        <HomeFaq lang={lang} />
+        <HomeClients lang={lang} />
       </main>
       <HomeFooter lang={lang} />
-      <HomeFx />
+      <HomeFx key={lang} />
 
       <script
         type="application/ld+json"

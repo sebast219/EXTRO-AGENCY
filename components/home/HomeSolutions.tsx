@@ -1,18 +1,23 @@
  
 // Generated from the Claude Design file Home.dc.html. Static markup only.
-export default function HomeSolutions() {
+import { HOME_COPY } from '@/lib/i18n/home-copy'
+import type { Locale } from '@/lib/i18n/config'
+
+export default function HomeSolutions({ lang }: { lang: Locale }) {
+  const c = HOME_COPY[lang].solutions
+
   return (
     <section id="soluciones" style={{ position: "relative", zIndex: "1", padding: "clamp(96px, 11vw, 150px) 24px", boxSizing: "border-box" }}>
       <div style={{ maxWidth: "1152px", margin: "0 auto" }}>
         <div className="rv" style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "18px", fontFamily: "var(--font-mono),monospace", fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>
           <span style={{ width: "8px", height: "8px", borderRadius: "999px", background: "#0066ff", boxShadow: "0 0 12px rgba(0,102,255,0.8)" }} aria-hidden="true"></span>
-          {"Soluciones"}
+          {c.eyebrow}
         </div>
         <h2 className="grad rv" style={{ margin: "0 0 18px", maxWidth: "760px", fontFamily: "var(--font-space),sans-serif", fontWeight: "600", fontSize: "clamp(36px, 4.8vw, 64px)", lineHeight: "1", letterSpacing: "-0.04em", textWrap: "balance" }}>
-          {"Todo lo que tu negocio necesita, construido a la medida"}
+          {c.title}
         </h2>
         <p style={{ margin: "0 0 56px", maxWidth: "580px", fontSize: "18px", lineHeight: "1.6", color: "rgba(255,255,255,0.6)" }}>
-          {"El mismo nivel de ingeniería para un emprendimiento que para una empresa. Lo que cambia es el alcance."}
+          {c.intro}
         </p>
         <div className="bento">
           <article className="bcard span2" data-bx="admin" style={{ position: "relative", overflow: "hidden", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.08)", background: "#111113", minHeight: "400px", padding: "30px 28px", boxSizing: "border-box", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "24px" }}>
@@ -26,28 +31,28 @@ export default function HomeSolutions() {
                   <rect width="7" height="5" x="3" y="16" rx="1"></rect>
                 </svg>
                 <h3 style={{ margin: "0", fontFamily: "var(--font-space),sans-serif", fontSize: "19px", fontWeight: "600" }}>
-                  {"Software administrativo a la medida"}
+                  {c.admin.title}
                 </h3>
               </div>
               <p style={{ margin: "0", fontSize: "15px", lineHeight: "1.5", color: "rgba(255,255,255,0.55)" }}>
-                {"Diseñamos "}
+                {c.admin.before}
                 <strong style={{ color: "#fff", fontWeight: "600" }}>
-                  {"el sistema que tu sector necesita"}
+                  {c.admin.strong}
                 </strong>
-                {": lo que hoy haces en Excel, WhatsApp y papel, en un solo lugar."}
+                {c.admin.after}
               </p>
-              <div className="bx-chips" role="group" aria-label="Elige tu sector" style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "18px" }}>
+              <div className="bx-chips" role="group" aria-label={c.admin.sectorAria} style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "18px" }}>
                 <button type="button" className="bx-chip" data-sec="construccion" style={{ minHeight: "40px", padding: "0 14px", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.12)", background: "transparent", color: "rgba(255,255,255,0.7)", fontFamily: "var(--font-inter),sans-serif", fontSize: "13px", fontWeight: "500", cursor: "pointer" }}>
-                  {"Construcción"}
+                  {c.admin.sectors.construccion}
                 </button>
                 <button type="button" className="bx-chip" data-sec="comercio" style={{ minHeight: "40px", padding: "0 14px", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.12)", background: "transparent", color: "rgba(255,255,255,0.7)", fontFamily: "var(--font-inter),sans-serif", fontSize: "13px", fontWeight: "500", cursor: "pointer" }}>
-                  {"Comercio"}
+                  {c.admin.sectors.comercio}
                 </button>
                 <button type="button" className="bx-chip" data-sec="logistica" style={{ minHeight: "40px", padding: "0 14px", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.12)", background: "transparent", color: "rgba(255,255,255,0.7)", fontFamily: "var(--font-inter),sans-serif", fontSize: "13px", fontWeight: "500", cursor: "pointer" }}>
-                  {"Logística"}
+                  {c.admin.sectors.logistica}
                 </button>
                 <button type="button" className="bx-chip" data-sec="servicios" style={{ minHeight: "40px", padding: "0 14px", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.12)", background: "transparent", color: "rgba(255,255,255,0.7)", fontFamily: "var(--font-inter),sans-serif", fontSize: "13px", fontWeight: "500", cursor: "pointer" }}>
-                  {"Servicios"}
+                  {c.admin.sectors.servicios}
                 </button>
               </div>
             </div>
@@ -56,19 +61,19 @@ export default function HomeSolutions() {
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M20 6 9 17l-5-5"></path>
                 </svg>
-                {"Roles y permisos por usuario"}
+                {c.admin.bullets[0]}
               </li>
               <li style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M20 6 9 17l-5-5"></path>
                 </svg>
-                {"Paneles en tiempo real"}
+                {c.admin.bullets[1]}
               </li>
               <li style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M20 6 9 17l-5-5"></path>
                 </svg>
-                {"Varias sedes, obras o bodegas"}
+                {c.admin.bullets[2]}
               </li>
             </ul>
             <div className="b-ill" aria-hidden="true" style={{ position: "absolute", right: "28px", top: "0", bottom: "0", width: "256px", display: "flex", alignItems: "center", zIndex: "1" }}>
@@ -79,30 +84,30 @@ export default function HomeSolutions() {
                   <span style={{ width: "7px", height: "7px", borderRadius: "999px", background: "#3f3f46" }}></span>
                   <span style={{ marginLeft: "8px", fontFamily: "var(--font-mono),monospace", fontSize: "10.5px", color: "#71717a" }}>
                     <span className="bx-tt">
-                      {"obra · demo"}
+                      {c.admin.demo.window}
                     </span>
                   </span>
                   <span style={{ marginLeft: "auto", display: "inline-flex", alignItems: "center", gap: "6px", fontFamily: "var(--font-mono),monospace", fontSize: "10.5px", color: "#7fb2ff" }}>
                     <span className="bx-live" style={{ width: "6px", height: "6px", borderRadius: "999px", background: "#0066ff", boxShadow: "0 0 10px rgba(0,102,255,0.9)" }}></span>
-                    {"en vivo"}
+                    {c.admin.demo.live}
                   </span>
                 </div>
                 <div style={{ padding: "14px 14px 10px" }}>
                   <div className="bx-lb" style={{ fontFamily: "var(--font-mono),monospace", fontSize: "10.5px", color: "#71717a", marginBottom: "4px" }}>
-                    {"Avance de obra"}
+                    {c.admin.demo.label}
                   </div>
                   <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
                     <span className="bx-kpiw" style={{ display: "inline-block", fontFamily: "var(--font-space),sans-serif", fontSize: "30px", fontWeight: "600", letterSpacing: "-0.03em", fontVariantNumeric: "tabular-nums", transformOrigin: "0 70%" }}>
                       <span className="bx-pre"></span>
                       <span className="bx-kpi">
-                        {"68,0"}
+                        {c.admin.demo.value}
                       </span>
                       <span className="bx-suf">
                         {" %"}
                       </span>
                     </span>
                     <span className="bx-dl" style={{ padding: "2px 7px", borderRadius: "6px", border: "1px solid rgba(0,102,255,0.4)", background: "rgba(0,102,255,0.14)", fontFamily: "var(--font-mono),monospace", fontSize: "10.5px", color: "#7fb2ff" }}>
-                      {"+3,2 %"}
+                      {c.admin.demo.delta}
                     </span>
                   </div>
                   <svg width="244" height="46" viewBox="0 0 244 46" fill="none" style={{ display: "block", margin: "8px 0 6px", width: "100%", height: "46px" }} preserveAspectRatio="none">
@@ -129,28 +134,28 @@ export default function HomeSolutions() {
                   <div className="bx-row" style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 14px", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                     <span style={{ width: "6px", height: "6px", borderRadius: "999px", background: "#0066ff" }}></span>
                     <span className="bx-ra" style={{ color: "#e4e4e7", whiteSpace: "nowrap" }}>
-                      {"Compra de cemento"}
+                      {c.admin.demo.rows[0].a}
                     </span>
                     <span className="bx-rb" style={{ whiteSpace: "nowrap", marginLeft: "auto", fontFamily: "var(--font-mono),monospace", fontSize: "11px", color: "#a1a1aa" }}>
-                      {"$ 8,4 M"}
+                      {c.admin.demo.rows[0].b}
                     </span>
                   </div>
                   <div className="bx-row" style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 14px", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                     <span style={{ width: "6px", height: "6px", borderRadius: "999px", background: "#3f3f46" }}></span>
                     <span className="bx-ra" style={{ color: "#e4e4e7", whiteSpace: "nowrap" }}>
-                      {"Corte contratista #3"}
+                      {c.admin.demo.rows[1].a}
                     </span>
                     <span className="bx-rb" style={{ whiteSpace: "nowrap", marginLeft: "auto", fontFamily: "var(--font-mono),monospace", fontSize: "11px", color: "#a1a1aa" }}>
-                      {"$ 12,6 M"}
+                      {c.admin.demo.rows[1].b}
                     </span>
                   </div>
                   <div className="bx-row" style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 14px" }}>
                     <span style={{ width: "6px", height: "6px", borderRadius: "999px", background: "#3f3f46" }}></span>
                     <span className="bx-ra" style={{ color: "#e4e4e7", whiteSpace: "nowrap" }}>
-                      {"Presupuesto ejecutado"}
+                      {c.admin.demo.rows[2].a}
                     </span>
                     <span className="bx-rb" style={{ whiteSpace: "nowrap", marginLeft: "auto", fontFamily: "var(--font-mono),monospace", fontSize: "11px", color: "#a1a1aa" }}>
-                      {"61 %"}
+                      {c.admin.demo.rows[2].b}
                     </span>
                   </div>
                 </div>
@@ -165,14 +170,14 @@ export default function HomeSolutions() {
                   <path d="M12 18h.01"></path>
                 </svg>
                 <h3 style={{ margin: "0", fontFamily: "var(--font-space),sans-serif", fontSize: "19px", fontWeight: "600" }}>
-                  {"Apps móviles"}
+                  {c.mobile.title}
                 </h3>
               </div>
               <p style={{ margin: "0", fontSize: "15px", lineHeight: "1.5", color: "rgba(255,255,255,0.55)" }}>
                 <strong style={{ color: "#fff", fontWeight: "600" }}>
-                  {"Apps para iOS y Android"}
+                  {c.mobile.strong}
                 </strong>
-                {", para tus clientes o tu equipo en campo."}
+                {c.mobile.after}
               </p>
             </div>
             <div aria-hidden="true" style={{ position: "absolute", left: "50%", bottom: "-70px", width: "208px", marginLeft: "-104px" }}>
@@ -200,13 +205,13 @@ export default function HomeSolutions() {
                     </span>
                     <span style={{ minWidth: "0", flex: "1" }}>
                       <span style={{ display: "flex", justifyContent: "space-between", fontSize: "11px", fontWeight: "600", color: "#fff" }}>
-                        {"Pedido #1048"}
+                        {c.mobile.notifications[0].title}
                         <span style={{ fontWeight: "400", color: "#71717a" }}>
-                          {"ahora"}
+                          {c.mobile.notifications[0].time}
                         </span>
                       </span>
                       <span style={{ display: "block", fontSize: "10.5px", lineHeight: "1.35", color: "#a1a1aa", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                        {"Listo para entregar"}
+                        {c.mobile.notifications[0].body}
                       </span>
                     </span>
                   </div>
@@ -222,13 +227,13 @@ export default function HomeSolutions() {
                     </span>
                     <span style={{ minWidth: "0", flex: "1" }}>
                       <span style={{ display: "flex", justifyContent: "space-between", fontSize: "11px", fontWeight: "600", color: "#fff" }}>
-                        {"Ruta 3"}
+                        {c.mobile.notifications[1].title}
                         <span style={{ fontWeight: "400", color: "#71717a" }}>
-                          {"ahora"}
+                          {c.mobile.notifications[1].time}
                         </span>
                       </span>
                       <span style={{ display: "block", fontSize: "10.5px", lineHeight: "1.35", color: "#a1a1aa", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                        {"El repartidor va en camino"}
+                        {c.mobile.notifications[1].body}
                       </span>
                     </span>
                   </div>
@@ -241,13 +246,13 @@ export default function HomeSolutions() {
                     </span>
                     <span style={{ minWidth: "0", flex: "1" }}>
                       <span style={{ display: "flex", justifyContent: "space-between", fontSize: "11px", fontWeight: "600", color: "#fff" }}>
-                        {"Pago aprobado"}
+                        {c.mobile.notifications[2].title}
                         <span style={{ fontWeight: "400", color: "#71717a" }}>
-                          {"ahora"}
+                          {c.mobile.notifications[2].time}
                         </span>
                       </span>
                       <span style={{ display: "block", fontSize: "10.5px", lineHeight: "1.35", color: "#a1a1aa", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                        {"$ 189.900 · Tarjeta"}
+                        {c.mobile.notifications[2].body}
                       </span>
                     </span>
                   </div>
@@ -262,13 +267,13 @@ export default function HomeSolutions() {
                     </span>
                     <span style={{ minWidth: "0", flex: "1" }}>
                       <span style={{ display: "flex", justifyContent: "space-between", fontSize: "11px", fontWeight: "600", color: "#fff" }}>
-                        {"Nuevo cliente"}
+                        {c.mobile.notifications[3].title}
                         <span style={{ fontWeight: "400", color: "#71717a" }}>
-                          {"ahora"}
+                          {c.mobile.notifications[3].time}
                         </span>
                       </span>
                       <span style={{ display: "block", fontSize: "10.5px", lineHeight: "1.35", color: "#a1a1aa", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                        {"Ana R. creó su cuenta"}
+                        {c.mobile.notifications[3].body}
                       </span>
                     </span>
                   </div>
@@ -285,15 +290,15 @@ export default function HomeSolutions() {
                   <path d="M2 12h20"></path>
                 </svg>
                 <h3 style={{ margin: "0", fontFamily: "var(--font-space),sans-serif", fontSize: "19px", fontWeight: "600" }}>
-                  {"Apps web"}
+                  {c.web.title}
                 </h3>
               </div>
               <p style={{ margin: "0", fontSize: "15px", lineHeight: "1.5", color: "rgba(255,255,255,0.55)" }}>
-                {"Plataformas y portales "}
+                {c.web.before}
                 <strong style={{ color: "#fff", fontWeight: "600" }}>
-                  {"en producción en semanas"}
+                  {c.web.strong}
                 </strong>
-                {", rápidos desde cualquier navegador."}
+                {c.web.after}
               </p>
             </div>
             <svg aria-hidden="true" width="420" height="260" viewBox="0 0 420 260" fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="1" style={{ position: "absolute", left: "-40px", bottom: "-60px" }}>
@@ -314,7 +319,7 @@ export default function HomeSolutions() {
                       <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
                       <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                     </svg>
-                    {"app.tuempresa.co"}
+                    {c.web.url}
                   </span>
                 </div>
                 <div style={{ padding: "12px 12px 14px", fontFamily: "var(--font-mono),monospace", fontSize: "11.5px" }}>
@@ -323,9 +328,9 @@ export default function HomeSolutions() {
                       {"$ "}
                     </span>
                     <span className="bx-type" style={{ display: "inline-block", overflow: "hidden", width: "19ch", verticalAlign: "bottom" }}>
-                      {"extro deploy "}
+                      {c.web.command}
                       <span style={{ color: "#7fb2ff" }}>
-                        {"--prod"}
+                        {c.web.flag}
                       </span>
                     </span>
                     <span className="bx-caret" style={{ display: "inline-block", width: "6px", height: "13px", marginLeft: "2px", background: "#7fb2ff" }}></span>
@@ -337,23 +342,23 @@ export default function HomeSolutions() {
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#7fb2ff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M20 6 9 17l-5-5"></path>
                     </svg>
-                    {"build optimizado · 1,2 s"}
+                    {c.web.logs[0]}
                   </div>
                   <div className="bx-log" style={{ display: "flex", alignItems: "center", gap: "7px", color: "#a1a1aa", marginBottom: "5px" }}>
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#7fb2ff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M20 6 9 17l-5-5"></path>
                     </svg>
-                    {"CDN · 3 regiones"}
+                    {c.web.logs[1]}
                   </div>
                   <div className="bx-log" style={{ display: "flex", alignItems: "center", gap: "7px", color: "#a1a1aa", marginBottom: "12px" }}>
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#7fb2ff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M20 6 9 17l-5-5"></path>
                     </svg>
-                    {"SSL activo"}
+                    {c.web.logs[2]}
                   </div>
                   <span className="bx-badge" style={{ display: "inline-flex", alignItems: "center", gap: "7px", padding: "5px 10px", borderRadius: "999px", border: "1px solid rgba(0,102,255,0.45)", background: "rgba(0,102,255,0.14)", color: "#cfe0ff", fontSize: "11px" }}>
                     <span className="bx-live" style={{ width: "6px", height: "6px", borderRadius: "999px", background: "#0066ff", boxShadow: "0 0 10px rgba(0,102,255,0.9)" }}></span>
-                    {"En producción"}
+                    {c.web.badge}
                   </span>
                 </div>
               </div>
@@ -368,14 +373,14 @@ export default function HomeSolutions() {
                   <path d="M2 3h3l2.6 12.4a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L22 7H6"></path>
                 </svg>
                 <h3 style={{ margin: "0", fontFamily: "var(--font-space),sans-serif", fontSize: "19px", fontWeight: "600" }}>
-                  {"Ecommerce y pagos"}
+                  {c.shop.title}
                 </h3>
               </div>
               <p style={{ margin: "0", fontSize: "15px", lineHeight: "1.5", color: "rgba(255,255,255,0.55)" }}>
                 <strong style={{ color: "#fff", fontWeight: "600" }}>
-                  {"Vende en línea"}
+                  {c.shop.strong}
                 </strong>
-                {" con catálogo, pagos y envíos integrados."}
+                {c.shop.after}
               </p>
             </div>
             <div aria-hidden="true" style={{ position: "absolute", left: "20px", right: "20px", bottom: "22px" }}>
@@ -390,31 +395,31 @@ export default function HomeSolutions() {
                   </span>
                   <span style={{ minWidth: "0", flex: "1" }}>
                     <span style={{ display: "block", fontSize: "12px", fontWeight: "600", color: "#fff" }}>
-                      {"Kit de inicio"}
+                      {c.shop.product}
                     </span>
                     <span style={{ display: "block", fontSize: "10.5px", color: "#71717a" }}>
-                      {"Cantidad 2"}
+                      {c.shop.qty}
                     </span>
                   </span>
                   <span style={{ fontFamily: "var(--font-mono),monospace", fontSize: "11.5px", color: "#fff" }}>
-                    {"$ 189.900"}
+                    {c.shop.price}
                   </span>
                 </div>
                 <div className="bx-meth" style={{ position: "relative", display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "6px", margin: "12px 0 10px", fontSize: "11px", fontWeight: "500" }}>
                   <span className="bx-sel" style={{ position: "absolute", left: "0", top: "0", bottom: "0", width: "calc((100% - 12px) / 3)", borderRadius: "8px", border: "1px solid rgba(0,102,255,0.7)", background: "rgba(0,102,255,0.14)", boxShadow: "0 0 16px rgba(0,102,255,0.25)" }}></span>
                   <span className="bx-chip" style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", height: "28px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.08)", color: "#fff" }}>
-                    {"Tarjeta"}
+                    {c.shop.methods[0]}
                   </span>
                   <span className="bx-chip" style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", height: "28px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.08)", color: "#a1a1aa" }}>
-                    {"PSE"}
+                    {c.shop.methods[1]}
                   </span>
                   <span className="bx-chip" style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", height: "28px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.08)", color: "#a1a1aa" }}>
-                    {"Nequi"}
+                    {c.shop.methods[2]}
                   </span>
                 </div>
                 <div className="bx-pay" style={{ position: "relative", height: "36px", borderRadius: "9px", background: "#fafafa", color: "#09090b", fontSize: "12.5px", fontWeight: "600", overflow: "hidden" }}>
                   <span className="bx-pay-l" style={{ position: "absolute", inset: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    {"Pagar $ 189.900"}
+                    {c.shop.pay}
                   </span>
                   <span className="bx-spin" style={{ position: "absolute", left: "50%", top: "50%", width: "16px", height: "16px", margin: "-8px 0 0 -8px", opacity: "0" }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ display: "block" }}>
@@ -425,23 +430,23 @@ export default function HomeSolutions() {
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M20 6 9 17l-5-5"></path>
                     </svg>
-                    {"Pago aprobado"}
+                    {c.shop.approved}
                   </span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "6px", marginTop: "10px", fontFamily: "var(--font-mono),monospace", fontSize: "10px", color: "#71717a" }}>
                   <span className="bx-st" style={{ display: "inline-flex", alignItems: "center", gap: "5px", color: "#7fb2ff" }}>
                     <span style={{ width: "5px", height: "5px", borderRadius: "999px", background: "currentColor" }}></span>
-                    {"Pedido"}
+                    {c.shop.steps[0]}
                   </span>
                   <span style={{ flex: "1", height: "1px", background: "rgba(255,255,255,0.1)" }}></span>
                   <span className="bx-st" style={{ display: "inline-flex", alignItems: "center", gap: "5px" }}>
                     <span style={{ width: "5px", height: "5px", borderRadius: "999px", background: "currentColor" }}></span>
-                    {"Pago"}
+                    {c.shop.steps[1]}
                   </span>
                   <span style={{ flex: "1", height: "1px", background: "rgba(255,255,255,0.1)" }}></span>
                   <span className="bx-st" style={{ display: "inline-flex", alignItems: "center", gap: "5px" }}>
                     <span style={{ width: "5px", height: "5px", borderRadius: "999px", background: "currentColor" }}></span>
-                    {"Envío"}
+                    {c.shop.steps[2]}
                   </span>
                 </div>
               </div>
@@ -455,21 +460,21 @@ export default function HomeSolutions() {
                   <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
                 </svg>
                 <h3 style={{ margin: "0", fontFamily: "var(--font-space),sans-serif", fontSize: "19px", fontWeight: "600" }}>
-                  {"WhatsApp y alertas"}
+                  {c.chat.title}
                 </h3>
               </div>
               <p style={{ margin: "0", fontSize: "15px", lineHeight: "1.5", color: "rgba(255,255,255,0.55)" }}>
                 <strong style={{ color: "#fff", fontWeight: "600" }}>
-                  {"Conecta tu negocio con WhatsApp"}
+                  {c.chat.strong}
                 </strong>
-                {" y avisos al instante para tu equipo y tus clientes."}
+                {c.chat.after}
               </p>
             </div>
             <div className="bx-ui" aria-hidden="true" style={{ position: "absolute", left: "20px", right: "20px", bottom: "76px", display: "flex", flexDirection: "column", gap: "8px", fontSize: "11.5px", lineHeight: "1.4" }}>
               <div className="bx-in" style={{ alignSelf: "flex-start", maxWidth: "82%", padding: "8px 11px", borderRadius: "14px 14px 14px 4px", background: "#27272a", border: "1px solid rgba(255,255,255,0.06)", color: "#e4e4e7", transformOrigin: "0 100%" }}>
-                {"Hola, ¿mi pedido ya salió?"}
+                {c.chat.incoming}
                 <span style={{ display: "block", marginTop: "2px", textAlign: "right", fontFamily: "var(--font-mono),monospace", fontSize: "9.5px", color: "#71717a" }}>
-                  {"10:24"}
+                  {c.chat.incomingTime}
                 </span>
               </div>
               <div style={{ position: "relative", alignSelf: "flex-end", maxWidth: "86%" }}>
@@ -479,9 +484,9 @@ export default function HomeSolutions() {
                   <i className="bx-dot" style={{ display: "block", width: "5px", height: "5px", borderRadius: "999px", background: "#fff" }}></i>
                 </div>
                 <div className="bx-out" style={{ padding: "8px 11px", borderRadius: "14px 14px 4px 14px", background: "linear-gradient(180deg,#1a75ff,#0058e0)", color: "#fff", transformOrigin: "100% 100%", boxShadow: "0 10px 30px -10px rgba(0,102,255,0.6)" }}>
-                  {"Sí, va en camino. Llega hoy entre 3 y 5 p. m."}
+                  {c.chat.outgoing}
                   <span style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "3px", marginTop: "2px", fontFamily: "var(--font-mono),monospace", fontSize: "9.5px", color: "rgba(255,255,255,0.7)" }}>
-                    {"10:24"}
+                    {c.chat.outgoingTime}
                     <svg className="bx-ticks" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#bfdbfe" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M18 6 7 17l-5-5"></path>
                       <path d="m22 10-7.5 7.5L13 16"></path>
@@ -499,10 +504,10 @@ export default function HomeSolutions() {
               </span>
               <span style={{ minWidth: "0" }}>
                 <span style={{ display: "block", fontWeight: "600", color: "#fff" }}>
-                  {"Stock bajo"}
+                  {c.chat.toastTitle}
                 </span>
                 <span style={{ display: "block", fontSize: "10.5px", color: "#a1a1aa", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                  {"Café 500 g · quedan 12 u"}
+                  {c.chat.toastBody}
                 </span>
               </span>
             </div>
@@ -517,15 +522,15 @@ export default function HomeSolutions() {
                   <path d="M12 22V12"></path>
                 </svg>
                 <h3 style={{ margin: "0", fontFamily: "var(--font-space),sans-serif", fontSize: "19px", fontWeight: "600" }}>
-                  {"IA y agentes"}
+                  {c.ai.title}
                 </h3>
               </div>
               <p style={{ margin: "0", fontSize: "15px", lineHeight: "1.5", color: "rgba(255,255,255,0.55)" }}>
-                {"Agentes que "}
+                {c.ai.before}
                 <strong style={{ color: "#fff", fontWeight: "600" }}>
-                  {"atienden, responden y procesan"}
+                  {c.ai.strong}
                 </strong>
-                {" por ti, conectados a tus datos."}
+                {c.ai.after}
               </p>
             </div>
             <div aria-hidden="true" style={{ position: "absolute", left: "20px", right: "20px", bottom: "88px", zIndex: "1" }}>
@@ -537,7 +542,7 @@ export default function HomeSolutions() {
                     <path d="M22 5h-4"></path>
                   </svg>
                   <span className="bx-prompt" style={{ display: "inline-block", overflow: "hidden", width: "24ch", verticalAlign: "bottom" }}>
-                    {"Resume ventas de octubre"}
+                    {c.ai.prompt}
                   </span>
                   <span className="bx-caret" style={{ display: "inline-block", width: "5px", height: "12px", background: "#7fb2ff" }}></span>
                 </div>
@@ -550,45 +555,18 @@ export default function HomeSolutions() {
                       <path d="M20 6 9 17l-5-5"></path>
                     </svg>
                   </span>
-                  {"consultó ventas.db"}
+                  {c.ai.tool}
                 </div>
                 <p style={{ margin: "0", fontSize: "11.5px", lineHeight: "1.5", color: "#d4d4d8" }}>
-                  <span className="bx-w">
-                    {"Octubre "}
-                  </span>
-                  <span className="bx-w">
-                    {"cerró "}
-                  </span>
-                  <span className="bx-w">
-                    {"en "}
-                  </span>
-                  <span className="bx-w" style={{ color: "#fff", fontWeight: "600" }}>
-                    {"$ 48 M, "}
-                  </span>
-                  <span className="bx-w" style={{ color: "#7fb2ff" }}>
-                    {"+18 % "}
-                  </span>
-                  <span className="bx-w">
-                    {"frente "}
-                  </span>
-                  <span className="bx-w">
-                    {"a "}
-                  </span>
-                  <span className="bx-w">
-                    {"septiembre. "}
-                  </span>
-                  <span className="bx-w">
-                    {"La "}
-                  </span>
-                  <span className="bx-w">
-                    {"sede "}
-                  </span>
-                  <span className="bx-w">
-                    {"Centro "}
-                  </span>
-                  <span className="bx-w">
-                    {"lidera."}
-                  </span>
+                  {c.ai.answer.map((word, i) => (
+                    <span
+                      key={`${word.text}-${i}`}
+                      className="bx-w"
+                      style={word.kind === 'strong' ? { color: '#fff', fontWeight: '600' } : word.kind === 'accent' ? { color: '#7fb2ff' } : undefined}
+                    >
+                      {word.text}
+                    </span>
+                  ))}
                 </p>
               </div>
             </div>
@@ -598,7 +576,7 @@ export default function HomeSolutions() {
                   <circle cx="12" cy="12" r="10"></circle>
                   <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
-                {"Disponibles 24/7"}
+                {c.ai.badges[0]}
               </span>
               <span style={{ display: "inline-flex", alignItems: "center", gap: "10px" }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -606,7 +584,7 @@ export default function HomeSolutions() {
                   <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
                   <path d="M3 12A9 3 0 0 0 21 12"></path>
                 </svg>
-                {"Conectados a tus datos"}
+                {c.ai.badges[1]}
               </span>
             </div>
           </article>
@@ -619,15 +597,15 @@ export default function HomeSolutions() {
                   <rect width="8" height="8" x="13" y="13" rx="2"></rect>
                 </svg>
                 <h3 style={{ margin: "0", fontFamily: "var(--font-space),sans-serif", fontSize: "19px", fontWeight: "600" }}>
-                  {"Integraciones y APIs"}
+                  {c.api.title}
                 </h3>
               </div>
               <p style={{ margin: "0", fontSize: "15px", lineHeight: "1.5", color: "rgba(255,255,255,0.55)" }}>
-                {"Conectamos lo que ya usas: "}
+                {c.api.before}
                 <strong style={{ color: "#fff", fontWeight: "600" }}>
-                  {"ERP, CRM y facturación"}
+                  {c.api.strong}
                 </strong>
-                {"."}
+                {c.api.after}
               </p>
             </div>
             <div aria-hidden="true" className="bx-ui" style={{ position: "absolute", left: "14px", right: "14px", bottom: "70px" }}>
@@ -644,37 +622,37 @@ export default function HomeSolutions() {
                   <g className="bx-nl">
                     <rect x="4" y="14" width="62" height="22" rx="6" fill="#0b0b0c" stroke="rgba(255,255,255,0.14)"></rect>
                     <text x="35" y="28.5" fill="#d4d4d8">
-                      {"ERP"}
+                      {c.api.nodes.erp}
                     </text>
                   </g>
                   <g className="bx-nl">
                     <rect x="4" y="64" width="62" height="22" rx="6" fill="#0b0b0c" stroke="rgba(255,255,255,0.14)"></rect>
                     <text x="35" y="78.5" fill="#d4d4d8">
-                      {"CRM"}
+                      {c.api.nodes.crm}
                     </text>
                   </g>
                   <g className="bx-nl">
                     <rect x="4" y="114" width="62" height="22" rx="6" fill="#0b0b0c" stroke="rgba(255,255,255,0.14)"></rect>
                     <text x="35" y="128.5" fill="#d4d4d8">
-                      {"Tienda"}
+                      {c.api.nodes.store}
                     </text>
                   </g>
                   <g className="bx-nr">
                     <rect x="182" y="14" width="62" height="22" rx="6" fill="#0b0b0c" stroke="rgba(255,255,255,0.14)"></rect>
                     <text x="213" y="28.5" fill="#d4d4d8">
-                      {"Pagos"}
+                      {c.api.nodes.payments}
                     </text>
                   </g>
                   <g className="bx-nr">
                     <rect x="182" y="64" width="62" height="22" rx="6" fill="#0b0b0c" stroke="rgba(0,102,255,0.6)"></rect>
                     <text x="213" y="78.5" fill="#fff">
-                      {"Factura"}
+                      {c.api.nodes.invoice}
                     </text>
                   </g>
                   <g className="bx-nr">
                     <rect x="182" y="114" width="62" height="22" rx="6" fill="#0b0b0c" stroke="rgba(255,255,255,0.14)"></rect>
                     <text x="213" y="128.5" fill="#d4d4d8">
-                      {"WhatsApp"}
+                      {c.api.nodes.whatsapp}
                     </text>
                   </g>
                 </g>
@@ -690,16 +668,16 @@ export default function HomeSolutions() {
             <div aria-hidden="true" style={{ position: "absolute", left: "20px", right: "20px", bottom: "20px", height: "34px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.1)", background: "#0b0b0c", overflow: "hidden", fontFamily: "var(--font-mono),monospace", fontSize: "10.5px" }}>
               <div className="bx-req" style={{ display: "flex", alignItems: "center", gap: "7px", height: "100%", padding: "0 10px", whiteSpace: "nowrap" }}>
                 <span className="bx-m" style={{ color: "#7fb2ff" }}>
-                  {"POST"}
+                  {c.api.request.method}
                 </span>
                 <span className="bx-p" style={{ color: "#e4e4e7", overflow: "hidden", textOverflow: "ellipsis" }}>
-                  {"/v1/facturas"}
+                  {c.api.request.path}
                 </span>
                 <span style={{ marginLeft: "auto", padding: "1px 6px", borderRadius: "5px", background: "rgba(0,102,255,0.16)", border: "1px solid rgba(0,102,255,0.4)", color: "#cfe0ff" }}>
-                  {"200"}
+                  {c.api.request.status}
                 </span>
                 <span className="bx-ms" style={{ color: "#71717a" }}>
-                  {"84 ms"}
+                  {c.api.request.ms}
                 </span>
               </div>
             </div>

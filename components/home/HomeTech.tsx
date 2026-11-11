@@ -1,8 +1,11 @@
  
 // Generated from the Claude Design file Home.dc.html. Static markup only.
-export default function HomeTech() {
+import { HOME_COPY } from '@/lib/i18n/home-copy'
+import type { Locale } from '@/lib/i18n/config'
+
+export default function HomeTech({ lang }: { lang: Locale }) {
   return (
-    <section aria-label="Tecnologías" style={{ position: "relative", zIndex: "1", padding: "44px 24px" }}>
+    <section aria-label={HOME_COPY[lang].tech.aria} style={{ position: "relative", zIndex: "1", padding: "44px 24px" }}>
       <div style={{ maxWidth: "1152px", margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "14px 40px", fontFamily: "var(--font-space),sans-serif", fontSize: "32px", fontWeight: "500", color: "rgba(255,255,255,0.45)", width: "100%", height: "64px", perspective: "900px" }}>
         <div className="mq" style={{ flex: "1 1 520px", minWidth: "0", transform: "rotateX(28deg)", transformStyle: "preserve-3d", transformOrigin: "50% 50%" }}>
           <div className="mq-track">

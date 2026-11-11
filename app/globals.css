@@ -19,9 +19,19 @@ a,button{transition:background-color .15s ease,border-color .15s ease,color .15s
 .case:hover .case-img{filter:grayscale(0) contrast(1.05) brightness(0.9) !important}
 .faq-btn:hover .faq-q{color:#fff !important}
 @media (max-width:860px){.nav-links{display:none !important}.rail{display:none !important}}
+/* Nav móvil: enlaces + WhatsApp + selector de idioma en un panel desplegable. */
+.nav-burger{display:none;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border:1px solid #27272a;border-radius:999px;background:rgba(9,9,11,.6);color:#fff}
+.nav-mobile{display:none}
+.nav-cta-short{display:none}
+@media (max-width:860px){
+  .nav-burger{display:inline-flex}
+  .nav-cta-full{display:none}
+  .nav-cta-short{display:inline}
+  .nav-mobile{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:calc(100% + 8px);padding:10px 12px 12px;border:1px solid rgba(255,255,255,.12);border-radius:20px;background:rgba(10,10,12,.97);backdrop-filter:blur(20px);box-shadow:0 24px 60px rgba(0,0,0,.7)}
+}
 .bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.span2{grid-column:span 2}
 @media (max-width:1040px){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:640px){.bento{grid-template-columns:minmax(0,1fr)}.span2{grid-column:auto}.b-ill{display:none !important}}
+@media (max-width:640px){.bento{grid-template-columns:minmax(0,1fr)}.span2{grid-column:auto}.b-ill{position:relative !important;right:auto !important;top:auto !important;bottom:auto !important;width:100% !important;margin-top:4px}}
 
 /* ===== Motion layer (GSAP + ScrollTrigger + Lenis) ===== */
 html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto !important}
@@ -31,7 +41,6 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto 
 .nav-a{position:relative}.nav-a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:#fff;transform:scaleX(0);transform-origin:0 50%;transition:transform .35s cubic-bezier(.2,.8,.2,1)}.nav-a:hover::after{transform:scaleX(1)}
 .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .02em .1em;margin-bottom:-.1em}.wi{display:inline-block;will-change:transform}
 .h-spot{position:absolute;left:50%;top:38%;width:720px;height:720px;margin:-360px 0 0 -360px;border-radius:50%;background:radial-gradient(circle,rgba(0,102,255,.16) 0%,transparent 62%);pointer-events:none;z-index:-1;filter:blur(10px)}
-.h-pill .dot{animation:pulse 2.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,102,255,.7),0 0 12px rgba(0,102,255,.9)}60%{box-shadow:0 0 0 7px rgba(0,102,255,0),0 0 12px rgba(0,102,255,.9)}}
 .h-win{perspective:1400px}.h-win-in{transform-origin:50% 0;will-change:transform}
 .caret{display:inline-block;width:8px;height:1.05em;background:#7fb2ff;vertical-align:-0.18em;margin-left:6px;animation:blink 1s steps(1) infinite}
@@ -123,4 +132,18 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto 
 @media (max-width:900px){.lg-wrap{grid-template-columns:minmax(0,1fr);gap:28px}.lg-side{position:static}.lg-tabs{flex-direction:row !important;flex-wrap:wrap}.lg-tab{width:auto}.lg-cards{grid-template-columns:minmax(0,1fr)}.lg-tr{grid-template-columns:minmax(0,1fr)}.lg-tr>span{border-left:0;border-top:1px solid #27272a}.lg-dl li{grid-template-columns:minmax(0,1fr);gap:2px}}
 
 /* Móvil: el texto del bento administrativo usa todo el ancho (en escritorio comparte con la ilustración) */
-@media (max-width:640px){[data-bx="admin"] [style*="max-width: 46%"]{max-width:100% !important}}
+@media (max-width:640px){[data-bx="admin"] [style*="46%"]{max-width:100% !important}}
+
+/* Proceso: línea de tiempo vertical en móvil */
+.p-seg{display:none}
+@media (max-width:700px){
+.p-list{grid-template-columns:minmax(0,1fr) !important;gap:0 !important}
+.p-track{display:none}
+.p-step{position:relative;padding:0 0 40px 44px}
+.p-step:last-child{padding-bottom:0}
+.p-step::before{content:"";position:absolute;left:6px;top:20px;bottom:-4px;width:1px;background:rgba(255,255,255,.12)}
+.p-step:last-child::before{display:none}
+.p-dot{position:absolute !important;left:0;top:4px;margin:0 !important}
+.p-seg{display:block;position:absolute;left:6px;top:20px;bottom:-4px;width:1px;background:linear-gradient(180deg,#0066ff,#7fb2ff);box-shadow:0 0 10px rgba(0,102,255,.7);transform-origin:50% 0;transform:scaleY(0)}
+.p-step:last-child .p-seg{display:none}
+}
