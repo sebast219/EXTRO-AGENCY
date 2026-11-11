@@ -10,7 +10,6 @@ import HomeProcess from '@/components/home/HomeProcess'
 import HomeCtaReserva from '@/components/home/HomeCtaReserva'
 import HomeBooking from '@/components/home/HomeBooking'
 import HomeFaq from '@/components/home/HomeFaq'
-import HomeClients from '@/components/home/HomeClients'
 import HomeFooter from '@/components/home/HomeFooter'
 import HomeFx from '@/components/home/HomeFx'
 import { FAQ_ITEMS } from '@/components/home/faq-items'
@@ -75,7 +74,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           <HomeBooking />
         </HomeCtaReserva>
         <HomeFaq />
-        <HomeClients />
       </main>
       <HomeFooter lang={lang} />
       <HomeFx />
