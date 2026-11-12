@@ -32,7 +32,7 @@ function buildCsp(nonce: string, opts: { studio: boolean; dev: boolean }): strin
     `style-src 'self' 'unsafe-inline'`,
     `img-src 'self' data: blob: https://cdn.sanity.io https://*.google-analytics.com https://*.googletagmanager.com`,
     `font-src 'self' data:`,
-    `connect-src 'self' https://*.sanity.io wss://*.sanity.io https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com`,
+    `connect-src 'self' https://*.sanity.io wss://*.sanity.io https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://www.google.com`,
     `frame-src 'self' https://meet.google.com`,
     `frame-ancestors 'none'`,
     `base-uri 'self'`,
