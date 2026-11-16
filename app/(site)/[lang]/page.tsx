@@ -12,9 +12,9 @@ import HomeFaq from '@/components/home/HomeFaq'
 import HomeClients from '@/components/home/HomeClients'
 import HomeFooter from '@/components/home/HomeFooter'
 import HomeFx from '@/components/home/HomeFx'
-import { getFaqItems } from '@/components/home/faq-items'
 import { alternatesFor, isLocale } from '@/lib/i18n/config'
 import { safeJsonLd } from '@/lib/seo/json-ld'
+import { faqSchema as buildFaqSchema } from '@/lib/seo/schema'
 
 /**
  * CSP nonce (proxy.ts): el nonce solo se estampa en <script> cuando la página
@@ -38,16 +38,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
   // El esquema FAQ sale de la misma fuente que la UI (getFaqItems): no puede
   // desincronizarse ni mezclar idiomas con el contenido visible.
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    inLanguage: lang,
-    mainEntity: getFaqItems(lang).map((item) => ({
-      '@type': 'Question',
-      name: item.q,
-      acceptedAnswer: { '@type': 'Answer', text: item.a },
-    })),
-  }
+  const faqSchema = buildFaqSchema(lang)
 
   return (
     <>

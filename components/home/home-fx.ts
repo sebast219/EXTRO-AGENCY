@@ -22,8 +22,9 @@ class HomeFx {
     this._boot = setTimeout(() => { this.initFx(); this.initAdmin(); this.initBento(); this.initPlayground(); this.initArc() }, 80)
   }
 
-  // Carga diferida real de las capturas (casos y footer): ~1,2 MB que no hacen falta hasta que el
-  // visitante se acerca. loading="lazy" no basta aquí porque viven dentro de capas transformadas.
+  // Carga diferida real de las capturas de casos (HomeCases) y del footer (HomeFooter): ~1,2 MB que
+  // no hacen falta hasta que el visitante se acerca. loading="lazy" nativo no basta porque viven
+  // dentro de capas transformadas por GSAP (.pg-ph) y pueden quedar como cajas vacías.
   initLazy() {
     const imgs = Array.prototype.slice.call(document.querySelectorAll("img[data-lazy-src]"));
     if (!imgs.length) return;

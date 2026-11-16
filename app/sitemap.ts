@@ -1,41 +1,15 @@
 import type { MetadataRoute } from 'next'
 import { listPosts } from '@/lib/content/posts'
-
-const BASE = 'https://extro.com.co'
+import { buildSitemap } from '@/lib/seo/sitemap'
 
 /**
- * M-4: el sitemap anterior estaba escrito a mano y solo listaba '/' y '/blog'.
- * Los nueve artículos —que son toda la apuesta de long-tail— y /terms no
- * estaban. Ahora sale de las mismas fuentes que renderizan las páginas, así que
- * no puede volver a desincronizarse.
- *
- * M-3: cada URL declara su alternativa en inglés con hreflang.
+ * Built from the same sources that render the pages (see lib/seo/sitemap.ts).
+ * Every language version has its own <url> with reciprocal hreflang alternates
+ * and a real lastmod (post date / static-page constant).
  */
 export const revalidate = 3600
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = await listPosts()
-
-  const alt = (path: string) => ({
-    languages: {
-      es: `${BASE}${path}`,
-      en: `${BASE}/en${path}`,
-    },
-  })
-
-  const staticRoutes: MetadataRoute.Sitemap = [
-    { url: BASE, lastModified: new Date(), changeFrequency: 'weekly', priority: 1, alternates: alt('') },
-    { url: `${BASE}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8, alternates: alt('/blog') },
-    { url: `${BASE}/terms`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3, alternates: alt('/terms') },
-  ]
-
-  const postRoutes: MetadataRoute.Sitemap = posts.map((p) => ({
-    url: `${BASE}/blog/${p.slug}`,
-    lastModified: new Date(`${p.date}T12:00:00Z`),
-    changeFrequency: 'monthly',
-    priority: 0.6,
-    // Spanish only: the /en copy is noindex with its canonical pointing here.
-  }))
-
-  return [...staticRoutes, ...postRoutes]
+  const [es, en] = await Promise.all([listPosts('es'), listPosts('en')])
+  return buildSitemap(es, en)
 }

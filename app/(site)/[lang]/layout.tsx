@@ -7,6 +7,8 @@ import { LanguageProvider } from '@/components/LanguageProvider'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import { LOCALES, isLocale, alternatesFor, SITE_URL, type Locale } from '@/lib/i18n/config'
 import { safeJsonLd } from '@/lib/seo/json-ld'
+import { organizationSchema, websiteSchema } from '@/lib/seo/schema'
+import { ogImageFor } from '@/lib/seo/social'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
 const spaceGrotesk = Space_Grotesk({
@@ -53,9 +55,9 @@ const COPY = {
   es: {
     title: 'EXTRO — Ingeniería de software a medida, en producción',
     description:
-      'Software a medida con precio fijo, primera entrega en 7 días y despliegues semanales. El código es tuyo y hay garantía de 1 a 3 meses. Agenda una llamada de 15 minutos.',
+      'EXTRO es una empresa de ingeniería de software a medida. Precio fijo, primera entrega en 7 días y avances constantes en cada fase. El código es tuyo.',
     ogDescription:
-      'Software a medida en producción en 7 días. Precio fijo, despliegues semanales y el código es tuyo desde el primer día.',
+      'Empresa de ingeniería de software a medida: en producción en 7 días, precio fijo y el código es tuyo desde el primer día.',
     locale: 'es_CO',
     skip: 'Saltar al contenido',
     keywords: [
@@ -70,9 +72,9 @@ const COPY = {
   en: {
     title: 'EXTRO — Custom Software Engineering, in Production',
     description:
-      'Custom software at a fixed price, first delivery in 7 days and weekly deploys. The code is yours, with a 1 to 3 month guarantee. Book a 15-minute call.',
+      'EXTRO is a custom software engineering company. Fixed price, first delivery in 7 days and steady progress in every phase. The code is yours.',
     ogDescription:
-      'Custom software in production in 7 days. Fixed price, weekly deploys and the code is yours from day one.',
+      'Custom software engineering company: in production in 7 days, fixed price and the code is yours from day one.',
     locale: 'en_US',
     skip: 'Skip to content',
     keywords: [
@@ -106,7 +108,7 @@ export async function generateMetadata({
     title: copy.title,
     description: copy.description,
     keywords: copy.keywords,
-    authors: [{ name: 'EXTRO Engineering Studio' }],
+    authors: [{ name: 'EXTRO' }],
     alternates: alternatesFor('/', lang),
     openGraph: {
       title: copy.title,
@@ -115,13 +117,13 @@ export async function generateMetadata({
       locale: copy.locale,
       url: alternatesFor('/', lang).canonical,
       siteName: 'EXTRO',
-      images: [{ url: '/og.png', width: 1200, height: 630, alt: copy.title }],
+      images: [{ url: ogImageFor(lang).url, width: 1200, height: 630, alt: copy.title }],
     },
     twitter: {
       card: 'summary_large_image',
       title: copy.title,
       description: copy.ogDescription,
-      images: ['/og.png'],
+      images: [ogImageFor(lang).url],
     },
     robots: { index: true, follow: true },
     // Search Console: etiqueta HTML. Si se verifica por DNS, la variable queda vacía.
@@ -131,41 +133,6 @@ export async function generateMetadata({
     icons: { icon: '/icon.png', apple: '/apple-touch-icon.png' },
   }
 }
-
-const organizationSchema = (lang: Locale) => ({
-  '@context': 'https://schema.org',
-  '@type': ['Organization', 'ProfessionalService'],
-  name: 'EXTRO',
-  url: SITE_URL,
-  logo: `${SITE_URL}/icon.png`,
-  inLanguage: lang,
-  description:
-    lang === 'en'
-      ? 'Software engineering studio. Get your project scoped at a fixed price; after delivery, keep evolving it with a monthly plan and weekly shipped progress. A 1 to 3 month guarantee depending on the project level.'
-      : 'Agencia de ingeniería de software. Cotiza tu proyecto con precio fijo; después de la entrega, sigue evolucionándolo con un plan mensual y avances semanales en producción. Garantía de 1 a 3 meses según el nivel del proyecto.',
-  email: 'hola@extro.com.co',
-  telephone: '+573005865312',
-  address: { '@type': 'PostalAddress', addressLocality: 'Medellín', addressCountry: 'CO' },
-  geo: { '@type': 'GeoCoordinates', latitude: 6.2442, longitude: -75.5812 },
-  areaServed: { '@type': 'Country', name: 'Colombia' },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '09:00',
-      closes: '18:00',
-    },
-  ],
-  sameAs: ['https://github.com/sebast219', 'https://www.linkedin.com/in/sebastian-yepes-dev/'],
-})
-
-const websiteSchema = (lang: Locale) => ({
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'EXTRO',
-  url: SITE_URL,
-  inLanguage: lang,
-})
 
 /**
  * JSON-LD no es un script ejecutable, así que la CSP con nonce no lo bloquea.

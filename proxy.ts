@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { enBlogRedirect, esBlogRedirect, enSlugFor } from '@/lib/content/blog-i18n'
 import { DEFAULT_LOCALE, detectLocale, isCrawler, isLocale, type Locale } from '@/lib/i18n/config'
 
 const BASE_HOST = 'extro.com.co'
 
 /** Rutas que no pertenecen al sitio localizado y pasan sin reescritura. */
-const PASSTHROUGH = ['/api', '/studio', '/sitemap.xml', '/robots.txt', '/og.png']
+const PASSTHROUGH = ['/api', '/studio', '/sitemap.xml', '/robots.txt', '/og.png', '/og-en.png']
 
 /**
  * A-4: CSP estricta basada en nonce para todo el sitio.
@@ -106,21 +107,51 @@ export function proxy(req: NextRequest) {
 
   const isPassthrough = PASSTHROUGH.some((p) => pathname === p || pathname.startsWith(`${p}/`))
 
+  const enBlogDest = pathname.startsWith('/en/blog/')
+    ? enBlogRedirect(pathname.slice('/en/blog/'.length).replace(/\/$/, ''))
+    : null
+
+  const esBlogDest = pathname.startsWith('/blog/')
+    ? esBlogRedirect(pathname.slice('/blog/'.length).replace(/\/$/, ''))
+    : null
+
   let res: NextResponse
   if (isPassthrough) {
     res = NextResponse.next({ request: { headers: requestHeaders } })
+  } else if (enBlogDest) {
+    // Post sin versión inglesa en este slug: 301 limpio (nunca noindex + canonical
+    // cruzada) hacia su versión en inglés o, si no existe, hacia la española.
+    const url = req.nextUrl.clone()
+    url.pathname = enBlogDest
+    res = NextResponse.redirect(url, 301)
+    applySecurityHeaders(res, csp)
+    return res
+  } else if (esBlogDest) {
+    // Regla espejo: el selector de idioma EN -> ES solo cambia el prefijo, así
+    // que /blog/<slug-en> llega aquí. 301 al slug español del mismo post.
+    const url = req.nextUrl.clone()
+    url.pathname = esBlogDest
+    res = NextResponse.redirect(url, 301)
+    applySecurityHeaders(res, csp)
+    return res
   } else if (pathname === '/en' || pathname.startsWith('/en/')) {
     // Idioma explícito en la URL: no se toca.
     res = NextResponse.next({ request: { headers: requestHeaders } })
   } else {
     const locale = preferredLocale(req)
 
-    if (locale === 'en') {
+    // Posts sin versión inglesa: no se redirige a /en (ese destino terminaría en
+    // un 301 de vuelta a /blog/<slug> y formaría un bucle). Se sirve en español.
+    const blogSlug = pathname.startsWith('/blog/') ? pathname.slice('/blog/'.length).replace(/\/$/, '') : null
+    const enBlogTarget = blogSlug === null ? undefined : enSlugFor(blogSlug)
+    const skipEnRedirect = blogSlug !== null && !enBlogTarget
+
+    if (locale === 'en' && !skipEnRedirect) {
       // Redirección visible (307, temporal) para que la URL canónica y la que
       // ve el usuario coincidan. No se guarda cookie: es una preferencia del
       // dispositivo, no una elección manual.
       const url = req.nextUrl.clone()
-      url.pathname = `/en${pathname === '/' ? '' : pathname}`
+      url.pathname = enBlogTarget ? `/en/blog/${enBlogTarget}` : `/en${pathname === '/' ? '' : pathname}`
       res = NextResponse.redirect(url, 307)
       applySecurityHeaders(res, csp)
       return res

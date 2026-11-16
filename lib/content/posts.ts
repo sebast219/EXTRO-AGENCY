@@ -3,6 +3,8 @@ import type { PortableTextBlock } from 'sanity'
 import { unstable_cache } from 'next/cache'
 import { fallbackPosts, type FallbackPost } from '@/lib/blog-posts'
 import { log, captureException } from '@/lib/observability/logger'
+import { enSlugFor, type PostSlugs } from '@/lib/content/blog-i18n'
+import type { Locale } from '@/lib/i18n/config'
 
 /**
  * M-8: una sola puerta de entrada al contenido del blog, con degradación real.
@@ -20,6 +22,8 @@ export type PostMeta = {
   date: string
   readTime: string
   tag: string
+  /** Slug of each language version (hreflang pairs). */
+  slugs: PostSlugs
 }
 
 export type Post =
@@ -34,7 +38,7 @@ const POST_QUERY = `*[_type == "post" && slug.current == $slug][0] {
   _id, title, slug, excerpt, tag, date, readTime, content
 }`
 
-type SanityMeta = Omit<PostMeta, 'slug'> & { slug: { current: string } }
+type SanityMeta = Omit<PostMeta, 'slug' | 'slugs'> & { slug: { current: string } }
 type SanityFull = SanityMeta & { content: PortableTextBlock[] }
 
 export const isSanityConfigured = Boolean(
@@ -75,6 +79,21 @@ function localMeta(p: FallbackPost): PostMeta {
     date: p.date,
     tag: p.tag,
     readTime: readTimeOf(p.content, p.readTime),
+    slugs: { es: p.slug, en: p.en?.slug },
+  }
+}
+
+/** English version of a local post, or null when the post is Spanish-only. */
+function localMetaEn(p: FallbackPost): PostMeta | null {
+  if (!p.en) return null
+  return {
+    slug: p.en.slug,
+    title: p.en.title,
+    excerpt: p.en.excerpt,
+    date: p.date,
+    tag: p.en.tag,
+    readTime: readTimeOf(p.en.content, p.readTime),
+    slugs: { es: p.slug, en: p.en.slug },
   }
 }
 
@@ -97,7 +116,11 @@ const cachedListPosts = unstable_cache(
         log.warn('content.sanity_empty', { effect: 'se usa el contenido local' })
         return fallbackPosts.map(localMeta)
       }
-      return rows.map((r) => ({ ...r, slug: r.slug.current }))
+      return rows.map((r) => ({
+        ...r,
+        slug: r.slug.current,
+        slugs: { es: r.slug.current, en: enSlugFor(r.slug.current) },
+      }))
     } catch (err) {
       await captureException(err, { event: 'content.list_failed' })
       return fallbackPosts.map(localMeta)
@@ -107,11 +130,29 @@ const cachedListPosts = unstable_cache(
   { revalidate: 60, tags: ['posts'] }
 )
 
-export async function listPosts(): Promise<PostMeta[]> {
+/**
+ * Posts of a language. English only lists posts that have a real translation
+ * (lib/blog-posts.ts); Spanish-only posts are never listed under /en.
+ */
+// NOTE (EN source): English versions come only from `fallbackPosts[].en`
+// (lib/blog-posts.ts), never from Sanity. A Sanity post gets an English
+// version only if its slug equals the slug of a local post that has `en`
+// (see enSlugFor); renaming the slug in Sanity silently drops the EN version.
+export async function listPosts(lang: Locale = 'es'): Promise<PostMeta[]> {
+  if (lang === 'en') {
+    return fallbackPosts.map(localMetaEn).filter((p): p is PostMeta => p !== null)
+  }
   return cachedListPosts()
 }
 
-export async function getPost(slug: string): Promise<Post | null> {
+export async function getPost(slug: string, lang: Locale = 'es'): Promise<Post | null> {
+  if (lang === 'en') {
+    const local = fallbackPosts.find((p) => p.en?.slug === slug)
+    const meta = local ? localMetaEn(local) : null
+    if (!local?.en || !meta) return null
+    return { ...meta, source: 'local', body: local.en.content }
+  }
+
   // El key part y el tag incluyen el slug: cada artículo se cachea (y podrá
   // invalidarse) por separado con el tag `'post:<slug>'`.
   const cachedGetPost = unstable_cache(
@@ -129,6 +170,7 @@ export async function getPost(slug: string): Promise<Post | null> {
               date: row.date,
               tag: row.tag,
               readTime: row.readTime,
+              slugs: { es: row.slug.current, en: enSlugFor(row.slug.current) },
               source: 'sanity',
               body: row.content,
             }

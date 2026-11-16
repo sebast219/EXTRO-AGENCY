@@ -8,6 +8,10 @@ export type FaqItem = { q: string; a: string }
 
 const ES: FaqItem[] = [
   {
+    q: '¿Buscas una agencia de software?',
+    a: 'EXTRO es una empresa de ingeniería de software a medida, no una agencia de intermediarios: quien te atiende es quien escribe el código. Si estás comparando agencias de software, cotizamos por alcance, con precio fijo, y el código es tuyo desde el primer día.',
+  },
+  {
     q: '¿Trabajan con emprendimientos o solo con empresas grandes?',
     a: 'Con ambos. Un emprendimiento recibe el mismo nivel de ingeniería que una empresa; lo que cambia es el alcance. Ajustamos el proyecto a tu etapa y a tu presupuesto, sin sacrificar calidad.',
   },
@@ -17,7 +21,7 @@ const ES: FaqItem[] = [
   },
   {
     q: '¿Cuánto tarda un proyecto?',
-    a: 'Empezamos en 48 horas y la primera entrega funcional llega en 7 días. El tiempo total depende del alcance, y cada semana ves avances reales en producción.',
+    a: 'Empezamos en 48 horas y la primera entrega funcional llega en 7 días. El tiempo total depende del alcance, y en cada fase ves avances reales en producción.',
   },
   {
     q: '¿Quién es dueño del código?',
@@ -29,7 +33,7 @@ const ES: FaqItem[] = [
   },
   {
     q: '¿Y si no me gusta lo que recibo?',
-    a: 'Tienes una garantía de 1 a 3 meses según el nivel del proyecto, con acompañamiento para corregir lo que no te convenza. Revisamos cada avance semanal contigo y ajustamos sobre la marcha.',
+    a: 'Incluimos soporte post-entrega de 1 a 3 meses según el tamaño del proyecto, para corregir lo que no te convenza. Revisamos contigo el avance de cada fase y ajustamos sobre la marcha.',
   },
   {
     q: '¿Trabajan con empresas que ya tienen equipo de tecnología?',
@@ -38,6 +42,10 @@ const ES: FaqItem[] = [
 ]
 
 const EN: FaqItem[] = [
+  {
+    q: 'Are you looking for a software agency?',
+    a: 'EXTRO is a custom software engineering company, not an agency of intermediaries: the person you talk to is the person who writes the code. If you are comparing software agencies, we quote by scope at a fixed price, and the code is yours from day one.',
+  },
   {
     q: 'Do you work with startups or only large companies?',
     a: 'Both. A startup gets the same level of engineering as an enterprise; what changes is the scope. We fit the project to your stage and your budget without sacrificing quality.',
@@ -48,7 +56,7 @@ const EN: FaqItem[] = [
   },
   {
     q: 'How long does a project take?',
-    a: 'We start within 48 hours and the first working delivery lands in 7 days. Total time depends on scope, and every week you see real progress shipped to production.',
+    a: 'We start within 48 hours and the first working delivery lands in 7 days. Total time depends on scope, and at every phase you see real progress shipped to production.',
   },
   {
     q: 'Who owns the code?',
@@ -60,7 +68,7 @@ const EN: FaqItem[] = [
   },
   {
     q: 'What if I do not like what I receive?',
-    a: 'You get a 1 to 3 month guarantee depending on the project level, with support to fix anything that does not work for you. We review every weekly delivery with you and adjust as we go.',
+    a: 'We include 1 to 3 months of post-launch support, depending on project size, to fix anything that does not work for you. We review the progress of every phase with you and adjust as we go.',
   },
   {
     q: 'Do you work with companies that already have a tech team?',

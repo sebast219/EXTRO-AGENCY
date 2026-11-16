@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import SiteChrome from '@/components/home/SiteChrome'
 import LegalTabs from '@/components/legal/LegalTabs'
-import { alternatesFor, isLocale } from '@/lib/i18n/config'
+import { alternatesFor, absoluteUrl, isLocale } from '@/lib/i18n/config'
+import { socialMeta } from '@/lib/seo/social'
 
 /**
  * CSP nonce (proxy.ts): el nonce solo se estampa en <script> cuando la página
@@ -17,13 +18,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   if (!isLocale(lang)) return {}
+  const title = 'Legal · EXTRO'
+  const description =
+    lang === 'en'
+      ? 'EXTRO personal data policy, terms of use and security. The Spanish version is the binding one.'
+      : 'Política de tratamiento de datos personales, términos de uso y seguridad de EXTRO.'
   return {
-    title: 'Legal · EXTRO',
-    description:
-      lang === 'en'
-        ? 'EXTRO personal data policy, terms of use and security. The Spanish version is the binding one.'
-        : 'Política de tratamiento de datos personales, términos de uso y seguridad de EXTRO.',
+    title,
+    description,
     alternates: alternatesFor('/terms', lang),
+    ...socialMeta({ title, description, url: absoluteUrl('/terms', lang), lang }),
     robots: { index: true, follow: true },
   }
 }

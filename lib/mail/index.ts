@@ -142,7 +142,7 @@ function layout(opts: {
           <td align="center" style="padding:32px 20px 0">
             <div style="background:#0a0a0a;border-radius:12px;padding:28px 24px;text-align:center">
               <div style="font-family:${FONT_DISPLAY};font-size:18px;font-weight:700;letter-spacing:2px;color:#ffffff">${BRAND}</div>
-              <div style="font-size:13px;color:#8a8a8a;margin-top:10px">Agencia de Ingeniería de Software</div>
+              <div style="font-size:13px;color:#8a8a8a;margin-top:10px">Empresa de ingeniería de software</div>
               <div style="font-size:12px;color:#6b6b6b;margin-top:16px;line-height:1.8">
                 hola@extro.com.co<br/>
                 Medellín, Colombia

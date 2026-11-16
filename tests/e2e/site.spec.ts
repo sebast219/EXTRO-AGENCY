@@ -64,15 +64,30 @@ test.describe('Idioma y rutas (M-2, M-3)', () => {
   })
 })
 
-test.describe('Artículos solo en español', () => {
-  test('la copia /en apunta su canónica al español y no se indexa', async ({ page, request }) => {
-    const slug = 'mvp-7-dias'
+test.describe('Artículos en inglés', () => {
+  test('la versión EN es indexable, con canónica propia y hreflang recíproco', async ({ page, request }) => {
+    const slug = 'ship-a-working-mvp-in-7-days'
     await page.goto(`/en/blog/${slug}`)
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', new RegExp(`^https://[^/]+/blog/${slug}$`))
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/)
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', new RegExp(`/en/blog/${slug}$`))
+    await expect(page.locator('meta[name="robots"]')).not.toHaveAttribute('content', /noindex/)
+    await expect(page.locator('link[hreflang="es"]')).toHaveAttribute('href', /\/blog\/mvp-7-dias$/)
+    await expect(page.locator('link[hreflang="en"]')).toHaveAttribute('href', new RegExp(`/en/blog/${slug}$`))
+    await expect(page.locator('link[hreflang="x-default"]')).toHaveAttribute('href', /\/blog\/mvp-7-dias$/)
 
     const xml = await (await request.get('/sitemap.xml')).text()
-    expect(xml).not.toContain(`/en/blog/${slug}`)
+    expect(xml).toContain(`/en/blog/${slug}`)
+  })
+
+  test('el selector EN -> ES: /blog/<slug-en> responde 301 al slug español', async ({ request }) => {
+    const res = await request.get('/blog/ship-a-working-mvp-in-7-days', { maxRedirects: 0 })
+    expect(res.status()).toBe(301)
+    expect(res.headers()['location']).toMatch(/\/blog\/mvp-7-dias$/)
+  })
+
+  test('el slug español bajo /en responde 301 a la versión inglesa', async ({ request }) => {
+    const res = await request.get('/en/blog/mvp-7-dias', { maxRedirects: 0 })
+    expect(res.status()).toBe(301)
+    expect(res.headers()['location']).toMatch(/\/en\/blog\/ship-a-working-mvp-in-7-days$/)
   })
 })
 

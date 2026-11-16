@@ -92,7 +92,7 @@ export default function LegalSeguridad() {
               {"Configuración inicial segura de servidores y bases de datos."}
             </i>
             <i>
-              {"Corregir fallas del software durante la garantía pactada."}
+              {"Corregir fallas del software durante el soporte post-entrega pactado."}
             </i>
             <i>
               {"Actualizaciones y monitoreo, si hay contrato de soporte."}

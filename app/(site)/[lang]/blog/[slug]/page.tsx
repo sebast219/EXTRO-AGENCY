@@ -5,8 +5,11 @@ import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 import { PortableText } from 'next-sanity'
 import SiteChrome from '@/components/home/SiteChrome'
 import { getPost, listPosts, formatPostDate } from '@/lib/content/posts'
-import { isLocale, localizedPath, absoluteUrl, SITE_URL, LOCALES } from '@/lib/i18n/config'
+import { isLocale, localizedPath, absoluteUrl, LOCALES } from '@/lib/i18n/config'
 import { safeJsonLd } from '@/lib/seo/json-ld'
+import { blogAlternates } from '@/lib/content/blog-i18n'
+import { blogPostingSchema } from '@/lib/seo/schema'
+import { socialMeta } from '@/lib/seo/social'
 
 /**
  * CSP nonce (proxy.ts): el nonce solo se estampa en <script> cuando la página
@@ -19,8 +22,10 @@ import { safeJsonLd } from '@/lib/seo/json-ld'
 export const dynamic = 'force-dynamic'
 
 export async function generateStaticParams() {
-  const posts = await listPosts()
-  return LOCALES.flatMap((lang) => posts.map((p) => ({ lang, slug: p.slug })))
+  const perLang = await Promise.all(
+    LOCALES.map(async (lang) => (await listPosts(lang)).map((p) => ({ lang, slug: p.slug })))
+  )
+  return perLang.flat()
 }
 
 export async function generateMetadata({
@@ -30,25 +35,25 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang, slug } = await params
   if (!isLocale(lang)) return {}
-  const post = await getPost(slug)
+  const post = await getPost(slug, lang)
   if (!post) return {}
 
-  // Posts only exist in Spanish. The /en copy has the same body, so it points
-  // its canonical at the ES URL and stays out of the index (no hreflang pair:
-  // there is no real translation to alternate with).
-  const path = `/blog/${post.slug}`
+  // Each language version is indexable, canonical to itself, with reciprocal
+  // hreflang when both versions exist. Posts without an English version never
+  // reach /en (the proxy answers 301 to the Spanish URL).
   return {
     title: `${post.title} · EXTRO`,
     description: post.excerpt,
-    alternates: { canonical: absoluteUrl(path, 'es') },
-    robots: lang === 'en' ? { index: false, follow: true } : undefined,
-    openGraph: {
-      type: 'article',
+    alternates: blogAlternates(post.slugs, lang),
+    ...socialMeta({
       title: post.title,
       description: post.excerpt,
-      publishedTime: post.date,
       url: absoluteUrl(`/blog/${post.slug}`, lang),
-    },
+      lang,
+      type: 'article',
+      publishedTime: post.date,
+      // No per-post cover image in the data model yet: default OG image.
+    }),
   }
 }
 
@@ -60,26 +65,10 @@ export default async function PostPage({
   const { lang, slug } = await params
   if (!isLocale(lang)) notFound()
 
-  const post = await getPost(slug)
+  const post = await getPost(slug, lang)
   if (!post) notFound()
 
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.excerpt,
-    datePublished: post.date,
-    inLanguage: lang,
-    url: absoluteUrl(`/blog/${post.slug}`, lang),
-    author: { '@type': 'Organization', name: 'EXTRO', url: SITE_URL },
-    publisher: {
-      '@type': 'Organization',
-      name: 'EXTRO',
-      url: SITE_URL,
-      logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon.png` },
-    },
-    mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`, lang),
-  }
+  const articleSchema = blogPostingSchema(post, lang)
 
   return (
     <SiteChrome lang={lang}>
@@ -111,12 +100,6 @@ export default async function PostPage({
           {post.title}
         </h1>
         <p style={{ margin: '0 0 40px', fontSize: 18, lineHeight: 1.6, color: 'rgba(255,255,255,0.6)' }}>{post.excerpt}</p>
-
-        {lang === 'en' && (
-          <p style={{ margin: '0 0 32px', padding: '12px 16px', borderRadius: 10, border: '1px solid rgba(0,102,255,0.35)', background: 'rgba(0,102,255,0.1)', fontSize: 14, lineHeight: 1.55, color: '#cfe0ff' }}>
-            This article is published in Spanish. The rest of the site is available in English.
-          </p>
-        )}
 
         <div className="lg-doc" style={{ borderTop: '1px solid #27272a', paddingTop: 40, maxWidth: 'none' }}>
           {post.source === 'local' ? (

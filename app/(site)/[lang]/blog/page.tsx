@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation'
 import SiteChrome from '@/components/home/SiteChrome'
 import BlogIndex from '@/components/blog/BlogIndex'
 import { listPosts, formatPostDate } from '@/lib/content/posts'
-import { alternatesFor, isLocale, localizedPath, type Locale } from '@/lib/i18n/config'
+import { alternatesFor, absoluteUrl, isLocale, localizedPath, type Locale } from '@/lib/i18n/config'
+import { socialMeta } from '@/lib/seo/social'
 
 /**
  * CSP nonce (proxy.ts): el nonce solo se estampa en <script> cuando la página
@@ -38,13 +39,14 @@ export async function generateMetadata({
     title: copy.title,
     description: copy.description,
     alternates: alternatesFor('/blog', lang),
+    ...socialMeta({ title: copy.title, description: copy.description, url: absoluteUrl('/blog', lang), lang }),
   }
 }
 
 export default async function BlogPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
   if (!isLocale(lang)) notFound()
-  const posts = await listPosts()
+  const posts = await listPosts(lang)
 
   return (
     <SiteChrome lang={lang}>
