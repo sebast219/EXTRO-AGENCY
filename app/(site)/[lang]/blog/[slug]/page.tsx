@@ -5,7 +5,7 @@ import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 import { PortableText } from 'next-sanity'
 import SiteChrome from '@/components/home/SiteChrome'
 import { getPost, listPosts, formatPostDate } from '@/lib/content/posts'
-import { alternatesFor, isLocale, localizedPath, absoluteUrl, SITE_URL, LOCALES } from '@/lib/i18n/config'
+import { isLocale, localizedPath, absoluteUrl, SITE_URL, LOCALES } from '@/lib/i18n/config'
 import { safeJsonLd } from '@/lib/seo/json-ld'
 
 /**
@@ -33,10 +33,15 @@ export async function generateMetadata({
   const post = await getPost(slug)
   if (!post) return {}
 
+  // Posts only exist in Spanish. The /en copy has the same body, so it points
+  // its canonical at the ES URL and stays out of the index (no hreflang pair:
+  // there is no real translation to alternate with).
+  const path = `/blog/${post.slug}`
   return {
     title: `${post.title} · EXTRO`,
     description: post.excerpt,
-    alternates: alternatesFor(`/blog/${post.slug}`, lang),
+    alternates: { canonical: absoluteUrl(path, 'es') },
+    robots: lang === 'en' ? { index: false, follow: true } : undefined,
     openGraph: {
       type: 'article',
       title: post.title,

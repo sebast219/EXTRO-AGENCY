@@ -64,6 +64,18 @@ test.describe('Idioma y rutas (M-2, M-3)', () => {
   })
 })
 
+test.describe('Artículos solo en español', () => {
+  test('la copia /en apunta su canónica al español y no se indexa', async ({ page, request }) => {
+    const slug = 'mvp-7-dias'
+    await page.goto(`/en/blog/${slug}`)
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', new RegExp(`^https://[^/]+/blog/${slug}$`))
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/)
+
+    const xml = await (await request.get('/sitemap.xml')).text()
+    expect(xml).not.toContain(`/en/blog/${slug}`)
+  })
+})
+
 test.describe('SEO (M-4, A-7)', () => {
   test('el sitemap incluye los artículos y /terms', async ({ request }) => {
     const res = await request.get('/sitemap.xml')

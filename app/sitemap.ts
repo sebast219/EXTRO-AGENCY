@@ -34,7 +34,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(`${p.date}T12:00:00Z`),
     changeFrequency: 'monthly',
     priority: 0.6,
-    alternates: alt(`/blog/${p.slug}`),
+    // Spanish only: the /en copy is noindex with its canonical pointing here.
   }))
 
   return [...staticRoutes, ...postRoutes]
