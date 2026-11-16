@@ -51,11 +51,11 @@ export const viewport: Viewport = {
 
 const COPY = {
   es: {
-    title: 'EXTRO — Agencia de Ingeniería de Software',
+    title: 'EXTRO — Ingeniería de software a medida, en producción',
     description:
-      'Agenda una llamada de 15 minutos. Cotizamos tu proyecto con precio fijo, primera entrega en 7 días y avances semanales. Garantía de 1 a 3 meses según el nivel del proyecto.',
+      'Software a medida con precio fijo, primera entrega en 7 días y despliegues semanales. El código es tuyo y hay garantía de 1 a 3 meses. Agenda una llamada de 15 minutos.',
     ogDescription:
-      'Cotiza tu proyecto y continúa evolucionándolo con un plan mensual. Avances semanales, precio fijo y garantía de 1 a 3 meses.',
+      'Software a medida en producción en 7 días. Precio fijo, despliegues semanales y el código es tuyo desde el primer día.',
     locale: 'es_CO',
     skip: 'Saltar al contenido',
     keywords: [
@@ -68,11 +68,11 @@ const COPY = {
     ],
   },
   en: {
-    title: 'EXTRO — Software Engineering Studio',
+    title: 'EXTRO — Custom Software Engineering, in Production',
     description:
-      'Book a 15-minute call. We scope your project at a fixed price, with a first delivery in 7 days and weekly progress. A 1 to 3 month guarantee depending on the project level.',
+      'Custom software at a fixed price, first delivery in 7 days and weekly deploys. The code is yours, with a 1 to 3 month guarantee. Book a 15-minute call.',
     ogDescription:
-      'Get your project scoped and keep evolving it with a monthly plan. Weekly progress, fixed price and a 1 to 3 month guarantee.',
+      'Custom software in production in 7 days. Fixed price, weekly deploys and the code is yours from day one.',
     locale: 'en_US',
     skip: 'Skip to content',
     keywords: [

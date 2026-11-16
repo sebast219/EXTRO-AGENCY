@@ -25,7 +25,7 @@ test.describe('Idioma y rutas (M-2, M-3)', () => {
     await expect(page.locator('html')).toHaveAttribute('lang', 'en')
 
     // M-2: el inglés debe estar en el HTML inicial, no aparecer tras hidratar.
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('Top-tier software')
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Custom software')
     const html = await page.content()
     expect(html).toContain('lang="en"')
   })

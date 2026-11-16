@@ -217,12 +217,12 @@ const es: HomeCopy = {
   },
   hero: {
     badge: 'Avances semanales · en producción',
-    titleWords: ['Software', 'de', 'primer', 'nivel', 'para', 'que', 'tu', 'negocio', 'rinda', 'más'],
-    titleAria: 'Software de primer nivel para que tu negocio rinda más',
+    titleWords: ['Software', 'a', 'medida.', 'En', 'producción', 'en', '7', 'días.'],
+    titleAria: 'Software a medida. En producción en 7 días.',
     subtitle:
-      'Desde un emprendimiento que arranca hasta una empresa con varias sedes. Diseñamos, construimos y desplegamos el software que tu operación necesita.',
+      'Ingeniería de producto para equipos que no pueden esperar meses. Precio fijo, entregas semanales y el código es tuyo desde el primer día.',
     primary: 'Agendar llamada de 15 min',
-    secondary: 'Ver casos',
+    secondary: 'Ver en producción',
     guarantees: ['+ Precio fijo', '+ Código 100 % tuyo', '+ Empezamos en 48 h'],
     window: { title: 'tu-empresa · producción', live: 'en vivo' },
     terminal: {
@@ -246,14 +246,14 @@ const es: HomeCopy = {
   tech: { aria: 'Tecnologías' },
   solutions: {
     eyebrow: 'Soluciones',
-    title: 'Todo lo que tu negocio necesita, construido a la medida',
+    title: 'Lo que tu operación necesita. Construido, desplegado, tuyo.',
     intro:
-      'El mismo nivel de ingeniería para un emprendimiento que para una empresa. Lo que cambia es el alcance.',
+      'La misma ingeniería para una startup y para una empresa. Lo único que cambia es el alcance.',
     admin: {
       title: 'Software administrativo a la medida',
-      before: 'Diseñamos ',
-      strong: 'el sistema que tu sector necesita',
-      after: ': lo que hoy haces en Excel, WhatsApp y papel, en un solo lugar.',
+      before: 'Reemplaza ',
+      strong: 'Excel, WhatsApp y papel',
+      after: ' con un solo sistema hecho para tu sector.',
       sectorAria: 'Elige tu sector',
       sectors: { construccion: 'Construcción', comercio: 'Comercio', logistica: 'Logística', servicios: 'Servicios' },
       bullets: ['Roles y permisos por usuario', 'Paneles en tiempo real', 'Varias sedes, obras o bodegas'],
@@ -285,7 +285,7 @@ const es: HomeCopy = {
       title: 'Apps web',
       before: 'Plataformas y portales ',
       strong: 'en producción en semanas',
-      after: ', rápidos desde cualquier navegador.',
+      after: '. Rápidas desde cualquier navegador.',
       url: 'app.tuempresa.co',
       command: 'extro deploy ',
       flag: '--prod',
@@ -319,8 +319,8 @@ const es: HomeCopy = {
     ai: {
       title: 'IA y agentes',
       before: 'Agentes que ',
-      strong: 'atienden, responden y procesan',
-      after: ' por ti, conectados a tus datos.',
+      strong: 'atienden y procesan',
+      after: ' sobre tus propios datos. 24/7.',
       prompt: 'Resume ventas de octubre',
       tool: 'consultó ventas.db',
       answer: [
@@ -350,8 +350,8 @@ const es: HomeCopy = {
   },
   cases: {
     eyebrow: 'Casos',
-    title: 'Resultados medibles, en producción',
-    body: 'Plataformas, tiendas, apps y paneles que ya están funcionando y moviendo números reales.',
+    title: 'Resultados en producción, no promesas.',
+    body: 'Plataformas, tiendas, apps y paneles que ya funcionan y mueven números reales.',
     cta: 'Abrir el playground',
     note: '* Métricas compartidas por cada cliente. Nombres omitidos por confidencialidad.',
     metrics: [
@@ -362,8 +362,8 @@ const es: HomeCopy = {
   },
   process: {
     eyebrow: 'Proceso',
-    title: 'Avances semanales',
-    intro: 'Sin presentaciones eternas ni sorpresas. Cada semana ves avances reales, en producción.',
+    title: 'Despliegues semanales',
+    intro: 'Cada viernes ves el avance funcionando en producción, no una presentación.',
     steps: [
       { title: 'Planificación', body: '15 minutos contigo para definir qué se construye esta semana.' },
       { title: 'Arquitectura', body: 'Diseño técnico, modelo de datos y estructura del proyecto.' },
@@ -373,8 +373,8 @@ const es: HomeCopy = {
     ],
   },
   cta: {
-    heading: ['Construyamos', 'tu', 'próximo', 'software'],
-    body: 'En 15 minutos te decimos cómo lo resolveríamos, cuánto costaría y en cuánto tiempo. Sin compromiso.',
+    heading: ['¿Qué', 'vas', 'a', 'construir?'],
+    body: '15 minutos. Te decimos cómo lo resolvemos, cuánto cuesta y cuándo queda en producción.',
     button: 'Elegir fecha y hora',
   },
   booking: {
@@ -428,9 +428,9 @@ const es: HomeCopy = {
     city: '+ Medellín, Colombia',
     clockAria: 'Hora actual en Medellín',
     cta: 'Cotizar proyecto',
-    heading: ['Construyamos', 'tu próximo', 'software'],
+    heading: ['Tu próximo', 'software,', 'en producción'],
     ready: '¿Listo para construir?',
-    readySub: 'Cuéntanos qué necesitas y lancemos algo que tus usuarios amen.',
+    readySub: 'Cuéntanos qué necesitas. Lo ponemos en producción.',
     callNote: 'Llamada de 15 minutos · sin compromiso',
     contact: 'Escríbenos',
     studio: 'Estudio',
@@ -461,12 +461,12 @@ const en: HomeCopy = {
   },
   hero: {
     badge: 'Weekly progress · shipped to production',
-    titleWords: ['Top-tier', 'software', 'for', 'your', 'business', 'to', 'perform'],
-    titleAria: 'Top-tier software for your business to perform',
+    titleWords: ['Custom', 'software.', 'In', 'production', 'in', '7', 'days.'],
+    titleAria: 'Custom software. In production in 7 days.',
     subtitle:
-      'From a startup finding its feet to a company with multiple locations. We design, build and ship the software your operation needs.',
+      "Engineering for teams that can't wait months. Fixed price, weekly deploys, and the code is yours from day one.",
     primary: 'Book a 15-min call',
-    secondary: 'See our work',
+    secondary: 'See it in production',
     guarantees: ['+ Fixed price', '+ 100 % your code', '+ We start in 48 h'],
     window: { title: 'your-company · production', live: 'live' },
     terminal: {
@@ -490,14 +490,14 @@ const en: HomeCopy = {
   tech: { aria: 'Technologies' },
   solutions: {
     eyebrow: 'Solutions',
-    title: 'Everything your business needs, built to fit',
+    title: 'What your operation needs. Built, deployed, yours.',
     intro:
-      'The same level of engineering for a startup as for an enterprise. What changes is the scope.',
+      'The same engineering for a startup and an enterprise. Only the scope changes.',
     admin: {
       title: 'Custom operations software',
-      before: 'We design ',
-      strong: 'the system your industry needs',
-      after: ': everything you run today in Excel, WhatsApp and paper, in one place.',
+      before: 'Replace ',
+      strong: 'Excel, WhatsApp and paper',
+      after: ' with one system built for your industry.',
       sectorAria: 'Choose your industry',
       sectors: { construccion: 'Construction', comercio: 'Retail', logistica: 'Logistics', servicios: 'Services' },
       bullets: ['Roles and permissions per user', 'Real-time dashboards', 'Multiple sites, projects or warehouses'],
@@ -529,7 +529,7 @@ const en: HomeCopy = {
       title: 'Web apps',
       before: 'Platforms and portals ',
       strong: 'in production within weeks',
-      after: ', fast from any browser.',
+      after: '. Fast from any browser.',
       url: 'app.yourcompany.com',
       command: 'extro deploy ',
       flag: '--prod',
@@ -563,8 +563,8 @@ const en: HomeCopy = {
     ai: {
       title: 'AI and agents',
       before: 'Agents that ',
-      strong: 'answer, resolve and process',
-      after: ' for you, connected to your data.',
+      strong: 'answer and process',
+      after: ' on your own data. 24/7.',
       prompt: 'Summarize October sales',
       tool: 'queried sales.db',
       answer: [
@@ -593,7 +593,7 @@ const en: HomeCopy = {
   },
   cases: {
     eyebrow: 'Work',
-    title: 'Measurable results, in production',
+    title: 'Results in production, not promises.',
     body: 'Platforms, stores, apps and dashboards already running and moving real numbers.',
     cta: 'Open the playground',
     note: '* Metrics shared by each client. Names withheld for confidentiality.',
@@ -605,8 +605,8 @@ const en: HomeCopy = {
   },
   process: {
     eyebrow: 'Process',
-    title: 'Weekly progress',
-    intro: 'No endless decks, no surprises. Every week you see real progress, in production.',
+    title: 'Weekly deploys',
+    intro: 'Every Friday you see the progress running in production, not a deck.',
     steps: [
       { title: 'Planning', body: '15 minutes with you to define what gets built this week.' },
       { title: 'Architecture', body: 'Technical design, data model and project structure.' },
@@ -616,8 +616,8 @@ const en: HomeCopy = {
     ],
   },
   cta: {
-    heading: ['Let us build', 'your', 'next', 'software'],
-    body: 'In 15 minutes we tell you how we would solve it, what it would cost and how long it would take. No commitment.',
+    heading: ['What', 'will', 'you', 'build?'],
+    body: '15 minutes. We tell you how we would solve it, what it costs and when it ships.',
     button: 'Pick a date and time',
   },
   booking: {
@@ -683,9 +683,9 @@ const en: HomeCopy = {
     city: '+ Medellín, Colombia',
     clockAria: 'Current time in Medellín',
     cta: 'Start a project',
-    heading: ['Let us build', 'your next', 'software'],
+    heading: ['Your next', 'software,', 'in production'],
     ready: 'Ready to build?',
-    readySub: 'Tell us what you need and let us ship something your users love.',
+    readySub: 'Tell us what you need. We ship it to production.',
     callNote: '15-minute call · no commitment',
     contact: 'Contact',
     studio: 'Studio',
